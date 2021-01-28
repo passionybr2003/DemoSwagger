@@ -1,0 +1,3403 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://demo.evergent.com",
+      "description": "",
+      "variables": {}
+    }
+  ],
+  "info": {
+    "version": "E1.09",
+    "title": "CRM REST SERVICES"
+  },
+  "paths": {
+    "/updateAccountThreshold": {
+      "post": {
+        "summary": "updateAccountThreshold",
+        "operationId": "updateAccountThreshold",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateAccountThresholdRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "thresholdType": "downloadLimit",
+                    "thresholdValue": "5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateAccountThresholdRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"thresholdType\": \"downloadLimit\",\r\n        \"thresholdValue\": \"5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/createDocument": {
+      "post": {
+        "summary": "createDocument",
+        "operationId": "createDocument",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateDocumentRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "description": "V1",
+                    "startDate": "1611668413534",
+                    "endDate": "1643204413539",
+                    "filePath": "https://ccb3images.s3.amazonaws.com/1611668335217_Screenshot_1.png",
+                    "version": "11",
+                    "isETF": true
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateDocumentRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"description\": \"V1\",\r\n        \"startDate\": \"1611668413534\",\r\n        \"endDate\": \"1643204413539\",\r\n        \"filePath\": \"https://ccb3images.s3.amazonaws.com/1611668335217_Screenshot_1.png\",\r\n        \"version\": \"11\",\r\n        \"isETF\": true\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getTicketInfo": {
+      "post": {
+        "summary": "getTicketInfo",
+        "operationId": "getTicketInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetTicketInfoRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetTicketInfoRequestMessage\": {\r\n            \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getTicketPrerequisites": {
+      "post": {
+        "summary": "getTicketPrerequisites",
+        "operationId": "getTicketPrerequisites",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetTicketsPrerequisitesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetTicketsPrerequisitesRequestMessage\": {\r\n            \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/suspendService": {
+      "post": {
+        "summary": "suspendService",
+        "operationId": "suspendService",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SuspendServiceRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "serviceInfo": {
+                      "serviceId": "sku11",
+                      "serviceName": "product11",
+                      "serviceType": "PRODUCT"
+                    },
+                    "suspendEndDate": "1/31/2021",
+                    "suspendStartDate": "1/27/2021",
+                    "spAccountID": "141400621253685",
+                    "status": "SUSPEND"
+                  }
+                }
+              },
+              "example": "{\n    \"SuspendServiceRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"serviceInfo\": {\n            \"serviceId\": \"sku11\",\n            \"serviceName\": \"product11\",\n            \"serviceType\": \"PRODUCT\"\n        },\n        \"suspendEndDate\": \"1/31/2021\",\n        \"suspendStartDate\": \"1/27/2021\",\n        \"spAccountID\": \"141400621253685\",\n        \"status\": \"SUSPEND\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAllAvailableServices": {
+      "post": {
+        "summary": "getAllAvailableServices",
+        "operationId": "getAllAvailableServices",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAllAvailableServicesRequestMessage": {
+                    "apiUser": "epic5@yopmail.com",
+                    "apiPassword": "password1",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "950569431254134",
+                    "dmaID": "001",
+                    "returnOnlyBasics": "T",
+                    "returnOnlyOnetimeRenewals": "F",
+                    "opID": 957405
+                  }
+                }
+              },
+              "example": "{\n    \"GetAllAvailableServicesRequestMessage\": {\n        \"apiUser\": \"epic5@yopmail.com\",\n        \"apiPassword\": \"password1\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"dmaID\": \"001\",\n        \"returnOnlyBasics\": \"T\",\n        \"returnOnlyOnetimeRenewals\": \"F\",\n        \"opID\": 957405\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/completeWFActivity": {
+      "post": {
+        "summary": "completeWFActivity",
+        "operationId": "completeWFActivity",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CompleteWFActivityRequestMessage": {
+                    "apiKey": "jcomadmin",
+                    "channelPartnerID": "JCOM",
+                    "activityName": "Call Customer and Inform Service Activation",
+                    "spAccountID": "202012230827062951228984",
+                    "workflowType": "Customer Sign-up"
+                  }
+                }
+              },
+              "example": "{\r\n    \"CompleteWFActivityRequestMessage\": {\r\n         \"apiKey\": \"jcomadmin\",\r\n        \"channelPartnerID\": \"JCOM\",\r\n        \"activityName\": \"Call Customer and Inform Service Activation\",\r\n        \"spAccountID\": \"202012230827062951228984\",\r\n        \"workflowType\": \"Customer Sign-up\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/createAccount": {
+      "post": {
+        "summary": "createAccount ",
+        "operationId": "createAccount",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateAccount": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "primaryContact": {
+                      "email": "TestDemo1@yopmail.com",
+                      "firstName": "Test",
+                      "lastName": "Purpose",
+                      "mobileNumber": "9876543210"
+                    },
+                    "corporationDetails": {
+                      "companyName": "TestBU",
+                      "phone": "9876543210"
+                    },
+                    "attributes": [
+                      {
+                        "attributeName": "Service",
+                        "value": "OTT"
+                      }
+                    ],
+                    "dmaId": "001",
+                    "accountType": "Commercial",
+                    "billDeliveryType": "Paper"
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateAccount\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"primaryContact\": {\r\n            \"email\": \"TestDemo1@yopmail.com\",\r\n            \"firstName\": \"Test\",\r\n            \"lastName\": \"Purpose\",\r\n            \"mobileNumber\": \"9876543210\"\r\n        },\r\n        \"corporationDetails\": {\r\n            \"companyName\": \"TestBU\",\r\n            \"phone\": \"9876543210\"\r\n        },\r\n        \"attributes\": [\r\n            {\r\n                \"attributeName\": \"Service\",\r\n                \"value\": \"OTT\"\r\n            }\r\n        ],\r\n        \"dmaId\": \"001\",\r\n        \"accountType\": \"Commercial\",\r\n        \"billDeliveryType\": \"Paper\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getPkgsAndProdsWithPromosV2": {
+      "post": {
+        "summary": "getPkgsAndProdsWithPromosV2",
+        "operationId": "getPkgsAndProdsWithPromosV2",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "PkgsOrProdsV2RequestMsg": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaID": "001",
+                    "scOfferTypes": [
+                      {
+                        "salesChannel": "CSR",
+                        "offerType": "New Customer"
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"PkgsOrProdsV2RequestMsg\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaID\": \"001\",\r\n        \"scOfferTypes\": [\r\n            {\r\n                \"salesChannel\": \"CSR\",\r\n                \"offerType\": \"New Customer\"\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getCompleteAccountDetails": {
+      "post": {
+        "summary": "getCompleteAccountDetails",
+        "operationId": "getCompleteAccountDetails",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetCompleteAccountDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "955239001255136"
+                  }
+                }
+              },
+              "example": "{\n\"GetCompleteAccountDetailsRequestMessage\":{\n   \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n\"spAccountID\": \"955239001255136\"\n}\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addDeviceForAccount": {
+      "post": {
+        "summary": "addDeviceForAccount",
+        "operationId": "addDeviceForAccount",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddDeviceReqMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333",
+                    "deviceDetails": {
+                      "serialNo": "LTF123111",
+                      "deviceName": "webClient",
+                      "deviceType": "webClient",
+                      "modelNo": "987HJK85600",
+                      "externalId": "",
+                      "registrationToken": "",
+                      "downloadCount": "6"
+                    }
+                  }
+                }
+              },
+              "example": "{\n    \"AddDeviceReqMessage\": {\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"033373051070333\",\n        \"deviceDetails\": {\n            \"serialNo\": \"LTF123111\",\n            \"deviceName\": \"webClient\",\n            \"deviceType\": \"webClient\",\n            \"modelNo\": \"987HJK85600\",\n            \"externalId\": \"\",\n            \"registrationToken\": \"\",\n            \"downloadCount\": \"6\"\n        }\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getCustomerDevices": {
+      "post": {
+        "summary": "getCustomerDevices",
+        "operationId": "getCustomerDevices",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetCustomerDevicesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333"
+                  }
+                }
+              },
+              "example": "{\n    \"GetCustomerDevicesRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"033373051070333\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountEquipments": {
+      "post": {
+        "summary": "getAccountEquipments",
+        "operationId": "getAccountEquipments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountEquipmentsRequestMesaage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAccountEquipmentsRequestMesaage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"033373051070333\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/removeCPE": {
+      "post": {
+        "summary": "removeCPE",
+        "operationId": "removeCPE",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "RemoveCPERequestMessage": {
+                    "apiKey": "jcomadmin",
+                    "channelPartnerID": "JCOM",
+                    "serialNumber": "testJCOM26",
+                    "returnTo": "Anusha Mulpuri",
+                    "cpCustomerID": "0210127105053534"
+                  }
+                }
+              },
+              "example": "{\r\n    \"RemoveCPERequestMessage\": {\r\n         \"apiKey\": \"jcomadmin\",\r\n        \"channelPartnerID\": \"JCOM\",\r\n        \"serialNumber\": \"testJCOM26\",\r\n        \"returnTo\": \"Anusha Mulpuri\",\r\n        \"cpCustomerID\": \"0210127105053534\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addOrUpdateCPE": {
+      "post": {
+        "summary": "addOrUpdateCPE",
+        "operationId": "addOrUpdateCPE",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdateCPERequestMessage": {
+                    "apiKey": "jcomadmin",
+                    "channelPartnerID": "JCOM",
+                    "cpeAvailableWith": "Technician",
+                    "installer": "Anusha Mulpuri",
+                    "modelNumber": "test jcom-- 123",
+                    "serialNumber": "testJCOM26",
+                    "hwCategory": "CPE",
+                    "reasonCode": "New Install",
+                    "products": [],
+                    "cpCustomerID": "0210127105053534",
+                    "actionType": "create",
+                    "category": "CPE"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdateCPERequestMessage\": {\r\n        \"apiKey\": \"jcomadmin\",\r\n        \"channelPartnerID\": \"JCOM\",\r\n        \"cpeAvailableWith\": \"Technician\",\r\n        \"installer\": \"Anusha Mulpuri\",\r\n        \"modelNumber\": \"test jcom-- 123\",\r\n        \"serialNumber\": \"testJCOM26\",\r\n        \"hwCategory\": \"CPE\",\r\n        \"reasonCode\": \"New Install\",\r\n        \"products\": [],\r\n        \"cpCustomerID\": \"0210127105053534\",\r\n        \"actionType\": \"create\",\r\n        \"category\": \"CPE\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getLedgerDetails": {
+      "post": {
+        "summary": "getLedgerDetails",
+        "operationId": "getLedgerDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetLedgerDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "ledgerType": "runningBalances"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetLedgerDetailsRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"ledgerType\": \"runningBalances\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/makeAdjustment": {
+      "post": {
+        "summary": "makeAdjustment",
+        "operationId": "makeAdjustment",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "MakeAdjustmentRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "type": "credit",
+                    "amount": "12",
+                    "reasonCode": "002",
+                    "invoiceID": "",
+                    "outageStartDate": "2/24/2021",
+                    "outageEndDate": "2/28/2021",
+                    "comment": "comment",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\n    \"MakeAdjustmentRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n\n        \"channelPartnerID\": \"epicid-org5\",\n        \"type\": \"credit\",\n        \"amount\": \"12\",\n        \"reasonCode\": \"002\",\n        \"invoiceID\": \"\",\n        \"outageStartDate\": \"2/24/2021\",\n        \"outageEndDate\": \"2/28/2021\",\n        \"comment\": \"comment\",\n        \"spAccountID\": \"459224881072036\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountStatusHistory": {
+      "post": {
+        "summary": "getAccountStatusHistory",
+        "operationId": "getAccountStatusHistory",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountStatusHistoryRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAccountStatusHistoryRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateCustomerStatus": {
+      "post": {
+        "summary": "updateCustomerStatus",
+        "operationId": "updateCustomerStatus",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateCustomerStatusRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "status": "Cancel",
+                    "reasonCodes": [
+                      "004"
+                    ],
+                    "serviceEndDate": "2/12/2021",
+                    "comments": "comment1",
+                    "clearOutStandingBalance": false,
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\n    \"UpdateCustomerStatusRequestMessage\": {\n \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"status\": \"Cancel\",\n        \"reasonCodes\": [\n            \"004\"\n        ],\n        \"serviceEndDate\": \"2/12/2021\",\n        \"comments\": \"comment1\",\n        \"clearOutStandingBalance\": false,\n        \"spAccountID\": \"459224881072036\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateAccountStatusHistory": {
+      "post": {
+        "summary": "updateAccountStatusHistory",
+        "operationId": "updateAccountStatusHistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateAccountStatusHistoryRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "reasonCodes": [
+                      "009"
+                    ],
+                    "statusHistoryId": "1744551"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateAccountStatusHistoryRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"reasonCodes\": [\r\n            \"009\"\r\n        ],\r\n        \"statusHistoryId\": \"1744551\"\r\n        \r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getCustomerPurchases": {
+      "post": {
+        "summary": "getCustomerPurchases",
+        "operationId": "getCustomerPurchases",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetCustomerPurchasesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333"
+                  }
+                }
+              },
+              "example": "{\n    \"GetCustomerPurchasesRequestMessage\": {\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"033373051070333\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getBillCycles": {
+      "post": {
+        "summary": "getBillCycles",
+        "operationId": "getBillCycles",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetBillCyclesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetBillCyclesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/authenticateCCBUserV2": {
+      "post": {
+        "summary": "authenticateCCBUserV2",
+        "operationId": "authenticateCCBUserV2",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AuthenticateCCBUserV1Request": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm"
+                  }
+                }
+              },
+              "example": "{\n    \"AuthenticateCCBUserV1Request\": {\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountPaymentMethods": {
+      "post": {
+        "summary": "getAccountPaymentMethods",
+        "operationId": "getAccountPaymentMethods",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountPaymentMethodsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAccountPaymentMethodsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getSubscriptionsHistory": {
+      "post": {
+        "summary": "getSubscriptionsHistory",
+        "operationId": "getSubscriptionsHistory",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetSubscriptionsHistoryRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333"
+                  }
+                }
+              },
+              "example": "{\n    \"GetSubscriptionsHistoryRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"033373051070333\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/removeDeviceForAccount": {
+      "post": {
+        "summary": "removeDeviceForAccount",
+        "operationId": "removeDeviceForAccount",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "RemoveDeviceReqMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "deviceId": "339443",
+                    "serialNo": "LTF123",
+                    "cpCustomerID": "0200409103337305",
+                    "modelNo": "987HJK85600"
+                  }
+                }
+              },
+              "example": "{\r\n    \"RemoveDeviceReqMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"deviceId\": \"339443\",\r\n        \"serialNo\": \"LTF123\",\r\n        \"cpCustomerID\": \"0200409103337305\",\r\n        \"modelNo\": \"987HJK85600\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/makeRefund": {
+      "post": {
+        "summary": "makeRefund",
+        "operationId": "makeRefund",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "MakeRefundRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "reasonCodeName": "Refunds",
+                    "comments": "comment",
+                    "paymentID": 955238
+                  }
+                }
+              },
+              "example": "{\n    \"MakeRefundRequestMessage\": {\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"459224881072036\",\n        \"reasonCodeName\": \"Refunds\",\n        \"comments\": \"comment\",\n        \"paymentID\": 955238\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/createCredits": {
+      "post": {
+        "summary": "createCredits_AllPayments",
+        "operationId": "createCredits_AllPayments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateCreditsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "refundsDetailsMessage": {
+                      "isAdjustment": true,
+                      "amountToRefund": 10,
+                      "transactionType": "All Payments",
+                      "paymentsMessage": {
+                        "paymentId": 769449
+                      }
+                    },
+                    "reasonCode": "Refunds",
+                    "comments": "comments",
+                    "creditType": "Refund"
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateCreditsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"refundsDetailsMessage\": {\r\n            \"isAdjustment\": true,\r\n            \"amountToRefund\": 10,\r\n            \"transactionType\": \"All Payments\",\r\n            \"paymentsMessage\": {\r\n                \"paymentId\": 769449\r\n            }\r\n        },\r\n        \"reasonCode\": \"Refunds\",\r\n        \"comments\": \"comments\",\r\n        \"creditType\": \"Refund\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/setAccountAttributeValue": {
+      "post": {
+        "summary": "setAttributeValue",
+        "operationId": "setAttributeValue",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SetAccountAttributeValueRequestMessage": {
+                    "channelPartnerID": "epicid-org5",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "spAccountID": "459224881072036",
+                    "actionType": "add",
+                    "attributeName": "DFW Beta",
+                    "attributeLabel": "Account",
+                    "attributeType": "Boolean",
+                    "attributeValue": true
+                  }
+                }
+              },
+              "example": "{\r\n    \"SetAccountAttributeValueRequestMessage\": {\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"actionType\":\"add\",\r\n        \"attributeName\": \"DFW Beta\",\r\n        \"attributeLabel\": \"Account\",\r\n        \"attributeType\": \"Boolean\",\r\n        \"attributeValue\": true\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAttributeValues": {
+      "post": {
+        "summary": "getAttributeValue",
+        "operationId": "getAttributeValue",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAttributeValueRequestMessage": {
+                    "channelPartnerID": "epicid-org5",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "spAccountID": "459224881072036",
+                    "attributeLabel": "Account"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAttributeValueRequestMessage\": {\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"attributeLabel\": \"Account\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountWorkFlows": {
+      "post": {
+        "summary": "getAccountWorkFlows",
+        "operationId": "getAccountWorkFlows",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountWorkFlowsRequestMessage": {
+                    "apiKey": "jcomadmin",
+                    "channelPartnerID": "JCOM",
+                    "spAccountID": "202012230827062951228984"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAccountWorkFlowsRequestMessage\": {\r\n                \"apiKey\": \"jcomadmin\",\r\n\r\n        \"channelPartnerID\": \"JCOM\",\r\n        \"spAccountID\": \"202012230827062951228984\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getMarketAreas": {
+      "post": {
+        "summary": "getMarketAreas",
+        "operationId": "getMarketAreas",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetMarketAreas": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetMarketAreas\": {\r\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/purchaseOrderQuotation": {
+      "post": {
+        "summary": "purchaseOrderQuotation",
+        "operationId": "purchaseOrderQuotation",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "PurchaseOrderQuatationRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "isSkipDefaultPromo": false,
+                    "paymentmethodInfo": {
+                      "label": "Credit/Debit Card",
+                      "transactionReferenceMsg": {
+                        "expiryDate": "12/2023",
+                        "cardType": "",
+                        "nameOnCard": "hello",
+                        "cardNumber": "4111 1111 1111 1111"
+                      },
+                      "cardInfoMsg": {
+                        "billingAddress": {
+                          "address1": "3064  Joyce Street",
+                          "address2": "",
+                          "city": "Gulf Shores",
+                          "state": "AL",
+                          "country": "US",
+                          "zipCode": "35005"
+                        }
+                      }
+                    },
+                    "services": {
+                      "service": [
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "PRD07",
+                          "quantity": 1
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "sku11",
+                          "quantity": 1,
+                          "promotionsInfo": [
+                            {
+                              "promoCode": "Contract1"
+                            }
+                          ]
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "sku11",
+                          "quantity": "1"
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "skuid-15",
+                          "quantity": 1
+                        }
+                      ]
+                    },
+                    "billCycleID": ""
+                  }
+                }
+              },
+              "example": "{\n    \"PurchaseOrderQuatationRequestMessage\": {\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"141400621253685\",\n        \"isSkipDefaultPromo\": false,\n        \"paymentmethodInfo\": {\n            \"label\": \"Credit/Debit Card\",\n            \"transactionReferenceMsg\": {\n                \"expiryDate\": \"12/2023\",\n                \"cardType\": \"\",\n                \"nameOnCard\": \"hello\",\n                \"cardNumber\": \"4111 1111 1111 1111\"\n            },\n            \"cardInfoMsg\": {\n                \"billingAddress\": {\n                    \"address1\": \"3064  Joyce Street\",\n                    \"address2\": \"\",\n                    \"city\": \"Gulf Shores\",\n                    \"state\": \"AL\",\n                    \"country\": \"US\",\n                    \"zipCode\": \"35005\"\n                }\n            }\n        },\n        \"services\": {\n            \"service\": [\n                {\n                    \"serviceType\": \"Product\",\n                    \"serviceId\": \"PRD07\",\n                    \"quantity\": 1\n                },\n                {\n                    \"serviceType\": \"Product\",\n                    \"serviceId\": \"sku11\",\n                    \"quantity\": 1,\n                    \"promotionsInfo\": [\n                        {\n                            \"promoCode\": \"Contract1\"\n                        }\n                    ]\n                },\n                {\n                    \"serviceType\": \"Product\",\n                    \"serviceId\": \"sku11\",\n                    \"quantity\": \"1\"\n                },\n                {\n                    \"serviceType\": \"Product\",\n                    \"serviceId\": \"skuid-15\",\n                    \"quantity\": 1\n                }\n            ]\n        },\n        \"billCycleID\": \"\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getConfigurationData": {
+      "post": {
+        "summary": "getConfigurationData",
+        "operationId": "getConfigurationData",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetConfigurationDataRequest": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetConfigurationDataRequest\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getChannelPartnersForUser": {
+      "post": {
+        "summary": "getChannelPartnersForUser",
+        "operationId": "getChannelPartnersForUser",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetChannelPartnersForUserReq": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm"
+                  }
+                }
+              },
+              "example": "{\n    \"GetChannelPartnersForUserReq\": {\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateAddresses": {
+      "post": {
+        "summary": "UpdateAddresses",
+        "operationId": "UpdateAddresses",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateAddressesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "serviceSameAsBilling": true,
+                    "shippingSameAsBilling": true,
+                    "billingAddress": {
+                      "address1": "3064  Joyce Street",
+                      "address2": "",
+                      "city": "Gulf Shores",
+                      "country": "US",
+                      "addressId": 1403441,
+                      "state": "AL",
+                      "streetName": "",
+                      "zipCode": "35005"
+                    },
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\n    \"UpdateAddressesRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"serviceSameAsBilling\": true,\n        \"shippingSameAsBilling\": true,\n        \"billingAddress\": {\n            \"address1\": \"3064  Joyce Street\",\n            \"address2\": \"\",\n            \"city\": \"Gulf Shores\",\n            \"country\": \"US\",\n            \"addressId\": 1403441,\n            \"state\": \"AL\",\n            \"streetName\": \"\",\n            \"zipCode\": \"35005\"\n        },\n        \"spAccountID\": \"141400621253685\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAllAddresses": {
+      "post": {
+        "summary": "getAllAddresses",
+        "operationId": "getAllAddresses",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAllAddressesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAllAddressesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addAddress": {
+      "post": {
+        "summary": "addAddress",
+        "operationId": "addAddress",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddAddressRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "address": {
+                      "address1": "302 N Colorado St",
+                      "address2": "",
+                      "city": "Casa Grande",
+                      "country": "US",
+                      "state": "AZ",
+                      "zipCode": "85222"
+                    },
+                    "label": "Service"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddAddressRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"address\": {\r\n            \"address1\": \"302 N Colorado St\",\r\n            \"address2\": \"\",\r\n            \"city\": \"Casa Grande\",\r\n            \"country\": \"US\",\r\n            \"state\": \"AZ\",\r\n            \"zipCode\": \"85222\"\r\n        },\r\n        \"label\": \"Service\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/purchaseOrder": {
+      "post": {
+        "summary": "purchaseOrder",
+        "operationId": "purchaseOrder",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "PurchaseOrderRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "services": {
+                      "service": [
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "PRD07",
+                          "quantity": 1
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "sku11",
+                          "quantity": 1,
+                          "promotionsInfo": [
+                            {
+                              "promoCode": "Contract1"
+                            }
+                          ]
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "sku11",
+                          "quantity": "1"
+                        },
+                        {
+                          "serviceType": "Product",
+                          "serviceId": "skuid-15",
+                          "quantity": 1
+                        }
+                      ]
+                    },
+                    "isSkipDefaultPromo": false,
+                    "paymentmethodInfo": {
+                      "label": "Credit/Debit Card",
+                      "transactionReferenceMsg": {
+                        "amount": 48,
+                        "cardHolderName": "hello",
+                        "cardNumber": "4111111111111111",
+                        "cavv": "",
+                        "expiryDate": "12/2023"
+                      }
+                    }
+                  }
+                }
+              },
+              "example": "{\r\n    \"PurchaseOrderRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"services\": {\r\n            \"service\": [\r\n                {\r\n                    \"serviceType\": \"Product\",\r\n                    \"serviceId\": \"PRD07\",\r\n                    \"quantity\": 1\r\n                },\r\n                {\r\n                    \"serviceType\": \"Product\",\r\n                    \"serviceId\": \"sku11\",\r\n                    \"quantity\": 1,\r\n                    \"promotionsInfo\": [\r\n                        {\r\n                            \"promoCode\": \"Contract1\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"serviceType\": \"Product\",\r\n                    \"serviceId\": \"sku11\",\r\n                    \"quantity\": \"1\"\r\n                },\r\n                {\r\n                    \"serviceType\": \"Product\",\r\n                    \"serviceId\": \"skuid-15\",\r\n                    \"quantity\": 1\r\n                }\r\n            ]\r\n        },\r\n        \"isSkipDefaultPromo\": false,\r\n        \"paymentmethodInfo\": {\r\n            \"label\": \"Credit/Debit Card\",\r\n            \"transactionReferenceMsg\": {\r\n                \"amount\": 48,\r\n                \"cardHolderName\": \"hello\",\r\n                \"cardNumber\": \"4111111111111111\",\r\n                \"cavv\": \"\",\r\n                \"expiryDate\": \"12/2023\"\r\n            }\r\n        }\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/searchAccountV3": {
+      "post": {
+        "summary": "searchAccountV3",
+        "operationId": "searchAccountV3",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SearchAcctV3RequestMsg": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "contact": {
+                      "lastName": "",
+                      "firstName": "",
+                      "socialLoginType": "",
+                      "socialLoginID": "",
+                      "externalId": "",
+                      "WorkOrderID": "",
+                      "contactID": "",
+                      "dateOfBirth": ""
+                    },
+                    "email": "",
+                    "userName": "",
+                    "phone": "",
+                    "ctn": "",
+                    "ban": "",
+                    "externalOrderID": "",
+                    "orderID": "1064097",
+                    "companyName": "",
+                    "legalRepresentative": "",
+                    "createdDateInMillis": "",
+                    "paymentTransId": "",
+                    "paymentProfileId": "",
+                    "invoiceNumber": "",
+                    "workOrderID": ""
+                  }
+                }
+              },
+              "example": "{\r\n    \"SearchAcctV3RequestMsg\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"contact\": {\r\n            \"lastName\": \"\",\r\n            \"firstName\": \"\",\r\n            \"socialLoginType\": \"\",\r\n            \"socialLoginID\": \"\",\r\n            \"externalId\": \"\",\r\n            \"WorkOrderID\": \"\",\r\n            \"contactID\": \"\",\r\n            \"dateOfBirth\": \"\"\r\n        },\r\n        \"email\": \"\",\r\n        \"userName\": \"\",\r\n        \"phone\": \"\",\r\n        \"ctn\": \"\",\r\n        \"ban\": \"\",\r\n        \"externalOrderID\": \"\",\r\n        \"orderID\": \"1064097\",\r\n        \"companyName\": \"\",\r\n        \"legalRepresentative\": \"\",\r\n        \"createdDateInMillis\": \"\",\r\n        \"paymentTransId\": \"\",\r\n        \"paymentProfileId\": \"\",\r\n        \"invoiceNumber\": \"\",\r\n        \"workOrderID\": \"\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getBUWidgetDetails": {
+      "post": {
+        "summary": "getBUWidgetDetails",
+        "operationId": "getBUWidgetDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetBUWidgetRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetBUWidgetRequestMessage\": {\r\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateCustomerDetails": {
+      "post": {
+        "summary": "updateCustomerDetails",
+        "operationId": "updateCustomerDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateCustomerDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "accountVerified": "Yes"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateCustomerDetailsRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"accountVerified\": \"Yes\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/resetAccountThreshold": {
+      "post": {
+        "summary": "resetAccountThreshold",
+        "operationId": "resetAccountThreshold",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ResetAccountThresholdRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "vodType": "downloadCount"
+                  }
+                }
+              },
+              "example": "{\r\n    \"ResetAccountThresholdRequestMessage\": {\r\n      \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"vodType\": \"downloadCount\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addProfile": {
+      "post": {
+        "summary": "addProfile",
+        "operationId": "addProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddProfileRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "profileType": "VIP",
+                    "title": "Title",
+                    "department": "CCB",
+                    "salutation": "MR",
+                    "firstName": "Test",
+                    "middleName": "M",
+                    "lastName": "Last",
+                    "contactUserName": "Contact",
+                    "gender": "Male",
+                    "email": "contact@yopmail.com",
+                    "language": "English",
+                    "timeZone": "PDT",
+                    "identity": "Driving License",
+                    "identityValue": "D126",
+                    "alertNotificationPush": true,
+                    "accessProfile": true,
+                    "isVIP": true,
+                    "ssn": "9876547867",
+                    "parentalControlLevel": "Level1",
+                    "parentalControLevelPin": "12345",
+                    "isPrimaryContact": true,
+                    "spAccountID": "141400621253685",
+                    "contactPassword": "password1"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddProfileRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"profileType\": \"VIP\",\r\n        \"title\": \"Title\",\r\n        \"department\": \"CCB\",\r\n        \"salutation\": \"MR\",\r\n        \"firstName\": \"Test\",\r\n        \"middleName\": \"M\",\r\n        \"lastName\": \"Last\",\r\n        \"contactUserName\": \"Contact\",\r\n        \"gender\": \"Male\",\r\n        \"email\": \"contact@yopmail.com\",\r\n        \"language\": \"English\",\r\n        \"timeZone\": \"PDT\",\r\n        \"identity\": \"Driving License\",\r\n        \"identityValue\": \"D126\",\r\n        \"alertNotificationPush\": true,\r\n        \"accessProfile\": true,\r\n        \"isVIP\": true,\r\n        \"ssn\": \"9876547867\",\r\n        \"parentalControlLevel\": \"Level1\",\r\n        \"parentalControLevelPin\": \"12345\",\r\n        \"isPrimaryContact\": true,\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"contactPassword\": \"password1\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateProfile": {
+      "post": {
+        "summary": "updateProfile",
+        "operationId": "updateProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateProfileRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "profileType": "VIP",
+                    "title": "TITLE",
+                    "department": "CCB",
+                    "socialLoginType": "",
+                    "socialLoginID": "",
+                    "salutation": "MR",
+                    "firstName": "Test",
+                    "middleName": "M",
+                    "lastName": "Last",
+                    "contactUserName": "swdfg12345",
+                    "customerPassword": "",
+                    "alternateUserName": "",
+                    "dateOfBirth": "",
+                    "gender": "Male",
+                    "workPhone": "",
+                    "homePhone": "",
+                    "fax": "",
+                    "cellPhone": "",
+                    "email": "contacto90@yopmail.com",
+                    "language": "English",
+                    "timeZone": "PST",
+                    "identity": "Driving License",
+                    "identityValue": "D128",
+                    "minAge": "",
+                    "maxAge": "",
+                    "alertNotificationPush": true,
+                    "accessProfile": true,
+                    "isVIP": true,
+                    "allowTracking": false,
+                    "comments": "",
+                    "externalId": "",
+                    "ssn": "9876547867",
+                    "canReceiveBills": false,
+                    "alertNotificationEmail": false,
+                    "parentalControlLevel": "",
+                    "parentalControLevelPin": "",
+                    "isPrimaryContact": true,
+                    "spAccountID": "141400621253685",
+                    "contactID": "1264511"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateProfileRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"profileType\": \"VIP\",\r\n        \"title\": \"TITLE\",\r\n        \"department\": \"CCB\",\r\n        \"socialLoginType\": \"\",\r\n        \"socialLoginID\": \"\",\r\n        \"salutation\": \"MR\",\r\n        \"firstName\": \"Test\",\r\n        \"middleName\": \"M\",\r\n        \"lastName\": \"Last\",\r\n        \"contactUserName\": \"swdfg12345\",\r\n        \"customerPassword\": \"\",\r\n        \"alternateUserName\": \"\",\r\n        \"dateOfBirth\": \"\",\r\n        \"gender\": \"Male\",\r\n        \"workPhone\": \"\",\r\n        \"homePhone\": \"\",\r\n        \"fax\": \"\",\r\n        \"cellPhone\": \"\",\r\n        \"email\": \"contacto90@yopmail.com\",\r\n        \"language\": \"English\",\r\n        \"timeZone\": \"PST\",\r\n        \"identity\": \"Driving License\",\r\n        \"identityValue\": \"D128\",\r\n        \"minAge\": \"\",\r\n        \"maxAge\": \"\",\r\n        \"alertNotificationPush\": true,\r\n        \"accessProfile\": true,\r\n        \"isVIP\": true,\r\n        \"allowTracking\": false,\r\n        \"comments\": \"\",\r\n        \"externalId\": \"\",\r\n        \"ssn\": \"9876547867\",\r\n        \"canReceiveBills\": false,\r\n        \"alertNotificationEmail\": false,\r\n        \"parentalControlLevel\": \"\",\r\n        \"parentalControLevelPin\": \"\",\r\n        \"isPrimaryContact\": true,\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"contactID\": \"1264511\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/deleteCustomerProfile": {
+      "post": {
+        "summary": "deleteCustomerProfile",
+        "operationId": "deleteCustomerProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "DeleteProfileRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "contactId": "1264511"
+                  }
+                }
+              },
+              "example": "{\r\n    \"DeleteProfileRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"contactId\": \"1264511\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/resetProfilePassword": {
+      "post": {
+        "summary": "resetProfilePassword",
+        "operationId": "resetProfilePassword",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ResetProfilePasswordRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "email": "TestDemo@yopmail.com",
+                    "contactPassword": "password1",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\r\n    \"ResetProfilePasswordRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"email\": \"TestDemo@yopmail.com\",\r\n        \"contactPassword\": \"password1\",\r\n        \"spAccountID\": \"141400621253685\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateAccountPMInfo": {
+      "post": {
+        "summary": "updateAccountPMInfo",
+        "operationId": "updateAccountPMInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateAccountPMInfoRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "actionType": "create",
+                    "label": "Credit/Debit card",
+                    "typeOfcard": "Visa",
+                    "cardNumber": "4263982640269299",
+                    "expiryDateMonth": "12",
+                    "expiryDateYear": "2023",
+                    "cvv": "123",
+                    "addressLine": "302 N Colorado St",
+                    "city": "Casa Grande",
+                    "country": "US",
+                    "state": "AZ",
+                    "zipCode": "85222",
+                    "nameOnCard": "pav",
+                    "paymentMethodType": "General"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateAccountPMInfoRequestMessage\": {\r\n          \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"actionType\": \"create\",\r\n        \"label\": \"Credit/Debit card\",\r\n        \"typeOfcard\": \"Visa\",\r\n        \"cardNumber\": \"4263982640269299\",\r\n        \"expiryDateMonth\": \"12\",\r\n        \"expiryDateYear\": \"2023\",\r\n        \"cvv\": \"123\",\r\n        \"addressLine\": \"302 N Colorado St\",\r\n        \"city\": \"Casa Grande\",\r\n        \"country\": \"US\",\r\n        \"state\": \"AZ\",\r\n        \"zipCode\": \"85222\",\r\n        \"nameOnCard\": \"pav\",\r\n        \"paymentMethodType\": \"General\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountEvents": {
+      "post": {
+        "summary": "getAccountEvents",
+        "operationId": "getAccountEvents",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountEventsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\n    \"GetAccountEventsRequestMessage\": {\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"141400621253685\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addLogInfo": {
+      "post": {
+        "summary": "{{url}}addLoginfo1",
+        "operationId": "{{url}}addLoginfo1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddLogInfoRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "title": "Title",
+                    "resolutionOfCall": "1",
+                    "externalUsername": "",
+                    "problemCode": "problem",
+                    "deviceType": "Samsung",
+                    "deviceErrorCode": "E001",
+                    "eventType": "Inbound Call",
+                    "category": "Bill Dispute",
+                    "subCategory1": "",
+                    "subCategory2": "",
+                    "editcategory": "",
+                    "editsubCategory1": "",
+                    "editsubCategory2": "",
+                    "dealerCode1": "--",
+                    "dealerCode2": "--",
+                    "partnerName": "--",
+                    "date": "--",
+                    "comments": "comment",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\n    \"AddLogInfoRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"title\": \"Title\",\n        \"resolutionOfCall\": \"1\",\n        \"externalUsername\": \"\",\n        \"problemCode\": \"problem\",\n        \"deviceType\": \"Samsung\",\n        \"deviceErrorCode\": \"E001\",\n        \"eventType\": \"Inbound Call\",\n        \"category\": \"Bill Dispute\",\n        \"subCategory1\": \"\",\n        \"subCategory2\": \"\",\n        \"editcategory\": \"\",\n        \"editsubCategory1\": \"\",\n        \"editsubCategory2\": \"\",\n        \"dealerCode1\": \"--\",\n        \"dealerCode2\": \"--\",\n        \"partnerName\": \"--\",\n        \"date\": \"--\",\n        \"comments\": \"comment\",\n        \"spAccountID\": \"141400621253685\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateLogInfo": {
+      "post": {
+        "summary": "updateLogInfo",
+        "operationId": "updateLogInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateLogInfoRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "comment": "comment23",
+                    "eventId": 4422769,
+                    "title": "Title",
+                    "spAccountID": "141400621253685"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateLogInfoRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"comment\": \"comment23\",\r\n        \"eventId\": 4422769,\r\n        \"title\": \"Title\",\r\n        \"spAccountID\": \"141400621253685\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getDocuments": {
+      "post": {
+        "summary": "getDocuments",
+        "operationId": "getDocuments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetDocumentsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetDocumentsRequestMessage\": {\r\n          \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getCreditsPrerequisites": {
+      "post": {
+        "summary": "getCreditsPrerequisites",
+        "operationId": "getCreditsPrerequisites",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetCreditsPrerequisitesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetCreditsPrerequisitesRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountCredits": {
+      "post": {
+        "summary": "getAccountCredits",
+        "operationId": "getAccountCredits",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAccountCreditsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAccountCreditsRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateAccountCredits": {
+      "post": {
+        "summary": "updateAccountCredits",
+        "operationId": "updateAccountCredits",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateAccountCreditsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "cashCreditsMessage": {
+                      "endDate": 1606674600000
+                    },
+                    "comments": "sample credit comments on abc",
+                    "creditId": "19173",
+                    "creditType": "Cash Credit"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateAccountCreditsRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"cashCreditsMessage\": {\r\n            \"endDate\": 1606674600000\r\n        },\r\n        \"comments\": \"sample credit comments on abc\",\r\n        \"creditId\": \"19173\",\r\n        \"creditType\": \"Cash Credit\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addTroubleTicket": {
+      "post": {
+        "summary": "addTroubleTicket",
+        "operationId": "addTroubleTicket",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddTroubleTicketRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "title": "Title",
+                    "assignedTo": "Trupti Behera",
+                    "group": "MSO Group",
+                    "ticketType": "Service",
+                    "subType": "Service",
+                    "ticketDomain": "Domain1",
+                    "ticketPriority": "Critical",
+                    "ticketStatus": "Open",
+                    "actualHours": 12,
+                    "estimatedHours": 10,
+                    "comments": "comment1",
+                    "forwardEmailTo": [
+                      "Trupti Behera"
+                    ],
+                    "outage": "F"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddTroubleTicketRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"title\": \"Title\",\r\n        \"assignedTo\": \"Trupti Behera\",\r\n        \"group\": \"MSO Group\",\r\n        \"ticketType\": \"Service\",\r\n        \"subType\": \"Service\",\r\n        \"ticketDomain\": \"Domain1\",\r\n        \"ticketPriority\": \"Critical\",\r\n        \"ticketStatus\": \"Open\",\r\n        \"actualHours\": 12,\r\n        \"estimatedHours\": 10,\r\n        \"comments\": \"comment1\",\r\n        \"forwardEmailTo\": [\r\n            \"Trupti Behera\"\r\n        ],\r\n        \"outage\": \"F\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateTroubleTicket": {
+      "post": {
+        "summary": "updateTroubleTicket",
+        "operationId": "updateTroubleTicket",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateTroubleTicketRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "title": "Title1",
+                    "ticketID": 13233,
+                    "assignedTo": "Trupti Behera",
+                    "group": "MSO Group",
+                    "ticketType": "Service",
+                    "subType": "Service",
+                    "ticketDomain": "Domain1",
+                    "ticketPriority": "Critical",
+                    "ticketStatus": "Open",
+                    "forwardEmailTo": [
+                      "Trupti Behera"
+                    ],
+                    "outage": "F"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateTroubleTicketRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"title\": \"Title1\",\r\n        \"ticketID\": 13233,\r\n        \"assignedTo\": \"Trupti Behera\",\r\n        \"group\": \"MSO Group\",\r\n        \"ticketType\": \"Service\",\r\n        \"subType\": \"Service\",\r\n        \"ticketDomain\": \"Domain1\",\r\n        \"ticketPriority\": \"Critical\",\r\n        \"ticketStatus\": \"Open\",\r\n        \"forwardEmailTo\": [\r\n            \"Trupti Behera\"\r\n        ],\r\n        \"outage\": \"F\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getSecurityQA": {
+      "post": {
+        "summary": "getSecurityQA",
+        "operationId": "getSecurityQA",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetSecurityQARequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\n    \"GetSecurityQARequestMessage\": {\n          \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"459224881072036\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateSecurityQA": {
+      "post": {
+        "summary": "updateSecurityQA",
+        "operationId": "updateSecurityQA",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateSecurityQARequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "securityQAId": "1500637",
+                    "answer": "Sitara Grand",
+                    "actionType": "delete"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateSecurityQARequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"securityQAId\": \"1500637\",\r\n        \"answer\": \"Sitara Grand\",\r\n        \"actionType\": \"delete\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/createSecurityQA": {
+      "post": {
+        "summary": "createSecurityQA",
+        "operationId": "createSecurityQA",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateSecurityQandARequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "securityQuestion": "Who is your favorite childhood hero?",
+                    "answer": "Spider Man"
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateSecurityQandARequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\",\r\n        \"securityQuestion\": \"Who is your favorite childhood hero?\",\r\n        \"answer\": \"Spider Man\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getWalletLedgerDetails": {
+      "post": {
+        "summary": "getWalletLedgerDetails-UsageDetails",
+        "operationId": "getWalletLedgerDetails-UsageDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetWalletLedgerDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountId": "459224881072036",
+                    "walletLedgerType": "UsageDetails"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetWalletLedgerDetailsRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountId\": \"459224881072036\",\r\n        \"walletLedgerType\": \"UsageDetails\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getAccountServices": {
+      "post": {
+        "summary": "getAccountServices",
+        "operationId": "getAccountServices",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AccountServicesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "141400621253685",
+                    "returnPromoInfo": "T"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AccountServicesRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"141400621253685\",\r\n        \"returnPromoInfo\": \"T\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateOrderedProduct": {
+      "post": {
+        "summary": "updateOrderedProduct",
+        "operationId": "updateOrderedProduct",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateOrderedProductRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "cpCustomerID": "0200409103337305",
+                    "objectId": "779352",
+                    "enddate": 1619951580000,
+                    "actionType": "subscription",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateOrderedProductRequestMessage\": {\r\n          \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"cpCustomerID\": \"0200409103337305\",\r\n        \"objectId\": \"779352\",\r\n        \"enddate\": 1619951580000,\r\n        \"actionType\": \"subscription\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/reactivateSubscription": {
+      "post": {
+        "summary": "reactivateSubscription",
+        "operationId": "reactivateSubscription",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ReactivateSubscriptionRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "033373051070333",
+                    "serviceId": "sku11"
+                  }
+                }
+              },
+              "example": "{\n    \"ReactivateSubscriptionRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"033373051070333\",\n        \"serviceId\": \"sku11\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/removeOrderedProducts": {
+      "post": {
+        "summary": "removeOrderedProduct",
+        "operationId": "removeOrderedProduct",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "RemoveOrderedProductsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "services": [
+                      {
+                        "serviceType": "Product",
+                        "serviceId": "sku7",
+                        "quantity": "1"
+                      }
+                    ],
+                    "comments": "comment",
+                    "reasonCodeId": "006",
+                    "endDate": 1612009980000,
+                    "spAccountID": "033373051070333"
+                  }
+                }
+              },
+              "example": "{\r\n    \"RemoveOrderedProductsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"services\": [\r\n            {\r\n                \"serviceType\": \"Product\",\r\n                \"serviceId\": \"sku7\",\r\n                \"quantity\": \"1\"\r\n            }\r\n        ],\r\n        \"comments\": \"comment\",\r\n        \"reasonCodeId\": \"006\",\r\n        \"endDate\": 1612009980000,\r\n        \"spAccountID\": \"033373051070333\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/upgradeDowngradeService": {
+      "post": {
+        "summary": "upgradeDowngradeService",
+        "operationId": "upgradeDowngradeService",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpgradeDowngradeServiceRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "950569431254134",
+                    "oldServiceID": "sku9",
+                    "newServiceID": "sku4",
+                    "effectiveDate": 1611742405401
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpgradeDowngradeServiceRequestMessage\": {\r\n         \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"950569431254134\",\r\n        \"oldServiceID\": \"sku9\",\r\n        \"newServiceID\": \"sku4\",\r\n        \"effectiveDate\": 1611742405401\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getEligiblePromotions": {
+      "post": {
+        "summary": "getEligiblePromotions",
+        "operationId": "getEligiblePromotions",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetEligiblePromotionsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetEligiblePromotionsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"459224881072036\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/applyOffers": {
+      "post": {
+        "summary": "applyOffers",
+        "operationId": "applyOffers",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ApplyOffersRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "promotionName": "promoid4",
+                    "reasonCodeName": "offers",
+                    "comments": "comment",
+                    "spAccountID": "459224881072036"
+                  }
+                }
+              },
+              "example": "{\n    \"ApplyOffersRequestMessage\": {\n           \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"promotionName\": \"promoid4\",\n        \"reasonCodeName\": \"offers\",\n        \"comments\": \"comment\",\n        \"spAccountID\": \"459224881072036\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getOutStandingBalance": {
+      "post": {
+        "summary": "getOutStandingBalance",
+        "operationId": "getOutStandingBalance",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetOutStandingBalanceRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "950569431254134",
+                    "dmaID": "001",
+                    "opId": 955352
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetOutStandingBalanceRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"spAccountID\": \"950569431254134\",\r\n        \"dmaID\": \"001\",\r\n        \r\n        \"opId\": 955352\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/cancelOrder": {
+      "post": {
+        "summary": "cancelOrder",
+        "operationId": "cancelOrder",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CancelOrderRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "950569431254134",
+                    "orderId": 1064796,
+                    "orderedProduct": "PRD08"
+                  }
+                }
+              },
+              "example": "{\n    \"CancelOrderRequestMessage\": {\n          \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"orderId\": 1064796,\n        \"orderedProduct\": \"PRD08\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/activatePendingService": {
+      "post": {
+        "summary": "activatePendingService",
+        "operationId": "activatePendingService",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ActivatePendingServiceRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "orderedProductId": 955352,
+                    "startDate": 1611757680000
+                  }
+                }
+              },
+              "example": "{\n    \"ActivatePendingServiceRequestMessage\": {\n           \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \n        \"orderedProductId\": 955352,\n        \"startDate\": 1611757680000\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/updateOrderComments": {
+      "post": {
+        "summary": "updateOrderComments",
+        "operationId": "updateOrderComments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateOrderCommentsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "459224881072036",
+                    "orderId": 898850,
+                    "comment": "comment2"
+                  }
+                }
+              },
+              "example": "{\n    \"UpdateOrderCommentsRequestMessage\": {\n            \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"459224881072036\",\n        \"orderId\": 898850,\n        \"comment\": \"comment2\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/addCustomerDiscounts": {
+      "post": {
+        "summary": "addCustomerDiscounts",
+        "operationId": "addCustomerDiscounts",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddCustomerDiscountsRequestMessage": {
+                    "channelPartnerID": "epicid-org5",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "spAccountID": "459224881072036",
+                    "amount": 1,
+                    "ordProdId": "955352",
+                    "reasonCodeId": "042",
+                    "type": "flat",
+                    "comment": "comment"
+                  }
+                }
+              },
+              "example": "{\n    \"AddCustomerDiscountsRequestMessage\": {\n        \"channelPartnerID\": \"epicid-org5\",\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"spAccountID\": \"459224881072036\",\n        \"amount\": 1,\n        \"ordProdId\": \"955352\",\n        \"reasonCodeId\": \"042\",\n        \"type\": \"flat\",\n        \"comment\": \"comment\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/generateAndPairCoupon": {
+      "post": {
+        "summary": "generateAndPairCoupon",
+        "operationId": "generateAndPairCoupon",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GenerateAndPairCouponRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "spAccountID": "950569431254134"
+                  }
+                }
+              },
+              "example": "{\n    \"GenerateAndPairCouponRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\"\n    }\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/getCPEPrerequisites": {
+      "post": {
+        "summary": "getCPEPrerequisites",
+        "operationId": "getCPEPrerequisites",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetCPEPrerequisitesRequestMessage": {
+                    "apiKey": "jcomadmin",
+                    "channelPartnerID": "JCOM",
+                    "cpCustomerID": "0210127105053534"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetCPEPrerequisitesRequestMessage\": {\r\n      \"apiKey\":\"jcomadmin\",\r\n        \"channelPartnerID\": \"JCOM\",\r\n        \"cpCustomerID\": \"0210127105053534\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    },
+    "/fetchIPs": {
+      "post": {
+        "summary": "fetchIPs",
+        "operationId": "fetchIPs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "FetchIPsRequestMessage": {
+                    "apiKey": "1lakoXOmldbqbfnXATBRjr1fCSQKpsKz",
+                    "channelPartnerID": "EVGNT",
+                    "cpCustomerID": "11704100001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"FetchIPsRequestMessage\": {\r\n      \"apiKey\": \"1lakoXOmldbqbfnXATBRjr1fCSQKpsKz\",\r\n        \"channelPartnerID\": \"EVGNT\",\r\n        \"cpCustomerID\": \"11704100001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Account Management"
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Content-Type": {
+        "name": "Content-Type",
+        "in": "header",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "application/json"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    }
+  ],
+  "tags": []
+}
