@@ -231,8 +231,7 @@
                 "type": "string",
                 "example": {
                   "GetAllAvailableServicesRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "spAccountID": "950569431254134",
                     "dmaID": "001",
@@ -242,7 +241,7 @@
                   }
                 }
               },
-              "example": "{\n    \"GetAllAvailableServicesRequestMessage\": {\n        \"apiUser\": \"epic5@yopmail.com\",\n        \"apiPassword\": \"password1\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"dmaID\": \"001\",\n        \"returnOnlyBasics\": \"T\",\n        \"returnOnlyOnetimeRenewals\": \"F\",\n        \"opID\": 957405\n    }\n}"
+              "example": "{\n    \"GetAllAvailableServicesRequestMessage\": {\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"dmaID\": \"001\",\n        \"returnOnlyBasics\": \"T\",\n        \"returnOnlyOnetimeRenewals\": \"F\",\n        \"opID\": 957405\n    }\n}"
             }
           }
         },
@@ -3338,8 +3337,7 @@
                 "type": "string",
                 "example": {
                   "CreateProductsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "productMessage": [
                       {
@@ -3395,7 +3393,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"CreateProductsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productMessage\": [\r\n            {\r\n                \"actionType\": \"add\",\r\n                \"prodAreaCode\": \"001\",\r\n                \"servicetype\": \"SVOD\",\r\n                \"prodCategory\": \"Subscription\",\r\n                \"serviceCategory\": \"video\",\r\n                \"productName\": \"HULU1\",\r\n                \"sku\": \"HULU_2022\",\r\n                \"typeOfService\": \"Bolt-on\",\r\n                \"startDate\": 1611766852921,\r\n                \"endDate\": 1643302852931,\r\n                \"displayName\": \"HULU1\",\r\n                \"displayOrder\": 28,\r\n                \"isInheritable\": \"T\",\r\n                \"activateOnLogin\": true,\r\n                \"description\": \"Basic Desc\",\r\n                \"cpDescrip\": \"CP Desc\",\r\n                \"spDescription\": \"SP Desc\",\r\n                \"uiDisplayText\": \"UI Disp\",\r\n                \"recurringInd\": \"T\",\r\n                \"isRenewable\": \"F\",\r\n                \"frequency\": \"Monthly\",\r\n                \"proRate\": \"Daily\",\r\n                \"unitOfMeasure\": \"Number(s)\",\r\n                \"isShipmentFee\": true,\r\n                \"isMoneyBackPolicy\": \"T\",\r\n                \"isSetupFee\": true,\r\n                \"freemium\": true,\r\n                \"grandfatheringOfPrices\": true,\r\n                \"isRSNCapable\": true,\r\n                \"isSingleSubscription\": \"F\",\r\n                \"adsEnabled\": true,\r\n                \"preRollAdsEnabled\": \"T\",\r\n                \"interestialAdsEnabled\": \"T\",\r\n                \"bannerAdsEnabled\": \"T\",\r\n                \"concurrentPlayCount\": \"1\",\r\n                \"devicesLimit\": \"2\",\r\n                \"storageCapacity\": \"3\",\r\n                \"dataRetentionPeriod\": \"4\",\r\n                \"downloadCount\": 5,\r\n                \"priceDetail\": [\r\n                    {\r\n                        \"descrip\": \"Retail Price\",\r\n                        \"quantity\": \"1\",\r\n                        \"amount\": \"50.00\",\r\n                        \"startDateInMillies\": 1611766894277\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+              "example": "{\r\n    \"CreateProductsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productMessage\": [\r\n            {\r\n                \"actionType\": \"add\",\r\n                \"prodAreaCode\": \"001\",\r\n                \"servicetype\": \"SVOD\",\r\n                \"prodCategory\": \"Subscription\",\r\n                \"serviceCategory\": \"video\",\r\n                \"productName\": \"HULU1\",\r\n                \"sku\": \"HULU_2022\",\r\n                \"typeOfService\": \"Bolt-on\",\r\n                \"startDate\": 1611766852921,\r\n                \"endDate\": 1643302852931,\r\n                \"displayName\": \"HULU1\",\r\n                \"displayOrder\": 28,\r\n                \"isInheritable\": \"T\",\r\n                \"activateOnLogin\": true,\r\n                \"description\": \"Basic Desc\",\r\n                \"cpDescrip\": \"CP Desc\",\r\n                \"spDescription\": \"SP Desc\",\r\n                \"uiDisplayText\": \"UI Disp\",\r\n                \"recurringInd\": \"T\",\r\n                \"isRenewable\": \"F\",\r\n                \"frequency\": \"Monthly\",\r\n                \"proRate\": \"Daily\",\r\n                \"unitOfMeasure\": \"Number(s)\",\r\n                \"isShipmentFee\": true,\r\n                \"isMoneyBackPolicy\": \"T\",\r\n                \"isSetupFee\": true,\r\n                \"freemium\": true,\r\n                \"grandfatheringOfPrices\": true,\r\n                \"isRSNCapable\": true,\r\n                \"isSingleSubscription\": \"F\",\r\n                \"adsEnabled\": true,\r\n                \"preRollAdsEnabled\": \"T\",\r\n                \"interestialAdsEnabled\": \"T\",\r\n                \"bannerAdsEnabled\": \"T\",\r\n                \"concurrentPlayCount\": \"1\",\r\n                \"devicesLimit\": \"2\",\r\n                \"storageCapacity\": \"3\",\r\n                \"dataRetentionPeriod\": \"4\",\r\n                \"downloadCount\": 5,\r\n                \"priceDetail\": [\r\n                    {\r\n                        \"descrip\": \"Retail Price\",\r\n                        \"quantity\": \"1\",\r\n                        \"amount\": \"50.00\",\r\n                        \"startDateInMillies\": 1611766894277\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
             }
           }
         },
@@ -4198,8 +4196,7 @@
                 "type": "string",
                 "example": {
                   "SetUpgradeOrDowngradeToProdOrPackRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": 184056,
                     "type": "PRODUCT",
@@ -4215,7 +4212,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"SetUpgradeOrDowngradeToProdOrPackRequestMessage\": {\r\n        \"apiUser\":\"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"PRODUCT\",\r\n        \"productArea\": \"001\",\r\n        \"upgradeProrationMode\": \"IMMEDIATE_AND_CHARGE_PRORATED_PRICE\",\r\n        \"downgradeProrationMode\": \"DEFERRED\",\r\n        \"upgradeIDsList\": [\r\n            141409\r\n        ],\r\n        \"downgradeIDsList\": [\r\n            144559\r\n        ]\r\n    }\r\n}"
+              "example": "{\r\n    \"SetUpgradeOrDowngradeToProdOrPackRequestMessage\": {\r\n        \"apiKey\":\"ebVXikSnEAVcx79xJZgXWQa\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"PRODUCT\",\r\n        \"productArea\": \"001\",\r\n        \"upgradeProrationMode\": \"IMMEDIATE_AND_CHARGE_PRORATED_PRICE\",\r\n        \"downgradeProrationMode\": \"DEFERRED\",\r\n        \"upgradeIDsList\": [\r\n            141409\r\n        ],\r\n        \"downgradeIDsList\": [\r\n            144559\r\n        ]\r\n    }\r\n}"
             }
           }
         },
@@ -4243,8 +4240,7 @@
                 "type": "string",
                 "example": {
                   "SetAppChannelsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "productArea": "001",
                     "appChannelList": [
@@ -4264,7 +4260,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"SetAppChannelsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productArea\": \"001\",\r\n        \"appChannelList\": [\r\n            {\r\n                \"appChannel\": \"App Store Billing\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"001\"\r\n            },\r\n            {\r\n                \"appChannel\": \"Google Play\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"002\"\r\n            }\r\n        ],\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+              "example": "{\r\n    \"SetAppChannelsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productArea\": \"001\",\r\n        \"appChannelList\": [\r\n            {\r\n                \"appChannel\": \"App Store Billing\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"001\"\r\n            },\r\n            {\r\n                \"appChannel\": \"Google Play\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"002\"\r\n            }\r\n        ],\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
             }
           }
         },
@@ -4292,8 +4288,7 @@
                 "type": "string",
                 "example": {
                   "GetAppChannelsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": "184056",
                     "type": "Product",
@@ -4301,7 +4296,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"GetAppChannelsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetAppChannelsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
             }
           }
         },
@@ -4363,15 +4358,14 @@
                 "type": "string",
                 "example": {
                   "GetPreRequisiteDetailsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKser": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": "184056",
                     "type": "Product"
                   }
                 }
               },
-              "example": "{\r\n    \"GetPreRequisiteDetailsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetPreRequisiteDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
             }
           }
         },
@@ -4483,8 +4477,7 @@
                 "type": "string",
                 "example": {
                   "GetProdPkgPromoAttributeValuesRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": "184056",
                     "type": "Product",
@@ -4492,7 +4485,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"GetProdPkgPromoAttributeValuesRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\": \"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetProdPkgPromoAttributeValuesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
             }
           }
         },
@@ -4520,8 +4513,7 @@
                 "type": "string",
                 "example": {
                   "AddOrUpdateEligibityRulesRequestMessage": {
-                    "apiUser": "sonyadmin",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "MSMIND",
                     "typeID": "164248",
                     "type": "Product",
@@ -4543,7 +4535,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"AddOrUpdateEligibityRulesRequestMessage\":{\r\n        \"apiUser\": \"sonyadmin\",\r\n        \"apiPassword\": \"password1\",\r\n        \"channelPartnerID\": \"MSMIND\",\r\n        \"typeID\":\"164248\",\r\n        \"type\":\"Product\",\r\n        \r\n\"eligibilityRules\":[\r\n        {\r\n            \"buCode\": \"MSMUS1\",\r\n            \"ruleTypes\":[\r\n            {\r\n                \"id\":\"795\",\r\n                \"eligibilityTypes\":\"Replace\"\r\n            },\r\n              {\r\n                \"id\":\"797\",\r\n                \"eligibilityTypes\":\"Sequential\"\r\n            }\r\n            ]\r\n       }\r\n        ]\r\n    }\r\n}"
+              "example": "{\r\n    \"AddOrUpdateEligibityRulesRequestMessage\":{\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"MSMIND\",\r\n        \"typeID\":\"164248\",\r\n        \"type\":\"Product\",\r\n        \r\n\"eligibilityRules\":[\r\n        {\r\n            \"buCode\": \"MSMUS1\",\r\n            \"ruleTypes\":[\r\n            {\r\n                \"id\":\"795\",\r\n                \"eligibilityTypes\":\"Replace\"\r\n            },\r\n              {\r\n                \"id\":\"797\",\r\n                \"eligibilityTypes\":\"Sequential\"\r\n            }\r\n            ]\r\n       }\r\n        ]\r\n    }\r\n}"
             }
           }
         },
@@ -4716,15 +4708,14 @@
                 "type": "string",
                 "example": {
                   "GetAdditionalDetailsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": "184056",
                     "type": "Product"
                   }
                 }
               },
-              "example": "{\r\n    \"GetAdditionalDetailsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetAdditionalDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
             }
           }
         },
@@ -4822,15 +4813,14 @@
                 "type": "string",
                 "example": {
                   "GetSalesAndGroupsDetailsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": "184056",
                     "type": "Product"
                   }
                 }
               },
-              "example": "{\r\n    \"GetSalesAndGroupsDetailsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetSalesAndGroupsDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
             }
           }
         },
@@ -4858,8 +4848,7 @@
                 "type": "string",
                 "example": {
                   "SetPreReqItemsToProdOrPackRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "dmaId": "001",
                     "type": "PRODUCT",
@@ -4872,7 +4861,7 @@
                   }
                 }
               },
-              "example": "{\r\n    \"SetPreReqItemsToProdOrPackRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"type\": \"PRODUCT\",\r\n        \"typeID\": \"184056\",\r\n        \"preReqProducts\": [\r\n            141609,\r\n            153059\r\n        ],\r\n        \"preReqPackages\": []\r\n    }\r\n}"
+              "example": "{\r\n    \"SetPreReqItemsToProdOrPackRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"type\": \"PRODUCT\",\r\n        \"typeID\": \"184056\",\r\n        \"preReqProducts\": [\r\n            141609,\r\n            153059\r\n        ],\r\n        \"preReqPackages\": []\r\n    }\r\n}"
             }
           }
         },
@@ -5333,15 +5322,14 @@
                 "type": "string",
                 "example": {
                   "GetUpgradeOrDownGradeDetailsRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "typeID": 184056,
                     "type": "Product"
                   }
                 }
               },
-              "example": "{\r\n    \"GetUpgradeOrDownGradeDetailsRequestMessage\": {\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetUpgradeOrDownGradeDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"Product\"\r\n    }\r\n}"
             }
           }
         },
@@ -5548,14 +5536,13 @@
                 "type": "string",
                 "example": {
                   "RemoveChannelCategoryRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "categoryId": 5022
                   }
                 }
               },
-              "example": "{\r\n    \"RemoveChannelCategoryRequestMessage\": {\r\n        \"apiUser\":\"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"categoryId\": 5022\r\n    }\r\n}"
+              "example": "{\r\n    \"RemoveChannelCategoryRequestMessage\": {\r\n        \"apiKey\":\"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"categoryId\": 5022\r\n    }\r\n}"
             }
           }
         },
@@ -5584,14 +5571,13 @@
                 "example": {
                   "RemoveChannelRequestMessage": {
                     "channelPartnerID": "epicid-org5",
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "categoryId": 4972,
                     "channelId": 7578
                   }
                 }
               },
-              "example": "{\r\n    \"RemoveChannelRequestMessage\": {\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"apiUser\": \"epic5@yopmail.com\",\r\n        \"apiPassword\":\"password1\",\r\n        \"categoryId\": 4972,\r\n        \"channelId\": 7578\r\n    }\r\n}"
+              "example": "{\r\n    \"RemoveChannelRequestMessage\": {\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"categoryId\": 4972,\r\n        \"channelId\": 7578\r\n    }\r\n}"
             }
           }
         },
@@ -5793,13 +5779,12 @@
                 "example": {
                   "GetServiceCategoriesRequestMessage": {
                     "channelPartnerID": "CCB_lIGHTTEST_Test_1",
-                    "apiUser": "CCB_lIGHTTEST_Test_1@yopmail.com",
-                    "apiPassword": "Password1!",
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "serviceName": "TVOD"
                   }
                 }
               },
-              "example": "{\r\n    \"GetServiceCategoriesRequestMessage\": {\r\n        \"channelPartnerID\": \"CCB_lIGHTTEST_Test_1\",\r\n        \"apiUser\": \"CCB_lIGHTTEST_Test_1@yopmail.com\",\r\n        \"apiPassword\": \"Password1!\",\r\n        \"serviceName\": \"TVOD\"\r\n    }\r\n}"
+              "example": "{\r\n    \"GetServiceCategoriesRequestMessage\": {\r\n        \"channelPartnerID\": \"CCB_lIGHTTEST_Test_1\",\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"serviceName\": \"TVOD\"\r\n    }\r\n}"
             }
           }
         },

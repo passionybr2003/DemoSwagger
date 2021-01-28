@@ -231,8 +231,7 @@
                 "type": "string",
                 "example": {
                   "GetAllAvailableServicesRequestMessage": {
-                    "apiUser": "epic5@yopmail.com",
-                    "apiPassword": "password1",
+                    "apiUser": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
                     "channelPartnerID": "epicid-org5",
                     "spAccountID": "950569431254134",
                     "dmaID": "001",
@@ -242,7 +241,7 @@
                   }
                 }
               },
-              "example": "{\n    \"GetAllAvailableServicesRequestMessage\": {\n        \"apiUser\": \"epic5@yopmail.com\",\n        \"apiPassword\": \"password1\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"dmaID\": \"001\",\n        \"returnOnlyBasics\": \"T\",\n        \"returnOnlyOnetimeRenewals\": \"F\",\n        \"opID\": 957405\n    }\n}"
+              "example": "{\n    \"GetAllAvailableServicesRequestMessage\": {\n        \"apiUser\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\n        \"channelPartnerID\": \"epicid-org5\",\n        \"spAccountID\": \"950569431254134\",\n        \"dmaID\": \"001\",\n        \"returnOnlyBasics\": \"T\",\n        \"returnOnlyOnetimeRenewals\": \"F\",\n        \"opID\": 957405\n    }\n}"
             }
           }
         },
