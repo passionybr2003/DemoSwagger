@@ -1,0 +1,2229 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://demo.evergent.com",
+      "description": "",
+      "variables": {}
+    }
+  ],
+  "info": {
+    "version": "E1.09",
+    "title": "CRM REST SERVICES"
+  },
+  "paths": {
+    "/createProducts": {
+      "post": {
+        "summary": "createProducts",
+        "operationId": "createProducts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to create the Products Based on the seletced Service Type and Category details ( SVOD, Content , Linear, Hardware, Merchandise, Broadband, Wilreline etc--)",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateProductsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "productMessage": [
+                      {
+                        "actionType": "add",
+                        "prodAreaCode": "001",
+                        "servicetype": "SVOD",
+                        "prodCategory": "Subscription",
+                        "serviceCategory": "video",
+                        "productName": "HULU1",
+                        "sku": "HULU_2022",
+                        "typeOfService": "Bolt-on",
+                        "startDate": 1611766852921,
+                        "endDate": 1643302852931,
+                        "displayName": "HULU1",
+                        "displayOrder": 28,
+                        "isInheritable": "T",
+                        "activateOnLogin": true,
+                        "description": "Basic Desc",
+                        "cpDescrip": "CP Desc",
+                        "spDescription": "SP Desc",
+                        "uiDisplayText": "UI Disp",
+                        "recurringInd": "T",
+                        "isRenewable": "F",
+                        "frequency": "Monthly",
+                        "proRate": "Daily",
+                        "unitOfMeasure": "Number(s)",
+                        "isShipmentFee": true,
+                        "isMoneyBackPolicy": "T",
+                        "isSetupFee": true,
+                        "freemium": true,
+                        "grandfatheringOfPrices": true,
+                        "isRSNCapable": true,
+                        "isSingleSubscription": "F",
+                        "adsEnabled": true,
+                        "preRollAdsEnabled": "T",
+                        "interestialAdsEnabled": "T",
+                        "bannerAdsEnabled": "T",
+                        "concurrentPlayCount": "1",
+                        "devicesLimit": "2",
+                        "storageCapacity": "3",
+                        "dataRetentionPeriod": "4",
+                        "downloadCount": 5,
+                        "priceDetail": [
+                          {
+                            "descrip": "Retail Price",
+                            "quantity": "1",
+                            "amount": "50.00",
+                            "startDateInMillies": 1611766894277
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateProductsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productMessage\": [\r\n            {\r\n                \"actionType\": \"add\",\r\n                \"prodAreaCode\": \"001\",\r\n                \"servicetype\": \"SVOD\",\r\n                \"prodCategory\": \"Subscription\",\r\n                \"serviceCategory\": \"video\",\r\n                \"productName\": \"HULU1\",\r\n                \"sku\": \"HULU_2022\",\r\n                \"typeOfService\": \"Bolt-on\",\r\n                \"startDate\": 1611766852921,\r\n                \"endDate\": 1643302852931,\r\n                \"displayName\": \"HULU1\",\r\n                \"displayOrder\": 28,\r\n                \"isInheritable\": \"T\",\r\n                \"activateOnLogin\": true,\r\n                \"description\": \"Basic Desc\",\r\n                \"cpDescrip\": \"CP Desc\",\r\n                \"spDescription\": \"SP Desc\",\r\n                \"uiDisplayText\": \"UI Disp\",\r\n                \"recurringInd\": \"T\",\r\n                \"isRenewable\": \"F\",\r\n                \"frequency\": \"Monthly\",\r\n                \"proRate\": \"Daily\",\r\n                \"unitOfMeasure\": \"Number(s)\",\r\n                \"isShipmentFee\": true,\r\n                \"isMoneyBackPolicy\": \"T\",\r\n                \"isSetupFee\": true,\r\n                \"freemium\": true,\r\n                \"grandfatheringOfPrices\": true,\r\n                \"isRSNCapable\": true,\r\n                \"isSingleSubscription\": \"F\",\r\n                \"adsEnabled\": true,\r\n                \"preRollAdsEnabled\": \"T\",\r\n                \"interestialAdsEnabled\": \"T\",\r\n                \"bannerAdsEnabled\": \"T\",\r\n                \"concurrentPlayCount\": \"1\",\r\n                \"devicesLimit\": \"2\",\r\n                \"storageCapacity\": \"3\",\r\n                \"dataRetentionPeriod\": \"4\",\r\n                \"downloadCount\": 5,\r\n                \"priceDetail\": [\r\n                    {\r\n                        \"descrip\": \"Retail Price\",\r\n                        \"quantity\": \"1\",\r\n                        \"amount\": \"50.00\",\r\n                        \"startDateInMillies\": 1611766894277\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/createPackages": {
+      "post": {
+        "summary": "createPackages",
+        "operationId": "createPackages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Content-Type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Used to create the Packages of type Recurring, Onetime and Both",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreatePackagesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "actionType": "add",
+                    "prodAreaCode": "001",
+                    "recurringInd": "R",
+                    "packageName": "Rec_Pack2",
+                    "packageId": "Rec_Pack2",
+                    "startDate": 1611769816451,
+                    "endDate": 1674841816459,
+                    "displayName": "Rec_Pack2",
+                    "displayOrder": 8,
+                    "typeOfService": "Bolt-on",
+                    "isBasicService": "T",
+                    "isContent": "T",
+                    "quantity": "1",
+                    "contentType": "HD",
+                    "commercialModel": "Rental",
+                    "productIDs": [
+                      144509,
+                      141409
+                    ],
+                    "frequency": "Monthly",
+                    "prorate": "Daily",
+                    "billingPreference": "Postpaid",
+                    "isSetupFee": true,
+                    "isMoneyBackPolicy": "T",
+                    "isSingleSubscription": "F",
+                    "isPackageItemBilling": "T",
+                    "grandfatheringOfPrices": true,
+                    "isRenewable": "F",
+                    "isShipmentFee": true,
+                    "isAdsEnabled": false,
+                    "interestialAdsEnabled": "F",
+                    "bannerAdsEnabled": "F",
+                    "priceDetail": [
+                      {
+                        "descrip": "Retail Price",
+                        "quantity": "1",
+                        "amount": "50.00",
+                        "startDate": "2021-01-27T17:51:09.281Z"
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": {
+                "CreatePackagesRequestMessage": {
+                  "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                  "channelPartnerID": "epicid-org5",
+                  "actionType": "add",
+                  "prodAreaCode": "001",
+                  "recurringInd": "R",
+                  "packageName": "Rec_Pack2",
+                  "packageId": "Rec_Pack2",
+                  "startDate": 1611769816451,
+                  "endDate": 1674841816459,
+                  "displayName": "Rec_Pack2",
+                  "displayOrder": 8,
+                  "typeOfService": "Bolt-on",
+                  "isBasicService": "T",
+                  "isContent": "T",
+                  "quantity": "1",
+                  "contentType": "HD",
+                  "commercialModel": "Rental",
+                  "productIDs": [
+                    144509,
+                    141409
+                  ],
+                  "frequency": "Monthly",
+                  "prorate": "Daily",
+                  "billingPreference": "Postpaid",
+                  "isSetupFee": true,
+                  "isMoneyBackPolicy": "T",
+                  "isSingleSubscription": "F",
+                  "isPackageItemBilling": "T",
+                  "grandfatheringOfPrices": true,
+                  "isRenewable": "F",
+                  "isShipmentFee": true,
+                  "isAdsEnabled": false,
+                  "interestialAdsEnabled": "F",
+                  "bannerAdsEnabled": "F",
+                  "priceDetail": [
+                    {
+                      "descrip": "Retail Price",
+                      "quantity": "1",
+                      "amount": "50.00",
+                      "startDate": "2021-01-27T17:51:09.281Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/createPromotions": {
+      "post": {
+        "summary": "CreatePromotions ",
+        "operationId": "CreatePromotions",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Used to create the Promotions on seletced Products and Packages ( Product, Dependent, PrePay, PayInAdvance, OrderItems, OrderAmount etc--)",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreatePromotionsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "actionType": "add",
+                    "productAreaCode": "001",
+                    "channelPartnerID": "epicid-org5",
+                    "promotionCategory": "Product",
+                    "isSelfPromotion": false,
+                    "promotionName": "Promotion_28",
+                    "promotionID": "Promotion_28",
+                    "startDateWithMillSec": 1611769961354,
+                    "endDateWithMillSec": 1643305961359,
+                    "displayName": "Promotion_28",
+                    "displayOrder": "1",
+                    "defaultPromotion": "promosup-15",
+                    "isFreeTrail": true,
+                    "isIgnoreActivePromotionLimit": true,
+                    "isContinueAfterPeriod": true,
+                    "isOverrideEligibilityRule": true,
+                    "isDisconnectService": true,
+                    "isAllItemsMandatory": false,
+                    "packageItems": [
+                      44223
+                    ],
+                    "promotionalProducts": [
+                      141609
+                    ],
+                    "promotionalPackages": [
+                      45473
+                    ],
+                    "promotionType": "Free",
+                    "period": "NoOfMonths",
+                    "duration": "1",
+                    "rateType": "Retail Price",
+                    "eligibilityDays": "23",
+                    "noOfAvails": "1",
+                    "noOfAvailsPerDevice": "3",
+                    "effectiveFrom": "Immediately",
+                    "effectiveUntil": "PromotionEndDate",
+                    "accessbilityMode": "Free",
+                    "minPurchaseAmount": "1000",
+                    "isBillAfterPeriod": false
+                  }
+                }
+              },
+              "example": {
+                "CreatePromotionsRequestMessage": {
+                  "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                  "actionType": "add",
+                  "productAreaCode": "001",
+                  "channelPartnerID": "epicid-org5",
+                  "promotionCategory": "Product",
+                  "isSelfPromotion": false,
+                  "promotionName": "Promotion_28",
+                  "promotionID": "Promotion_28",
+                  "startDateWithMillSec": 1611769961354,
+                  "endDateWithMillSec": 1643305961359,
+                  "displayName": "Promotion_28",
+                  "displayOrder": "1",
+                  "defaultPromotion": "promosup-15",
+                  "isFreeTrail": true,
+                  "isIgnoreActivePromotionLimit": true,
+                  "isContinueAfterPeriod": true,
+                  "isOverrideEligibilityRule": true,
+                  "isDisconnectService": true,
+                  "isAllItemsMandatory": false,
+                  "packageItems": [
+                    44223
+                  ],
+                  "promotionalProducts": [
+                    141609
+                  ],
+                  "promotionalPackages": [
+                    45473
+                  ],
+                  "promotionType": "Free",
+                  "period": "NoOfMonths",
+                  "duration": "1",
+                  "rateType": "Retail Price",
+                  "eligibilityDays": "23",
+                  "noOfAvails": "1",
+                  "noOfAvailsPerDevice": "3",
+                  "effectiveFrom": "Immediately",
+                  "effectiveUntil": "PromotionEndDate",
+                  "accessbilityMode": "Free",
+                  "minPurchaseAmount": "1000",
+                  "isBillAfterPeriod": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getProductsList": {
+      "post": {
+        "summary": "getProductsList",
+        "operationId": "getProductsList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the List of all the created Products ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetProductsListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetProductsListRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPackagesList": {
+      "post": {
+        "summary": "getPackagesList",
+        "operationId": "getPackagesList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the List of all the created Packages",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPackagesListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPackagesListRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPromotionsList": {
+      "post": {
+        "summary": "getPromotionsList",
+        "operationId": "getPromotionsList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the List of all the created Promotions",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPromotionsListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPromotionsListRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPkgsAndProdsWithPromosV2": {
+      "post": {
+        "summary": "getPkgsAndProdsWithPromosV2",
+        "operationId": "getPkgsAndProdsWithPromosV2",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Used to get the list of Products and Packages along with Promotions based on the Sales Channel and Offer Type",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "PkgsOrProdsV2RequestMsg": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001",
+                    "isSkipPromos": false
+                  }
+                }
+              },
+              "example": {
+                "PkgsOrProdsV2RequestMsg": {
+                  "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                  "channelPartnerID": "epicid-org5",
+                  "prodAreaCode": "001",
+                  "isSkipPromos": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/searchProdsAndPkgs": {
+      "post": {
+        "summary": "searchProdsAndPkgs",
+        "operationId": "searchProdsAndPkgs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to search particular Products, Packages and Promotions based on the different parameters like Name, SKU, Price, Workflow --",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SearchProdsAndPkgsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "searchType": "PRODUCT",
+                    "ProductSearchData": {
+                      "serviceType": "",
+                      "productName": "HULU"
+                    },
+                    "prodAreaCode": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"SearchProdsAndPkgsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"searchType\": \"PRODUCT\",\r\n        \"ProductSearchData\": {\r\n            \"serviceType\": \"\",\r\n            \"productName\": \"HULU\"\r\n        },\r\n        \"prodAreaCode\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addPriceList": {
+      "post": {
+        "summary": "addPriceList",
+        "operationId": "addPriceList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add different types of Prices to Products, Packages and Promotions ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddPriceListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "actionType": "add",
+                    "priceDetail": {
+                      "descrip": "Suggested Price",
+                      "chargeType": "Currency",
+                      "amount": "40.00",
+                      "quantity": "1",
+                      "startDateInMillies": 1611767540686,
+                      "type": "product",
+                      "typeID": "184056",
+                      "priceId": ""
+                    }
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddPriceListRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"actionType\": \"add\",\r\n        \"priceDetail\": {\r\n            \"descrip\": \"Suggested Price\",\r\n            \"chargeType\": \"Currency\",\r\n            \"amount\": \"40.00\",\r\n            \"quantity\": \"1\",\r\n            \"startDateInMillies\": 1611767540686,\r\n            \"type\": \"product\",\r\n            \"typeID\": \"184056\",\r\n            \"priceId\": \"\"\r\n        }\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdatePMPlatform": {
+      "post": {
+        "summary": "addOrUpdatePMPlatform",
+        "operationId": "addOrUpdatePMPlatform",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update the Platform details to the particular payment mode",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdatePMPlatformRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "paymentModes": [
+                      {
+                        "paymentModeId": 4,
+                        "platforms": [
+                          {
+                            "description": "Desktop-Web",
+                            "displayOrder": 1,
+                            "viewMode": ""
+                          },
+                          {
+                            "description": "iOS-MWeb",
+                            "displayOrder": "",
+                            "viewMode": ""
+                          }
+                        ]
+                      },
+                      {
+                        "paymentModeId": 1,
+                        "platforms": []
+                      },
+                      {
+                        "paymentModeId": 3,
+                        "platforms": []
+                      },
+                      {
+                        "paymentModeId": 6,
+                        "platforms": [
+                          {
+                            "description": "Desktop-Web",
+                            "displayOrder": "",
+                            "viewMode": ""
+                          },
+                          {
+                            "description": "iOS-MWeb",
+                            "displayOrder": "",
+                            "viewMode": ""
+                          }
+                        ]
+                      },
+                      {
+                        "paymentModeId": 13,
+                        "platforms": []
+                      },
+                      {
+                        "paymentModeId": 2,
+                        "platforms": []
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdatePMPlatformRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"paymentModes\": [\r\n            {\r\n                \"paymentModeId\": 4,\r\n                \"platforms\": [\r\n                    {\r\n                        \"description\": \"Desktop-Web\",\r\n                        \"displayOrder\": 1,\r\n                        \"viewMode\": \"\"\r\n                    },\r\n                    {\r\n                        \"description\": \"iOS-MWeb\",\r\n                        \"displayOrder\": \"\",\r\n                        \"viewMode\": \"\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"paymentModeId\": 1,\r\n                \"platforms\": []\r\n            },\r\n            {\r\n                \"paymentModeId\": 3,\r\n                \"platforms\": []\r\n            },\r\n            {\r\n                \"paymentModeId\": 6,\r\n                \"platforms\": [\r\n                    {\r\n                        \"description\": \"Desktop-Web\",\r\n                        \"displayOrder\": \"\",\r\n                        \"viewMode\": \"\"\r\n                    },\r\n                    {\r\n                        \"description\": \"iOS-MWeb\",\r\n                        \"displayOrder\": \"\",\r\n                        \"viewMode\": \"\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"paymentModeId\": 13,\r\n                \"platforms\": []\r\n            },\r\n            {\r\n                \"paymentModeId\": 2,\r\n                \"platforms\": []\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getChannelsList": {
+      "post": {
+        "summary": "getChannelsList",
+        "operationId": "getChannelsList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get channel categories and its associalted channel list",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetChannelsListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetChannelsListRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPriceList": {
+      "post": {
+        "summary": "getPriceList",
+        "operationId": "getPriceList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get different Price details of a particular Product or Package or Promotion",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPriceListRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPriceListRequestMessage\": {\r\n       \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdatePMOperator": {
+      "post": {
+        "summary": "addOrUpdatePMOperator",
+        "operationId": "addOrUpdatePMOperator",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update different Operators (Airtel, Aircel, Idea, Reliance,ect ---) for the Payment Modes defined in the system",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdatePMOperatorRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "paymentModes": [
+                      {
+                        "paymentMode": "Electronic Check",
+                        "operators": [
+                          "Aircel",
+                          "Reliance"
+                        ]
+                      },
+                      {
+                        "paymentMode": "Cash",
+                        "operators": [
+                          "Airtel",
+                          "Idea"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdatePMOperatorRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"paymentModes\": [\r\n            {\r\n                \"paymentMode\": \"Electronic Check\",\r\n                \"operators\": [\r\n                    \"Aircel\",\r\n                    \"Reliance\"\r\n                ]\r\n            },\r\n            {\r\n                \"paymentMode\": \"Cash\",\r\n                \"operators\": [\r\n                    \"Airtel\",\r\n                    \"Idea\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getBUPaymentModes": {
+      "post": {
+        "summary": "getBUPaymentModes",
+        "operationId": "getBUPaymentModes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Payment Modes details along with associated Platforms, Operators, Products, Packages and Additional Info details",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetBUPaymentModesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "canShowPlatforms": true,
+                    "canShowOperators": true
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetBUPaymentModesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"canShowPlatforms\": true,\r\n        \"canShowOperators\": true\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/createPaymentModes": {
+      "post": {
+        "summary": "createPaymentModes",
+        "operationId": "createPaymentModes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to create Payment Modes in multiple DMAs ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreatePaymentModesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaIds": [
+                      "001",
+                      "002"
+                    ],
+                    "paymentMode": "Check",
+                    "shortCode": "check",
+                    "isMobilePayment": true,
+                    "paymentGroup": "Wallet",
+                    "url": "url.com",
+                    "displayName": "Check",
+                    "chargedCurrencies": [
+                      "MYR"
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreatePaymentModesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaIds\": [\r\n            \"001\",\r\n            \"002\"\r\n        ],\r\n        \"paymentMode\": \"Check\",\r\n        \"shortCode\": \"check\",\r\n        \"isMobilePayment\": true,\r\n        \"paymentGroup\": \"Wallet\",\r\n        \"url\": \"url.com\",\r\n        \"displayName\": \"Check\",\r\n        \"chargedCurrencies\": [\r\n            \"MYR\"\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/updatePaymentModes": {
+      "post": {
+        "summary": "updatePaymentModes",
+        "operationId": "updatePaymentModes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to update Payment Modes in multiple DMAs ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdatePaymentModesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaIds": [
+                      "002",
+                      "001"
+                    ],
+                    "paymentMode": "Check",
+                    "shortCode": "check",
+                    "isMobilePayment": true,
+                    "paymentGroup": "Wallet",
+                    "url": "url.com",
+                    "displayName": "Check-1",
+                    "paymentModeId": 2,
+                    "chargedCurrencies": [
+                      "MYR"
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdatePaymentModesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaIds\": [\r\n            \"002\",\r\n            \"001\"\r\n        ],\r\n        \"paymentMode\": \"Check\",\r\n        \"shortCode\": \"check\",\r\n        \"isMobilePayment\": true,\r\n        \"paymentGroup\": \"Wallet\",\r\n        \"url\": \"url.com\",\r\n        \"displayName\": \"Check-1\",\r\n        \"paymentModeId\": 2,\r\n        \"chargedCurrencies\": [\r\n            \"MYR\"\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdatePMAdditionalInfo": {
+      "post": {
+        "summary": "addOrUpdatePMAdditionalInfo",
+        "operationId": "addOrUpdatePMAdditionalInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update Additional Info details ( Auto Renew, Coupon Eligibility, Free Trail ) to the Payment Modes",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdatePMAdditionalInfoRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "paymentModes": [
+                      {
+                        "paymentMode": "Electronic Check",
+                        "additionalInfos": [
+                          "CouponEligibility",
+                          "FreeTrial"
+                        ]
+                      },
+                      {
+                        "paymentMode": "Cash",
+                        "additionalInfos": [
+                          "AutoRenew"
+                        ]
+                      },
+                      {
+                        "paymentMode": "Money Order",
+                        "additionalInfos": [
+                          "CouponEligibility",
+                          "FreeTrial"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdatePMAdditionalInfoRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"paymentModes\": [\r\n            {\r\n                \"paymentMode\": \"Electronic Check\",\r\n                \"additionalInfos\": [\r\n                    \"CouponEligibility\",\r\n                    \"FreeTrial\"\r\n                ]\r\n            },\r\n            {\r\n                \"paymentMode\": \"Cash\",\r\n                \"additionalInfos\": [\r\n                    \"AutoRenew\"\r\n                ]\r\n            },\r\n            {\r\n                \"paymentMode\": \"Money Order\",\r\n                \"additionalInfos\": [\r\n                    \"CouponEligibility\",\r\n                    \"FreeTrial\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/setUpgradeOrDowngradeToProdOrPack": {
+      "post": {
+        "summary": "setUpgradeOrDowngradeToProdOrPack",
+        "operationId": "setUpgradeOrDowngradeToProdOrPack",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to set the Upgrade and Downgrade plans to the Products and Packages ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SetUpgradeOrDowngradeToProdOrPackRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": 184056,
+                    "type": "PRODUCT",
+                    "productArea": "001",
+                    "upgradeProrationMode": "IMMEDIATE_AND_CHARGE_PRORATED_PRICE",
+                    "downgradeProrationMode": "DEFERRED",
+                    "upgradeIDsList": [
+                      141409
+                    ],
+                    "downgradeIDsList": [
+                      144559
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"SetUpgradeOrDowngradeToProdOrPackRequestMessage\": {\r\n        \"apiKey\":\"ebVXikSnEAVcx79xJZgXWQa\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"PRODUCT\",\r\n        \"productArea\": \"001\",\r\n        \"upgradeProrationMode\": \"IMMEDIATE_AND_CHARGE_PRORATED_PRICE\",\r\n        \"downgradeProrationMode\": \"DEFERRED\",\r\n        \"upgradeIDsList\": [\r\n            141409\r\n        ],\r\n        \"downgradeIDsList\": [\r\n            144559\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/setAppChannels": {
+      "post": {
+        "summary": "setAppChannels",
+        "operationId": "setAppChannels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to set the App Channel, App Product Id and App Product Name details to the Products and Packages",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SetAppChannelsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "productArea": "001",
+                    "appChannelList": [
+                      {
+                        "appChannel": "App Store Billing",
+                        "appName": "HULU1",
+                        "appID": "001"
+                      },
+                      {
+                        "appChannel": "Google Play",
+                        "appName": "HULU1",
+                        "appID": "002"
+                      }
+                    ],
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"SetAppChannelsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productArea\": \"001\",\r\n        \"appChannelList\": [\r\n            {\r\n                \"appChannel\": \"App Store Billing\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"001\"\r\n            },\r\n            {\r\n                \"appChannel\": \"Google Play\",\r\n                \"appName\": \"HULU1\",\r\n                \"appID\": \"002\"\r\n            }\r\n        ],\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getAppChannels": {
+      "post": {
+        "summary": "getAppChannels",
+        "operationId": "getAppChannels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the App Channels, App Product Id and App Product Name details of  Products and Packages",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAppChannelsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product",
+                    "productArea": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAppChannelsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getProductBasicCommericialDetails": {
+      "post": {
+        "summary": "getProductBasicCommericialDetails",
+        "operationId": "getProductBasicCommericialDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used  to get the Basic Details of the Products like Name, SKU, Display Name, Start Date , Subscription Type, Price details  ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetProductBasicCommercialDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetProductBasicCommercialDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPreRequisiteDetails": {
+      "post": {
+        "summary": "getPreRequisiteDetails",
+        "operationId": "getPreRequisiteDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Configured Pre - Requisite Products and Packages details ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPreRequisiteDetailsRequestMessage": {
+                    "apiKser": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPreRequisiteDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getProdPkgPromoHistory": {
+      "post": {
+        "summary": "getProdPkgPromoHistory",
+        "operationId": "getProdPkgPromoHistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the History related data of the Products, Packages and Promotions ( Sales channels, App channels , Langauges, Attributes )",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetProdPkgPromoHistoryRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "141409",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetProdPkgPromoHistoryRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"141409\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/setProdPkgPromoAttributeValues": {
+      "post": {
+        "summary": "setProdOrPackAttributeValue",
+        "operationId": "setProdOrPackAttributeValue",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to set the Attribute related data to Products and Packages ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SetProdPkgPromoAttributeValuesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001",
+                    "attributes": [
+                      {
+                        "attributeType": "Boolean",
+                        "attributeLabel": "ProductClass",
+                        "attributeValue": "T"
+                      },
+                      {
+                        "attributeType": "String",
+                        "attributeLabel": "Path",
+                        "attributeValue": "St234"
+                      }
+                    ],
+                    "typeID": 184056,
+                    "type": "Product",
+                    "actionType": "update"
+                  }
+                }
+              },
+              "example": "{\r\n    \"SetProdPkgPromoAttributeValuesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\",\r\n        \"attributes\": [\r\n            {\r\n                \"attributeType\": \"Boolean\",\r\n                \"attributeLabel\": \"ProductClass\",\r\n                \"attributeValue\": \"T\"\r\n            },\r\n            {\r\n                \"attributeType\": \"String\",\r\n                \"attributeLabel\": \"Path\",\r\n                \"attributeValue\": \"St234\"\r\n            }\r\n        ],\r\n        \"typeID\": 184056,\r\n        \"type\": \"Product\",\r\n        \"actionType\": \"update\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getProdPkgPromoAttributeValues": {
+      "post": {
+        "summary": "getProdOrPackAttributeValues",
+        "operationId": "getProdOrPackAttributeValues",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Attribute related data of Products and Packages",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetProdPkgPromoAttributeValuesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product",
+                    "productArea": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetProdPkgPromoAttributeValuesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\",\r\n        \"productArea\": \"001\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdateEligibityRules": {
+      "post": {
+        "summary": "addOrUpdateEligibityRules",
+        "operationId": "addOrUpdateEligibityRules",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update the Eligibility rules of Products and Packages of particular BU",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdateEligibityRulesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "MSMIND",
+                    "typeID": "164248",
+                    "type": "Product",
+                    "eligibilityRules": [
+                      {
+                        "buCode": "MSMUS1",
+                        "ruleTypes": [
+                          {
+                            "id": "795",
+                            "eligibilityTypes": "Replace"
+                          },
+                          {
+                            "id": "797",
+                            "eligibilityTypes": "Sequential"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdateEligibityRulesRequestMessage\":{\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"MSMIND\",\r\n        \"typeID\":\"164248\",\r\n        \"type\":\"Product\",\r\n        \r\n\"eligibilityRules\":[\r\n        {\r\n            \"buCode\": \"MSMUS1\",\r\n            \"ruleTypes\":[\r\n            {\r\n                \"id\":\"795\",\r\n                \"eligibilityTypes\":\"Replace\"\r\n            },\r\n              {\r\n                \"id\":\"797\",\r\n                \"eligibilityTypes\":\"Sequential\"\r\n            }\r\n            ]\r\n       }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdateSalesChannelsAndGroups": {
+      "post": {
+        "summary": "addOrUpdateSalesChannelsAndGroups",
+        "operationId": "addOrUpdateSalesChannelsAndGroups",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update the Sales Channels, Offer Types and Group Details of the Products, Packages and Promotions",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdateSalesChannelsAndGroupsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "salesChannels": [
+                      {
+                        "offerType": "New Customer",
+                        "salesChannel": "CSR"
+                      },
+                      {
+                        "offerType": "Existing Customer",
+                        "salesChannel": "CSR"
+                      }
+                    ],
+                    "groups": [
+                      "MSO Group"
+                    ],
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdateSalesChannelsAndGroupsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"salesChannels\": [\r\n            {\r\n                \"offerType\": \"New Customer\",\r\n                \"salesChannel\": \"CSR\"\r\n            },\r\n            {\r\n                \"offerType\": \"Existing Customer\",\r\n                \"salesChannel\": \"CSR\"\r\n            }\r\n        ],\r\n        \"groups\": [\r\n            \"MSO Group\"\r\n        ],\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPackageBasicCommericialDetails": {
+      "post": {
+        "summary": "getPackageBasicCommericialDetails",
+        "operationId": "getPackageBasicCommericialDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used  to get the Basic and Commercial details of the Packages (like Name, SKU, Display Name, Start Date , Package Type, Price details etc) ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPackageBasicCommercialDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "49973"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPackageBasicCommercialDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"49973\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdateAdditionalDetails": {
+      "post": {
+        "summary": "addOrUpdateAdditionalDetails.Product",
+        "operationId": "addOrUpdateAdditionalDetails.Product",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update the Additional details (like Available Users, Languages, Refund, Workflow etc) of Products, Packages and Promotions",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdateAdditionalDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "minDisconnectionPeriod": "12",
+                    "tier": "",
+                    "serviceFamily": "",
+                    "thirdPartyOwner": "owner",
+                    "thirdPartyUrl": "url.com",
+                    "thirdPartySiteUrl": "site url.com",
+                    "thirdPartyProductKey": "prod key",
+                    "emailConsentNotification": "1",
+                    "smsConsentNotification": "2",
+                    "appConsentNotification": "3",
+                    "isDependent": true,
+                    "activateWorkFlow": "New Workflow",
+                    "upGradeDownGradeWorkFlow": "New Workflow",
+                    "deActivateWorkFlow": "New Workflow",
+                    "refundEffectiveFrom": "Immediately",
+                    "refundAllowedBeforePeriod": "12",
+                    "doyouRefundonCancellations": true,
+                    "languages": [
+                      {
+                        "language": "Manipuri",
+                        "displayName": "manipuri",
+                        "description": "Desc",
+                        "channelPartnerDescription": "Desc"
+                      }
+                    ],
+                    "attributes": [],
+                    "paymentRetryIntervalID": 392605,
+                    "stepDownChargingID": "",
+                    "typeID": 184056,
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdateAdditionalDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"minDisconnectionPeriod\": \"12\",\r\n        \"tier\": \"\",\r\n        \"serviceFamily\": \"\",\r\n        \"thirdPartyOwner\": \"owner\",\r\n        \"thirdPartyUrl\": \"url.com\",\r\n        \"thirdPartySiteUrl\": \"site url.com\",\r\n        \"thirdPartyProductKey\": \"prod key\",\r\n        \"emailConsentNotification\": \"1\",\r\n        \"smsConsentNotification\": \"2\",\r\n        \"appConsentNotification\": \"3\",\r\n        \"isDependent\": true,\r\n        \"activateWorkFlow\": \"New Workflow\",\r\n        \"upGradeDownGradeWorkFlow\": \"New Workflow\",\r\n        \"deActivateWorkFlow\": \"New Workflow\",\r\n        \"refundEffectiveFrom\": \"Immediately\",\r\n        \"refundAllowedBeforePeriod\": \"12\",\r\n        \"doyouRefundonCancellations\": true,\r\n        \"languages\": [\r\n            {\r\n                \"language\": \"Manipuri\",\r\n                \"displayName\": \"manipuri\",\r\n                \"description\": \"Desc\",\r\n                \"channelPartnerDescription\": \"Desc\"\r\n            }\r\n        ],\r\n        \"attributes\": [],\r\n        \"paymentRetryIntervalID\": 392605,\r\n        \"stepDownChargingID\": \"\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getAdditionalDetails": {
+      "post": {
+        "summary": "getAdditionalDetails",
+        "operationId": "getAdditionalDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Additional Details of Products, Packages and Promotions (like Available Users, Languages, Refund, Workflow etc)",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetAdditionalDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetAdditionalDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/deleteProdOrPack": {
+      "post": {
+        "summary": "deleteProdOrPack",
+        "operationId": "deleteProdOrPack",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to Delete the Products, Packages and Promotions from the system",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "DeleteProdOrPackRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "productAreaCode": "001",
+                    "typeID": 174456,
+                    "type": "product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"DeleteProdOrPackRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productAreaCode\": \"001\",\r\n        \"typeID\": 174456,\r\n        \"type\": \"product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPromotionBasicCommercialDetails": {
+      "post": {
+        "summary": "getPromotionBasicCommercialDetails",
+        "operationId": "getPromotionBasicCommercialDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used  to get the Basic and Commercial details (like Name, SKU, Display Name, Start Date , Promotion Category, Products/Packages details etc) of the Promotions defined in the system ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPromotionBasicCommercialDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": 94178
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPromotionBasicCommercialDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 94178\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getSalesAndGroupsDetails": {
+      "post": {
+        "summary": "getSalesAndGroupsDetails",
+        "operationId": "getSalesAndGroupsDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Sales Channels, Offer Types and Groups Details of the Products, Packages and Promotions defined in the system",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetSalesAndGroupsDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetSalesAndGroupsDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/setPreReqItemsToProdOrPack": {
+      "post": {
+        "summary": "setPreReqItemsToProdOrPack",
+        "operationId": "setPreReqItemsToProdOrPack",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to set the Pre - Requisite Products/ Packages for Products or Packages defined in the system",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "SetPreReqItemsToProdOrPackRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "type": "PRODUCT",
+                    "typeID": "184056",
+                    "preReqProducts": [
+                      141609,
+                      153059
+                    ],
+                    "preReqPackages": []
+                  }
+                }
+              },
+              "example": "{\r\n    \"SetPreReqItemsToProdOrPackRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"type\": \"PRODUCT\",\r\n        \"typeID\": \"184056\",\r\n        \"preReqProducts\": [\r\n            141609,\r\n            153059\r\n        ],\r\n        \"preReqPackages\": []\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getPromotionEligibilityRules": {
+      "post": {
+        "summary": "getPromotionEligibilityRules",
+        "operationId": "getPromotionEligibilityRules",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Promotion Eligibility Rules of the Products ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetPromotionEligibilityRulesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001",
+                    "type": "product",
+                    "typeID": "141409",
+                    "returnEligibilityRules": true
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetPromotionEligibilityRulesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\",\r\n        \"type\": \"product\",\r\n        \"typeID\": \"141409\",\r\n        \"returnEligibilityRules\": true\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/updatePromotionEligibilityRules": {
+      "post": {
+        "summary": "updatePromotionEligibilityRules",
+        "operationId": "updatePromotionEligibilityRules",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to update the Promotion Eligibility Rules of a Product",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdatePromotionEligibilityRulesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "prodAreaCode": "001",
+                    "type": "product",
+                    "typeID": "141409",
+                    "promotionId": 78578,
+                    "promotionEligibilityRules": [
+                      {
+                        "promotionId": 78578,
+                        "eligibilityTypes": "Sequential"
+                      },
+                      {
+                        "promotionId": 93478,
+                        "eligibilityTypes": "Parallel-OnNet"
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdatePromotionEligibilityRulesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"prodAreaCode\": \"001\",\r\n        \"type\": \"product\",\r\n        \"typeID\": \"141409\",\r\n        \"promotionId\": 78578,\r\n        \"promotionEligibilityRules\": [\r\n            {\r\n                \"promotionId\": 78578,\r\n                \"eligibilityTypes\": \"Sequential\"\r\n            },\r\n            {\r\n                \"promotionId\": 93478,\r\n                \"eligibilityTypes\": \"Parallel-OnNet\"\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/clearAllEligibilityRules": {
+      "post": {
+        "summary": "clearAllEligibilityRules",
+        "operationId": "clearAllEligibilityRules",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to Clear all the Existing Eligibility Rules defined for that particular Product or Package",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "ClearAllEligibilityRulesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "product",
+                    "prodAreaCode": "001"
+                  }
+                }
+              },
+              "example": "{\r\n    \"ClearAllEligibilityRulesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"product\",\r\n        \"prodAreaCode\": \"001\"\r\n        \r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getBUInstallmentDetails": {
+      "post": {
+        "summary": "getBUInstallmentDetails",
+        "operationId": "getBUInstallmentDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Installments details defined under Business Unit level",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetBUInstallmentDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetBUInstallmentDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdatePMProducts": {
+      "post": {
+        "summary": "addOrUpdatePMProducts",
+        "operationId": "addOrUpdatePMProducts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update Products to the Payment Modes defined for the BU",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdatePMProductsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "paymentModes": [
+                      {
+                        "paymentModeId": 1,
+                        "products": [
+                          {
+                            "sku": "test_startdate"
+                          }
+                        ]
+                      },
+                      {
+                        "paymentModeId": 3,
+                        "products": [
+                          {
+                            "sku": "Bat_P05"
+                          }
+                        ]
+                      },
+                      {
+                        "paymentModeId": 6,
+                        "products": [
+                          {
+                            "sku": "Bat_P05"
+                          },
+                          {
+                            "sku": "Content_Prod11"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdatePMProductsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"paymentModes\": [\r\n            {\r\n                \"paymentModeId\": 1,\r\n                \"products\": [\r\n                    {\r\n                        \"sku\": \"test_startdate\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"paymentModeId\": 3,\r\n                \"products\": [\r\n                    {\r\n                        \"sku\": \"Bat_P05\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"paymentModeId\": 6,\r\n                \"products\": [\r\n                    {\r\n                        \"sku\": \"Bat_P05\"\r\n                    },\r\n                    {\r\n                        \"sku\": \"Content_Prod11\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/addOrUpdatePMPackages": {
+      "post": {
+        "summary": "addOrUpdatePMPackages",
+        "operationId": "addOrUpdatePMPackages",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to add or update Packages to the Payment Modes defined for the BU",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "AddOrUpdatePMPackagesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "dmaId": "001",
+                    "paymentModes": [
+                      {
+                        "paymentModeId": 3,
+                        "packages": [
+                          {
+                            "packageId": "packid-03"
+                          }
+                        ]
+                      },
+                      {
+                        "paymentModeId": 6,
+                        "packages": [
+                          {
+                            "packageId": "packid7"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": "{\r\n    \"AddOrUpdatePMPackagesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"dmaId\": \"001\",\r\n        \"paymentModes\": [\r\n            {\r\n                \"paymentModeId\": 3,\r\n                \"packages\": [\r\n                    {\r\n                        \"packageId\": \"packid-03\"\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"paymentModeId\": 6,\r\n                \"packages\": [\r\n                    {\r\n                        \"packageId\": \"packid7\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/updateChannelLineUp": {
+      "post": {
+        "summary": "updateChannelLineUp",
+        "operationId": "updateChannelLineUp",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to update the Line Up Numbers of the Channels ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "UpdateChannelLineUpRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "productAreaCode": "001",
+                    "channelcategory": {
+                      "categoryDescription": "Music",
+                      "channelList": [
+                        {
+                          "channelName": "Star",
+                          "channelLineUpNumber": 17
+                        },
+                        {
+                          "channelName": "Maa Music",
+                          "channelLineUpNumber": 9
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "example": "{\r\n    \"UpdateChannelLineUpRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"productAreaCode\": \"001\",\r\n        \"channelcategory\": {\r\n            \"categoryDescription\": \"Music\",\r\n            \"channelList\": [\r\n                {\r\n                    \"channelName\": \"Star\",\r\n                    \"channelLineUpNumber\": 17\r\n                },\r\n                {\r\n                    \"channelName\": \"Maa Music\",\r\n                    \"channelLineUpNumber\": 9\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/createProductInstallments": {
+      "post": {
+        "summary": "createProductInstallments",
+        "operationId": "createProductInstallments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to create the Installment Details of a product",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "CreateProductInstallmentsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "version": "V29",
+                    "noOfInstallments": 9876543,
+                    "startDate": 1604324286963,
+                    "endDate": 1691736780000,
+                    "customerCategory": [
+                      "BYOD"
+                    ],
+                    "serviceRefundDuration": 2,
+                    "hwRefundDuration": 4,
+                    "hwMaxRefundDuration": 12,
+                    "descrip": "desc43",
+                    "downPayment": "F",
+                    "downPaymentType": "Flat",
+                    "downPaymentValue": "3.00",
+                    "alaCarte": "F",
+                    "taxType": "F",
+                    "isTaxUPFront": false,
+                    "actionType": "CREATE"
+                  }
+                }
+              },
+              "example": "{\r\n    \"CreateProductInstallmentsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"version\": \"V29\",\r\n        \"noOfInstallments\": 9876543,\r\n        \"startDate\": 1604324286963,\r\n        \"endDate\": 1691736780000,\r\n        \"customerCategory\": [\r\n            \"BYOD\"\r\n        ],\r\n        \"serviceRefundDuration\": 2,\r\n        \"hwRefundDuration\": 4,\r\n        \"hwMaxRefundDuration\": 12,\r\n        \"descrip\": \"desc43\",\r\n        \"downPayment\": \"F\",\r\n        \"downPaymentType\": \"Flat\",\r\n        \"downPaymentValue\": \"3.00\",\r\n        \"alaCarte\": \"F\",\r\n        \"taxType\": \"F\",\r\n        \"isTaxUPFront\": false,\r\n        \"actionType\": \"CREATE\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/removeProductInstallments": {
+      "post": {
+        "summary": "removeProductInstallments",
+        "operationId": "removeProductInstallments",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to remove the Installment Details of a product",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "RemoveProductInstallmentsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "installmentID": 1374
+                  }
+                }
+              },
+              "example": "{\r\n    \"RemoveProductInstallmentsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"installmentID\": 1374\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getProductInstallmentDetails": {
+      "post": {
+        "summary": "getProductInstallmentDetails",
+        "operationId": "getProductInstallmentDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Installment details configured to a Product",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetProductInstallmentDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetProductInstallmentDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\"\r\n        \r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getUpgradeOrDownGradeDetails": {
+      "post": {
+        "summary": "getUpgradeOrDownGradeDetails",
+        "operationId": "getUpgradeOrDownGradeDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Upgrade and Downgrade Plan details of a particular Product or Package",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetUpgradeOrDownGradeDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": 184056,
+                    "type": "Product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetUpgradeOrDownGradeDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": 184056,\r\n        \"type\": \"Product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/getEligibilityRulesDetails": {
+      "post": {
+        "summary": "getEligibilityRulesDetails",
+        "operationId": "getEligibilityRulesDetails",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to get the Eligibility Details of the Products and Packages of Particular BU ",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "GetEligibilityRulesDetailsRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "typeID": "184056",
+                    "type": "product"
+                  }
+                }
+              },
+              "example": "{\r\n    \"GetEligibilityRulesDetailsRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"typeID\": \"184056\",\r\n        \"type\": \"product\"\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    },
+    "/removePaymentModes": {
+      "post": {
+        "summary": "{{url}}/removePaymentModes",
+        "operationId": "{{url}}/removePaymentModes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Used to remove the Payment Modes configured in the system",
+            "headers": {}
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "example": {
+                  "RemovePaymentModesRequestMessage": {
+                    "apiKey": "bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm",
+                    "channelPartnerID": "epicid-org5",
+                    "paymentModeId": 5
+                  }
+                }
+              },
+              "example": "{\r\n    \"RemovePaymentModesRequestMessage\": {\r\n        \"apiKey\": \"bVXikSnEAVcx79xJZgXWQaAwDYsSS2Jm\",\r\n        \"channelPartnerID\": \"epicid-org5\",\r\n        \"paymentModeId\": 5\r\n    }\r\n}"
+            }
+          }
+        },
+        "tags": [
+          "Product Catalogue Management"
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Content-Type": {
+        "name": "Content-Type",
+        "in": "header",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "application/json"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    }
+  ],
+  "tags": []
+}
