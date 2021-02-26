@@ -1,0 +1,673 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://rest-demo2.evergent.com/evs",
+      "description": "The Demo API server"
+    }
+  ],
+  "info": {
+    "description": "<b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "version": "",
+    "title": "Entitlement API"
+  },
+  "paths": {
+    "/getActiveSubscriptions": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Evergent"
+        ],
+        "operationId": "GetActiveSubscriptionsRequestMessage",
+        "description": "getActiveSubscriptions() REST API is used to get the active  subscriptions of an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetActiveSubscriptionsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        },
+                        "AccountServiceMessage": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AccountServiceMessage"
+                          },
+                          "description": "User service related details."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "GetActiveSubscriptionsResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful response": {
+                    "value": {
+                      "GetActiveSubscriptionsResponseMessage": {
+                        "country": "US",
+                        "message": "SUCCESS",
+                        "responseCode": "1",
+                        "AccountServiceMessage": [
+                          {
+                            "isRenewal": true,
+                            "period": "NoOfMonths",
+                            "orderID": 402426352,
+                            "displayName": "League Pass Monthly",
+                            "opId": 1204374306,
+                            "description": "League Pass Monthly",
+                            "serviceName": "League Pass Monthly",
+                            "type": "Prepaid",
+                            "duration": 1,
+                            "validityPeriod": "NoOfMonths",
+                            "subscriptionType": "Monthly",
+                            "startDateInMillis": 1614335924000,
+                            "validityDuration": 1,
+                            "validityTill": 1616755118000,
+                            "paymentMethod": "Credit/Debit Card",
+                            "isInFreeTrail": false,
+                            "serviceID": "BLPPMONTHLY",
+                            "retailPrice": 11.99,
+                            "currencyCode": "USD",
+                            "startDate": 1614335924000,
+                            "status": "Active"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Account with no service or expired service": {
+                    "value": {
+                      "GetActiveSubscriptionsResponseMessage": {
+                        "AccountServiceMessage": [],
+                        "message": "SUCCESS",
+                        "responseCode": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetActiveSubscriptionsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getActiveSubscriptions"
+                  }
+                }
+              },
+              "examples": {
+                "Sample Successful request": {
+                  "value": {
+                    "GetActiveSubscriptionsRequestMessage": {
+                      "channelPartnerID": "NBADEMO",
+                      "apiKey": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getEntitlements": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Evergent"
+        ],
+        "operationId": "GetEntitlementssRequestMessage",
+        "description": "getEntitlements() REST API is used to get the active subscriptions of the User.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetEntitlementsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        },
+                        "transactionId": {
+                          "type": "string"
+                        },
+                        "AccountServiceMessage": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AccountServiceMessage"
+                          },
+                          "description": "User service related details."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "GetEntitlementsRequestMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful response": {
+                    "value": {
+                      "GetEntitlementsResponseMessage": {
+                        "transactionId": "US",
+                        "responseCode": "SUCCESS",
+                        "message": "1",
+                        "AccountServiceMessage": [
+                          {
+                            "isContent": false,
+                            "isFreemium": false,
+                            "serviceName": "League Pass Monthly",
+                            "serviceID": "BLPPMONTHLY",
+                            "startDate": 1614335924000,
+                            "validityTill": 1616755118000,
+                            "description": "League Pass Monthly",
+                            "validityEndDate": "03/26/2021 16:08:38",
+                            "status": "Active",
+                            "name": "League Pass Monthly",
+                            "isUpgradeAllowed": false,
+                            "isRenewal": true
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Account with no service or expired service": {
+                    "value": {
+                      "GetEntitlementsResponseMessage": {
+                        "AccountServiceMessage": [],
+                        "message": "SUCCESS",
+                        "responseCode": "1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetEntitlementsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getEntitlements"
+                  }
+                }
+              },
+              "examples": {
+                "Sample Successful request": {
+                  "value": {
+                    "GetEntitlementsRequestMessage": {
+                      "channelPartnerID": "NBADEMO",
+                      "apiKey": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "getActiveSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          }
+        }
+      },
+      "AccountServiceMessage": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Start Date of the service (In Milliseconds)."
+          },
+          "retailPrice": {
+            "type": "integer",
+            "description": "Retail price of the product."
+          },
+          "orderID": {
+            "type": "string",
+            "description": "Unique ID for that Order."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the service."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the Service."
+          },
+          "serviceID": {
+            "type": "string",
+            "description": "SKU/Quick code of the service."
+          },
+          "isRenewal": {
+            "type": "boolean",
+            "description": "Indicates whether SKU will renewal or not."
+          },
+          "validityTill": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Validity date in Milliseconds."
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Service Name."
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code of the subscription."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the Subscription."
+          },
+          "period": {
+            "type": "string",
+            "description": "Period of the Subscription."
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration of the Subscription."
+          },
+          "promotions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/promotions"
+            },
+            "description": "Applied promotional detail of the service."
+          },
+          "isInFreeTrail": {
+            "type": "boolean",
+            "description": "Indicates whether the service is in free trial or not."
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of the Subscription."
+          },
+          "validityPeriod": {
+            "type": "string",
+            "description": "Validity Period type."
+          },
+          "subscriptionType": {
+            "type": "string",
+            "description": "Type of Subscription."
+          },
+          "startDateInMillis": {
+            "type": "integer",
+            "description": "Start Date of the service (In Milliseconds)."
+          },
+          "validityDuration": {
+            "type": "integer",
+            "description": "Validity duration of the service."
+          },
+          "paymentMethod": {
+            "type": "string",
+            "description": "Payment Method of the subscription.",
+            "enum": [
+              "Credit/Debit Card",
+              "App Store Billing",
+              "Google Wallet",
+              "Roku Payment"
+            ]
+          },
+          "opID": {
+            "type": "string",
+            "description": "Unique orderedProduct ID for the subscription."
+          },
+          "discounts": {
+            "type": "object",
+            "items": {
+              "$ref": "#/components/schemas/discounts"
+            },
+            "description": "Applied discounts related details."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Current Roku transaction Id."
+          },
+          "originalTransactionId": {
+            "type": "string",
+            "description": "Transaction ID for Evergent purposes."
+          }
+        }
+      },
+      "promotions": {
+        "properties": {
+          "promotionId": {
+            "type": "string",
+            "description": "SKU of Promotion."
+          },
+          "promotionName": {
+            "type": "string",
+            "description": "Promotion Name."
+          },
+          "promotionType": {
+            "type": "string",
+            "description": "Type of Promotion."
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Amount of promotion."
+          },
+          "promotionalPrice": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Promotional Price of the service."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Start Date of the promotion(In Milliseconds)."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End Date of the promotion (In Milliseconds)."
+          },
+          "isVODPromotion": {
+            "type": "boolean",
+            "description": "If promotion is VOD or not."
+          },
+          "promoDescrip": {
+            "type": "string",
+            "description": "Desciption of promotion applied."
+          },
+          "isFreeTrial": {
+            "type": "boolean",
+            "description": "Whether the promotion is free trial or not."
+          },
+          "isDefaultPromo": {
+            "type": "boolean",
+            "description": "Whether the promotion is default or not."
+          },
+          "couponCode": {
+            "type": "string",
+            "description": "coupon code applied to avail the promotion."
+          }
+        }
+      },
+      "discounts": {
+        "type": "object",
+        "properties": {
+          "discount": {
+            "type": "number",
+            "description": "Percentage of Discount."
+          },
+          "discountType": {
+            "type": "string",
+            "description": "Type of Discount."
+          },
+          "priceAfterDiscount": {
+            "type": "number",
+            "description": "Price charged after discount."
+          },
+          "discountAmount": {
+            "type": "number",
+            "description": "Discounted amount."
+          },
+          "couponCode": {
+            "type": "string",
+            "description": "Discount Coupon code redeemed."
+          }
+        }
+      },
+      "services": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/service"
+            }
+          }
+        }
+      },
+      "service": {
+        "type": "object",
+        "properties": {
+          "serviceType": {
+            "type": "string",
+            "description": "serviceType of the Service"
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "serviceId of the Service"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity of the Service"
+          }
+        }
+      },
+      "getEntitlements": {
+        "type": "object",
+        "required": [
+          "apiKey"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          },
+          "returnTVOD": {
+            "type": "string",
+            "description": "Flag to provide VOD Details"
+          },
+          "externalOrderID": {
+            "type": "string",
+            "description": "Unique partnerToken"
+          },
+          "returnAdsInfo": {
+            "type": "boolean",
+            "description": "Flag to provide ads Info"
+          },
+          "returnOrderDetails": {
+            "type": "boolean",
+            "description": "Flag that provide order details"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Transaction ID of the order performed"
+          }
+        }
+      },
+      "AccountServiceMessagae": {
+        "type": "object",
+        "properties": {
+          "isContent": {
+            "type": "boolean",
+            "description": "Flag to state is content package or product"
+          },
+          "preRollAdsEnabled": {
+            "type": "boolean",
+            "description": "Flag to state Ads are enabled for the package or product"
+          },
+          "interstitialAdsEnabled": {
+            "type": "boolean",
+            "description": "Flag to state Ads are enabled for the package or product"
+          },
+          "bannerAdsEnabled": {
+            "type": "boolean",
+            "description": "Flag to state Ads are enabled for the package or product"
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the Service entitled"
+          },
+          "serviceOfType": {
+            "type": "string",
+            "description": "Type of the Service entitled"
+          },
+          "serviceID": {
+            "type": "string",
+            "description": "SKU/Quick Code of the service entitled"
+          },
+          "startDate": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Startdate of the service"
+          },
+          "validityTill": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Validity date in Milliseconds."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the service"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the service"
+          },
+          "validityEndDate": {
+            "type": "string",
+            "description": "Validity enddate in Milliseconds."
+          },
+          "transactionID": {
+            "type": "string",
+            "description": "Unique Identifier of the transaction of the service"
+          },
+          "isRenewal": {
+            "type": "boolean",
+            "description": "Indicates whether SKU will renewal or not."
+          },
+          "orderID": {
+            "type": "string",
+            "description": "Unique ID for that Order."
+          },
+          "vodItems": {
+            "type": "array",
+            "description": "Video  On demand content items",
+            "items": {
+              "$ref": "#/components/schemas/vodItems"
+            }
+          }
+        }
+      },
+      "vodItems": {
+        "type": "object",
+        "properties": {
+          "vodItem": {
+            "type": "object",
+            "description": "Video  On demand content item information",
+            "$ref": "#/components/schemas/vodItem"
+          }
+        }
+      },
+      "vodItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the VOD"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the VOD"
+          },
+          "rentalPeriod": {
+            "type": "string",
+            "description": "Rental time period of the VOD"
+          },
+          "videoFormat": {
+            "type": "string",
+            "description": "Video format HD/SD"
+          },
+          "viewingPeriod": {
+            "type": "string",
+            "description": "Viewing time period of VOD"
+          },
+          "programID": {
+            "type": "string",
+            "description": "Unique Program ID"
+          }
+        }
+      }
+    }
+  }
+}
