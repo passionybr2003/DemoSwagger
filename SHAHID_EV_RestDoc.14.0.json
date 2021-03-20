@@ -1,0 +1,701 @@
+{
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://rest-stage.evergent.com/",
+      "description": "The Staging API server"
+    },
+    {
+      "url": "https://rest-dev.evergent.com/",
+      "description": "The Dev API server"
+    }
+  ],
+  "info": {
+    "description": "<b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent - Shahid Consoildated Api Document </h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "version": "",
+    "title": "EV Shahid API - V14.0",
+    "contact": {
+      "email": "pavankumar.a@evergent.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Shahid",
+      "description": "Secured Admin-only calls"
+    }
+  ],
+  "paths": {
+    "/createUser": {
+      "post": {
+        "tags": [
+          "Shahid"
+        ],
+        "operationId": "CreateUserRequestMessage",
+        "description": "createUser() REST API is used to create an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "CreateUserResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail",
+                          "example": "SUCCESS"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.",
+                          "example": 1
+                        },
+                        "spAccountID": {
+                          "type": "string",
+                          "description": "A unique identifier of the account."
+                        },
+                        "cpCustomerID": {
+                          "type": "string",
+                          "description": "A unique identifier of the account in Partner systems."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "CreateUserResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample Successfull response": {
+                    "value": {
+                      "CreateUserResponseMessage": {
+                        "cpCustomerID": "21021323488386788",
+                        "spAccountID": "2102132348178598386788",
+                        "message": "SUCCESS",
+                        "responseCode": "1"
+                      }
+                    }
+                  },
+                  "eV1062": {
+                    "value": {
+                      "CreateUserResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "User Name already exists",
+                            "errorCode": "ev20224"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "eV1268": {
+                    "value": {
+                      "CreateUserResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "NO Zone X Reference exists with the DMA ID: 001",
+                            "errorCode": "eV1268"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- eV1268": {
+            "description": "NO Zone X Reference exists with the DMA ID: 001"
+          },
+          "x- eV1062": {
+            "description": "User Name already exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CreateUserRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/createUser"
+                  }
+                }
+              },
+              "examples": {
+                "Customer Registration": {
+                  "value": {
+                    "CreateUserRequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXX",
+                      "customerUsername": "shahidafridi@yopmail.com",
+                      "customerPassword": "P@$$w0rd!",
+                      "email": "shahidafridi@yopmail.com",
+                      "firstName": "Shahid",
+                      "lastName": "Afridi",
+                      "country": "DU",
+                      "dmaId": "001",
+                      "alertNotificationEmail": "true"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/searchAccount": {
+      "post": {
+        "tags": [
+          "Shahid"
+        ],
+        "operationId": "SearchAccountRequestMessage",
+        "description": "searchAccount() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "SearchAccountResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "contactUserName": {
+                          "type": "string",
+                          "description": "User name of the user used to login to account."
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "Contact email of the user."
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the user."
+                        },
+                        "channelPartnerID": {
+                          "type": "string",
+                          "description": "Channel partner of the user."
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail"
+                        },
+                        "accountID": {
+                          "type": "string",
+                          "description": "A unique SP Account Id of the customer in Partner systems."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure."
+                        },
+                        "isProfileComplete": {
+                          "type": "string",
+                          "description": "Indicates profile is complete or not."
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "Status of the account"
+                        },
+                        "cpCustomerID": {
+                          "type": "string",
+                          "description": "A unique ID of the account in EV systems."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "SearchAccountResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful response": {
+                    "value": {
+                      "SearchAccountResponseMessage": {
+                        "contactUserName": "shahidafridi@yopmail.com",
+                        "message": "SUCCESS",
+                        "accountID": "191112114157906490851",
+                        "responseCode": "1",
+                        "channelPartnerID": "SHAHID_DUBAI",
+                        "email": "shahidafridi@yopmail.com",
+                        "isProfileComplete": "false",
+                        "status": "Active",
+                        "name": "Shahid Afridi",
+                        "cpCustomerID": "1911121141490851"
+                      }
+                    }
+                  },
+                  "No Accounts found": {
+                    "value": {
+                      "SearchAccountResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "No Accounts Found",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0",
+                        "message": "No Accounts Found"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 20003": {
+            "description": "Missing Required Parameter"
+          },
+          "x- 111111111": {
+            "description": "No Accounts Found"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SearchAccountRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/searchAccount"
+                  }
+                }
+              },
+              "examples": {
+                "Sample successful request with email": {
+                  "value": {
+                    "SearchAccountRequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXXX",
+                      "email": "us1573559081@yopmail.com"
+                    }
+                  }
+                },
+                "Sample successful request with gigyaUserID": {
+                  "value": {
+                    "SearchAccountRequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXXX",
+                      "gigyaUserID": "191112114157906490851"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getOAuthAccessTokenv2": {
+      "post": {
+        "tags": [
+          "Shahid"
+        ],
+        "operationId": "GetOAuthAccessTokenv2RequestMessage",
+        "description": "getOAuthAccessTokenv2() REST API is used to SignIn the user. (Combination of MobileNumber/Email and Device Details of the Customer).",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetOAuthAccessTokenv2ResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "Successful login message."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        },
+                        "accessToken": {
+                          "type": "string",
+                          "description": "Encrypted string of account info and device info."
+                        },
+                        "refreshToken": {
+                          "type": "string",
+                          "description": "Refresh Token for the user."
+                        },
+                        "tokenType": {
+                          "type": "string",
+                          "description": "Type of the token."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "20003": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Missing Required Parameter",
+                            "errorCode": "20003"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "111111111": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "eV2511": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Missing Required Parameter(s)",
+                            "errorCode": "eV2511"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "eV2138": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Generic Failure",
+                            "errorCode": "eV2138"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "eV2134": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Wrong Username or Password",
+                            "errorCode": "eV2134"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample Successful response": {
+                    "value": {
+                      "GetOAuthAccessTokenv2ResponseMessage": {
+                        "responseCode": "1",
+                        "message": "User Logged in successfully.",
+                        "accessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo",
+                        "tokenType": "Bearer",
+                        "refreshToken": "qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB",
+                        "status": "SUCCESS"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- eV2138": {
+            "description": "Generic Failure"
+          },
+          "x- 20003": {
+            "description": "Missing Required Parameter"
+          },
+          "x- eV2511": {
+            "description": "Missing Required Parameter(s)"
+          },
+          "x- eV2134": {
+            "description": "Incorrect login detials"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetOAuthAccessTokenRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getOAuthAccessTokenv2"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request using username and password": {
+                  "value": {
+                    "GetOAuthAccessTokenv2RequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXXX",
+                      "contactUserName": "shahidafridi@yopmail.com",
+                      "contactPassword": "P@$$w0rd!",
+                      "deviceMessage": {
+                        "deviceName": "Afridi Mobile",
+                        "deviceType": "MOBI",
+                        "modelNo": "iPhone 11Pro",
+                        "serialNo": "GUT45j6b7df66"
+                      }
+                    }
+                  }
+                },
+                "Successful request using gigyaUserID": {
+                  "value": {
+                    "GetOAuthAccessTokenv2RequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXXX",
+                      "gigyaUserID": "191112114157906490851",
+                      "deviceMessage": {
+                        "deviceName": "Afridi Mobile",
+                        "deviceType": "MOBI",
+                        "modelNo": "iPhone 11Pro",
+                        "serialNo": "045n45n8b88DHJDF"
+                      }
+                    }
+                  }
+                },
+                "Successful request using Social login details": {
+                  "value": {
+                    "GetOAuthAccessTokenv2RequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXXX",
+                      "socialLoginType": "google",
+                      "socialLoginID": "shahidafridi@yopmail.com",
+                      "deviceMessage": {
+                        "deviceName": "Afridi Mobile",
+                        "deviceType": "MOBI",
+                        "modelNo": "iPhone 11Pro",
+                        "serialNo": "GUT45j6b7df66"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "createUser": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "customerUsername",
+          "customerPassword",
+          "email",
+          "firstName",
+          "dmaId"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner.",
+            "enum": [
+              "SHAHID_DUBAI"
+            ]
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication Key."
+          },
+          "customerUsername": {
+            "type": "string",
+            "description": "Customer username"
+          },
+          "customerPassword": {
+            "type": "string",
+            "description": "Customer password."
+          },
+          "email": {
+            "type": "string",
+            "description": "Customer Email."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Customer First Name."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Customer Last Name."
+          },
+          "country": {
+            "type": "string",
+            "description": "Customer registered country."
+          },
+          "dmaId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          },
+          "alertNotificationEmail": {
+            "type": "string",
+            "description": "Notification Email related to Marketing and Promotions Opt in/opt out.",
+            "default": "false"
+          }
+        }
+      },
+      "searchAccount": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique identification number of channel partner"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication Key."
+          },
+          "email": {
+            "type": "string",
+            "description": "Unique email of the account."
+          },
+          "spAccountID/gigyaUserID": {
+            "type": "string",
+            "description": "Unique Gigya user id."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "Unique customer id for the account."
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the account."
+          }
+        }
+      },
+      "getOAuthAccessTokenv2": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "gigyaUserID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          },
+          "contactUserName": {
+            "type": "string",
+            "description": "Login user name of the user."
+          },
+          "contactPassword": {
+            "type": "string",
+            "description": "Login password of the user."
+          },
+          "socialLoginType": {
+            "type": "string",
+            "default": "",
+            "description": "Social Networking login type"
+          },
+          "socialLoginID": {
+            "type": "string",
+            "default": "",
+            "description": "Unique Social networking login ID."
+          },
+          "gigyaUserID": {
+            "type": "string",
+            "default": "",
+            "description": "Unique SP Account ID stored in EV system."
+          },
+          "deviceMessage": {
+            "type": "object",
+            "$ref": "#/components/schemas/deviceDetails"
+          }
+        }
+      },
+      "deviceDetails": {
+        "type": "object",
+        "properties": {
+          "serialNo": {
+            "type": "string",
+            "description": "Serial number of the device."
+          },
+          "deviceType": {
+            "type": "string",
+            "description": "Type of the device."
+          },
+          "deviceName": {
+            "type": "string",
+            "description": "Name of the device."
+          },
+          "modelNo": {
+            "type": "string",
+            "description": "Model number of the device."
+          }
+        }
+      }
+    }
+  }
+}
