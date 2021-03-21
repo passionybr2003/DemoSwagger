@@ -145,7 +145,7 @@
                 }
               },
               "examples": {
-                "Customer Registration": {
+                "Customer Registration using email": {
                   "value": {
                     "CreateUserRequestMessage": {
                       "channelPartnerID": "SHAHID_DUBAI",
@@ -153,6 +153,38 @@
                       "customerUsername": "shahidafridi@yopmail.com",
                       "customerPassword": "P@$$w0rd!",
                       "email": "shahidafridi@yopmail.com",
+                      "spAccountID": "191112114157906490851",
+                      "firstName": "Shahid",
+                      "lastName": "Afridi",
+                      "country": "DU",
+                      "dmaId": "001",
+                      "alertNotificationEmail": "true"
+                    }
+                  }
+                },
+                "Customer Registration using phone number": {
+                  "value": {
+                    "CreateUserRequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXX",
+                      "mobileNumber": "971855532345",
+                      "spAccountID": "191112114157906490851",
+                      "firstName": "Shahid",
+                      "lastName": "Afridi",
+                      "country": "DU",
+                      "dmaId": "001",
+                      "alertNotificationEmail": "true"
+                    }
+                  }
+                },
+                "Customer Registration using social login": {
+                  "value": {
+                    "CreateUserRequestMessage": {
+                      "channelPartnerID": "SHAHID_DUBAI",
+                      "apiKey": "XXXX",
+                      "socialLoginType": "google",
+                      "socialLoginID": "shahidafridi@yopmail.com",
+                      "spAccountID": "191112114157906490851",
                       "firstName": "Shahid",
                       "lastName": "Afridi",
                       "country": "DU",
@@ -305,12 +337,12 @@
                     }
                   }
                 },
-                "Sample successful request with gigyaUserID": {
+                "Sample successful request with spAccountID": {
                   "value": {
                     "SearchAccountRequestMessage": {
                       "channelPartnerID": "SHAHID_DUBAI",
                       "apiKey": "XXXXX",
-                      "gigyaUserID": "191112114157906490851"
+                      "spAccountID": "191112114157906490851"
                     }
                   }
                 }
@@ -483,6 +515,7 @@
                       "apiKey": "XXXXX",
                       "contactUserName": "shahidafridi@yopmail.com",
                       "contactPassword": "P@$$w0rd!",
+                      "spAccountID": "191112114157906490851",
                       "deviceMessage": {
                         "deviceName": "Afridi Mobile",
                         "deviceType": "MOBI",
@@ -492,12 +525,12 @@
                     }
                   }
                 },
-                "Successful request using gigyaUserID": {
+                "Successful request using spAccountID": {
                   "value": {
                     "GetOAuthAccessTokenv2RequestMessage": {
                       "channelPartnerID": "SHAHID_DUBAI",
                       "apiKey": "XXXXX",
-                      "gigyaUserID": "191112114157906490851",
+                      "spAccountID": "191112114157906490851",
                       "deviceMessage": {
                         "deviceName": "Afridi Mobile",
                         "deviceType": "MOBI",
@@ -570,9 +603,32 @@
             "type": "string",
             "description": "Customer password."
           },
+          "socialLoginType": {
+            "type": "string",
+            "description": "Social login type for the user.",
+            "enum": [
+              "google",
+              "facebook",
+              "instagram",
+              "gmail",
+              "yahoo"
+            ]
+          },
+          "socialLoginID": {
+            "type": "string",
+            "description": "Social login id of the user."
+          },
           "email": {
             "type": "string",
             "description": "Customer Email."
+          },
+          "mobileNumber": {
+            "type": "string",
+            "description": "Phone number of the user."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique account id in EV system."
           },
           "firstName": {
             "type": "string",
@@ -616,9 +672,9 @@
             "type": "string",
             "description": "Unique email of the account."
           },
-          "spAccountID/gigyaUserID": {
+          "spAccountID": {
             "type": "string",
-            "description": "Unique Gigya user id."
+            "description": "Unique sp account id for the account."
           },
           "cpCustomerID": {
             "type": "string",
@@ -635,7 +691,7 @@
         "required": [
           "channelPartnerID",
           "apiKey",
-          "gigyaUserID"
+          "spAccountID"
         ],
         "properties": {
           "channelPartnerID": {
@@ -664,7 +720,7 @@
             "default": "",
             "description": "Unique Social networking login ID."
           },
-          "gigyaUserID": {
+          "spAccountID": {
             "type": "string",
             "default": "",
             "description": "Unique SP Account ID stored in EV system."
