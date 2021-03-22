@@ -11,7 +11,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent - Shahid Consoildated Api Document </h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.0",
     "contact": {
@@ -35,7 +35,7 @@
           "Shahid"
         ],
         "operationId": "CreateUserRequestMessage",
-        "description": "createUser() REST API is used to create an account in Evergent system.",
+        "description": "createUser() REST API is used to create an account in Evergent system. <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required based on registration type.",
         "responses": {
           "200": {
             "description": "Success",
@@ -148,7 +148,7 @@
                 "Customer Registration using email": {
                   "value": {
                     "CreateUserRequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID_AE",
                       "apiKey": "XXXX",
                       "customerUsername": "shahidafridi@yopmail.com",
                       "customerPassword": "P@$$w0rd!",
@@ -165,9 +165,10 @@
                 "Customer Registration using phone number": {
                   "value": {
                     "CreateUserRequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID_AE",
                       "apiKey": "XXXX",
                       "mobileNumber": "971855532345",
+                      "alternateUserName": "971855532345",
                       "spAccountID": "191112114157906490851",
                       "firstName": "Shahid",
                       "lastName": "Afridi",
@@ -180,10 +181,10 @@
                 "Customer Registration using social login": {
                   "value": {
                     "CreateUserRequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID_AE",
                       "apiKey": "XXXX",
-                      "socialLoginType": "google",
-                      "socialLoginID": "shahidafridi@yopmail.com",
+                      "socialLoginType": "Google",
+                      "socialLoginID": "DD78rwerjhdfhdf57fhhg",
                       "spAccountID": "191112114157906490851",
                       "firstName": "Shahid",
                       "lastName": "Afridi",
@@ -199,12 +200,12 @@
         }
       }
     },
-    "/searchAccount": {
+    "/searchAccountV2": {
       "post": {
         "tags": [
           "Shahid"
         ],
-        "operationId": "SearchAccountRequestMessage",
+        "operationId": "SearchAccountV2RequestMessage",
         "description": "searchAccount() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.",
         "responses": {
           "200": {
@@ -213,7 +214,7 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "SearchAccountResponseMessage": {
+                    "SearchAccountV2RequestMessage": {
                       "type": "object",
                       "properties": {
                         "contactUserName": {
@@ -263,7 +264,7 @@
                 "examples": {
                   "111111111": {
                     "value": {
-                      "SearchAccountResponseMessage": {
+                      "SearchAccountV2ResponseMessage": {
                         "failureMessage": [
                           {
                             "errorMessage": "Authentication Failed",
@@ -276,7 +277,7 @@
                   },
                   "Sample successful response": {
                     "value": {
-                      "SearchAccountResponseMessage": {
+                      "SearchAccountV2ResponseMessage": {
                         "contactUserName": "shahidafridi@yopmail.com",
                         "message": "SUCCESS",
                         "accountID": "191112114157906490851",
@@ -292,7 +293,7 @@
                   },
                   "No Accounts found": {
                     "value": {
-                      "SearchAccountResponseMessage": {
+                      "SearchAccountV2ResponseMessage": {
                         "failureMessage": [
                           {
                             "errorMessage": "No Accounts Found",
@@ -321,28 +322,47 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "SearchAccountRequestMessage": {
+                  "SearchAccountV2RequestMessage": {
                     "type": "Object",
-                    "$ref": "#/components/schemas/searchAccount"
+                    "$ref": "#/components/schemas/searchAccountV2"
                   }
                 }
               },
               "examples": {
-                "Sample successful request with email": {
+                "Sample successful request with spAccountID": {
                   "value": {
-                    "SearchAccountRequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                    "SearchAccountV2RequestMessage": {
+                      "channelPartnerID": "SHAHID",
                       "apiKey": "XXXXX",
-                      "email": "us1573559081@yopmail.com"
+                      "spAccountID": "191112114157906490851"
                     }
                   }
                 },
-                "Sample successful request with spAccountID": {
+                "Sample successful request with alternateUserName": {
                   "value": {
-                    "SearchAccountRequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                    "SearchAccountV2RequestMessage": {
+                      "channelPartnerID": "SHAHID",
                       "apiKey": "XXXXX",
-                      "spAccountID": "191112114157906490851"
+                      "alternateUserName": "971585539167"
+                    }
+                  }
+                },
+                "Sample successful request with username": {
+                  "value": {
+                    "SearchAccountV2RequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "XXXXX",
+                      "userName": "us1573559081@yopmail.com"
+                    }
+                  }
+                },
+                "Sample successful request with social login details": {
+                  "value": {
+                    "SearchAccountV2RequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "XXXXX",
+                      "socialLoginID": "us1573559081@yopmail.com,",
+                      "socialLoginType": "google"
                     }
                   }
                 }
@@ -511,7 +531,7 @@
                 "Successful request using username and password": {
                   "value": {
                     "GetOAuthAccessTokenv2RequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID",
                       "apiKey": "XXXXX",
                       "contactUserName": "shahidafridi@yopmail.com",
                       "contactPassword": "P@$$w0rd!",
@@ -528,7 +548,7 @@
                 "Successful request using spAccountID": {
                   "value": {
                     "GetOAuthAccessTokenv2RequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID",
                       "apiKey": "XXXXX",
                       "spAccountID": "191112114157906490851",
                       "deviceMessage": {
@@ -543,7 +563,7 @@
                 "Successful request using Social login details": {
                   "value": {
                     "GetOAuthAccessTokenv2RequestMessage": {
-                      "channelPartnerID": "SHAHID_DUBAI",
+                      "channelPartnerID": "SHAHID",
                       "apiKey": "XXXXX",
                       "socialLoginType": "google",
                       "socialLoginID": "shahidafridi@yopmail.com",
@@ -576,12 +596,7 @@
         "type": "object",
         "required": [
           "channelPartnerID",
-          "apiKey",
-          "customerUsername",
-          "customerPassword",
-          "email",
-          "firstName",
-          "dmaId"
+          "apiKey"
         ],
         "properties": {
           "channelPartnerID": {
@@ -597,54 +612,66 @@
           },
           "customerUsername": {
             "type": "string",
-            "description": "Customer username"
+            "description": "Username of the customer and it will be same as email when the user chooses to register with emailid."
           },
           "customerPassword": {
             "type": "string",
-            "description": "Customer password."
+            "description": "Customer password. (Constant value to be passed for this parameter)"
           },
           "socialLoginType": {
             "type": "string",
             "description": "Social login type for the user.",
             "enum": [
-              "google",
-              "facebook",
-              "instagram",
-              "gmail",
-              "yahoo"
+              "Google",
+              "Facebook",
+              "Apple"
             ]
           },
           "socialLoginID": {
             "type": "string",
             "description": "Social login id of the user."
           },
+          "socialLoginToken": {
+            "type": "string",
+            "default": "string",
+            "description": "Token received on social login by user."
+          },
           "email": {
             "type": "string",
-            "description": "Customer Email."
+            "description": "Email id of the customer."
           },
           "mobileNumber": {
             "type": "string",
-            "description": "Phone number of the user."
+            "description": "Mobile number of the customer."
+          },
+          "alternateUserName": {
+            "type": "string",
+            "default": "",
+            "description": "It will be same as mobile number when the user choose to register with mobile number."
           },
           "spAccountID": {
             "type": "string",
             "description": "Unique account id in EV system."
           },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "Unique customer id in EV system."
+          },
           "firstName": {
             "type": "string",
-            "description": "Customer First Name."
+            "description": "Firstname  of the customer."
           },
           "lastName": {
             "type": "string",
-            "description": "Customer Last Name."
+            "description": "Lastname of the customer."
           },
           "country": {
             "type": "string",
-            "description": "Customer registered country."
-          },
-          "dmaId": {
-            "type": "string",
-            "description": "Unique Identifier between Partner and EV system."
+            "description": "Country in which user has registered.(2 letter country code)",
+            "enum": [
+              "AE(UAE)",
+              "US(USA)"
+            ]
           },
           "alertNotificationEmail": {
             "type": "string",
@@ -653,7 +680,7 @@
           }
         }
       },
-      "searchAccount": {
+      "searchAccountV2": {
         "type": "object",
         "required": [
           "channelPartnerID",
@@ -676,13 +703,35 @@
             "type": "string",
             "description": "Unique sp account id for the account."
           },
+          "userName": {
+            "type": "string",
+            "description": "Username of the customer and it will be same as email when the user chooses to register with emailid."
+          },
+          "alternateUserName": {
+            "type": "string",
+            "default": "",
+            "description": "It will be same as mobile number when the user choose to register with mobile number."
+          },
+          "socialLoginType": {
+            "type": "string",
+            "description": "Social login type for the user.",
+            "enum": [
+              "Google",
+              "Facebook",
+              "Apple"
+            ]
+          },
+          "socialLoginID": {
+            "type": "string",
+            "description": "Social login id of the user."
+          },
           "cpCustomerID": {
             "type": "string",
             "description": "Unique customer id for the account."
           },
-          "phoneNumber": {
+          "phone": {
             "type": "string",
-            "description": "Phone number of the account."
+            "description": "Mobile number of the user."
           }
         }
       },
@@ -702,23 +751,36 @@
             "type": "string",
             "description": "Partner authentication key."
           },
-          "contactUserName": {
+          "customerUsername": {
             "type": "string",
-            "description": "Login user name of the user."
+            "description": "Username of the customer and it will be same as email when the user chooses to register with emailid."
           },
-          "contactPassword": {
+          "customerPassword": {
             "type": "string",
-            "description": "Login password of the user."
+            "description": "Customer password. (Constant value to be passed for this parameter)"
           },
           "socialLoginType": {
             "type": "string",
-            "default": "",
-            "description": "Social Networking login type"
+            "description": "Social login type for the user.",
+            "enum": [
+              "Google",
+              "Facebook",
+              "Apple"
+            ]
           },
           "socialLoginID": {
             "type": "string",
+            "description": "Social login id of the user."
+          },
+          "alternateUserName": {
+            "type": "string",
             "default": "",
-            "description": "Unique Social networking login ID."
+            "description": "It will be same as mobile number when the user choose to register with mobile number."
+          },
+          "socialLoginToken": {
+            "type": "string",
+            "default": "string",
+            "description": "Token received on social login by user."
           },
           "spAccountID": {
             "type": "string",
