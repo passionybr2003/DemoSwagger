@@ -5,9 +5,8 @@ servers:
   - url: 'https://rest-dev.evergent.com/'
     description: The Dev API server
 info:
-  description: >-
-    <b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent-Shahid
-    consolidated API document</h1> </b>
+  description: |-
+    <b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -19,18 +18,15 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 tags:
-  - name: Shahid
+  - name: Acquisition and Authentication
     description: Secured Admin-only calls
 paths:
   /createUser:
     post:
       tags:
-        - Shahid
+        - Acquisition and Authentication
       operationId: CreateUserRequestMessage
-      description: >-
-        createUser() REST API is used to create an account in Evergent system.
-        <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required
-        based on registration type.
+      description: 'createUser() REST API is used to create an account in Evergent system. <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required based on registration type.'
       responses:
         '200':
           description: Success
@@ -47,10 +43,7 @@ paths:
                         example: SUCCESS
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                         example: 1
                       spAccountID:
                         type: string
@@ -146,11 +139,9 @@ paths:
   /searchAccountV2:
     post:
       tags:
-        - Shahid
+        - Acquisition and Authentication
       operationId: SearchAccountV2RequestMessage
-      description: >-
-        searchAccount() REST API is used to search for the account in EV system
-        by providing valid registered email/Phone number of the customer.
+      description: searchAccount() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.
       responses:
         '200':
           description: Success
@@ -178,15 +169,10 @@ paths:
                         description: Success/Fail
                       accountID:
                         type: string
-                        description: >-
-                          A unique SP Account Id of the customer in Partner
-                          systems.
+                        description: A unique SP Account Id of the customer in Partner systems.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       isProfileComplete:
                         type: string
                         description: Indicates profile is complete or not.
@@ -267,11 +253,9 @@ paths:
   /getOAuthAccessTokenv2:
     post:
       tags:
-        - Shahid
+        - Acquisition and Authentication
       operationId: GetOAuthAccessTokenv2RequestMessage
-      description: >-
-        getOAuthAccessTokenv2() REST API is used to SignIn the user.
-        (Combination of MobileNumber/Email and Device Details of the Customer).
+      description: getOAuthAccessTokenv2() REST API is used to SignIn the user. (Combination of MobileNumber/Email and Device Details of the Customer).
       responses:
         '200':
           description: Success
@@ -290,10 +274,7 @@ paths:
                         description: Successful login message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       accessToken:
                         type: string
                         description: Encrypted string of account info and device info.
@@ -344,8 +325,7 @@ paths:
                     GetOAuthAccessTokenv2ResponseMessage:
                       responseCode: '1'
                       message: User Logged in successfully.
-                      accessToken: >-
-                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
                       status: SUCCESS
@@ -410,9 +390,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetProductsRequestMessage
-      description: >-
-        getProducts() REST API is used to get the products list available to
-        that DMA.
+      description: getProducts() REST API is used to get the products list available to that DMA.
       responses:
         '200':
           description: Success
@@ -428,10 +406,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       productsResponseMessage:
                         type: array
                         items:
@@ -561,8 +536,7 @@ paths:
                               appID: com.shahid.us.staging.subscription.annual
                               appChannel: Google Wallet
                             - appName: Shahid Subscription Annual (AE) + Free Trial
-                              appID: >-
-                                com.shahid.us.staging.subscription.annual.freetrial
+                              appID: com.shahid.us.staging.subscription.annual.freetrial
                               appChannel: App Store Billing
                           localeDescription:
                             - period: Years(s)
@@ -615,9 +589,7 @@ paths:
                     GetProductsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            No products defined for the given DMA:001 for 
-                            Shahid
+                        - errorMessage: 'No products defined for the given DMA:001 for  Shahid'
                           errorCode: eV1397
                       responseCode: '0'
                 eV1267:
@@ -652,7 +624,7 @@ paths:
                     dmaID: '001'
               getProducts additional params request:
                 value:
-                  GetProductsRequestMessage with additonal params:
+                  GetProductsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: XXXXX
                     dmaID: '001'
@@ -663,13 +635,10 @@ paths:
                     returnPromotions: T
   /getPromotions:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetPromotionsRequestMessage
-      description: >-
-        getPromotions() REST API is used to get the available promotions to the products and packages to that DMA.
+      description: getPromotions() REST API is used to get the available promotions to the products and packages to that DMA.
       responses:
         '200':
           description: Success
@@ -685,10 +654,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       promotionsResponseMessage:
                         type: array
                         items:
@@ -717,7 +683,7 @@ paths:
                           isFreeTrial: true
                           promotionID: 7DFTRIAL
                           duration: 7
-                          VODPromotions: 
+                          VODPromotions: null
                           promotionName: 7 Days free trial
                           bbDescription: Free trial for 7 days.
                           skuORQuickCode: shahid_monthly_1
@@ -728,8 +694,7 @@ paths:
                     GetPromotionsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            No promotions defined for the given DMA:001 for SHAHAD
+                        - errorMessage: 'No promotions defined for the given DMA:001 for SHAHAD'
                           errorCode: eV1416
                       responseCode: '0'
                 eV2511:
@@ -756,7 +721,7 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/getPromotions'
             examples:
-              Android In App - Products request:
+              getPromotions request:
                 value:
                   GetPromotionssRequestMessage:
                     channelPartnerID: SHAHID
@@ -765,12 +730,12 @@ paths:
                     salesChannel: Android
                     offerType: New Customer
                     returnAppChannels: T
-  /getPaymentModes:
+  /getPkgsAndProdsWithPromos:
     post:
       tags:
         - Offer Management APIs
-      operationId: PaymentModesRequestMsg
-      description: getPaymentModes() REST API is used to get all the available Payment Modes
+      operationId: PkgsOrProdsRequestMsg
+      description: 'getPkgsAndProdsWithPromos() REST API is used to fetch the details of Products, Packages and Promotions that are associated with Products and Packages in the given DMA.'
       responses:
         '200':
           description: Success
@@ -778,7 +743,148 @@ paths:
             application/json:
               schema:
                 properties:
-                  PaymentModesResponseMsg:
+                  PkgsOrProdsResponseMsg:
+                    type: object
+                    properties:
+                      responseMessage:
+                        type: string
+                        description: SUCCESS/FAIL.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      pkgWithPromos:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/pkgWithPromos'
+                        description: Returns all packages with promos.
+                      prodWithPromos:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/prodWithPromos'
+                        description: Returns all products with promos.
+              examples:
+                '111111111':
+                  value:
+                    PkgsOrProdsResponseMsg:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    PkgsOrProdsResponseMsg:
+                      message: SUCCESS
+                      responseCode: '1'
+                      pkgWithPromos:
+                        - promoMsg:
+                            duration: '1'
+                            promotionName: Free trial 7 days
+                            promotionType: Free
+                            isSelfPromotion: 'true'
+                            displayName: Monthly VIP Plan
+                            dmaName: Nationwide_CMA
+                            promotionID: 7DFTRIAL
+                          pkgMsg:
+                            displayName: Monthly Pack
+                            chargeType: OneTime
+                            dmaName: Nationwide_CMA
+                            type: Prepaid
+                            basicService: 'False'
+                            packageName: Shahid Monthly Subscription
+                            bbDescription: '2 streams. 5 devices. Unlimited streaming.'
+                            retailPriceDate: 03/29/2021
+                            disPlayOrder: '1'
+                            retailPrice: '149.00'
+                            packageID: shahid_monthly_1
+                            PackageItemMessage:
+                              - name: VIP Product
+                                skuOrCode: shahid_vip
+                                displayOrder: '1'
+                                displayName: Shahid VIP Product
+                                isPackage: 'false'
+                                discountInfo:
+                                  - discountType: Free
+                                    startDate: '1617076839919'
+                                    endDate: '1622485800000'
+                                    discountAmount: '149'
+                                    priceAfterDiscount: '0'
+                                    couponCategory: Gift Coupon
+                                    couponCode: 7DFC6776
+                      prodWithPromos:
+                        - promoMsg:
+                            duration: '1'
+                            promotionName: Free trial 7 days
+                            promotionType: Free
+                            isSelfPromotion: 'true'
+                            displayName: Monthly VIP Plan
+                            dmaName: Nationwide_CMA
+                            promotionID: 7DFTRIAL
+                          prodMsg:
+                            displayName: Monthly Plan
+                            chargeType: OneTime
+                            dmaName: Nationwide_CMA
+                            type: Prepaid
+                            basicService: False
+                            productName: Shahid GO Monthly Subscription
+                            productCategory: SVOD Movies
+                            bbDescription: '2 streams. 5 devices. Unlimited streaming.'
+                            retailPriceDate: 03/29/2021
+                            disPlayOrder: 1
+                            skuORQuickCode: Shahid_go_monthly_1
+                            retailPrice: 149.00
+                            productType: SVOD
+                eV1394:
+                  value:
+                    PkgsOrProdsResponseMsg:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: No Packages/Products defined for the given 'DMA:'
+                          errorCode: eV1394
+                      responseCode: '0'
+                eV1267:
+                  value:
+                    PkgsOrProdsResponseMsg:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: DmaId is mandatory
+                          errorCode: eV1267
+                      responseCode: '0'         
+        x- 111111111:
+          description: Authentication Failed
+        x- eV1267:
+          description: DmaId is mandatory
+        x- eV1394:
+          description: 'No Packages/Products defined for the given ''DMA:'''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                PkgsOrProdsRequestMsg:
+                  type: Object
+                  $ref: '#/components/schemas/getPkgsAndProdsWithPromos'
+            examples:
+              getPkgsAndProdsWithPromos request:
+                value:
+                  PkgsOrProdsRequestMsg:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    dmaID: '001'
+  /getPaymentModesV2:
+    post:
+      tags:
+        - Offer Management APIs
+      operationId: GetPaymentModesV2RequestMessage
+      description: 'getpaymentModesV2() REST API is used to get the list of all plans, payment methods, keys, price etc for the given platform in the request.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetPaymentModesV2ResponseMessage:
                     type: object
                     properties:
                       message:
@@ -786,187 +892,108 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       paymentModesMsg:
                         type: array
                         items:
-                          $ref: '#/components/schemas/paymentModesMsg'
+                          $ref: '#/components/schemas/paymentModesMsgV2'
                         description: Payment mode details.
               examples:
                 '111111111':
                   value:
-                    PaymentModesResponseMsg:
+                    GetPaymentModesV2ResponseMessage:
                       failureMessage:
                         - errorMessage: Authentication Failed
                           errorCode: '111111111'
                       responseCode: '0'
-                Sample successful response with params:
+                Sample successful response-multiple plans:
                   value:
-                    PaymentModesResponseMsg:
+                    GetPaymentModesV2ResponseMessage:
                       message: SUCCESS
                       responseCode: '1'
-                      paymentModesMsg:
-                        - paymentMode: Credit Card
-                          paymentChannel: Credit Card
-                          supportsAutoRenew: T
-                          view_mode: Native
-                          isPaymentGroup: T
-                          paymentModeDescription: ICICI Credit Card
-                          imageUrl: 'https://shahid.evergent.com/user/creditcard?creditcard'
-                          group: CC
-                          paymentModes:
-                            - paymentMode: Credit Card
-                              paymentChannel: Credit Card
-                              supportsAutoRenew: T
-                              view_mode: Native
-                              url: 'https://shahid.evergent.com/shahid/operator.png'
-                              paymentModeDescription: ICICI Credit Card
-                        - paymentMode: Operator
-                          paymentChannel: Operator Billing
-                          supportsAutoRenew: T
-                          view_mode: chromecustom
-                          isPaymentGroup: T
-                          paymentModeDescription: Sling operator
-                          imageUrl: 'https://shahid.evergent.com/user/operator?operator'
-                          group: CC
-                          paymentModes:
-                            - paymentMode: Credit Card
-                              paymentChannel: Credit Card
-                              supportsAutoRenew: T
-                              view_mode: Native
-                              url: 'https://shahid.evergent.com/shahid/operator.png'
-                              paymentModeDescription: Sling operator
-                eV2395:
+                      PaymentModesMsg:
+                        - paymentMode: Google Wallet
+                          logo: 'https://shahid.evergent.com/shahid/operator.png'
+                          recurrence: T
+                          order: '1'
+                          name: Google Wallet
+                          plans:
+                            - duration: '1'
+                              price: '149'
+                              serviceId: shahid_monthly
+                              subTitleFriendly: null
+                              currency: AED
+                              appProductID: shahid.ae.staging.subscription
+                              period: Month
+                            - duration: '2'
+                              price: '419'
+                              serviceId: shahid_VIP
+                              subTitleFriendly: null
+                              currency: AED
+                              appProductID: shahid.vip.ae.staging.subscription
+                              period: Month
+                Sample successful response-multiple paymentmodes:
                   value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: Service Id should not be empty
-                          errorCode: eV2395
-                      responseCode: '0'
-                      status: FAIL
-                eV2291:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: Country is mandatory
-                          errorCode: eV2291
-                      responseCode: '0'
-                      status: FAIL
-                eV2461:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: Platform is mandatory
-                          errorCode: eV2461
-                      responseCode: '0'
-                      status: FAIL
-                eV2462:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: AppType is mandatory
-                          errorCode: eV2462
-                      responseCode: '0'
-                      status: FAIL
-                eV1362:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: Service type cannot be null
-                          errorCode: eV1362
-                      responseCode: '0'
-                      status: FAIL
-                eV2533:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: No payment modes found
-                          errorCode: eV2533
-                      responseCode: '0'
-                      status: FAIL
-                eV1665:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: No Service found with the given Service Id':'
-                          errorCode: eV1665
-                      responseCode: '0'
-                      status: FAIL
-                eV1268:
-                  value:
-                    PaymentModesResponseMsg:
-                      message: FAIL
-                      failureMessage:
-                        - errorMessage: NO Zone X Reference exists with the DMA ID':'
-                          errorCode: eV1268
-                      responseCode: '0'
-                      status: FAIL
+                    GetPaymentModesV2ResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      ProductInfoMsg:
+                        - duration: '1'
+                          price: '149'
+                          serviceId: shahid_monthly
+                          subTitleFriendly: null
+                          currency: AED
+                          appProductID: shahid.ae.staging.subscription
+                          period: Month
+                          PaymentModesMsg:
+                            - paymentMode: Google Wallet
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: Google Wallet
+                            - paymentMode: App Store Billing
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: App Store Billing
+                            - paymentMode: Web
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: Web
         x- 111111111:
           description: Authentication Failed
-        x- eV2395:
-          description: Service Id should not be empty
-        x- eV2291:
-          description: Country is mandatory
-        x- eV2461:
-          description: Platform is mandatory
-        x- eV2462:
-          description: AppType is mandatory
-        x- eV1362:
-          description: Service type cannot be null
-        x- eV2533:
-          description: No payment modes found
-        x- eV1665:
-          description: No Service found with the given Service Id':'
-        x- eV1268:
-          description: NO Zone X Reference exists with the DMA ID':'
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                PaymentModesRequestMsg:
+                GetPaymentModesV2RequestMessage:
                   type: Object
-                  $ref: '#/components/schemas/getPaymentModes'
+                  $ref: '#/components/schemas/getPaymentModesV3'
             examples:
-              getPaymentModes request for mobile apps:
+              GetPaymentModesV2 request with multiple plans in response:
                 value:
-                  PaymentModesRequestMsg:
+                  GetPaymentModesV2RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: XXXXX
-                    dmaID: '001'
                     appType: App
                     platform: Mobile
-                    country: AE
-                    serviceID: shahid_monthly
-                    serviceType: PRODUCT
-              getPaymentModes request for web apps:
+              GetPaymentModesV2 request with multiple payment modes in response:
                 value:
-                  PaymentModesRequestMsg:
+                  GetPaymentModesV2RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: XXXXX
-                    dmaID: '001'
-                    appType: Web
-                    platform: Desktop
-                    country: AE
-                    serviceID: shahid_monthly
-                    serviceType: PRODUCT
+                    appType: App
+                    platform: Mobile
+                    paymentModes: 'true'
   /getPaymentModesV3:
     post:
       tags:
         - Offer Management APIs
       operationId: GetPaymentModesV3RequestMessage
-      description: getpaymentModesV3() REST API is used to get the list of all plans, payment methods, keys, price etc for the given platform in the request.
+      description: 'getpaymentModesV3() REST API is used to get the list of all plans, payment methods, keys, price etc for the given platform in the request.'
       responses:
         '200':
           description: Success
@@ -982,10 +1009,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       paymentModesMsg:
                         type: array
                         items:
@@ -994,19 +1018,19 @@ paths:
               examples:
                 '111111111':
                   value:
-                    PaymentModesResponseMsg:
+                    GetPaymentModesV3ResponseMessage:
                       failureMessage:
                         - errorMessage: Authentication Failed
                           errorCode: '111111111'
                       responseCode: '0'
-                Sample successful response with params:
+                Sample successful response-multiple plans:
                   value:
-                    PaymentModesResponseMsg:
+                    GetPaymentModesV3ResponseMessage:
                       message: SUCCESS
                       responseCode: '1'
                       PaymentModesMsg:
                         - paymentMode: Google Wallet
-                          logo: https://shahid.evergent.com/shahid/operator.png
+                          logo: 'https://shahid.evergent.com/shahid/operator.png'
                           recurrence: T
                           order: '1'
                           name: Google Wallet
@@ -1014,10 +1038,46 @@ paths:
                             - duration: '1'
                               price: '149'
                               serviceId: shahid_monthly
-                              subTitleFriendly: 
+                              subTitleFriendly: null
                               currency: AED
                               appProductID: shahid.ae.staging.subscription
                               period: Month
+                            - duration: '2'
+                              price: '419'
+                              serviceId: shahid_VIP
+                              subTitleFriendly: null
+                              currency: AED
+                              appProductID: shahid.vip.ae.staging.subscription
+                              period: Month
+                Sample successful response-multiple paymentmodes:
+                  value:
+                    GetPaymentModesV3ResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      ProductInfoMsg:
+                        - duration: '1'
+                          price: '149'
+                          serviceId: shahid_monthly
+                          subTitleFriendly: null
+                          currency: AED
+                          appProductID: shahid.ae.staging.subscription
+                          period: Month
+                          PaymentModesMsg:
+                            - paymentMode: Google Wallet
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: Google Wallet
+                            - paymentMode: App Store Billing
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: App Store Billing
+                            - paymentMode: Web
+                              logo: 'https://shahid.evergent.com/shahid/image.png'
+                              recurrence: T
+                              order: '1'
+                              name: Web
         x- 111111111:
           description: Authentication Failed
       requestBody:
@@ -1030,17 +1090,24 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/getPaymentModesV3'
             examples:
-              GetPaymentModesV3 request:
+              GetPaymentModesV3 request with multiple plans in response:
                 value:
                   GetPaymentModesV3RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: XXXXX
                     appType: App
                     platform: Mobile
-                    transactionId: '53453643'
+              GetPaymentModesV3 request with multiple payment modes in response:
+                value:
+                  GetPaymentModesV3RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    appType: App
+                    platform: Mobile
+                    paymentModes: 'true'
 components:
   securitySchemes:
-    bearerAuth: 
+    bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -1061,9 +1128,7 @@ components:
           description: Partner authentication Key.
         customerUsername:
           type: string
-          description: >-
-            Username of the customer and it will be same as email when the user
-            chooses to register with emailid.
+          description: Username of the customer and it will be same as email when the user chooses to register with emailid.
         customerPassword:
           type: string
           description: Customer password. (Constant value to be passed for this parameter)
@@ -1090,9 +1155,7 @@ components:
         alternateUserName:
           type: string
           default: ''
-          description: >-
-            It will be same as mobile number when the user choose to register
-            with mobile number.
+          description: It will be same as mobile number when the user choose to register with mobile number.
         spAccountID:
           type: string
           description: Unique account id in EV system.
@@ -1113,9 +1176,7 @@ components:
             - US(USA)
         alertNotificationEmail:
           type: string
-          description: >-
-            Notification Email related to Marketing and Promotions Opt in/opt
-            out.
+          description: Notification Email related to Marketing and Promotions Opt in/opt out.
           default: 'false'
     searchAccountV2:
       type: object
@@ -1137,15 +1198,11 @@ components:
           description: Unique sp account id for the account.
         userName:
           type: string
-          description: >-
-            Username of the customer and it will be same as email when the user
-            chooses to register with emailid.
+          description: Username of the customer and it will be same as email when the user chooses to register with emailid.
         alternateUserName:
           type: string
           default: ''
-          description: >-
-            It will be same as mobile number when the user choose to register
-            with mobile number.
+          description: It will be same as mobile number when the user choose to register with mobile number.
         socialLoginType:
           type: string
           description: Social login type for the user.
@@ -1177,9 +1234,7 @@ components:
           description: Partner authentication key.
         customerUsername:
           type: string
-          description: >-
-            Username of the customer and it will be same as email when the user
-            chooses to register with emailid.
+          description: Username of the customer and it will be same as email when the user chooses to register with emailid.
         customerPassword:
           type: string
           description: Customer password. (Constant value to be passed for this parameter)
@@ -1196,9 +1251,7 @@ components:
         alternateUserName:
           type: string
           default: ''
-          description: >-
-            It will be same as mobile number when the user choose to register
-            with mobile number.
+          description: It will be same as mobile number when the user choose to register with mobile number.
         socialLoginToken:
           type: string
           default: string
@@ -1251,7 +1304,7 @@ components:
           default: F
         returnLocaleDisplayName:
           type: string
-          description: 'Returns differnt languages for display name'
+          description: Returns differnt languages for display name
           example: T/F
           default: F
         salesChannel:
@@ -1534,145 +1587,13 @@ components:
         productPrice:
           type: number
           description: Price of the product.
-    getPaymentModes:
-      type: object
-      required:
-        - channelPartnerID
-        - apiKey
-        - dmaID
-        - appType
-        - platform
-        - country
-        - serviceID
-        - serviceType
-      properties:
-        channelPartnerID:
-          type: string
-          description: Unique ID number of channel partner.
-          enum:
-            - SHAHID
-        apiKey:
-          type: string
-          description: Partner authentication Key.
-        dmaID:
-          type: string
-          description: Unique ID of the channel partner DMA.
-          example: '001'
-        appType:
-          type: string
-          description: App type from where user tries to load payment modes.
-          enum:
-            - Desktop
-            - App
-        platform:
-          type: string
-          description: Platform from where user tries to load payment modes.
-          enum:
-            - Web
-            - Mobile
-        country:
-          type: string
-          description: Country from where user tries to purchase.
-        serviceID:
-          type: string
-          description: Unique ID of the service.
-        serviceType:
-          type: string
-          description: Type of service.
-          enum:
-            - PRODUCT
-            - PACKAGE
-    paymentModesMsg:
-      type: object
-      properties:
-        paymentMode:
-          type: string
-          description: Payment Mode to be shown to a customer
-          enum:
-          - Credit Card
-          - Debit Card
-          - Pay By Mobile
-        paymentChannel:
-          type: string
-          description: Value to be sent to the EV URL(CC/DC/FORTUMO etc or to the label of placeOrder/addSubscription Api.
-          enum:
-          - App Store Billing
-          - Google Store
-          - Google Wallet
-        supportsAutoRenew:
-          type: string
-          description: A string value indicating if the payment mode supports an auto renewable feature or not.
-          example: T/F
-          default: F
-        view_mode:
-          type: string
-          description: If the view_mode is received for a particular payment mode, Android client needs to open the Payment URL in that particular view based in the view received.
-          enum:
-          - Webview
-          - Native
-          - chromecustom
-        isPaymentGroup:
-          type: string
-          description: If the payment mode is a group type, then it will return the value T or F.
-          example: T/F
-          default: F
-        paymentModes:
-          type: array
-          items:
-            $ref: '#/components/schemas/paymentModes'
-          description: Payment mode Details
-        paymentModeDescription:
-          type: boolean
-          description: Description of the payment mode.
-        imageUrl:
-          type: string
-          description: Payment mode Image URL link.
-        group:
-          type: string
-          description: Payment method group to which it is assigned.
-    paymentModes:
-      type: object
-      properties:
-        paymentMode:
-          type: string
-          description: Payment Mode to be shown to a customer
-          enum:
-          - Credit Card
-          - Debit Card
-          - Pay By Mobile
-        paymentChannel:
-          type: string
-          description: Value to be sent to the EV URL(CC/DC/FORTUMO etc or to the label of placeOrder/addSubscription Api.
-          enum:
-          - App Store Billing
-          - Google Store
-          - Google Wallet
-        supportsAutoRenew:
-          type: string
-          description: A string value indicating if the payment mode supports an auto renewable feature or not.
-          example: T/F
-          default: F
-        view_mode:
-          type: string
-          description: If the view_mode is received for a particular payment mode, Android client needs to open the Payment URL in that particular view based in the view received.
-          enum:
-          - Webview
-          - Native
-          - chromecustom
-        url:
-          type: string
-          description: Payment mode Image URL link.
-        paymentModeDescription:
-          type: boolean
-          description: Description of the payment mode.
-    getPaymentModesV3:
+    getPaymentModesV2:
       type: object
       required:
         - channelPartnerID
         - apiKey
         - appType
         - platform
-        - transactionId
       properties:
         channelPartnerID:
           type: string
@@ -1697,16 +1618,20 @@ components:
         transactionId:
           type: string
           description: Unique Identifier between Partner and EV system.
-    paymentModesMsgV3:
+        paymentMode:
+          type: string
+          description: Returns payment modes to plans.
+          example: true/false
+    paymentModesMsgV2:
       type: object
       properties:
         paymentMode:
           type: string
           description: Payment Mode to be shown to a customer
           enum:
-          - Google Wallet
-          - App Store Billing
-          - Web
+            - Google Wallet
+            - App Store Billing
+            - Web
         logo:
           type: string
           description: Logo URL of payment mode.
@@ -1714,8 +1639,73 @@ components:
           type: string
           description: Indicates if payment modes are recurring or not.
           enum:
-          - Recurring
-          - One Time
+            - Recurring
+            - One Time
+        order:
+          type: string
+          description: Display order of the payment mode.
+        name:
+          type: string
+          description: Name of the payment mode.
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/plans'
+          description: Plan Details
+    getPaymentModesV3:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - appType
+        - platform
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        appType:
+          type: string
+          description: App type from where user tries to load payment modes.
+          enum:
+            - Desktop
+            - App
+        platform:
+          type: string
+          description: Platform from where user tries to load payment modes.
+          enum:
+            - Web
+            - Mobile
+        transactionId:
+          type: string
+          description: Unique Identifier between Partner and EV system.
+        paymentMode:
+          type: string
+          description: Returns payment modes to plans.
+          example: true/false
+    paymentModesMsgV3:
+      type: object
+      properties:
+        paymentMode:
+          type: string
+          description: Payment Mode to be shown to a customer
+          enum:
+            - Google Wallet
+            - App Store Billing
+            - Web
+        logo:
+          type: string
+          description: Logo URL of payment mode.
+        recurrence:
+          type: string
+          description: Indicates if payment modes are recurring or not.
+          enum:
+            - Recurring
+            - One Time
         order:
           type: string
           description: Display order of the payment mode.
@@ -1754,3 +1744,206 @@ components:
         period:
           type: string
           description: Period of the product.
+    getPkgsAndProdsWithPromos:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: '001'
+        returnAppChannels:
+          type: string
+          description: 'Returns IAP appID and appName, appChannel.'
+          example: T/F
+          default: F
+        salesChannel:
+          type: string
+          description: Device operating system platform.
+          enum:
+            - Android
+            - iOS
+            - Web
+        offerType:
+          type: string
+          description: Eligible offer Types of the customer.
+          example: New Customer
+    pkgWithPromos:
+      type: object
+      properties:
+        promoMsg:
+          type: object
+          $ref: '#/components/schemas/promoMsg'
+          description: Promotional Details
+        pkgMsg:
+          type: object
+          description: Promotional Details
+          $ref: '#/components/schemas/pkgMsg'
+    prodWithPromos:
+      type: object
+      properties:
+        promoMsg:
+          type: object
+          $ref: '#/components/schemas/promoMsg'
+          description: Promotional Details
+        prodMsg:
+          type: object
+          description: Promotional Details
+          $ref: '#/components/schemas/prodMsg'
+    promoMsg:
+      type: object
+      properties:
+        duration:
+          type: string
+          description: Duration of Promotion.
+        promotionName:
+          type: string
+          description: Name of Promotion.
+        promotionType:
+          type: string
+          description: Type of Promotion.
+        isSelfPromotion:
+          type: string
+          description: indicates if promotion is self promotion or not.
+        displayName:
+          type: string
+          description: Display name of Promotion.
+        dmaName:
+          type: string
+          description: DMA name of Promotion.
+        promotionID:
+          type: string
+          description: Unique ID of Promotion.
+    pkgMsg:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Name of Package.
+        chargeType:
+          type: string
+          description: Type of charge
+        type:
+          type: string
+          description: Type of package.
+        basicService:
+          type: string
+          description: Indicates if package is basic service or not.
+        packageName:
+          type: string
+          description: Name of the package.
+        bbDescription:
+          type: string
+          description: Description of the package.
+        retailPriceDate:
+          type: string
+          description: Start date of the retail price.
+        disPlayOrder:
+          type: string
+          description: Display order of the package.
+        retailPrice:
+          type: string
+          description: Price ofthe pacakge.
+        packageID:
+          type: string
+          description: Unique ID of the package.
+        PackageItemMessage:
+          type: array
+          items:
+            $ref: '#/components/schemas/packageItemMessage'
+    packageItemMessage:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Package Name.
+        skuOrCode:
+          type: string
+          description: SKU of the package
+        displayOrder:
+          type: string
+          description: Display order of the promotion.
+        displayName:
+          type: string
+          description: Display name of the promotion.
+        isPackage:
+          type: string
+          description: Indicates if this is package or not.
+        discountInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/discountInfo'
+    discountInfo:
+      type: object
+      properties:
+        discountType:
+          type: string
+          description: Type of Discount.
+        startDate:
+          type: string
+          description: Start date of discount.
+        enddate:
+          type: string
+          description: End date of discount.
+        discountAmount:
+          type: string
+          description: Discount amount.
+        priceAfterDiscount:
+          type: string
+          description: Price after discount is applied.
+        couponCategory:
+          type: string
+          description: Category of the coupon.
+        couponCode:
+          type: string
+          description: Coupon code.
+    prodMsg:
+      type: object
+      properties:
+        displayName:
+          type: string
+          description: Display name of Package.
+        chargeType:
+          type: string
+          description: Type of charge
+        dmaName:
+          type: string
+          description: Product Dma.
+        basicService:
+          type: string
+          description: Indicates if service is basic service or not.
+        productName:
+          type: string
+          description: Name of the product.
+        productCategory:
+          type: string
+          description: Category of the product.
+        bbDescription:
+          type: string
+          description: BB description of the product.
+        retailPriceDate:
+          type: string
+          description: Date when retail price is defined.
+        disPlayOrder:
+          type: string
+          description: Display order of the product.
+        skuORQuickCode:
+          type: string
+          description: SKU of the product.
+        retailPrice:
+          type: string
+          description: Retail price of the product.
+        productType:
+          type: string
+          description: Type of product.
