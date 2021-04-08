@@ -23,6 +23,8 @@ tags:
 paths:
   /createUser:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: CreateUserRequestMessage
@@ -138,6 +140,8 @@ paths:
                     alertNotificationEmail: 'true'
   /searchAccountV2:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: SearchAccountV2RequestMessage
@@ -252,6 +256,8 @@ paths:
                     socialLoginType: google
   /getOAuthAccessTokenv2:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: GetOAuthAccessTokenv2RequestMessage
@@ -387,6 +393,8 @@ paths:
                       serialNo: GUT45j6b7df66
   /getProducts:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetProductsRequestMessage
@@ -635,6 +643,8 @@ paths:
                     returnPromotions: T
   /getPromotions:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetPromotionsRequestMessage
@@ -732,6 +742,8 @@ paths:
                     returnAppChannels: T
   /getPkgsAndProdsWithPromos:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: PkgsOrProdsRequestMsg
@@ -873,6 +885,8 @@ paths:
                     dmaID: '001'
   /getPaymentModesV2:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetPaymentModesV2RequestMessage
@@ -990,6 +1004,8 @@ paths:
                     paymentModes: 'true'
   /getPaymentModesV3:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetPaymentModesV3RequestMessage
@@ -1105,6 +1121,284 @@ paths:
                     appType: App
                     platform: Mobile
                     paymentModes: 'true'
+  /addSubscription:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: AddSubscriptionRequestMessage
+      description: >-
+        addSubscription() REST API is used to place a subscription at a go to the customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  AddSubscriptionResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      orderID:
+                        type: string
+                        description: Order ID of the placed service.
+                      validityTill:
+                        type: number
+                        description: Ordered product expiry time stamp in milliseconds.
+              examples:
+                '111111111':
+                  value:
+                    AddSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Credit/ Debit card successful purchase:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      orderID: '748200'
+                      validityTill: 1570627009000
+                Google Wallet successful purchase:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      orderID: '356280'
+                      validityTill: 1602327007458
+                Apple App Store successful purchase:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      orderID: '847692'
+                      validityTill: 1638128435790
+                eV2374:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: >-
+                            No Service exists with the given AppServiceID : 
+                            com.shahid.subscription.annual.free
+                          errorCode: eV2374
+                      responseCode: '0'
+                eV2293:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Google wallet receipt validation failed
+                          errorCode: eV2293
+                      responseCode: '0'
+                eV2249:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: >-
+                            This receipt is from the production environment, but
+                            it was sent to the test environment for
+                            verification. Send it to the production environment
+                            instead
+                          errorCode: eV2249
+                      responseCode: '0'
+                eV1663:
+                  value:
+                    AddSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Either ServiceId or ServiceName is required
+                          errorCode: eV1663
+                      responseCode: '0'
+        x- eV1744:
+          description: Account does not exists with given details
+        x- eV2124:
+          description: Invalid Session Token
+        x- eV1003:
+          description: Invalid SP Account ID XXXXXXXX  for  HOOQIND
+        x- eV1342:
+          description: Invalid customer ID XXXXXXXXX  for  XXXXXX
+        x- eV1638:
+          description: Account doesn't exists with the given SP Account ID XXXXXXXX and Customer ID XXXXXXX
+        x- eV1377:
+          description: Invalid amount
+        x- eV2365:
+          description: The Receipt is already used by other customer
+        x- eV2378:
+          description: The Receipt is already used
+        x- eV2402:
+          description: Subscription is already expired with the given product id
+        x- eV2242:
+          description: The App Store could not read the JSON object you provided
+        x- eV2243:
+          description: The data in the receipt-data property was malformed or missing
+        x- eV2244:
+          description: The receipt could not be authenticated
+        x- eV2245:
+          description: The shared secret you provided does not match the shared secret on file for your account
+        x- eV2246:
+          description: The receipt server is not currently available
+        x- eV2247:
+          description: This receipt is valid but the subscription has expired. When this status code is returned to your server, the receipt data is also decoded and returned as part of the response.
+        x- eV2248:
+          description: This receipt is from the test environment, but it was sent to the production environment for verification. Send it to the test environment instead
+        x- eV2249:
+          description: This receipt is from the production environment, but it was sent to the test environment for verification. Send it to the production environment instead
+        x- eV2292:
+          description: Google Wallet receipt expired
+        x- eV2293:
+          description: Google wallet receipt validation failed
+        x- eV2591:
+          description: The transaction represented by this Purchase Token is no longer valid
+        x- eV2592:
+          description: Invalid sharedSecret
+        x- eV2593:
+          description: Invalid User ID
+        x- eV2594:
+          description: Invalid Purchase Token
+        x- eV2595:
+          description: The Purchase Token was created with credentials that have expired.Use renew to generate a valid purchase token
+        x- eV2596:
+          description: There was an Internal Server Error
+        x- eV2374:
+          description: No Service exists with the given AppServiceID
+        x- eV1663:
+          description: Either ServiceId or ServiceName is required
+        x- eV1135:
+          description: Invalid Quantity, Quantity of the Service should be greater than or equal to one
+        x- eV1136:
+          description: Invalid Quantity, should be in number
+        x- eV1668:
+          description: Service Type should be PRODUCT/PACKAGE
+        x- eV1106:
+          description: Insufficient parameters. Please provide Services Info
+        x- eV1107:
+          description: Insufficient parameters. Please provide payment method Info
+        x- eV1108:
+          description: Label cannot be empty in Payment Method Info
+        x- eV1110:
+          description: Invalid Parameters in Payment Method Info
+        x- eV1680:
+          description: Invalid State in CardBilling
+        x- eV1681:
+          description: Invalid Country in CardBilling
+        x- eV1246:
+          description: Invalid ZipCode
+        x- eV1682:
+          description: Insufficient CardBilling Parameters
+        x- eV1854:
+          description: Exception occured while inserting payment method
+        x- eV1684:
+          description: Payment method is mandatory
+        x- eV2755:
+          description: This coupon has already been expired
+        x- eV1861:
+          description: This coupon has already been redeemed
+        x- eV1679:
+          description: No Promotional Item exists with the given
+        x- eV1665:
+          description: No Service found with the given Service Id XXXXXX  and Service name
+        x- eV1138:
+          description: No Service exists with the given name  XXXXXXXXXX
+        x- eV1676:
+          description: PromotionId  XXXXXXXX
+        x- eV1677:
+          description: PromotionName  XXXXXXXX
+        x- eV1678:
+          description: PromotionId/PromotionName    XXXXXXXXX/XXXXXXXXXX
+        x- eV1674:
+          description: doesn't exist with the given ServiceId/ServiceName  XXXXXXX/XXXXXXXX
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AddSubscriptionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/addSubscription'
+            examples:
+              Credit/ Debit card purchase:
+                value:
+                  AddSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    isSkipDefaultPromo: false
+                    serviceType: PRODUCT
+                    serviceId: monthly_vip
+                    quantity: '1'
+                    paymentmethodInfo:
+                      label: Credit Card
+                      transactionReferenceMsg:
+                        paymentMethodId: '453543'
+              Card purchase using coupon:
+                value:
+                  AddSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    isSkipDefaultPromo: false
+                    serviceType: PRODUCT
+                    serviceId: monthly_vip
+                    couponCode: freevip234
+                    couponAmpunt: '12.99'
+                    quantity: '1'
+                    paymentmethodInfo:
+                      label: Credit Card
+                      transactionReferenceMsg:
+                        paymentMethodId: '453543'
+              Card purchase using promotion:
+                value:
+                  AddSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    isSkipDefaultPromo: false
+                    serviceType: PRODUCT
+                    serviceId: monthly_vip
+                    promotionId: trialsvod
+                    
+                    quantity: '1'
+                    paymentmethodInfo:
+                      label: Credit Card
+                      transactionReferenceMsg:
+                        paymentMethodId: '453543'
+              App Store Billing purchase:
+                value:
+                  AddSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    rateType: App Store Billing
+                    sessionToken: uCtL-h5Rf-6mxf-BFEv-tM29-HSLZ-Vs
+                    appServiceID: apple.shahid.us.staging.subscription
+                    serviceType: PRODUCT
+                    quantity: '1'
+                    paymentmethodInfo:
+                      label: App Store Billing
+                      transactionReferenceMsg:
+                        txID: <Valid Receipt>
+                        txMsg: Success
+              Google Wallet Play Store purchase:
+                value:
+                  AddSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    rateType: Google Wallet
+                    sessionToken: rifM-3h2r-sK5U-PqQf-yy8v-LMQZ-lt
+                    appServiceID: google.shahid.us.staging.subscription
+                    serviceType: PRODUCT
+                    quantity: '1'
+                    paymentmethodInfo:
+                      label: Google Wallet
+                      transactionReferenceMsg:
+                        txID: <Valid Receipt>
+                        txMsg: Success
 components:
   securitySchemes:
     bearerAuth:
@@ -1947,3 +2241,86 @@ components:
         productType:
           type: string
           description: Type of product.
+    addSubscription:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - paymentmethodInfo
+        - sessionToken
+        - priceCharged
+        - isSkipDefaultPromo
+        - serviceId
+        - appServiceID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        appServiceID:
+          type: string
+          description: Unique app id of the product in store.
+        sessionToken:
+          type: string
+          description: Unique login token generated for the account.
+        isSkipDefaultPromo:
+          type: boolean
+          description: DefaultPromo is been Skipped
+          example: false
+        serviceType:
+          type: string
+          description: serviceType of the Service.
+          example: PRODUCT
+        paymentmethodInfo:
+          type: object
+          $ref: '#/components/schemas/paymentmethodInfo'
+          description: Payment method related details.
+        rateType:
+          type: string
+          description: Indicate the Rate Type of the Product/Package.
+        couponCode:
+          type: string
+          description: Coupon code which is to be redeemed on the product.
+        couponAmount:
+          type: string
+          description: Coupon Amount which is to be charged on the Product.
+        promotionId:
+          type: string
+          description: Unique Id of the promotion.
+        serviceId:
+          type: string
+          description: serviceId of the Service.
+    paymentmethodInfo:
+      type: object
+      required:
+        - label
+      properties:
+        label:
+          type: string
+          description: Label of the payment method.
+          enum:
+            - App Store Billing
+            - Google Wallet
+            - Credit Card
+        transactionReferenceMsg:
+          type: object
+          $ref: '#/components/schemas/transactionReferenceMsg'
+          description: Transaction Reference Message details.
+        makeAutoPayment:
+          type: string
+          description: >-
+            Indicates whether the payment method used should be made as auto
+            payment method or not.
+    transactionReferenceMsg:
+      type: object
+      required:
+        - txID
+      properties:
+        txID:
+          type: string
+          description: Unique ID of the transaction.
+        txMsg:
+          type: string
+          description: Transaction Message.
