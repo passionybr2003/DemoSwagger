@@ -1,0 +1,978 @@
+openapi: 3.0.0
+servers:
+  - url: 'https://rest-dev.evergent.com/shahid'
+    description: The Dev API server
+info:
+  description: |-
+    <b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+
+     <br><br>
+     <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
+  version: ''
+  title: EV Shahid API - V14.0
+  contact:
+    email: pavankumar.a@evergent.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: Acquisition and Authentication
+    description: Secured Admin-only calls
+paths:
+  /createUser:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Acquisition and Authentication
+      operationId: CreateUserRequestMessage
+      description: 'createUser() REST API is used to create an account in Evergent system. <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required based on registration type.'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  CreateUserResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail
+                        example: SUCCESS
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                        example: 1
+                      spAccountID:
+                        type: string
+                        description: A unique identifier of the account.
+                      cpCustomerID:
+                        type: string
+                        description: A unique identifier of the account in Partner systems.
+              examples:
+                '111111111':
+                  value:
+                    CreateUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successfull response:
+                  value:
+                    CreateUserResponseMessage:
+                      cpCustomerID: '21021323488386788'
+                      spAccountID: '2102132348178598386788'
+                      message: SUCCESS
+                      responseCode: '1'
+                eV2160:
+                  value:
+                    CreateUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: Alternate User Name already exists
+                          errorCode: eV2160
+                      responseCode: '0'
+                eV1062:
+                  value:
+                    CreateUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: User Name already exists
+                          errorCode: eV1062
+                      responseCode: '0'
+                eV2362:
+                  value:
+                    CreateUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: Social Login Id with its type already exists
+                          errorCode: eV2362
+                      responseCode: '0'
+                eV4191:
+                  value:
+                    CreateUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: Account with the given SPAccountID is already exists
+                          errorCode: eV4191
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2362:
+          description: Social Login Id with its type already exists
+        x- eV1062:
+          description: User Name already exists
+        x- eV2160:
+          description: Alternate User Name already exists
+        x- eV4191:
+          description: Account with the given SPAccountID is already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                CreateUserRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/createUser'
+            examples:
+              Customer Registration using email:
+                value:
+                  CreateUserRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    email: testdemo2@yopmail.com
+                    spAccountID: '191112114157906490851'
+                    country: DU
+                    firstName: Shahid
+                    lastName: Afridi
+              Customer Registration using phone number:
+                value:
+                  CreateUserRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    mobileNumber: '971855532335'
+                    spAccountID: '191112114157906490851'
+                    country: DU
+                    firstName: Shahid
+                    lastName: Afridi
+              Customer Registration using social login:
+                value:
+                  CreateUserRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    socialLoginType: Google
+                    socialLoginID: '191112114157906490851'
+                    spAccountID: '191112114157906490851'
+                    country: DU
+                    firstName: Shahid
+                    lastName: Afridi
+  /searchAccountV2:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Acquisition and Authentication
+      operationId: SearchAccountV2RequestMessage
+      description: searchAccount() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  SearchAccountV2RequestMessage:
+                    type: object
+                    properties:
+                      contactUserName:
+                        type: string
+                        description: User name of the user used to login to account.
+                      email:
+                        type: string
+                        description: Contact email of the user.
+                      name:
+                        type: string
+                        description: Name of the user.
+                      channelPartnerID:
+                        type: string
+                        description: Channel partner of the user.
+                      message:
+                        type: string
+                        description: Success/Fail
+                      accountID:
+                        type: string
+                        description: A unique SP Account Id of the customer in Partner systems.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
+                      isProfileComplete:
+                        type: string
+                        description: Indicates profile is complete or not.
+                      status:
+                        type: string
+                        description: Status of the account
+                      cpCustomerID:
+                        type: string
+                        description: A unique ID of the account in EV systems.
+              examples:
+                '111111111':
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      contactUserName: shahidafridi@yopmail.com
+                      message: SUCCESS
+                      accountID: '191112114157906490851'
+                      responseCode: '1'
+                      channelPartnerID: SHAHID_DUBAI
+                      email: shahidafridi@yopmail.com
+                      isProfileComplete: 'false'
+                      status: Active
+                      name: Shahid Afridi
+                      cpCustomerID: '1911121141490851'
+                eV2327:
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: No Accounts Found
+                          errorCode: 'eV2327'
+                      responseCode: '0'
+                      message: No Accounts Found
+                20003:
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter
+                          errorCode: '20003'
+        x- 20003:
+          description: Missing Required Parameter
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2327:
+          description: No Accounts Found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SearchAccountV2RequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/searchAccountV2'
+            examples:
+              Sample successful request with spAccountID:
+                value:
+                  SearchAccountV2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    spAccountID: '191112114157906490851'
+              Sample successful request with alternateUserName:
+                value:
+                  SearchAccountV2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    phone: '971855532321'
+              Sample successful request with username:
+                value:
+                  SearchAccountV2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    email: us1573559081@yopmail.com
+              Sample successful request with social login details:
+                value:
+                  SearchAccountV2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    socialLoginID: 'testdemo6@yopmail.com,'
+                    socialLoginType: facebook
+  /getOAuthAccessTokenv2:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Acquisition and Authentication
+      operationId: GetOAuthAccessTokenv2RequestMessage
+      description: getOAuthAccessTokenv2() REST API is used to SignIn the user.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetOAuthAccessTokenv2ResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful login message.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      accessToken:
+                        type: string
+                        description: Encrypted string of account info and device info.
+                      refreshToken:
+                        type: string
+                        description: Refresh Token for the user.
+                      tokenType:
+                        type: string
+                        description: Type of the token.
+              examples:
+                '20003':
+                  value:
+                    GetOAuthAccessTokenv2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter
+                          errorCode: '20003'
+                      responseCode: '0'
+                '111111111':
+                  value:
+                    GetOAuthAccessTokenv2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                eV2327:
+                  value:
+                    GetOAuthAccessTokenv2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: No account found with the given details.
+                          errorCode: eV2327
+                      responseCode: '0'
+                eV2138:
+                  value:
+                    GetOAuthAccessTokenv2ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Generic Failure
+                          errorCode: eV2138
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    GetOAuthAccessTokenv2ResponseMessage:
+                      responseCode: '1'
+                      message: User Logged in successfully.
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      tokenType: Bearer
+                      refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2138:
+          description: Generic Failure
+        x- 20003:
+          description: Missing Required Parameter
+        x- eV2327:
+          description: No account found with the given details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetOAuthAccessTokenRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getOAuthAccessTokenv2'
+            examples:
+              Successful request using spAccountID:
+                value:
+                  GetOAuthAccessTokenv2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    spAccountID: '191112114157906490851'
+  /refreshToken:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Acquisition and Authentication
+      operationId: RefreshTokenRequestMessage
+      description: refreshToken() REST API is used to SignIn the user.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  RefreshTokenResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful login message.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      accessToken:
+                        type: string
+                        description: Encrypted string of account info and device info.
+                      refreshToken:
+                        type: string
+                        description: Refresh Token for the user.
+                      tokenType:
+                        type: string
+                        description: Type of the token.
+                      expiresIn:
+                        type: integer
+                        description: Type of the token.
+              examples:
+                '20003':
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter
+                          errorCode: '20003'
+                      responseCode: '0'
+                '111111111':
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                eV2767:
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: Invalid RefreshToken
+                          errorCode: eV2767
+                      responseCode: '0'
+                eV2138:
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: Generic Failure
+                          errorCode: eV2138
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    RefreshTokenResponseMessage:
+                      responseCode: '1'
+                      message: User Logged in successfully.
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      tokenType: Bearer
+                      refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2138:
+          description: Generic Failure
+        x- 20003:
+          description: Missing Required Parameter
+        x- eV2767:
+          description: Invalid RefreshToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RefreshTokenResponseMessage:
+                  type: Object
+                  $ref: '#/components/schemas/refreshToken'
+            examples:
+              Successful request using spAccountID:
+                value:
+                  RefreshTokenRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
+  /getProducts:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: GetProductsRequestMessage
+      description: getProducts() REST API is used to get the products list available to that DMA.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetProductsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      productsResponseMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/productsResponseMessage'
+                        description: Product details.
+              examples:
+                '111111111':
+                  value:
+                    GetProductsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response with params:
+                  value:
+                    GetProductsResponseMessage:
+                      message: SUCCESS
+                      productsResponseMessage:
+                        - serviceType: SVOD
+                          period: Day(s)
+                          displayName: VIP Weekly
+                          dmaName: Product Market Area
+                          productName: VIP Weekly
+                          basicService": false
+                          isInterstitialAdsEnabled": false
+                          productCategory: Subscription
+                          duration: 7
+                          suggestedPrice": 0
+                          isAdsEnabled": false
+                          bbDescription: VIP Weekly
+                          renewable": true
+                          skuORQuickCode: VIPW
+                          retailPrice": 5
+                          currencyCode: USD
+                          isBannerAdsEnabled": false
+                          productDescription: VIP Weekly
+                        - serviceType: SVOD
+                          period: Month(s)
+                          displayName: VIP Monthly
+                          dmaName: Product Market Area
+                          productName: VIP Monthly
+                          basicService": false
+                          isInterstitialAdsEnabled": false
+                          productCategory: Subscription
+                          duration: 1
+                          suggestedPrice": 0
+                          isAdsEnabled": false
+                          bbDescription: VIP Monthly
+                          renewable": true
+                          skuORQuickCode: VIPM01
+                          retailPrice": 10
+                          currencyCode: USD
+                          isBannerAdsEnabled": false
+                          productDescription: VIP Monthly
+                        - serviceType: SVOD
+                          period: Month(s)
+                          displayName: VIP 3 Months
+                          dmaName: Product Market Area
+                          productName: VIP 3 Months
+                          basicService": false
+                          isInterstitialAdsEnabled": false
+                          productCategory: Subscription
+                          duration: 3
+                          suggestedPrice": 0
+                          isAdsEnabled": false
+                          bbDescription: VIP 3 Months
+                          renewable": true
+                          skuORQuickCode: VIP3M
+                          retailPrice": 35
+                          currencyCode: USD
+                          isBannerAdsEnabled": false
+                          productDescription: VIP 3 Months 
+                        - serviceType: SVOD
+                          period: Month(s)
+                          displayName: VIP 6 Months
+                          dmaName: Product Market Area
+                          productName: VIP 6 Months
+                          basicService": false
+                          isInterstitialAdsEnabled": false
+                          productCategory: Subscription
+                          duration: 6
+                          suggestedPrice": 0
+                          isAdsEnabled": false
+                          bbDescription: VIP 6 Months
+                          renewable": true
+                          skuORQuickCode: VIP6M
+                          retailPrice": 60
+                          currencyCode: USD
+                          isBannerAdsEnabled": false
+                          productDescription: VIP 6 Months
+                        - serviceType: SVOD
+                          period: Month(s)
+                          displayName: VIP 12 Months
+                          dmaName: Product Market Area
+                          productName: VIP 12 Months
+                          basicService": false
+                          isInterstitialAdsEnabled": false
+                          productCategory: Subscription
+                          duration: 12
+                          suggestedPrice": 0
+                          isAdsEnabled": false
+                          bbDescription: VIP 12 Months
+                          renewable": true
+                          skuORQuickCode: VIP12M
+                          retailPrice": 120
+                          currencyCode: USD
+                          isBannerAdsEnabled": false
+                          productDescription: VIP 12 Months
+                eV1397:
+                  value:
+                    GetProductsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'No products defined for the given DMA:001 for  Shahid'
+                          errorCode: eV1397
+                      responseCode: '0'
+                eV1267:
+                  value:
+                    GetProductsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: DmaId is mandatory
+                          errorCode: eV1267
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV1267:
+          description: DmaId is mandatory
+        x- eV1397:
+          description: 'No products defined for the given DMA:001 for  Shahid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetProductsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getProducts'
+            examples:
+              getProducts request:
+                value:
+                  GetProductsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: '001'
+              getProducts additional params request:
+                value:
+                  GetProductsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: '001'
+                    salesChannel: Android
+                    offerType: New Customer
+                    returnAppChannels: T
+                    returnLocaleDisplayName: T
+                    returnPromotions: T
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    createUser:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID_DUBAI
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        socialLoginType:
+          type: string
+          description: Social login type for the user.
+          enum:
+            - Google
+            - Facebook
+            - Apple
+        socialLoginID:
+          type: string
+          description: Social login id of the user.
+        email:
+          type: string
+          description: Email id of the customer.
+        mobileNumber:
+          type: string
+          description: Mobile number of the customer.
+        spAccountID:
+          type: string
+          description: Unique account id in EV system.
+        firstName:
+          type: string
+          description: Firstname  of the customer.
+        lastName:
+          type: string
+          description: Lastname of the customer.
+        country:
+          type: string
+          description: Country in which user has registered.(2 letter country code)
+          enum:
+            - AE(UAE)
+            - US(USA)
+    searchAccountV2:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        email:
+          type: string
+          description: Unique email of the account.
+        spAccountID:
+          type: string
+          description: Unique sp account id for the account.
+        socialLoginType:
+          type: string
+          description: Social login type for the user.
+          enum:
+            - Google
+            - Facebook
+            - Apple
+        phone:
+          type: string
+          description: Mobile number of the user.
+    getOAuthAccessTokenv2:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - spAccountID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        spAccountID:
+          type: string
+          default: ''
+          description: Unique SP Account ID stored in EV system.
+    refreshToken:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - spAccountID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        spAccountID:
+          type: string
+          default: ''
+          description: Unique SP Account ID stored in EV system.
+    getProducts:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: '001'
+        returnAppChannels:
+          type: string
+          description: 'Returns IAP appID and appName, appChannel.'
+          example: T/F
+          default: F
+        returnLocaleDisplayName:
+          type: string
+          description: Returns differnt languages for display name
+          example: T/F
+          default: F
+        salesChannel:
+          type: string
+          description: Device operating system platform.
+          enum:
+            - Android
+            - iOS
+            - Web
+        offerType:
+          type: string
+          description: Eligible offer Types of the customer.
+          example: New Customer
+    productsResponseMessage:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: Currency code for the product.
+        productDescription:
+          type: string
+          description: Description of the product.
+        productCategory:
+          type: string
+          description: Type of Product category.
+        promotions:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotions'
+          description: Promotional Details
+        renewable:
+          type: boolean
+          description: Indicates whether the product is renewable or not.
+        serviceType:
+          type: string
+          description: Type of Service.
+        period:
+          type: string
+          description: Period of the product.
+        basicService:
+          type: boolean
+          description: Indicates whether the product is basic service or not.
+        skuORQuickCode:
+          type: string
+          description: SKU of the product.
+        dmaName:
+          type: string
+          description: Name of the DMA.
+        scOfferTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/scOfferTypes'
+          description: Sales Channel Offer types details
+        retailPrice:
+          type: integer
+          description: Retail price of the product.
+        duration:
+          type: string
+          description: Duration of the product.
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/attributes'
+          description: Attributes of the product.
+        displayName:
+          type: string
+          description: Displayed name of the product.
+        isAdsEnabled:
+          type: boolean
+          description: Indicates whether the ads should be displayed or not.
+        productName:
+          type: string
+          description: Name of the product.
+        currencySymbol:
+          type: string
+          description: HTML Number for the currency.
+        displayOrder:
+          type: string
+          description: Display order of product.
+        appChannels:
+          type: array
+          items:
+            $ref: '#/components/schemas/appChannels'
+          description: In App Stores related details
+        isInterstitialAdsEnabled:
+          type: boolean
+          description: Indicates whether the Interstitial ads should be displayed or not.
+        suggestedPrice:
+          type: number
+          description: Suggested price of the product.
+        bbDescription:
+          type: string
+          description: bb description of the product.
+        isBannerAdsEnabled:
+          type: boolean
+          description: Indicates whether the banner ads should be displayed or not.
+        localeDescription:
+          type: array
+          items:
+            $ref: '#/components/schemas/localeDescription'
+          description: Differnt language description for products.
+    promotions:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: Amount of the promotion.
+        promotionId:
+          type: string
+          description: Unique Id of the promotion.
+        isVODPromotion:
+          type: boolean
+          description: Indicates whether the Promotion relates to SVOD or TVOD.
+        promotionType:
+          type: string
+          description: Type of the Promotion.
+        promotionName:
+          type: string
+          description: Name of the Promotion.
+        promotionDuration:
+          type: string
+          description: Duration of the Promotion.
+        isFreeTrail:
+          type: boolean
+          description: Indicates whether the service is in free trial or not.
+        promotionalPrice:
+          type: integer
+          description: Promotional price of the product.
+        promotionExpiry:
+          type: integer
+          format: int64
+          description: Expiry for the Promotion.
+        promotionPeriod:
+          type: string
+          description: Period of the Promotion.
+        categoryDescription:
+          type: string
+          description: Category description of promotion.
+    appChannels:
+      type: object
+      properties:
+        appName:
+          type: string
+          description: Name of the defined app.
+        appID:
+          type: string
+          description: Id of the defined app
+        appChannel:
+          type: string
+          description: Name of the app channel.
+    localeDescription:
+      type: object
+      properties:
+        period:
+          type: string
+          description: Period defined for the product.
+        displayName:
+          type: string
+          description: Display name of the product
+        locale:
+          type: string
+          description: Language that needs to be displayed.
+        localeId:
+          type: string
+          description: 2 letter language id of the country.
+    scOfferTypes:
+      type: object
+      properties:
+        offerType:
+          type: string
+          description: Name of the offer type.
+        salesChannel:
+          type: string
+          description: Name of the sales channel.
+    attributes:
+      type: object
+      properties:
+        attributeLabel:
+          type: string
+          description: Attribute label
+        attributeValue:
+          type: string
+          description: Attribute value.
+        attributeType:
+          type: string
+          description: Type of attribute.
