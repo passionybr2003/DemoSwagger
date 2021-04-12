@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://rest-dev.evergent.com/shahid'
-    description: The Dev API server
+  - url: 'https://rest-dev-shahid.evergent.com/shahid'
+    description: Dev API server
 info:
   description: |-
     <b>Last Updated Date 12th April 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
@@ -47,10 +47,19 @@ paths:
                         example: 1
                       spAccountID:
                         type: string
-                        description: A unique identifier of the account.
+                        description: A unique identifier of the account in partner systems.
                       cpCustomerID:
                         type: string
-                        description: A unique identifier of the account in Partner systems.
+                        description: A unique identifier of the account in EV systems.
+                      accessToken:
+                        type: string
+                        description: Unique token generated which is required for authentication.
+                      refreshToken:
+                        type: string
+                        description: Unique refresh token to generate accessToken.
+                      tokenType:
+                        type: string
+                        description: Type of the token.
               examples:
                 '111111111':
                   value:
@@ -64,10 +73,11 @@ paths:
                     CreateUserResponseMessage:
                       cpCustomerID: '21021323488386788'
                       spAccountID: '2102132348178598386788'
-                      message: SUCCESS
-                      responseCode: '1'
                       accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJsb2MiOiJTRyIsInZzdGF0dXMiOmZhbHNlLCJpc3MiOiJldiIsImNwIjoiU2luZ3RlbF9IQk8iLCJzaWQiOiIxNjE4MDU2NjQxNjkxIiwidWlkIjoiMjEwNDExMTkzMzEzNDgzNjc2MjkiLCJhdWQiOiJzaGFoaWQiLCJuYmYiOjE2MTgxNDk3OTAsImV4cCI6MTYxOTQ0NTc5NSwiaWF0IjoxNjE4MTQ5Nzk1LCJqdGkiOiIyaEdRLTRJM1QtVWdEby1zOExzLVFSbmotSTllWi1WaiIsImNpZCI6IjE5ODE1NDc3NzQifQ.FPSkIYNeKGM6k_rmO2pzaqLQxZVYiNt0R5S8AI5iUH5M6JzgJu4VZPgRVQ7N4KOoc407YmJg50HsyEndbJ74N4tHPKtxOGc95cJRIN7WcTQ24hvpomIc3VcZdPHuTqXFOMlouh13WDGxG7WBgWaXV177udGoaVfXcoEVltpoD-Am81c_ONjh-ikwr0zuexs0bEvBy4pAVCpJtquKotQAsKjLwv83MnGmAr5dqlVVCI7Ngwzsycg-kEy91mW9lMktppASmsqMRGzLVeuUPjKEj2YAPjiVzJiBOKv1wurvT7-JlmggBzt_gM-JBD3qWPQt2JDR1011VCJn_d6CIp8dmDay8HprVvWX7x1VixB4rdxrknycrNaGhUiuZ6X0cHTqOELIfLTQYS157JhPP_6-KKVbQjpvjncxx9m5m1frVTFyB7K84EEAoxNbt54HdElL67VUKvrL8lXkEKtKAYESDKklFKyrrYUdHi5hmh3BebowOp6W6x9sTPXkEdDHudsgiIJAT0XmXJ5vLMG7fa2wlPyDsSeW934WaaYg2IZN-m-e3lHqmdVEBhjeFUuyuR_3X43E1YklfpeX4cqmHwfjWGsjrQxsyfqpJqUxbb50AWNHyR3udSSaw6dfyDyVrIOZvqPvlHo1cBDJm4t8_iOSWOxyBQxZNdpiGWMnOCL6F_Q'
                       refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
+                      tokenType: Bearer
+                      responseCode: '1'
+                      message: SUCCESS
                 eV2160:
                   value:
                     CreateUserResponseMessage:
@@ -126,6 +136,7 @@ paths:
                     country: JO
                     firstName: Shahid
                     lastName: Afridi
+                    isEmailVerified: true
               Customer Registration using phone number:
                 value:
                   CreateUserRequestMessage:
@@ -136,6 +147,7 @@ paths:
                     country: JO
                     firstName: Shahid
                     lastName: Afridi
+                    isEmailVerified: true
               Customer Registration using social login:
                 value:
                   CreateUserRequestMessage:
@@ -146,6 +158,7 @@ paths:
                     country: JO
                     firstName: Shahid
                     lastName: Afridi
+                    isEmailVerified: true
   /searchAccountV2:
     post:
       security:
@@ -194,6 +207,12 @@ paths:
                       cpCustomerID:
                         type: string
                         description: A unique ID of the account in EV systems.
+                      socialLoginID:
+                        type: string
+                        description: A unique ID of the account generated in EV systems.
+                      socialLoginType:
+                        type: string
+                        description: Social login type of the account.
               examples:
                 '111111111':
                   value:
@@ -202,19 +221,37 @@ paths:
                         - errorMessage: Authentication Failed
                           errorCode: '111111111'
                       responseCode: '0'
-                Sample successful response:
+                Sample successful response with email:
                   value:
                     SearchAccountV2ResponseMessage:
-                      contactUserName: shahidafridi@yopmail.com
+                      contactUserName: testdemo54@yopmail.com
+                      email: testdemo54@yopmail.com
+                      channelPartnerID: SHAHIDJRD
+                      responseCode: 1
                       message: SUCCESS
-                      accountID: '191112114157906490851'
-                      responseCode: '1'
-                      channelPartnerID: SHAHID_DUBAI
-                      email: shahidafridi@yopmail.com
-                      isProfileComplete: 'false'
                       status: Active
-                      name: Shahid Afridi
-                      cpCustomerID: '1911121141490851'
+                      accountID: 191112141556490851453453453
+                      cpCustomerID: 21041207271310334
+                Sample successful response with mobile number:
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      phoneNumber: 971676667877
+                      channelPartnerID: SHAHIDQTR
+                      responseCode: 1
+                      message: SUCCESS
+                      status: Active
+                      accountID: 161804932849553423
+                      cpCustomerID: 21041120341309736
+                Sample successful response with social loginid:
+                  value:
+                    SearchAccountV2ResponseMessage:
+                      phoneNumber: 971676667877
+                      channelPartnerID: SHAHIDQTR
+                      responseCode: 1
+                      message: SUCCESS
+                      status: Active
+                      accountID: 161804932849553423
+                      cpCustomerID: 21041120341309736
                 eV2327:
                   value:
                     SearchAccountV2ResponseMessage:
@@ -251,25 +288,6 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     spAccountID: '191112114157906490851'
-              Sample successful request with alternateUserName:
-                value:
-                  SearchAccountV2RequestMessage:
-                    channelPartnerID: SHAHID
-                    apiKey: 8uMMWK58TY2fGjJS
-                    phone: '971855532321'
-              Sample successful request with username:
-                value:
-                  SearchAccountV2RequestMessage:
-                    channelPartnerID: SHAHID
-                    apiKey: 8uMMWK58TY2fGjJS
-                    email: us1573559081@yopmail.com
-              Sample successful request with social login details:
-                value:
-                  SearchAccountV2RequestMessage:
-                    channelPartnerID: SHAHID
-                    apiKey: 8uMMWK58TY2fGjJS
-                    socialLoginID: 'testdemo6@yopmail.com,'
-                    socialLoginType: facebook
   /getOAuthAccessTokenv2:
     post:
       security:
@@ -306,6 +324,9 @@ paths:
                       tokenType:
                         type: string
                         description: Type of the token.
+                      expiresIn:
+                        type: string
+                        description: Expiry time of the access token.
               examples:
                 '20003':
                   value:
@@ -343,6 +364,7 @@ paths:
                       accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
+                      expiresIn: '1618298742823'
                       status: SUCCESS
         x- 111111111:
           description: Authentication Failed
@@ -406,7 +428,7 @@ paths:
                         description: Type of the token.
                       expiresIn:
                         type: integer
-                        description: Type of the token.
+                        description: Expiry time of access token.
               examples:
                 '20003':
                   value:
@@ -444,6 +466,7 @@ paths:
                       accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
+                      expiresIn: '1618298742823'
                       status: SUCCESS
         x- 111111111:
           description: Authentication Failed
@@ -548,6 +571,7 @@ paths:
                     firstName: Mohammad
                     lastName: Ali
                     mobileNumber: '971524254654'
+                    language: en
   /getProducts:
     post:
       security:
@@ -763,12 +787,6 @@ components:
         email:
           type: string
           description: Email id of the customer.
-        accessToken:
-          type: string
-          description: Unique token generated which is required for authentication.
-        refreshToken:
-          type: string
-          description: Unique refresh token to generate accessToken.
         mobileNumber:
           type: string
           description: Mobile number of the customer.
@@ -781,12 +799,18 @@ components:
         lastName:
           type: string
           description: Lastname of the customer.
+        isEmailVerified:
+          type: string
+          description: Indicates if email is verified or not.
         country:
           type: string
           description: Country in which user has registered.(2 letter country code)
           enum:
-            - AE(UAE)
-            - US(USA)
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
     searchAccountV2:
       type: object
       required:
@@ -799,22 +823,9 @@ components:
         apiKey:
           type: string
           description: Partner authentication Key.
-        email:
-          type: string
-          description: Unique email of the account.
         spAccountID:
           type: string
           description: Unique sp account id for the account.
-        socialLoginType:
-          type: string
-          description: Social login type for the user.
-          enum:
-            - Google
-            - Facebook
-            - Apple
-        phone:
-          type: string
-          description: Mobile number of the user.
     getOAuthAccessTokenv2:
       type: object
       required:
@@ -869,6 +880,9 @@ components:
         mobileNumber:
           type: string
           description: Mobile number of the user.
+        language:
+          type: string
+          description: Prefered language selected to the account.
     getProducts:
       type: object
       required:
