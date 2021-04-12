@@ -4,7 +4,7 @@ servers:
     description: The Dev API server
 info:
   description: |-
-    <b>Last Updated Date 20th March 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 12th April 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -66,6 +66,8 @@ paths:
                       spAccountID: '2102132348178598386788'
                       message: SUCCESS
                       responseCode: '1'
+                      accessToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJsb2MiOiJTRyIsInZzdGF0dXMiOmZhbHNlLCJpc3MiOiJldiIsImNwIjoiU2luZ3RlbF9IQk8iLCJzaWQiOiIxNjE4MDU2NjQxNjkxIiwidWlkIjoiMjEwNDExMTkzMzEzNDgzNjc2MjkiLCJhdWQiOiJzaGFoaWQiLCJuYmYiOjE2MTgxNDk3OTAsImV4cCI6MTYxOTQ0NTc5NSwiaWF0IjoxNjE4MTQ5Nzk1LCJqdGkiOiIyaEdRLTRJM1QtVWdEby1zOExzLVFSbmotSTllWi1WaiIsImNpZCI6IjE5ODE1NDc3NzQifQ.FPSkIYNeKGM6k_rmO2pzaqLQxZVYiNt0R5S8AI5iUH5M6JzgJu4VZPgRVQ7N4KOoc407YmJg50HsyEndbJ74N4tHPKtxOGc95cJRIN7WcTQ24hvpomIc3VcZdPHuTqXFOMlouh13WDGxG7WBgWaXV177udGoaVfXcoEVltpoD-Am81c_ONjh-ikwr0zuexs0bEvBy4pAVCpJtquKotQAsKjLwv83MnGmAr5dqlVVCI7Ngwzsycg-kEy91mW9lMktppASmsqMRGzLVeuUPjKEj2YAPjiVzJiBOKv1wurvT7-JlmggBzt_gM-JBD3qWPQt2JDR1011VCJn_d6CIp8dmDay8HprVvWX7x1VixB4rdxrknycrNaGhUiuZ6X0cHTqOELIfLTQYS157JhPP_6-KKVbQjpvjncxx9m5m1frVTFyB7K84EEAoxNbt54HdElL67VUKvrL8lXkEKtKAYESDKklFKyrrYUdHi5hmh3BebowOp6W6x9sTPXkEdDHudsgiIJAT0XmXJ5vLMG7fa2wlPyDsSeW934WaaYg2IZN-m-e3lHqmdVEBhjeFUuyuR_3X43E1YklfpeX4cqmHwfjWGsjrQxsyfqpJqUxbb50AWNHyR3udSSaw6dfyDyVrIOZvqPvlHo1cBDJm4t8_iOSWOxyBQxZNdpiGWMnOCL6F_Q'
+                      refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
                 eV2160:
                   value:
                     CreateUserResponseMessage:
@@ -121,7 +123,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     email: testdemo2@yopmail.com
                     spAccountID: '191112114157906490851'
-                    country: DU
+                    country: JO
                     firstName: Shahid
                     lastName: Afridi
               Customer Registration using phone number:
@@ -131,7 +133,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     mobileNumber: '971855532335'
                     spAccountID: '191112114157906490851'
-                    country: DU
+                    country: JO
                     firstName: Shahid
                     lastName: Afridi
               Customer Registration using social login:
@@ -140,9 +142,8 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     socialLoginType: Google
-                    socialLoginID: '191112114157906490851'
                     spAccountID: '191112114157906490851'
-                    country: DU
+                    country: JO
                     firstName: Shahid
                     lastName: Afridi
   /searchAccountV2:
@@ -458,16 +459,95 @@ paths:
             schema:
               type: object
               properties:
-                RefreshTokenResponseMessage:
+                RefreshTokenRequestMessage:
                   type: Object
                   $ref: '#/components/schemas/refreshToken'
             examples:
-              Successful request using spAccountID:
+              Successful request:
                 value:
                   RefreshTokenRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
+  /updateProfile:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Selfcare
+      operationId: UpdateProfileRequestMessage
+      description: updateProfile() REST API is used to update the user details like name, email, phone number etc..
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  UpdateProfileResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Contact updated successfully
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+              examples:
+                '111111111':
+                  value:
+                    UpdateProfileResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                eV2795:
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: User already exists with the given mobile number
+                          errorCode: eV2795
+                      responseCode: '0'
+                eV1062:
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: User Name already exists
+                          errorCode: eV1062
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    UpdateProfileResponseMessage:
+                      responseCode: '1'
+                      message: Contact updated successfully
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2795:
+          description: User already exists with the given mobile number
+        x- eV1062:
+          description: User Name already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UpdateProfileRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/updateProfile'
+            examples:
+              Successful request:
+                value:
+                  UpdateProfileRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    email: testdemo20@yopmail.com
+                    firstName: Mohammad
+                    lastName: Ali
+                    mobileNumber: '971524254654'
   /getProducts:
     post:
       security:
@@ -683,6 +763,12 @@ components:
         email:
           type: string
           description: Email id of the customer.
+        accessToken:
+          type: string
+          description: Unique token generated which is required for authentication.
+        refreshToken:
+          type: string
+          description: Unique refresh token to generate accessToken.
         mobileNumber:
           type: string
           description: Mobile number of the customer.
@@ -763,6 +849,26 @@ components:
           type: string
           default: ''
           description: Unique SP Account ID stored in EV system.
+    updateProfile:
+      type: object
+      required:
+        - Authorization
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        email:
+          type: string
+          description: Email id of the account.
+        firstName:
+          type: string
+          description: First name of the user.
+        lastName:
+          type: string
+          description: Last name of the user.
+        mobileNumber:
+          type: string
+          description: Mobile number of the user.
     getProducts:
       type: object
       required:
