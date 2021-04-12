@@ -147,7 +147,6 @@ paths:
                     country: JO
                     firstName: Shahid
                     lastName: Afridi
-                    isEmailVerified: true
               Customer Registration using social login:
                 value:
                   CreateUserRequestMessage:
@@ -158,7 +157,6 @@ paths:
                     country: JO
                     firstName: Shahid
                     lastName: Afridi
-                    isEmailVerified: true
   /searchAccountV2:
     post:
       security:
@@ -227,31 +225,32 @@ paths:
                       contactUserName: testdemo54@yopmail.com
                       email: testdemo54@yopmail.com
                       channelPartnerID: SHAHIDJRD
-                      responseCode: 1
+                      responseCode: '1'
                       message: SUCCESS
                       status: Active
-                      accountID: 191112141556490851453453453
-                      cpCustomerID: 21041207271310334
+                      accountID: '191112141556490851453453453'
+                      cpCustomerID: '21041207271310334'
                 Sample successful response with mobile number:
                   value:
                     SearchAccountV2ResponseMessage:
-                      phoneNumber: 971676667877
+                      phoneNumber: '971676667877'
                       channelPartnerID: SHAHIDQTR
-                      responseCode: 1
+                      responseCode: '1'
                       message: SUCCESS
                       status: Active
-                      accountID: 161804932849553423
-                      cpCustomerID: 21041120341309736
+                      accountID: '161804932849553423'
+                      cpCustomerID: '21041120341309736'
                 Sample successful response with social loginid:
                   value:
                     SearchAccountV2ResponseMessage:
-                      phoneNumber: 971676667877
-                      channelPartnerID: SHAHIDQTR
-                      responseCode: 1
+                      socialLoginID: '1618221797892482622'
+                      channelPartnerID: SHAHOMN
+                      responseCode: '1'
                       message: SUCCESS
                       status: Active
-                      accountID: 161804932849553423
-                      cpCustomerID: 21041120341309736
+                      accountID: '19111211410649085145354'
+                      socialLoginType: Facebook
+                      cpCustomerID: '21041210031310535'
                 eV2327:
                   value:
                     SearchAccountV2ResponseMessage:
@@ -781,9 +780,6 @@ components:
             - Google
             - Facebook
             - Apple
-        socialLoginID:
-          type: string
-          description: Social login id of the user.
         email:
           type: string
           description: Email id of the customer.
@@ -816,6 +812,7 @@ components:
       required:
         - channelPartnerID
         - apiKey
+        - spAccountID
       properties:
         channelPartnerID:
           type: string
@@ -848,7 +845,7 @@ components:
       required:
         - channelPartnerID
         - apiKey
-        - spAccountID
+        - refreshToken
       properties:
         channelPartnerID:
           type: string
@@ -856,14 +853,15 @@ components:
         apiKey:
           type: string
           description: Partner authentication key.
-        spAccountID:
+        refreshToken:
           type: string
           default: ''
-          description: Unique SP Account ID stored in EV system.
+          description: Unique token to generate access token.
     updateProfile:
       type: object
       required:
         - Authorization
+        - apiKey
       properties:
         apiKey:
           type: string
@@ -888,7 +886,6 @@ components:
       required:
         - channelPartnerID
         - apiKey
-        - dmaID
       properties:
         channelPartnerID:
           type: string
