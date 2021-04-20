@@ -4,7 +4,7 @@ servers:
     description: Dev API server
 info:
   description: |-
-    <b>Last Updated Date 12th April 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 20th April 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -571,6 +571,8 @@ paths:
                     lastName: Ali
                     mobileNumber: '971524254654'
                     language: en
+                    gender: Male
+                    dateOfBirth: '660767400000'
   /getProducts:
     post:
       security:
@@ -752,6 +754,90 @@ paths:
                     returnAppChannels: T
                     returnLocaleDisplayName: T
                     returnPromotions: T
+  /provisionUser:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Acquisition and Authentication
+      operationId: ProvisionUserRequestMessage
+      description: provisionUser() REST API is used to check subscription status of the user at operator side and authenticate the user based on the subscription status.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ProvisionUserResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful login message.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      accessToken:
+                        type: string
+                        description: Encrypted string of account info and device info.
+                      refreshToken:
+                        type: string
+                        description: Refresh Token for the user.
+                      tokenType:
+                        type: string
+                        description: Type of the token.
+                      expiresIn:
+                        type: integer
+                        description: Expiry time of access token.
+                      subscriptionStatus:
+                        type: string
+                        description: Status of the subscription received from the operator.
+                        enum:
+                          - 'true'
+                          - 'false'
+              examples:
+                '111111111':
+                  value:
+                    ProvisionUserResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    ProvisionUserResponseMessage:
+                      responseCode: '1'
+                      message: Provision successful
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      tokenType: Bearer
+                      refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
+                      expiresIn: '1618298742823'
+                      status: SUCCESS
+                      subscriptionStatus: Active
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ProvisionUserRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/provisionUser'
+            examples:
+              Successful request:
+                value:
+                  ProvisionUserRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    cpCustomerId: '0210420110156520'
+                    spAccountId: '19111214155649085145'
+                    country: 'JO'
 components:
   securitySchemes:
     bearerAuth:
@@ -769,7 +855,7 @@ components:
           type: string
           description: Unique ID number of channel partner.
           enum:
-            - SHAHID_DUBAI
+            - SHAHID
         apiKey:
           type: string
           description: Partner authentication Key.
@@ -881,6 +967,15 @@ components:
         language:
           type: string
           description: Prefered language selected to the account.
+        gender:
+          type: string
+          description: Gender of the user.
+          enum:
+            - Male
+            - Female
+        dateOfBirth:
+          type: string
+          description: Date of birth of the user.
     getProducts:
       type: object
       required:
@@ -1093,3 +1188,34 @@ components:
         attributeType:
           type: string
           description: Type of attribute.
+    provisionUser:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - cpCustomerId
+        - spAccountId
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        cpCustomerID:
+          type: string
+          description: Unique ID returned from dish/sling.
+        spAccountID:
+          type: string
+          description: Unique account id in EV system.
+        country:
+          type: string
+          description: Country in which user has registered.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
