@@ -164,7 +164,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: SearchAccountV2RequestMessage
-      description: searchAccount() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.
+      description: searchAccountV2() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.
       responses:
         '200':
           description: Success
@@ -181,6 +181,9 @@ paths:
                       email:
                         type: string
                         description: Contact email of the user.
+                      phoneNumber:
+                        type: string
+                        description: Mobile number of the user.
                       name:
                         type: string
                         description: Name of the user.
@@ -396,7 +399,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: RefreshTokenRequestMessage
-      description: refreshToken() REST API is used to SignIn the user.
+      description: refreshToken() REST API is used to generate new access token to the account.
       responses:
         '200':
           description: Success
@@ -533,6 +536,13 @@ paths:
                         - errorMessage: User already exists with the given mobile number
                           errorCode: eV2795
                       responseCode: '0'
+                eV1061:
+                  value:
+                    RefreshTokenResponseMessage:
+                      failureMessage:
+                        - errorMessage: Invalid language
+                          errorCode: eV1061
+                      responseCode: '0'
                 eV1062:
                   value:
                     RefreshTokenResponseMessage:
@@ -552,6 +562,8 @@ paths:
           description: User already exists with the given mobile number
         x- eV1062:
           description: User Name already exists
+        x- eV1061:
+          description: Invalid language
       requestBody:
         content:
           application/json:
@@ -620,90 +632,90 @@ paths:
                           displayName: VIP Weekly
                           dmaName: Product Market Area
                           productName: VIP Weekly
-                          basicService": false
-                          isInterstitialAdsEnabled": false
+                          basicService: false
+                          isInterstitialAdsEnabled: false
                           productCategory: Subscription
                           duration: 7
-                          suggestedPrice": 0
-                          isAdsEnabled": false
+                          suggestedPrice: 0
+                          isAdsEnabled: false
                           bbDescription: VIP Weekly
-                          renewable": true
+                          renewable: true
                           skuORQuickCode: VIPW
-                          retailPrice": 5
+                          retailPrice: 5
                           currencyCode: USD
-                          isBannerAdsEnabled": false
+                          isBannerAdsEnabled: false
                           productDescription: VIP Weekly
                         - serviceType: SVOD
                           period: Month(s)
                           displayName: VIP Monthly
                           dmaName: Product Market Area
                           productName: VIP Monthly
-                          basicService": false
-                          isInterstitialAdsEnabled": false
+                          basicService: false
+                          isInterstitialAdsEnabled: false
                           productCategory: Subscription
                           duration: 1
-                          suggestedPrice": 0
-                          isAdsEnabled": false
+                          suggestedPrice: 0
+                          isAdsEnabled: false
                           bbDescription: VIP Monthly
-                          renewable": true
+                          renewable: true
                           skuORQuickCode: VIPM01
-                          retailPrice": 10
+                          retailPrice: 10
                           currencyCode: USD
-                          isBannerAdsEnabled": false
+                          isBannerAdsEnabled: false
                           productDescription: VIP Monthly
                         - serviceType: SVOD
                           period: Month(s)
                           displayName: VIP 3 Months
                           dmaName: Product Market Area
                           productName: VIP 3 Months
-                          basicService": false
-                          isInterstitialAdsEnabled": false
+                          basicService: false
+                          isInterstitialAdsEnabled: false
                           productCategory: Subscription
                           duration: 3
-                          suggestedPrice": 0
-                          isAdsEnabled": false
+                          suggestedPrice: 0
+                          isAdsEnabled: false
                           bbDescription: VIP 3 Months
-                          renewable": true
+                          renewable: true
                           skuORQuickCode: VIP3M
-                          retailPrice": 35
+                          retailPrice: 35
                           currencyCode: USD
-                          isBannerAdsEnabled": false
+                          isBannerAdsEnabled: false
                           productDescription: VIP 3 Months 
                         - serviceType: SVOD
                           period: Month(s)
                           displayName: VIP 6 Months
                           dmaName: Product Market Area
                           productName: VIP 6 Months
-                          basicService": false
-                          isInterstitialAdsEnabled": false
+                          basicService: false
+                          isInterstitialAdsEnabled: false
                           productCategory: Subscription
                           duration: 6
-                          suggestedPrice": 0
-                          isAdsEnabled": false
+                          suggestedPrice: 0
+                          isAdsEnabled: false
                           bbDescription: VIP 6 Months
-                          renewable": true
+                          renewable: true
                           skuORQuickCode: VIP6M
-                          retailPrice": 60
+                          retailPrice: 60
                           currencyCode: USD
-                          isBannerAdsEnabled": false
+                          isBannerAdsEnabled: false
                           productDescription: VIP 6 Months
                         - serviceType: SVOD
                           period: Month(s)
                           displayName: VIP 12 Months
                           dmaName: Product Market Area
                           productName: VIP 12 Months
-                          basicService": false
-                          isInterstitialAdsEnabled": false
+                          basicService: false
+                          isInterstitialAdsEnabled: false
                           productCategory: Subscription
                           duration: 12
-                          suggestedPrice": 0
-                          isAdsEnabled": false
+                          suggestedPrice: 0
+                          isAdsEnabled: false
                           bbDescription: VIP 12 Months
-                          renewable": true
+                          renewable: true
                           skuORQuickCode: VIP12M
-                          retailPrice": 120
+                          retailPrice: 120
                           currencyCode: USD
-                          isBannerAdsEnabled": false
+                          isBannerAdsEnabled: false
                           productDescription: VIP 12 Months
                 eV1397:
                   value:
