@@ -4,7 +4,7 @@ servers:
     description: Dev API server
 info:
   description: |-
-    <b>Last Updated Date 30th April 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 05th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -131,7 +131,7 @@ paths:
                   CreateUserRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: IQ
+                    dmaId: IQ
                     email: testdemo2@yopmail.com
                     spAccountID: '191112114157906490851'
                     country: IQ
@@ -144,7 +144,7 @@ paths:
                   CreateUserRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: JO
+                    dmaId: JO
                     mobileNumber: '971855532335'
                     spAccountID: '191112114157906490851'
                     country: JO
@@ -156,7 +156,7 @@ paths:
                   CreateUserRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: JO
+                    dmaId: JO
                     socialLoginType: Google
                     spAccountID: '191112114157906490851'
                     country: JO
@@ -1140,8 +1140,6 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     token: 'tok_ctynkwcksdru3nzh7fzhszcxzu'
                     transactionType: AUTH
-                    serviceType: PRODUCT
-                    serviceId: VIP3M
                     country: IQ
               Sample request for onetime subscription with promotion:
                 value:
@@ -1859,6 +1857,16 @@ paths:
                     transactionId: '45664344556553344'
                     transactionStatus: PENDING
                     priceCharged: '39'
+              Sample failure request(TPay):
+                value:
+                  RecordTransactionRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    itemCode: VIPM01
+                    expiryDate: '1619724667326'
+                    paymentChannel: TPay
+                    transactionId: '453451234254654'
+                    transactionStatus: FAILURE
+                    priceCharged: '39'
   /updateTransaction:
     post:
       security:
@@ -1976,6 +1984,7 @@ paths:
                     transactionId: '45378457898524'
                     paymentChannel: Fawry
                     transactionStatus: FAILURE
+                    comment: <Reason for failure.>
                     mobileNumber: '971502217847'
                     email: fawrytest1@yopmail.com
               Sample cancelled request:
@@ -1985,6 +1994,7 @@ paths:
                     transactionId: '09456348753420'
                     paymentChannel: Fawry
                     transactionStatus: CANCELLED
+                    comment: <Reason for failure.>
                     mobileNumber: '971502217847'
                     email: fawrytest1@yopmail.com
   /getTransactionInfoDetails:
@@ -2136,7 +2146,7 @@ components:
             - OM(Oman)
             - IQ(Iraq)
             - QA(Qatar)
-        dmaID:
+        dmaId:
           type: string
           description: DMA ID of the account.(2 letter country code)
           enum:
@@ -2916,6 +2926,9 @@ components:
         paymentChannel:
           type: string
           description: Name of the payment channel.
+        comments:
+          type: string
+          description: Description of the resaon for failure or cancellation of the transac
     getTransactionInfoDetails:
       type: object
       required:
