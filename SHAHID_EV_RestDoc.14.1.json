@@ -867,10 +867,10 @@ paths:
             examples:
               getPromotions request:
                 value:
-                  GetPromotionssRequestMessage:
+                  GetPromotionsRequestMessage:
                     channelPartnerID: SHAHID
-                    apiKey: XXXXX
-                    dmaID: '001'
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: 'IQ'
                     salesChannel: Android
                     offerType: New Customer
                     returnAppChannels: T
@@ -1985,9 +1985,9 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/isUserEligibleForPromotion'
             examples:
-              Sample Successfull Request:
+              Sample Successful Request:
                 value:
-                  FreeTrialRequestMessage:
+                  isUserEligibleForPromotionRequestMessage:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     promotionCode: FTPIQ001
