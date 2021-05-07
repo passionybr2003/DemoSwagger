@@ -4,7 +4,7 @@ servers:
     description: Dev API server
 info:
   description: |-
-    <b>Last Updated Date 05th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 06th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -775,6 +775,221 @@ paths:
                     returnAppChannels: T
                     returnLocaleDisplayName: T
                     returnPromotions: T
+  /getPromotions:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: GetPromotionsRequestMessage
+      description: getPromotions() REST API is used to get the available promotions to the products and packages to that DMA.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetPromotionsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      promotionsResponseMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/promotionsResponseMessage'
+                        description: Promotion details.
+              examples:
+                '111111111':
+                  value:
+                    GetPromotionsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: SUCCESS
+                      promotionsResponseMessage:
+                        - period: NoOfDays
+                          promotionType: Free
+                          product: Monthly Plan
+                          displayName: Free trial 7 days
+                          dmaName: Nationwide_CMA
+                          promotionalPrice: 0
+                          discountAmount: 149
+                          isFreeTrial: true
+                          promotionID: 7DFTRIAL
+                          duration: 7
+                          VODPromotions: null
+                          promotionName: 7 Days free trial
+                          bbDescription: Free trial for 7 days.
+                          skuORQuickCode: shahid_monthly_1
+                          startDate: 1546300800000
+                          productPrice: 149
+                eV1416:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'No promotions defined for the given DMA:001 for SHAHAD'
+                          errorCode: eV1416
+                      responseCode: '0'
+                eV2511:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter(s)
+                          errorCode: eV2511
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2511:
+          description: DmaId is mandatory
+        x- eV1416:
+          description: 'No promotions defined for the given DMA::001 for  XXXXX'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetPromotionsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getPromotions'
+            examples:
+              getPromotions request:
+                value:
+                  GetPromotionssRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: XXXXX
+                    dmaID: '001'
+                    salesChannel: Android
+                    offerType: New Customer
+                    returnAppChannels: T
+  /getProductPromotion:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: GetProductPromotionRequestMessage
+      description: getProductPromotion() REST API is used to get the promotions available to the products.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetPromotionsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      promotionsResponseMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/productpromotionsResponseMessage'
+                        description: Promotion details.
+              examples:
+                '111111111':
+                  value:
+                    GetPromotionsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: SUCCESS
+                      promotionsResponseMessage:
+                        - period: NoOfDays
+                          promotionType: Free
+                          product: Monthly Plan
+                          displayName: Free trial 7 days
+                          dmaName: Nationwide_CMA
+                          promotionalPrice: 0
+                          discountAmount: 149
+                          isFreeTrial: true
+                          promotionID: 7DFTRIAL
+                          duration: 7
+                          VODPromotions: null
+                          promotionName: 7 Days free trial
+                          bbDescription: Free trial for 7 days.
+                          skuORQuickCode: shahid_monthly_1
+                          startDate: 1546300800000
+                          productPrice: 149
+                        - promotionID: 30DISPROIQ
+                          promotionName: 30%PROMO
+                          promotionalPrice: 3899.70
+                          dmaName: Iraq
+                          startDate: 1609439400000
+                          period: NoOfMonths
+                          duration: 1
+                          promotionType: Percentage
+                          product: VIP 3 Months
+                          percentage: 30.00
+                          displayName: 30%PROMO
+                          skuORQuickCode: VIP3M
+                          discountAmount": 9099.30
+                          productPrice: 12999.00
+                          isFreeTrial: false
+                eV1416:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'No promotions defined for the given DMA:001 for SHAHAD'
+                          errorCode: eV1416
+                      responseCode: '0'
+                eV2511:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter(s)
+                          errorCode: eV2511
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2511:
+          description: DmaId is mandatory
+        x- eV1416:
+          description: 'No promotions defined for the given DMA::001 for  XXXX'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetPromotionsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getProductPromotion'
+            examples:
+              getPromotions request:
+                value:
+                  GetProductPromotionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: 'IQ'
+                    skuORQuickCode: VIP3M
+                    paymentMode: Credit Card
+                    customerClassification: New Customer
+                    rateType: Credit Card
+                    externalPromotionType: Contract
   /provisionUser:
     post:
       security:
@@ -1712,6 +1927,70 @@ paths:
                 value:
                   FreeTrialRequestMessage:
                     apiKey: 8uMMWK58TY2fGjJS
+  /isUserEligibleForPromotion:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: isUserEligibleForPromotionRequestMessage
+      description: >-
+        isUserEligibleForPromotion() REST API is used to verify whether the
+        customer is eligible for promotion or not.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  isUserEligibleForPromotionResponseMessage:
+                    type: object
+                    properties:
+                      isUserEligibleForPromotion:
+                        type: string
+                        description: Promotion Eligibility Status
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+              examples:
+                '111111111':
+                  value:
+                    isUserEligibleForPromotionResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successfull Response:
+                  value:
+                    isUserEligibleForPromotionResponseMessage:
+                      responseCode: '1'
+                      status: SUCCESS
+                      isUserEligibleForPromotion: SUCCESS
+        x- 111111111:
+          description: Authorization failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isUserEligibleForPromotionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/isUserEligibleForPromotion'
+            examples:
+              Sample Successfull Request:
+                value:
+                  FreeTrialRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: IQ
+                    promotionCode: FTPIQ001
   /removeSubscription:
     post:
       security:
@@ -2466,6 +2745,209 @@ components:
         attributeType:
           type: string
           description: Type of attribute.
+    getPromotions:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: '001'
+        returnAppChannels:
+          type: string
+          description: 'Returns IAP appID and appName, appChannel.'
+          example: T/F
+          default: F
+        salesChannel:
+          type: string
+          description: Device operating system platform.
+          enum:
+            - Android
+            - iOS
+            - Web
+        offerType:
+          type: string
+          description: Eligible offer Types of the customer.
+          example: New Customer
+    promotionsResponseMessage:
+      type: object
+      properties:
+        period:
+          type: string
+          description: Period of the product.
+        promotionType:
+          type: string
+          description: Type of promotions.
+          enum:
+            - Free
+            - Flat
+            - Flat off
+            - Percentage
+            - Percentage off
+        product:
+          type: string
+          description: Name of the product to which promotion is associated.
+        displayName:
+          type: string
+          description: Displayed name of the promotion.
+        dmaName:
+          type: string
+          description: Name of the DMA.
+        promotionalPrice:
+          type: integer
+          description: Promotional price applied on the product.
+        discountAmount:
+          type: string
+          description: Discounted price to the product.
+        isFreeTrial:
+          type: boolean
+          description: Indicates whether the product is in freetrial or not.
+          example: true/false
+        promotionID:
+          type: string
+          description: Unique id of the promotion created in EV system.
+        duration:
+          type: integer
+          description: Duration of the promotion.
+        retailPrice:
+          type: integer
+          description: Retail price of the product.
+        VODPromotions:
+          type: string
+          description: Indicates if any promotions are applied on vod products.
+        promotionName:
+          type: string
+          description: Name of the promotion.
+        bbDescription:
+          type: string
+          description: bb description of the promotion.
+        skuORQuickCode:
+          type: string
+          description: Unique product id of the product.
+        startDate:
+          type: integer
+          description: Start date of the promotion.
+        productPrice:
+          type: number
+          description: Price of the product.
+    getProductPromotion:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+        - skuORQuickCode
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        skuORQuickCode:
+          type: string
+          description: Unique product defined in EV system.
+        paymentMode:
+          type: string
+          description: Payment moded to which products are defined.
+        customerClassification:
+          type: string
+          description: Classification of the customer.
+        rateType:
+          type: string
+          description: Rate type defined to the product.
+        externalPromotionType:
+          type: string
+          description: External promotion type.
+    productpromotionsResponseMessage:
+      type: object
+      properties:
+        period:
+          type: string
+          description: Period of the product.
+        promotionType:
+          type: string
+          description: Type of promotions.
+          enum:
+            - Free
+            - Flat
+            - Flat off
+            - Percentage
+            - Percentage off
+        product:
+          type: string
+          description: Name of the product to which promotion is associated.
+        displayName:
+          type: string
+          description: Displayed name of the promotion.
+        dmaName:
+          type: string
+          description: Name of the DMA.
+        promotionalPrice:
+          type: integer
+          description: Promotional price applied on the product.
+        discountAmount:
+          type: string
+          description: Discounted price to the product.
+        isFreeTrial:
+          type: boolean
+          description: Indicates whether the product is in freetrial or not.
+          example: true/false
+        promotionID:
+          type: string
+          description: Unique id of the promotion created in EV system.
+        percentage:
+          type: string
+          description: Promotion percentage defined on the product.
+        duration:
+          type: integer
+          description: Duration of the promotion.
+        retailPrice:
+          type: integer
+          description: Retail price of the product.
+        VODPromotions:
+          type: string
+          description: Indicates if any promotions are applied on vod products.
+        promotionName:
+          type: string
+          description: Name of the promotion.
+        bbDescription:
+          type: string
+          description: bb description of the promotion.
+        skuORQuickCode:
+          type: string
+          description: Unique product id of the product.
+        startDate:
+          type: integer
+          description: Start date of the promotion.
+        productPrice:
+          type: number
+          description: Price of the product.
+        paymentModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/paymentModes'
+            description: Payment mode details.
+    paymentModes:
+      type: object
+      example: Google Wallet/App Store Billing
     provisionUser:
       type: object
       required:
@@ -2825,6 +3307,30 @@ components:
         Authorization:
           type: string
           description: Access token generated to the account.
+    isUserEligibleForPromotion:
+      type: object
+      required:
+        - apiKey
+        - authorization
+        - dmaID
+        - promotionCode
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        Authorization:
+          type: string
+          description: Access token generated to the account.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        promotionCode:
+          type: string
+          description: Promotion code.
     removeSubscription:
       type: object
       required:
