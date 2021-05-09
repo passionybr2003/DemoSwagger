@@ -4,12 +4,12 @@ servers:
     description: Dev API server
 info:
   description: |-
-    <b>Last Updated Date 06th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 08th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.2
+  title: EV Shahid API - V14.3
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -731,7 +731,7 @@ paths:
                     GetProductsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: 'No products defined for the given DMA:001 for  Shahid'
+                        - errorMessage: 'No products defined for the given DMA:XXXX for  Shahid'
                           errorCode: eV1397
                       responseCode: '0'
                 eV1267:
@@ -747,7 +747,7 @@ paths:
         x- eV1267:
           description: DmaId is mandatory
         x- eV1397:
-          description: 'No products defined for the given DMA:001 for  Shahid'
+          description: 'No products defined for the given DMA:XXXX for  Shahid'
       requestBody:
         content:
           application/json:
@@ -763,18 +763,160 @@ paths:
                   GetProductsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: '001'
+                    dmaID: 'IQ'
               getProducts additional params request:
                 value:
                   GetProductsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: '001'
+                    dmaID: 'IQ'
                     salesChannel: Android
                     offerType: New Customer
                     returnAppChannels: T
                     returnLocaleDisplayName: T
                     returnPromotions: T
+  /updateOrderQuoteV3:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: UpdateOrderQuoteV3RequestMessage
+      description: updateOrderQuoteV3() REST API is used to get the product and price details of the service.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  UpdateOrderQuoteV3ResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      updatedItems:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/updatedItems'
+                        description: Product and pricing details.
+                      totalTax:
+                        type: integer
+                        description: Total tax for the product.
+                      totalPrice:
+                        type: integer
+                        description: Total price for the product.
+              examples:
+                '111111111':
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response with params:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      updatedItems:
+                        - serviceId: VIP6M
+                          serviceType: Product
+                          serviceName: VIP 6 Months
+                          priceToBeCharged: 4999.00
+                          priceAfterTax: 4999.00
+                          tax: 0
+                          price: 4999.00
+                          priceInLocalCurrency: 0
+                          taxInLocalCurrency: 0
+                          priceToBeChargedInLocalCurrency: 0
+                      totalTax: 0
+                      totalPrice: 4999.00
+                eV1268:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'NO Zone X Reference exists with the DMA ID: XXXXXXX'
+                          errorCode: eV1268
+                      responseCode: '0'
+                eV1267:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: DmaId is mandatory
+                          errorCode: eV1267
+                      responseCode: '0'
+                eV1665:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'No Service found with the given Service Id: XXXXXXX'
+                          errorCode: eV1665
+                      responseCode: '0'
+                eV1362:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Service type can not be null
+                          errorCode: eV1362
+                      responseCode: '0'
+                eV1668:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Service Type should be PRODUCT/PACKAGE
+                          errorCode: eV1668
+                      responseCode: '0'
+                eV2511:
+                  value:
+                    UpdateOrderQuoteV3ResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Missing Required Parameter(s)
+                          errorCode: eV2511
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV1267:
+          description: DmaId is mandatory
+        x- eV1268:
+          description: 'NO Zone X Reference exists with the DMA ID: XXXXXXX'
+        x- eV1665:
+          description: 'No Service found with the given Service Id: XXXXXXX'
+        x- eV1362:
+          description: Service type can not be null
+        x- eV1668:
+          description: Service Type should be PRODUCT/PACKAGE
+        x- eV2511:
+          description: Missing Required Parameter(s)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UpdateOrderQuoteV3RequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/updateOrderQuoteV3'
+            examples:
+              getProducts request:
+                value:
+                  UpdateOrderQuoteV3RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: 'IQ'
+                    selectedServices:
+                      - serviceId: VIP6M
+                        serviceType: PRODUCT
   /getPromotions:
     post:
       security:
@@ -833,12 +975,14 @@ paths:
                           skuORQuickCode: shahid_monthly_1
                           startDate: 1546300800000
                           productPrice: 149
+                          customerClassification: New Customer
+                          externalPromotiontype: Contract
                 eV1416:
                   value:
                     GetPromotionsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: 'No promotions defined for the given DMA:001 for SHAHAD'
+                        - errorMessage: 'No promotions defined for the given DMA:XXXX for SHAHAD'
                           errorCode: eV1416
                       responseCode: '0'
                 eV2511:
@@ -854,7 +998,7 @@ paths:
         x- eV2511:
           description: DmaId is mandatory
         x- eV1416:
-          description: 'No promotions defined for the given DMA::001 for  XXXXX'
+          description: 'No promotions defined for the given DMA::XXXXX for  XXXXX'
       requestBody:
         content:
           application/json:
@@ -871,9 +1015,12 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: 'IQ'
-                    salesChannel: Android
-                    offerType: New Customer
                     returnAppChannels: T
+                    promotionID: FTPIQ001
+                    paymentMode: Google Wallet
+                    rateType: Google Wallet
+                    externalPromotionType: Contract
+                    customerClassification: New Customer
   /getProductPromotion:
     post:
       security:
@@ -901,7 +1048,7 @@ paths:
                       promotionsResponseMessage:
                         type: array
                         items:
-                          $ref: '#/components/schemas/productpromotionsResponseMessage'
+                          $ref: '#/components/schemas/promotionsResponseMessage'
                         description: Promotion details.
               examples:
                 '111111111':
@@ -930,8 +1077,10 @@ paths:
                           promotionName: 7 Days free trial
                           bbDescription: Free trial for 7 days.
                           skuORQuickCode: shahid_monthly_1
+                          customerClassification: New Customer
                           startDate: 1546300800000
                           productPrice: 149
+                          externalPromotiontype: Contract
                         - promotionID: 30DISPROIQ
                           promotionName: 30%PROMO
                           promotionalPrice: 3899.70
@@ -947,12 +1096,14 @@ paths:
                           discountAmount": 9099.30
                           productPrice: 12999.00
                           isFreeTrial: false
+                          customerClassification: Exisitng Customer
+                          externalPromotiontype: Contract
                 eV1416:
                   value:
                     GetPromotionsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: 'No promotions defined for the given DMA:001 for SHAHAD'
+                        - errorMessage: 'No promotions defined for the given DMA:XXXX for SHAHAD'
                           errorCode: eV1416
                       responseCode: '0'
                 eV2511:
@@ -968,7 +1119,7 @@ paths:
         x- eV2511:
           description: DmaId is mandatory
         x- eV1416:
-          description: 'No promotions defined for the given DMA::001 for  XXXX'
+          description: 'No promotions defined for the given DMA::XXXXX for  XXXX'
       requestBody:
         content:
           application/json:
@@ -990,6 +1141,859 @@ paths:
                     customerClassification: New Customer
                     rateType: Credit Card
                     externalPromotionType: Contract
+  /getProductsAndPaymentModes:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: GetProductsAndPaymentModesRequestMessage
+      description: getProductsAndPaymentModes() REST API is used to get the products and associated payment modes defined.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetProductsAndPaymentModesResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      paymentModes:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/paymentModes-paymentType'
+                        description: Payment mode details.
+                      productDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/productDetails-product'
+                        description: Product details.
+              examples:
+                '111111111':
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Successful response with groupByParameter "paymentType" and groupByFrequency "false":
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      paymentModes:
+                        - productDetailsList: 
+                            - serviceID: VIP12M
+                              serviceName: VIP Annual
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 29999.00
+                              displayName: VIP Annual
+                              period: NoOfMonths
+                              duration: 12
+                              currency: IQD
+                            - serviceID: VIPM01
+                              serviceName: VIP Monthly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 4999.00
+                              displayName: VIP Monthly
+                              period: NoOfMonths
+                              duration: 1
+                              currency: IQD
+                          paymentMode: Credit/Debit Card
+                          paymentChannel: Credit/Debit Card
+                          supportsAutoRenew: F
+                          currency: AED
+                          order: '3'
+                          paymentTitle: Credit/Debit Card
+                          name: Credit/Debit Card
+                        - productDetailsList: 
+                            - serviceID: VIP3M
+                              serviceName: VIP 3 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 8.99
+                              displayName: VIP 3 Months
+                              period: NoOfMonths
+                              duration: 3
+                              ovpSKU: SHAHIDVIP
+                              currency: USD
+                            - serviceID: VIP6M
+                              serviceName: VIP 6 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 15.49
+                              displayName: VIP 6 Months
+                              period: NoOfMonths
+                              duration: 6
+                              currency: USD
+                            - serviceID: VIP12M
+                              serviceName: VIP Annual
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 20.49
+                              displayName: VIP Annual
+                              period: NoOfMonths
+                              duration: 12
+                              currency: USD
+                            - serviceID: VIPM01
+                              serviceName: VIP Monthly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 3.49
+                              displayName: VIP Monthly
+                              period: NoOfMonths
+                              duration: 1
+                              currency: USD
+                            - serviceID: VIPW
+                              serviceName: VIP Weekly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 0.99
+                              displayName: VIP Weekly
+                              period: NoOfDays
+                              duration: 7
+                              currency: USD
+                          paymentMode: App Store Billing
+                          paymentChannel: App Store Billing
+                          supportsAutoRenew: F
+                          currency: USD
+                          order: '15'
+                          paymentTitle: App Store Billing
+                          name: App Store Billing
+                        - productDetailsList: 
+                            - serviceID: VIP3M
+                              serviceName: VIP 3 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 8.99
+                              displayName: VIP 3 Months
+                              period: NoOfMonths
+                              duration: 3
+                              ovpSKU: SHAHIDVIP
+                              currency: USD
+                            - serviceID: VIP6M
+                              serviceName: VIP 6 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 15.49
+                              displayName: VIP 6 Months
+                              period: NoOfMonths
+                              duration: 6
+                              currency: USD
+                            - serviceID: VIP12M
+                              serviceName: VIP Annual
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 20.49
+                              displayName: VIP Annual
+                              period: NoOfMonths
+                              duration: 12
+                              currency: USD
+                            - serviceID: VIPM01
+                              serviceName: VIP Monthly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 3.49
+                              displayName: VIP Monthly
+                              period: NoOfMonths
+                              duration: 1
+                              currency: USD
+                            - serviceID: VIPW
+                              serviceName: VIP Weekly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 0.99
+                              displayName: VIP Weekly
+                              period: NoOfDays
+                              duration: 7
+                              currency: USD
+                          paymentMode: Google Wallet
+                          paymentChannel: Google Wallet
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '16'
+                          paymentTitle: Google Wallet
+                          name: Google Wallet
+                        - productDetailsList: 
+                            - serviceID: VIPM01
+                              serviceName: VIP Monthly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 3.49
+                              displayName: VIP Monthly
+                              period: NoOfMonths
+                              duration: 1
+                              currency: USD
+                            - serviceID: VIPW
+                              serviceName: VIP Weekly
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 0.99
+                              displayName: VIP Weekly
+                              period: NoOfDays
+                              duration: 7
+                              currency: USD
+                          paymentMode: TPay Zain
+                          paymentChannel: TPay_Zain
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '130'
+                          paymentTitle: TPay Zain
+                          name: TPay Zain
+                        - productDetailsList: 
+                            - serviceID: VIP3M
+                              serviceName: VIP 3 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 8.99
+                              displayName: VIP 3 Months
+                              period: NoOfMonths
+                              duration: 3
+                              ovpSKU: SHAHIDVIP
+                              currency: USD
+                            - serviceID: VIP6M
+                              serviceName: VIP 6 Months
+                              productType: SVOD
+                              productCategory: Subscription
+                              serviceType: PRODUCT
+                              price: 15.49
+                              displayName: VIP 6 Months
+                              period: NoOfMonths
+                              duration: 6
+                              currency: USD
+                          paymentMode: Credit Card
+                          paymentChannel: Credit Card
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '12'
+                          paymentTitle: Credit Card
+                          name: Credit Card
+                Successful response with groupByParameter "paymentType" and groupByFrequency "true":
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      paymentModes:
+                        - productDetailsList:
+                          - productType: SVOD
+                            productCategory: Subscription
+                            serviceType: PRODUCT
+                            ovpSKU: SHAHIDVIP
+                            planDetails:
+                              - recurrence: Recurring
+                                serviceID: VIP12M
+                                serviceName: VIP Annual
+                                price: 29999.00
+                                displayName: VIP Annual
+                                period: NoOfMonths
+                                duration: 12
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPM01
+                                serviceName: VIP Monthly
+                                price: 4999.00
+                                displayName: VIP Monthly
+                                period: NoOfMonths
+                                duration: 1
+                                currency: IQD
+                          paymentMode: Credit/Debit Card
+                          paymentChannel: Credit/Debit Card
+                          supportsAutoRenew: F
+                          currency: AED
+                          order: '3'
+                          paymentTitle: Credit/Debit Card
+                          name: Credit/Debit Card
+                        - productDetailsList:
+                          - productType: SVOD
+                            productCategory: Subscription
+                            serviceType: PRODUCT
+                            ovpSKU: SHAHIDVIP
+                            planDetails:
+                              - recurrence: Recurring
+                                serviceID: VIP3M
+                                serviceName: VIP 3 Months
+                                price: 12999.00
+                                displayName: VIP 3 Months
+                                period: NoOfMonths
+                                duration: 3
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIP6M
+                                serviceName: VIP 6 Months
+                                price: 22999.00
+                                displayName: VIP 6 Months
+                                period: NoOfMonths
+                                duration: 6
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIP12M
+                                serviceName: VIP Annual
+                                price: 29999.00
+                                displayName: VIP Annual
+                                period: NoOfMonths
+                                duration: 12
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPM01
+                                serviceName: VIP Monthly
+                                price: 4999.00
+                                displayName: VIP Monthly
+                                period: NoOfMonths
+                                duration: 1
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPW
+                                serviceName: VIP Weekly
+                                price: 1499.00
+                                displayName: VIP Weekly
+                                period: NoOfDays
+                                duration: 7
+                                currency: IQD
+                          paymentMode: App Store Billing
+                          paymentChannel: App Store Billing
+                          supportsAutoRenew: F
+                          currency: USD
+                          order: '15'
+                          paymentTitle: App Store Billing
+                          name: App Store Billing
+                        - productDetailsList:
+                          - productType: SVOD
+                            productCategory: Subscription
+                            serviceType: PRODUCT
+                            ovpSKU: SHAHIDVIP
+                            planDetails:
+                              - recurrence: Recurring
+                                serviceID: VIP3M
+                                serviceName: VIP 3 Months
+                                price: 12999.00
+                                displayName: VIP 3 Months
+                                period: NoOfMonths
+                                duration: 3
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIP6M
+                                serviceName: VIP 6 Months
+                                price: 22999.00
+                                displayName: VIP 6 Months
+                                period: NoOfMonths
+                                duration: 6
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIP12M
+                                serviceName: VIP Annual
+                                price: 29999.00
+                                displayName: VIP Annual
+                                period: NoOfMonths
+                                duration: 12
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPM01
+                                serviceName: VIP Monthly
+                                price: 4999.00
+                                displayName: VIP Monthly
+                                period: NoOfMonths
+                                duration: 1
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPW
+                                serviceName: VIP Weekly
+                                price: 1499.00
+                                displayName: VIP Weekly
+                                period: NoOfDays
+                                duration: 7
+                                currency: IQD
+                          paymentMode: Google Wallet
+                          paymentChannel: Google Wallet
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '16'
+                          paymentTitle: Google Wallet
+                          name: Google Wallet
+                        - productDetailsList:
+                          - productType: SVOD
+                            productCategory: Subscription
+                            serviceType: PRODUCT
+                            ovpSKU: SHAHIDVIP
+                            planDetails:
+                              - recurrence: Recurring
+                                serviceID: VIPM01
+                                serviceName: VIP Monthly
+                                price: 4999.00
+                                displayName: VIP Monthly
+                                period: NoOfMonths
+                                duration: 1
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIPW
+                                serviceName: VIP Weekly
+                                price: 1499.00
+                                displayName: VIP Weekly
+                                period: NoOfDays
+                                duration: 7
+                                currency: IQD
+                          paymentMode: TPay Zain
+                          paymentChannel: TPay_Zain
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '130'
+                          paymentTitle: TPay Zain
+                          name: TPay Zain
+                        - productDetailsList:
+                          - productType: SVOD
+                            productCategory: Subscription
+                            serviceType: PRODUCT
+                            ovpSKU: SHAHIDVIP
+                            planDetails:
+                              - recurrence: Recurring
+                                serviceID: VIP3M
+                                serviceName: VIP 3 Months
+                                price: 12999.00
+                                displayName: VIP 3 Months
+                                period: NoOfMonths
+                                duration: 3
+                                currency: IQD
+                              - recurrence: Recurring
+                                serviceID: VIP6M
+                                serviceName: VIP 6 Months
+                                price: 22999.00
+                                displayName: VIP 6 Months
+                                period: NoOfMonths
+                                duration: 6
+                                currency: IQD
+                          paymentMode: Credit Card
+                          paymentChannel: Credit Card
+                          supportsAutoRenew: F
+                          currency: IQD
+                          order: '12'
+                          paymentTitle: Credit Card
+                          name: Credit Card
+                Successful response with groupByParameter "product" and groupByFrequency "false":
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      productDetails:
+                        - paymentModesList: 
+                            - paymentMode: TPay Zain
+                              paymentChannel: TPay_Zain
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '130'
+                              paymentTitle: TPay Zain
+                              name: TPay Zain
+                              price: 4999.00
+                            - paymentMode: Google Wallet
+                              paymentChannel: Google Wallet
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                              price: 4999.00
+                            - paymentMode: App Store Billing
+                              paymentChannel: App Store Billing
+                              supportsAutoRenew: F
+                              currency: USD
+                              order: '15'
+                              paymentTitle: App Store Billing
+                              name: App Store Billing
+                              price: 3.49
+                            - paymentMode: Credit/Debit Card
+                              paymentChannel: Credit/Debit Card
+                              supportsAutoRenew: F
+                              currency: AED
+                              order: '3'
+                              paymentTitle: Credit/Debit Card
+                              name: Credit/Debit Card
+                              price: 4999.00
+                          serviceID: VIPM01
+                          serviceName: VIP Monthly
+                          productType: SVOD
+                          productCategory: Subscription
+                          serviceType: PRODUCT
+                          displayName: VIP Monthly
+                          period: NoOfMonths
+                          duration: 1
+                        - paymentModesList: 
+                            - paymentMode: TPay Zain
+                              paymentChannel: TPay_Zain
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '130'
+                              paymentTitle: TPay Zain
+                              name: TPay Zain
+                              price: 1499.00
+                            - paymentMode: Google Wallet
+                              paymentChannel: Google Wallet
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                              price: 1499.00
+                            - paymentMode: App Store Billing
+                              paymentChannel: App Store Billing
+                              supportsAutoRenew: F
+                              currency: USD
+                              order: '15'
+                              paymentTitle: App Store Billing
+                              name: App Store Billing
+                              price: 0.99
+                          serviceID: VIPW
+                          serviceName: VIP Weekly
+                          productType: SVOD
+                          productCategory: Subscription
+                          serviceType: PRODUCT
+                          displayName: VIP Weekly
+                          period: NoOfDays
+                          duration: 7
+                        - paymentModesList: 
+                            - paymentMode: Google Wallet
+                              paymentChannel: Google Wallet
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                              price: 12999.00
+                            - paymentMode: App Store Billing
+                              paymentChannel: App Store Billing
+                              supportsAutoRenew: F
+                              currency: USD
+                              order: '15'
+                              paymentTitle: App Store Billing
+                              name: App Store Billing
+                              price: 8.99
+                            - paymentMode: Credit Card
+                              paymentChannel: Credit Card
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '12'
+                              paymentTitle: Credit Card
+                              name: Credit Card
+                              price: 8.99
+                          serviceID: VIP3M
+                          serviceName: VIP 3 Months
+                          productType: SVOD
+                          productCategory: Subscription
+                          serviceType: PRODUCT
+                          displayName: VIP 3 Months
+                          period: NoOfMonths
+                          duration: 3
+                          ovpSKU: SHAHIDVIP
+                        - paymentModesList: 
+                            - paymentMode: Google Wallet
+                              paymentChannel: Google Wallet
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                              price: 22999.00
+                            - paymentMode: App Store Billing
+                              paymentChannel: App Store Billing
+                              supportsAutoRenew: F
+                              currency: USD
+                              order: '15'
+                              paymentTitle: App Store Billing
+                              name: App Store Billing
+                              price: 15.49
+                            - paymentMode: Credit Card
+                              paymentChannel: Credit Card
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '12'
+                              paymentTitle: Credit Card
+                              name: Credit Card
+                              price: 15.49
+                          serviceID: VIP6M
+                          serviceName: VIP 6 Months
+                          productType: SVOD
+                          productCategory: Subscription
+                          serviceType: PRODUCT
+                          displayName: VIP 6 Months
+                          period: NoOfMonths
+                          duration: 6
+                          ovpSKU: SHAHIDVIP
+                        - paymentModesList: 
+                            - paymentMode: Google Wallet
+                              paymentChannel: Google Wallet
+                              supportsAutoRenew: F
+                              currency: IQD
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                              price: 29999.00
+                            - paymentMode: App Store Billing
+                              paymentChannel: App Store Billing
+                              supportsAutoRenew: F
+                              currency: USD
+                              order: '15'
+                              paymentTitle: App Store Billing
+                              name: App Store Billing
+                              price: 20.49
+                            - paymentMode: Credit/Debit Card
+                              paymentChannel: Credit/Debit Card
+                              supportsAutoRenew: F
+                              currency: AED
+                              order: '3'
+                              paymentTitle: Credit/Debit Card
+                              name: Credit/Debit Card
+                              price: 29999.00
+                          serviceID: VIP12M
+                          serviceName: VIP Annual
+                          productType: SVOD
+                          productCategory: Subscription
+                          serviceType: PRODUCT
+                          displayName: VIP Annual
+                          period: NoOfMonths
+                          duration: 12
+                eV2006:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Invalid Country.
+                          errorCode: eV2006
+                      responseCode: '0'
+                eV2291:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Country is mandatory
+                          errorCode: eV2291
+                      responseCode: '0'
+                eV4711:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Invalid groupByParameter
+                          errorCode: eV4711
+                      responseCode: '0'
+                eV4712:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: 'No Payment Modes found with :  XXXXXXX'
+                          errorCode: eV4712
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2006:
+          description: Invalid Country.
+        x- eV2291:
+          description: Country is mandatory
+        x- eV4711:
+          description: Invalid groupByParameter
+        x- eV4712:
+          description: 'No Payment Modes found with :  XXXXXXX'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetProductsAndPaymentModesRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getProductsAndPaymentModes'
+            examples:
+              getProductsAndPaymentModes request with groupByParameter "paymentType" and groupByFrequency "false":
+                value:
+                  GetProductsAndPaymentModesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    groupByParameter: paymentType
+                    groupByFrequency: false
+                    country: KW
+              getProductsAndPaymentModes request with groupByParameter "paymentType" and groupByFrequency "true":
+                value:
+                  GetProductsAndPaymentModesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    groupByParameter: paymentType
+                    groupByFrequency: true
+                    country: KW
+              getProductsAndPaymentModes request with groupByParameter "product" and groupByFrequency "false":
+                value:
+                  GetProductsAndPaymentModesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    groupByParameter: product
+                    groupByFrequency: false
+                    country: KW
+              getProductsAndPaymentModes request with additional params:
+                value:
+                  GetProductsAndPaymentModesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    groupByParameter: paymentType
+                    groupByFrequency: false
+                    country: KW
+                    paymentMode: Credit Card
+  /isCustomerEligibleForFreeTrial:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: IsCustomerEligibleForFreeTrialRequestMessage
+      description: >-
+        isCustomerEligibleForFreeTrial() REST API is used to verify whether the
+        customer is eligible for free trial for the account or not.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  FreeTrialResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Free Trial Eligibility Status
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+              examples:
+                '111111111':
+                  value:
+                    FreeTrialResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successfull Response:
+                  value:
+                    FreeTrialResponseMessage:
+                      message: Free Trial Available
+                      responseCode: '1'
+                      status: SUCCESS
+                eV2155:
+                  value:
+                    FreeTrialResponseMessage:
+                      responseCode: '0'
+                      status: FAIL
+                      failureMessage:
+                        - errorMessage: No free trial Available
+                          errorCode: eV2155
+        x- 111111111:
+          description: Authorization failed
+        x- eV2155:
+          description: No free trial Available
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                FreeTrialRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/isCustomerEligibleForFreeTrial'
+            examples:
+              Sample Successfull Request:
+                value:
+                  FreeTrialRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    phoneNumber: 971502239211
+  /isUserEligibleForPromotion:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: isUserEligibleForPromotionRequestMessage
+      description: >-
+        isUserEligibleForPromotion() REST API is used to verify whether the
+        customer is eligible for promotion or not.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  isUserEligibleForPromotionResponseMessage:
+                    type: object
+                    properties:
+                      isUserEligibleForPromotion:
+                        type: string
+                        description: Promotion Eligibility Status
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+              examples:
+                '111111111':
+                  value:
+                    isUserEligibleForPromotionResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successfull Response:
+                  value:
+                    isUserEligibleForPromotionResponseMessage:
+                      responseCode: '1'
+                      status: SUCCESS
+                      isUserEligibleForPromotion: SUCCESS
+        x- 111111111:
+          description: Authorization failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isUserEligibleForPromotionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/isUserEligibleForPromotion'
+            examples:
+              Sample Successful Request:
+                value:
+                  isUserEligibleForPromotionRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: IQ
+                    promotionCode: FTPIQ001
   /provisionUser:
     post:
       security:
@@ -1855,142 +2859,6 @@ paths:
                     email: mohammadshafi@yopmail.com
                     msisdn: '7093004212'
                     externalAccountID: '24565464564'
-  /isCustomerEligibleForFreeTrial:
-    post:
-      security:
-        - bearerAuth: []
-      tags:
-        - Offer Management APIs
-      operationId: IsCustomerEligibleForFreeTrialRequestMessage
-      description: >-
-        isCustomerEligibleForFreeTrial() REST API is used to verify whether the
-        customer is eligible for free trial for the account or not.
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                properties:
-                  FreeTrialResponseMessage:
-                    type: object
-                    properties:
-                      message:
-                        type: string
-                        description: Free Trial Eligibility Status
-                      responseCode:
-                        type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
-                      status:
-                        type: string
-                        description: Success/Fail
-              examples:
-                '111111111':
-                  value:
-                    FreeTrialResponseMessage:
-                      responseCode: '0'
-                      failureMessage:
-                        - errorMessage: Authentication Failed
-                          errorCode: '111111111'
-                Sample Successfull Response:
-                  value:
-                    FreeTrialResponseMessage:
-                      message: Free Trial Available
-                      responseCode: '1'
-                      status: SUCCESS
-                eV2155:
-                  value:
-                    FreeTrialResponseMessage:
-                      responseCode: '0'
-                      status: FAIL
-                      failureMessage:
-                        - errorMessage: No free trial Available
-                          errorCode: eV2155
-        x- 111111111:
-          description: Authorization failed
-        x- eV2155:
-          description: No free trial Available
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                FreeTrialRequestMessage:
-                  type: Object
-                  $ref: '#/components/schemas/isCustomerEligibleForFreeTrial'
-            examples:
-              Sample Successfull Request:
-                value:
-                  FreeTrialRequestMessage:
-                    apiKey: 8uMMWK58TY2fGjJS
-  /isUserEligibleForPromotion:
-    post:
-      security:
-        - bearerAuth: []
-      tags:
-        - Offer Management APIs
-      operationId: isUserEligibleForPromotionRequestMessage
-      description: >-
-        isUserEligibleForPromotion() REST API is used to verify whether the
-        customer is eligible for promotion or not.
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                properties:
-                  isUserEligibleForPromotionResponseMessage:
-                    type: object
-                    properties:
-                      isUserEligibleForPromotion:
-                        type: string
-                        description: Promotion Eligibility Status
-                      responseCode:
-                        type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
-                      status:
-                        type: string
-                        description: Success/Fail
-              examples:
-                '111111111':
-                  value:
-                    isUserEligibleForPromotionResponseMessage:
-                      responseCode: '0'
-                      failureMessage:
-                        - errorMessage: Authentication Failed
-                          errorCode: '111111111'
-                Sample Successfull Response:
-                  value:
-                    isUserEligibleForPromotionResponseMessage:
-                      responseCode: '1'
-                      status: SUCCESS
-                      isUserEligibleForPromotion: SUCCESS
-        x- 111111111:
-          description: Authorization failed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                isUserEligibleForPromotionRequestMessage:
-                  type: Object
-                  $ref: '#/components/schemas/isUserEligibleForPromotion'
-            examples:
-              Sample Successful Request:
-                value:
-                  isUserEligibleForPromotionRequestMessage:
-                    apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: IQ
-                    promotionCode: FTPIQ001
   /removeSubscription:
     post:
       security:
@@ -2550,7 +3418,7 @@ components:
         dmaID:
           type: string
           description: Unique ID of the channel partner DMA.
-          example: '001'
+          example: IQ/KW/IR/QA/OM
         returnAppChannels:
           type: string
           description: 'Returns IAP appID and appName, appChannel.'
@@ -2763,23 +3631,28 @@ components:
         dmaID:
           type: string
           description: Unique ID of the channel partner DMA.
-          example: '001'
+          example: IQ/KW/IR/QA/OM
         returnAppChannels:
           type: string
           description: 'Returns IAP appID and appName, appChannel.'
           example: T/F
           default: F
-        salesChannel:
+        promotionID:
           type: string
-          description: Device operating system platform.
-          enum:
-            - Android
-            - iOS
-            - Web
-        offerType:
+          description: Unique id of the promotion.
+        paymentMode:
           type: string
-          description: Eligible offer Types of the customer.
-          example: New Customer
+          description: Payment mode defined to the promotion.
+        rateType:
+          type: string
+          description: Rate type of the promotion.
+        externalPromotionType:
+          type: string
+          description: External promotion mapping string.
+        customerClassification:
+          type: string
+          description: Type of customer classification.
+          example: New Customer/Existing Customer/Winback
     promotionsResponseMessage:
       type: object
       properties:
@@ -2841,6 +3714,18 @@ components:
         productPrice:
           type: number
           description: Price of the product.
+        externalPromotionType:
+          type: string
+          description: External promotion mapping string.
+        customerClassification:
+          type: string
+          description: Type of customer classification.
+          example: New Customer/Existing Customer/Winback
+        paymentModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/paymentModes'
+            description: Payment mode details.
     getProductPromotion:
       type: object
       required:
@@ -2876,78 +3761,214 @@ components:
         externalPromotionType:
           type: string
           description: External promotion type.
-    productpromotionsResponseMessage:
-      type: object
-      properties:
-        period:
-          type: string
-          description: Period of the product.
-        promotionType:
-          type: string
-          description: Type of promotions.
-          enum:
-            - Free
-            - Flat
-            - Flat off
-            - Percentage
-            - Percentage off
-        product:
-          type: string
-          description: Name of the product to which promotion is associated.
-        displayName:
-          type: string
-          description: Displayed name of the promotion.
-        dmaName:
-          type: string
-          description: Name of the DMA.
-        promotionalPrice:
-          type: integer
-          description: Promotional price applied on the product.
-        discountAmount:
-          type: string
-          description: Discounted price to the product.
-        isFreeTrial:
-          type: boolean
-          description: Indicates whether the product is in freetrial or not.
-          example: true/false
-        promotionID:
-          type: string
-          description: Unique id of the promotion created in EV system.
-        percentage:
-          type: string
-          description: Promotion percentage defined on the product.
-        duration:
-          type: integer
-          description: Duration of the promotion.
-        retailPrice:
-          type: integer
-          description: Retail price of the product.
-        VODPromotions:
-          type: string
-          description: Indicates if any promotions are applied on vod products.
-        promotionName:
-          type: string
-          description: Name of the promotion.
-        bbDescription:
-          type: string
-          description: bb description of the promotion.
-        skuORQuickCode:
-          type: string
-          description: Unique product id of the product.
-        startDate:
-          type: integer
-          description: Start date of the promotion.
-        productPrice:
-          type: number
-          description: Price of the product.
-        paymentModes:
-          type: array
-          items:
-            $ref: '#/components/schemas/paymentModes'
-            description: Payment mode details.
     paymentModes:
       type: object
       example: Google Wallet/App Store Billing
+    getProductsAndPaymentModes:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - groupByParameter
+        - groupByFrequency
+        - country
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        country:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        groupByParameter:
+          type: string
+          description: Groups all the products and payment modes based on the type.
+          example: paymentType/product
+        groupByFrequency:
+          type: string
+          description: Groups based on the duration of the service.
+          example: true/false
+        salesChannel:
+          type: string
+          description: Sales channel defined to the product.
+        offerType:
+          type: string
+          description: Offer types defined to the product.
+        paymentMode:
+          type: string
+          description: Payment modes defined to the product.
+        serviceID:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceID'
+            description: Payment mode details.
+    serviceID:
+      type: object
+      description: Unique service id of the product.
+    paymentModes-paymentType:
+      type: object
+      properties:
+        productDetailsList:
+          type: array
+          items:
+            $ref: '#/components/schemas/productDetailsList-paymentType'
+            description: Details of the products.
+        paymentMode:
+          type: string
+          description: Type of the payment mode.
+          example: Credit/Debit Card, App Store Billing, Google Wallet, TPay Zain...
+        paymentChannel:
+          type: string
+          description: Type of payment channel.
+        supportsAutoRenew:
+          type: boolean
+          description: Indicates if the payment mode support auto renewals or not.
+        currency:
+          type: string
+          description: Currency defined on the product.
+        order:
+          type: string
+          description: Order of the paymnet mode.
+        paymentTitle:
+          type: string
+          description: Title of the payment mode.
+        name:
+          type: string
+          description: Name of the payment mode.
+    productDetailsList-paymentType:
+      type: object
+      properties:
+        serviceID:
+          type: string
+          description: Service id of the products.
+        serviceName:
+          type: string
+          description: Name of the service defined in EV system.
+        productType:
+          type: string
+          description: Indicates type of the product.
+          example: SVOD/TVOD
+        productCategory:
+          type: string
+          description: Category of the product.
+        serviceType:
+          type: string
+          description: Type of the service.
+          example: PRODUCT/PACKAGE
+        price:
+          type: integer
+          description: Price of the product defined.
+        displayName:
+          type: string
+          description: Display name of the product.
+        period:
+          type: string
+          description: Period defined on the product.
+        duration:
+          type: string
+          description: Duration of the product.
+        currency:
+          type: string
+          description: Currency of the product.
+        ovpSKU:
+          type: string
+          description: Unique identifier of the product defined at partner systems.
+        planDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/productDetailsList-planDetails'
+            description: Detailed information of the products.
+    productDetailsList-planDetails:
+      type: object
+      properties:
+        serviceID:
+          type: string
+          description: Service id of the products.
+        serviceName:
+          type: string
+          description: Name of the service defined in EV system.
+        price:
+          type: integer
+          description: Price of the product defined.
+        displayName:
+          type: string
+          description: Display name of the product.
+        period:
+          type: string
+          description: Period defined on the product.
+        duration:
+          type: string
+          description: Duration of the product.
+        currency:
+          type: string
+          description: Currency of the product.
+    productDetails-product:
+      type: object
+      properties:
+        paymentModesList:
+          type: array
+          items:
+            $ref: '#/components/schemas/paymentModesList-product'
+            description: Details of the products.
+        serviceID:
+          type: string
+          description: Service id of the products.
+        serviceName:
+          type: string
+          description: Name of the service defined in EV system.
+        productType:
+          type: string
+          description: Indicates type of the product.
+          example: SVOD/TVOD
+        productCategory:
+          type: string
+          description: Category of the product.
+        serviceType:
+          type: string
+          description: Type of the service.
+          example: PRODUCT/PACKAGE
+        displayName:
+          type: string
+          description: Display name of the product.
+        period:
+          type: string
+          description: Period defined on the product.
+        duration:
+          type: string
+          description: Duration of the product.
+    paymentModesList-product:
+      type: object
+      properties:
+        paymentMode:
+          type: string
+          description: Type of the payment mode.
+          example: Credit/Debit Card, App Store Billing, Google Wallet, TPay Zain...
+        paymentChannel:
+          type: string
+          description: Type of payment channel.
+        supportsAutoRenew:
+          type: boolean
+          description: Indicates if the payment mode support auto renewals or not.
+        currency:
+          type: string
+          description: Currency defined on the product.
+        order:
+          type: string
+          description: Order of the paymnet mode.
+        paymentTitle:
+          type: string
+          description: Title of the payment mode.
+        name:
+          type: string
+          description: Name of the payment mode.
+        price:
+          type: number
+          description: Price defined to procust for the payment mode.
     provisionUser:
       type: object
       required:
@@ -3307,6 +4328,9 @@ components:
         Authorization:
           type: string
           description: Access token generated to the account.
+        phoneNumber:
+          type: string
+          description: Mobile number of the user.
     isUserEligibleForPromotion:
       type: object
       required:
@@ -3458,3 +4482,73 @@ components:
         paymentChannel:
           type: string
           description: Name of the payment channel.
+    updateOrderQuoteV3:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+        - selectedServices
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        selectedServices:
+          type: array
+          items:
+            $ref: '#/components/schemas/selectedServices'
+            description: Details of the selected product.
+    selectedServices:
+      type: object
+      required:
+        - serviceId
+        - serviceType
+      properties:
+        serviceId:
+          type: string
+          description: Unique id of the product.
+        serviceType:
+          type: string
+          description: Type of the service.
+          example: PRODUCT/PACKAGE
+    updatedItems:
+      type: object
+      properties:
+        serviceId:
+          type: string
+          description: Unique id of the product.
+        serviceType:
+          type: string
+          description: Type of the service.
+          example: PRODUCT/PACKAGE
+        serviceName:
+          type: string
+          description: Name of the product.
+        priceToBeCharged:
+          type: number
+          description: Price of the product to be charged.
+        priceAfterTax:
+          type: number
+          description: Price of the product to be charged after applying the tax.
+        tax:
+          type: number
+          description: Tax charged on the product.
+        price:
+          type: number
+          description: Price of the product to be charged.
+        priceInLocalCurrency:
+          type: number
+          description: Price of the product to be charged in local currency.
+        taxInLocalCurrency:
+          type: number
+          description: Tax charged on the product in local currency.
+        priceToBeChargedInLocalCurrency:
+          type: number
+          description: Price of the product to be charged in local currency.
