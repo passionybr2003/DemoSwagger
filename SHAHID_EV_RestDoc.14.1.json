@@ -3991,6 +3991,15 @@ components:
         spAccountID:
           type: string
           description: Unique account id in EV system.
+        authZToken:
+          type: string
+          description: Authorization token from service provider
+        ipaddress:
+          type: string
+          description: IP address of the user.
+        serviceProvider:
+          type: string
+          description: Service provider
         country:
           type: string
           description: Country in which user has registered.(2 letter country code)
