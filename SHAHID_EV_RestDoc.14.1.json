@@ -2078,6 +2078,9 @@ paths:
                     cpCustomerId: '0210420110156520'
                     spAccountId: '19111214155649085145'
                     country: 'JO'
+                    authZToken: eyJkZXZpY2VUeXBl
+                    ipaddress: 121.12.123.2
+                    serviceProvider: TPay
   /redeemCoupon:
     post:
       security:
