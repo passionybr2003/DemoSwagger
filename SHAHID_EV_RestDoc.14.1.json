@@ -4,12 +4,12 @@ servers:
     description: Dev API server
 info:
   description: |-
-    <b>Last Updated Date 08th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
+    <b>Last Updated Date 18th May 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.3
+  title: EV Shahid API - V14.4
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -21,8 +21,6 @@ tags:
 paths:
   /createUser:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: CreateUserRequestMessage
@@ -165,8 +163,6 @@ paths:
                     ipAddress: '45.45.1.212'
   /searchAccountV2:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: SearchAccountV2RequestMessage
@@ -249,7 +245,7 @@ paths:
                       status: Active
                       accountID: '161804932849553423'
                       cpCustomerID: '21041120341309736'
-                Sample successful response with social loginid:
+                Sample successful response with social login:
                   value:
                     SearchAccountV2ResponseMessage:
                       socialLoginID: '1618221797892482622'
@@ -298,8 +294,6 @@ paths:
                     spAccountID: '191112114157906490851'
   /getOAuthAccessTokenv2:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: GetOAuthAccessTokenv2RequestMessage
@@ -357,13 +351,6 @@ paths:
                         - errorMessage: No account found with the given details.
                           errorCode: eV2327
                       responseCode: '0'
-                eV2138:
-                  value:
-                    GetOAuthAccessTokenv2ResponseMessage:
-                      failureMessage:
-                        - errorMessage: Generic Failure
-                          errorCode: eV2138
-                      responseCode: '0'
                 Sample Successful response:
                   value:
                     GetOAuthAccessTokenv2ResponseMessage:
@@ -402,8 +389,6 @@ paths:
                     source: 'iOS'
   /refreshToken:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: RefreshTokenRequestMessage
@@ -461,13 +446,6 @@ paths:
                         - errorMessage: Invalid RefreshToken
                           errorCode: eV2767
                       responseCode: '0'
-                eV2138:
-                  value:
-                    RefreshTokenResponseMessage:
-                      failureMessage:
-                        - errorMessage: Generic Failure
-                          errorCode: eV2138
-                      responseCode: '0'
                 Sample Successful response:
                   value:
                     RefreshTokenResponseMessage:
@@ -501,7 +479,7 @@ paths:
                   RefreshTokenRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
+                    refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
   /updateProfile:
     post:
       security:
@@ -590,14 +568,12 @@ paths:
                     firstName: Mohammad
                     lastName: Ali
                     mobileNumber: '971524254654'
-                    language: en
+                    language: English
                     gender: Male
                     dateOfBirth: '660767400000'
                     socialLoginType: Facebook
   /getProducts:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetProductsRequestMessage
@@ -777,8 +753,6 @@ paths:
                     returnPromotions: T
   /updateOrderQuoteV3:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: UpdateOrderQuoteV3RequestMessage
@@ -834,6 +808,7 @@ paths:
                           priceInLocalCurrency: 0
                           taxInLocalCurrency: 0
                           priceToBeChargedInLocalCurrency: 0
+                          currency: IQD
                       totalTax: 0
                       totalPrice: 4999.00
                 eV1268:
@@ -919,8 +894,6 @@ paths:
                         serviceType: PRODUCT
   /getPromotions:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetPromotionsRequestMessage
@@ -1023,8 +996,6 @@ paths:
                     customerClassification: New Customer
   /getProductPromotion:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetProductPromotionRequestMessage
@@ -1143,8 +1114,6 @@ paths:
                     externalPromotionType: Contract
   /getProductsAndPaymentModes:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: GetProductsAndPaymentModesRequestMessage
@@ -1859,8 +1828,6 @@ paths:
                     paymentMode: Credit Card
   /isCustomerEligibleForFreeTrial:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: IsCustomerEligibleForFreeTrialRequestMessage
@@ -1889,6 +1856,12 @@ paths:
                       status:
                         type: string
                         description: Success/Fail
+                      period:
+                        type: string
+                        description: Period of the promotion
+                      duration:
+                        type: string
+                        description: Duration of the promotion
               examples:
                 '111111111':
                   value:
@@ -1903,6 +1876,8 @@ paths:
                       message: Free Trial Available
                       responseCode: '1'
                       status: SUCCESS
+                      period: 1
+                      duration: NoOfMonths
                 eV2155:
                   value:
                     FreeTrialResponseMessage:
@@ -1925,15 +1900,21 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/isCustomerEligibleForFreeTrial'
             examples:
-              Sample Successfull Request:
+              Sample Request:
                 value:
                   FreeTrialRequestMessage:
+                    channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    phoneNumber: 971502239211
+                    country: JO
+              Sample Request with MSISDN:
+                value:
+                  FreeTrialRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    MSISDN: 971502322343
+                    country: JO
   /isUserEligibleForPromotion:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Offer Management APIs
       operationId: isUserEligibleForPromotionRequestMessage
@@ -1994,10 +1975,10 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     promotionCode: FTPIQ001
+                    paymentMode: TPay
+                    customerClassification: New Customer
   /provisionUser:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Acquisition and Authentication
       operationId: ProvisionUserRequestMessage
@@ -2078,9 +2059,9 @@ paths:
                     cpCustomerId: '0210420110156520'
                     spAccountId: '19111214155649085145'
                     country: 'JO'
-                    authZToken: eyJkZXZpY2VUeXBl
-                    ipaddress: 121.12.123.2
-                    serviceProvider: TPay
+                    ipAddress: 192.34.33.63
+                    authZToken: dfdfsidtyksdfjsfkahdf
+                    serviceProvider: DISH
   /redeemCoupon:
     post:
       security:
@@ -2141,63 +2122,63 @@ paths:
                       validityTill: '1627307885000'
                 eV1842:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: Please enter a valid coupon code
                           errorCode: eV1842
                       responseCode: '0'
                 eV1668:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: Service Type should be PRODUCT/PACKAGE
                           errorCode: eV1668
                       responseCode: '0'
                 eV1670:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: Invalid ServiceId
                           errorCode: eV1670
                       responseCode: '0'
                 eV2463:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: ServiceID is mandatory
                           errorCode: eV1668
                       responseCode: '0'
                 eV1845:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: No Packages/Products associated with the given coupon code
                           errorCode: eV1845
                       responseCode: '0'
                 eV1861:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has already been redeemed
                           errorCode: eV1861
                       responseCode: '0'
                 eV1862:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has expired
                           errorCode: eV1862
                       responseCode: '0'
                 eV1863:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has been disabled
                           errorCode: eV1863
                       responseCode: '0'
                 eV1882:
                   value:
-                    AddSubscriptionResponseMessage:
+                    RedeemCouponResponseMessage:
                       failureMessage:
                         - errorMessage: Maximum redemptions reached.
                           errorCode: eV1882
@@ -2241,10 +2222,133 @@ paths:
                     serviceType: 'PRODUCT'
                     quantity: '1'
                     couponCode: '1MFC'
+  /getVoucherDetails:
+    post:
+      tags:
+        - Order Processing
+      operationId: GetVoucherDetailsRequest
+      description: getVoucherDetails() REST API is used to verify whether the coupon is valid or not and get the coucher details if valid.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetVoucherDetailsResponse:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
+                      channelPartnerID:
+                        type: string
+                        description: Details of the BU in which coupon is created.
+                      CouponCodeDetails:
+                        type: object
+                        $ref: '#/components/schemas/CouponCodeDetails'
+                        description: Coupon code details.
+                      applicablePlans:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/applicablePlans'
+                        description: Plan details.
+              examples:
+                '111111111':
+                  value:
+                    GetVoucherDetailsResponse:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    GetVoucherDetailsResponse:
+                      CouponCodeDetails:
+                        duration: '1'
+                        couponBatchName: 'Test coupon batch for VIP product'
+                        couponExpiry: '1621304628943'
+                        period: 'NoOfMonths'
+                        descrip: Free 1 month VIP coupons
+                        paymentMethodRequired: true
+                        isTVODPromo: false
+                        discountType: Free
+                        couponCode: 1MFC4598fjks
+                        validityEndDate: 1621304628943
+                        status: New
+                      applicablePlans:
+                         -  price: 4.99
+                            name: 'VIP Monthly'
+                            discountAmount: 4.99
+                            period: 'NoOfMonths'
+                            priceToBeCharged: 0
+                            sku: VIPM
+                            type: Product
+                      responseCode: '1'
+                      message: SUCCESS
+                      channelPartnerID: SHAHID_IQ
+                eV1842:
+                  value:
+                    GetVoucherDetailsResponse:
+                      failureMessage:
+                        - errorMessage: Please enter a valid coupon code
+                          errorCode: eV1842
+                      responseCode: '0'
+                eV1861:
+                  value:
+                    GetVoucherDetailsResponse:
+                      failureMessage:
+                        - errorMessage: This coupon has already been redeemed
+                          errorCode: eV1861
+                      responseCode: '0'
+                eV1862:
+                  value:
+                    GetVoucherDetailsResponse:
+                      failureMessage:
+                        - errorMessage: This coupon has expired
+                          errorCode: eV1862
+                      responseCode: '0'
+                eV1863:
+                  value:
+                    GetVoucherDetailsResponse:
+                      failureMessage:
+                        - errorMessage: This coupon has been disabled
+                          errorCode: eV1863
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2138:
+          description: Generic Failure
+        x- eV1842:
+          description: Please enter a valid coupon code
+        x- eV1861:
+          description: This coupon has already been redeemed
+        x- eV1862:
+          description: This coupon has expired
+        x- eV1863:
+          description: This coupon has been disabled
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetVoucherDetailsRequest:
+                  type: Object
+                  $ref: '#/components/schemas/getVoucherDetails'
+            examples:
+              Successful request:
+                value:
+                  GetVoucherDetailsRequest:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    country: IQ
+                    voucherCode: '1MFC4598fjks'
   /authorizeCard:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - Order Processing
       operationId: AuthorizeCardRequestMessage
@@ -2581,7 +2685,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     serviceType: PRODUCT
-                    serviceId: VIP3M
+                    serviceID: VIP3M
                     quantity: '1'
                     promotionID: FT6MP001
                     paymentmethodInfo:
@@ -2595,7 +2699,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     serviceType: PRODUCT
-                    serviceId: VIP3M
+                    serviceID: VIP3M
                     quantity: '1'
                     couponCode: shahid_iraqAmsC2
                     paymentmethodInfo:
@@ -2609,7 +2713,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     serviceType: PRODUCT
-                    serviceId: VIP3M
+                    serviceID: VIP3M
                     quantity: '1'
                     paymentmethodInfo:
                       label: Credit Card
@@ -2622,7 +2726,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     serviceType: PRODUCT
-                    serviceId: VIP3M
+                    serviceID: VIP3M
                     quantity: '1'
                     promotionID: FT6MP001
                     paymentmethodInfo:
@@ -2671,7 +2775,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     serviceType: PRODUCT
-                    serviceId: VIP3M
+                    serviceID: VIP3M
                     quantity: '1'
                     startDate: '1620192648828'
                     endDate: '1619851332000'
@@ -2686,10 +2790,313 @@ paths:
                         amount: '12.99'
                         txID: '45497543947'
                         txMsg: Success
-  /activateCustomerV3:
+  /getActiveSubscriptions:
     post:
       security:
         - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: GetActiveSubscriptionsRequestMessage
+      description: >-
+        getActiveSubscriptions() REST API is used to get the active 
+        subscriptions of an account in Evergent system.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetActiveSubscriptionsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      AccountServiceMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AccountServiceMessage'
+                        description: User service related details.
+              examples:
+                '111111111':
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      country: IQ
+                      message: SUCCESS
+                      responseCode: '1'
+                      AccountServiceMessage:
+                        - orderID: 1161900
+                          isContent: false
+                          isFreemium: false
+                          planPriceWithTax: 6.49
+                          serviceType: SVOD
+                          serviceName: VIP 3 Months
+                          serviceID: VIP3M
+                          startDate: 1621301522000
+                          validityTill: 1637199122000
+                          retailPrice: 6.49
+                          description: VIP 3 Months
+                          status: Active
+                          currencyCode: KWD
+                          cancellable: false
+                          hasAction: false
+                          subscriptionType: Monthly
+                          displayName: VIP 3 Months
+                          isRenewal: true
+                          period: NoOfMonths
+                          duration: 3
+                          paymentMethod: TPay_Zain
+                          opId: 1478847
+                          validityPeriod: NoOfMonths
+                          validityDuration: 3
+                          recPaymentsInd: T
+                          isInFreeTrail: false
+                          startDateInMillis: 1621301522000
+                          productCategory: Subscription
+                          type: Prepaid
+                          basicService: false
+                          isPackage: false
+                          planPrice: 6.49
+                Account with no service or expired service:
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      AccountServiceMessage: []
+                      message: SUCCESS
+                      responseCode: '1'
+        x- 111111111:
+          description: Authentication failed
+        x- eV2235:
+          description: >-
+            Either SP Account ID or CP Customer ID or Contact ID or Session
+            Token is required
+        x- eV2138:
+          description: Generic Failure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetActiveSubscriptionsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getActiveSubscriptions'
+            examples:
+              Sample Successful request:
+                value:
+                  GetActiveSubscriptionsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+  /getEntitlements:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: GetEntitlementsRequestMessage
+      description: >-
+        getEntitlements() REST API is used to get the active 
+        subscriptions of an account in Evergent system.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetEntitlementsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      AccountServiceMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AccountServiceMessage_getEntitlements'
+                        description: User service related details.
+              examples:
+                '111111111':
+                  value:
+                    GetEntitlementsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    GetEntitlementsResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      AccountServiceMessage:
+                        - isContent: false
+                          deviceType: WEB
+                          serviceName: VIP 3 Months plan
+                          serviceID: VIP3M
+                          startDate: 1621317201000
+                          validityTill: 1623995593000
+                          description: VIP 3 Months plan
+                          validityEndDate: 06/18/2021 11:23:13
+                          status: Active
+                          name: VIP 3 Months plan
+                          isUpgradeAllowed: false
+                          isRenewal: true
+                          subscriptionStatus: Trialist
+                Account with no service or expired service:
+                  value:
+                    GetEntitlementsResponseMessage:
+                      AccountServiceMessage: []
+                      message: SUCCESS
+                      responseCode: '1'
+        x- 111111111:
+          description: Authentication failed
+        x- eV2138:
+          description: Generic Failure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetEntitlementsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getEntitlements'
+            examples:
+              Sample request:
+                value:
+                  GetEntitlementsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+  /getSubscriptionHistory:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: GetSubscriptionHistoryRequestMessage
+      description: >-
+        getSubscriptionHistory() REST API is used to get the history of the subscriptions that expired in the Evergent system.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetSubscriptionHistoryResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      AccountServiceMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AccountServiceMessage'
+                        description: User service related details.
+              examples:
+                '111111111':
+                  value:
+                    GetSubscriptionHistoryResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response:
+                  value:
+                    GetSubscriptionHistoryResponseMessage:
+                      country: IQ
+                      message: SUCCESS
+                      responseCode: '1'
+                      AccountServiceMessage:
+                        - isRenewal: true
+                          period: NoOfDays
+                          orderID: '8575094'
+                          displayName: US ANNUAL TRIAL SVOD
+                          opId: '8684743'
+                          description: Annual-T
+                          serviceName: US ANNUAL TRIAL SVOD
+                          type: Prepaid
+                          duration: '1'
+                          validityPeriod: NoOfDays
+                          promotions:
+                            - isDefaultPromo: true
+                              promotionName: US TRIAL SVOD
+                              promotionType: Free
+                              amount: 0
+                              endDate: '1613471602000'
+                              isVODPromotion: false
+                              promotionalPrice: 0
+                              isFreeTrail: true
+                              promotionId: trialsvod
+                              startDate: '1613385202000'
+                          subscriptionType: Daily
+                          startDateInMillis: 1613385202000
+                          validityDuration: 1
+                          validityTill: 1613471602000
+                          paymentMethod: Credit/Debit Card
+                          isInFreeTrail: true
+                          serviceID: annualtrialsvod
+                          retailPrice: 69.99
+                          currencyCode: USD
+                          startDate: 1613385202000
+                          status: Active
+                Account with no service or expired service:
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      AccountServiceMessage: []
+                      message: SUCCESS
+                      responseCode: '1'
+        x- 111111111:
+          description: Authentication failed
+        x- eV2235:
+          description: >-
+            Either SP Account ID or CP Customer ID or Contact ID or Session
+            Token is required
+        x- eV2138:
+          description: Generic Failure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetActiveSubscriptionsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getActiveSubscriptions'
+            examples:
+              Sample Successful request:
+                value:
+                  GetActiveSubscriptionsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+  /activateCustomerV3:
+    post:
       tags:
         - TPay
       operationId: ActivateCustomerV3RequestMessage
@@ -2741,13 +3148,6 @@ paths:
                         - errorMessage: Invalid sku
                           errorCode: 'eV2355'
                       responseCode: '0'
-                'eV2138':
-                  value:
-                    ActivateCustomerV3RespMessage:
-                      failureMessage:
-                        - errorMessage: Generic Failure
-                          errorCode: 'eV2138'
-                      responseCode: '0'
                 'eV2334':
                   value:
                     ActivateCustomerV3RespMessage:
@@ -2785,8 +3185,6 @@ paths:
                     country: IQ
   /serviceEligibilityCheck:
     post:
-      security:
-        - bearerAuth: []
       tags:
         - TPay
       operationId: ServiceEligibilityCheckRequestMessage
@@ -2941,6 +3339,569 @@ paths:
                     serviceID: VIP3M
                     serviceType: PRODUCT
                     orderId: '457067951'
+  /reactivateService:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: ReactivateServiceRequestMessage
+      description: reactivateService() REST API is used to reactivate the cancelled service of the customer in the Evergent system.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ReactivateServiceResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid success message
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    ReactivateServiceResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    ReactivateServiceResponseMessage:
+                      message: Service Re-activated
+                      responseCode: 1
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ReactivateServiceRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/reactivateService'
+            examples:
+              Sample Successful request:
+                value:
+                  ReactivateServiceRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    serviceID: VIP3M
+                    serviceType: PRODUCT
+  /renewSubscription:
+    post:
+      tags:
+        - TPay
+      operationId: RenewSubscriptionRequestMessage
+      description: renewSubscription() REST API is used to renew the TPay subscription of the customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  RenewSubscriptionResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      success:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    RenewSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    RenewSubscriptionResponseMessage:
+                      message: Renewal successful
+                      responseCode: '1'
+                      success: SUCCESS
+                eV1684:
+                  value:
+                    RenewSubscriptionResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Payment method is mandatory for Account XXXXXXXXX
+                          errorCode: eV1684
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication failed
+        x- eV1684:
+          description: Payment method is mandatory for Account XXXXXXXXX
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RenewSubscriptionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/renewSubscription'
+            examples:
+              Sample Successful request:
+                value:
+                  RenewSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    subscriptionContractId: 'errowueyrsdfs6d6fdsf'
+                    customerAccountNumber: FDuydfts6f7g
+                    country: JO
+                    status: SUCCESS
+  /pauseSubscription:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: PauseSubscriptionRequestMessage
+      description: pauseSubscription() REST API is used to pause the subscription of the Customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  PauseSubscriptionResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      pauseStartDate:
+                        type: number
+                        description: Start date when subscription pause is started.
+                      pauseEndDate:
+                        type: number
+                        description: End date when subscription pause will end.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    PauseSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    PauseSubscriptionResponseMessage:
+                      message: Service paused
+                      responseCode: '1'
+                      success: SUCCESS
+                      pauseStartDate: '1621579332000'
+                      pauseEndDate: '1622097732000'
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                PauseSubscriptionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/pauseSubscription'
+            examples:
+              Sample Successful request:
+                value:
+                  PauseSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    sku: VIP3M
+                    startDateInMillis: '1621579332000'
+                    endDateInMillis: '1622097732000'
+                    dmaID: 'JO'
+              Sample Successful request with no of days:
+                value:
+                  PauseSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: 'JO'
+                    noOfDays: '5'
+  /resumeSubscription:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: ResumeSubscriptionRequestMessage
+      description: resumeSubscription() REST API is used to resume the subscription of the Customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ResumeSubscriptionResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    ResumeSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    ResumeSubscriptionResponseMessage:
+                      message: Service resumed
+                      responseCode: '1'
+                      success: SUCCESS
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ResumeSubscriptionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/resumeSubscription'
+            examples:
+              Sample request:
+                value:
+                  ResumeSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    serviceId: VIP3M
+                    dmaID: 'JO'
+  /updatePaymentInfo:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: UpdatePaymentInfoRequestMessage
+      description: >-
+        updatePaymentInfo() REST API is used to add/update/remove the payment
+        information for a customer Account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  UpdatePaymentInfoResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: SUCCESS /FAIL
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are “1” – Success "0” – Failure.
+                      paymentMethodId:
+                        type: string
+                        description: Unique Id of the customer’s existing payment method
+                      status:
+                        type: string
+                        description: Status of the payment method
+              examples:
+                Sample Success Response:
+                  value:
+                    UpdatePaymentInfoResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      paymentMethodId: '152467'
+                      status: Active
+                Success Response to remove payment method:
+                  value:
+                    UpdatePaymentInfoResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      paymentMethodId: '152467'
+                      status: InActive
+                Authentication Failed:
+                  value:
+                    UpdatePaymentInfoResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication failed
+        x- eV1637:
+          description: Either SPAccountID or CPCustomerID is required
+        x- eV1003:
+          description: Invalid SPAccountID “XXXX” for XXXX
+        x- eV1342:
+          description: Invalid customerID “XXXX” for XXXX
+        x- eV1109:
+          description: Label should be ACH or Card or PayPalAccount in Payment Method Info
+        x- eV1584:
+          description: Label cannot be empty
+        x- eV1592:
+          description: >-
+            We cannot select AutoPayment option while inactivating the Payment
+            Method
+        x- eV1588:
+          description: Status must be either Active or InActive
+        x- eV2124:
+          description: Invalid Session Token
+        x- eV2521:
+          description: Insufficient Address parameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UpdatePaymentInfoRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/updatePaymentInfo'
+            examples:
+              Sample Successful Request:
+                value:
+                  UpdatePaymentInfoRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    label: Card
+                    status: Active
+                    isAutoPayment: true
+                    CardTokenInfoMessage:
+                      paymentMethodID: '4324733'
+              Sample Successful Request using session id:
+                value:
+                  UpdatePaymentInfoRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    label: Card
+                    status: Active
+                    isAutoPayment: true
+                    CardTokenInfoMessage:
+                      sessionID: 'sid_fp7k7ejgriqeloaadjcj2sjhaq'
+              Sample Request to remove card:
+                value:
+                  UpdatePaymentInfoRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    label: Card
+                    status: InActive
+                    isAutoPayment: true
+                    CardTokenInfoMessage:
+                      paymentMethodID: '4324733'
+  /getPaymentMethods:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: GetPaymentMethodsRequestMessage
+      description: >-
+        getPaymentMethods() REST API is used to fetch all the existing payment
+        methods to the customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetPaymentMethodsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are “1” – Success "0” – Failure.
+                      PaymentMethods:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PaymentMethods'
+              examples:
+                Sample Successful Response:
+                  value:
+                    GetPaymentMethodsResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      PaymentMethods:
+                        - status: Active
+                          label: Card
+                          CardInfoMessage:
+                            methodType: General
+                            nickName: Damon
+                            expiryDate: 12/2020
+                            name: Damon
+                            paymentMethodId: '152152'
+                            cardType: Visa
+                            cardNumber: xxxxxxxxxxxx4113
+                          isAutoPayment: 'true'
+                Authentication Failed:
+                  value:
+                    GetPaymentMethodsResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetPaymentsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getPaymentMethods'
+            examples:
+              Sample Successful Request:
+                value:
+                  GetPaymentMethodsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+  /getPaymentsV2:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: GetPaymentsRequestMessage
+      description: >-
+        getPayments() REST API is used to get all the successful and declined payments to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetPaymentsV2ResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are “1” – Success "0” – Failure.
+                      order:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/order'
+                      previousBalance:
+                        type: number
+                        description: Previous balance that need to be paid by the customer.
+              examples:
+                Sample Successful Response:
+                  value:
+                    GetPaymentsV2ResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      order:
+                        - currencyCode: "KWD"
+                          currencySymbol: '&#1583;.&#1603;'
+                          orderProductInfo:
+                            - serviceId: VIP3M
+                              displayName: VIP 3 Months
+                              retailPrice: 6.49
+                              chargedPrice: 6.49
+                              startDate: 1621301522000
+                              endDate: 1629250322000
+                              taxCharged: 0.00
+                          orderID: 1161900
+                          status: Completed
+                          type: Order
+                          totalPriceCharged: 6.49
+                          totalTaxCharged: 0.00
+                          paymentsInfo:
+                            - amount: 6.49
+                              receivedDate: 1621301614000
+                              paymentType: Other
+                              postingStatus: Posted
+                              gatewayResponse: Success
+                              paymentID: 1037828
+                              paymentMethodID: 741352
+                              creditCardNumber: 21051801311337736
+                              paymentCategory: ORDER
+                      previousBalance: 0.0
+                Authentication Failed:
+                  value:
+                    GetPaymentsV2ResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+        x- 111111111:
+          description: Authentication failed
+        x- eV2138:
+          description: Generic Failure
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetPaymentsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getPaymentsV2'
+            examples:
+              Sample Request:
+                value:
+                  GetPaymentsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
   /recordTransaction:
     post:
       security:
@@ -3324,6 +4285,9 @@ components:
         spAccountID:
           type: string
           description: Unique sp account id for the account.
+        uniqueAccountID:
+          type: string
+          description: Unique payment transaction Id.
     getOAuthAccessTokenv2:
       type: object
       required:
@@ -3388,6 +4352,7 @@ components:
         language:
           type: string
           description: Prefered language selected to the account.
+          example: Arabic, English..
         gender:
           type: string
           description: Gender of the user.
@@ -3977,7 +4942,6 @@ components:
       required:
         - channelPartnerID
         - apiKey
-        - cpCustomerId
         - spAccountId
       properties:
         channelPartnerID:
@@ -4220,10 +5184,10 @@ components:
       properties:
         customerAccountNumber:
           type: string
-          description: Account number of the user.
+          description: Account number of the user in partner system.
         subscriptionContractId:
           type: string
-          description: Contract ID of the user.
+          description: Contract ID of the user in partner system.
         mobileNumber:
           type: string
           description: Mobile number of the user.
@@ -4329,7 +5293,7 @@ components:
       type: object
       required:
         - apiKey
-        - authorization
+        - country
       properties:
         channelPartnerID:
           type: string
@@ -4340,14 +5304,28 @@ components:
         Authorization:
           type: string
           description: Access token generated to the account.
+        paymentMode:
+          type: string
+          description: Type of the payment method.
         phoneNumber:
           type: string
           description: Mobile number of the user.
+        cardFingerPrint:
+          type: string
+          description: Friger print of the card holder
+        country:
+          type: string
+          description: Country in which user has registered.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
     isUserEligibleForPromotion:
       type: object
       required:
         - apiKey
-        - authorization
         - dmaID
         - promotionCode
       properties:
@@ -4357,9 +5335,6 @@ components:
         apiKey:
           type: string
           description: Partner authentication key.
-        Authorization:
-          type: string
-          description: Access token generated to the account.
         dmaID:
           type: string
           description: Unique ID of the channel partner DMA.
@@ -4367,6 +5342,22 @@ components:
         promotionCode:
           type: string
           description: Promotion code.
+        paymentMode:
+          type: string
+          description: Type of the payment method.
+        mobileNumber:
+          type: string
+          description: Mobile number of the user
+        email:
+          type: string
+          description: Email of the user
+        spAccountID:
+          type: string
+          description: A unique identifier of the account.
+        customerClassification:
+          type: string
+          description: Customer classification type
+          example: New Customer, Existing Customer, Win Back
     removeSubscription:
       type: object
       required:
@@ -4564,3 +5555,637 @@ components:
         priceToBeChargedInLocalCurrency:
           type: number
           description: Price of the product to be charged in local currency.
+        currency:
+          type: string
+          description: Currency in which user is charged.
+    getActiveSubscriptions:
+      type: object
+      required:
+        - authorization
+        - channelPartnerID
+        - apiKey
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication key.
+    AccountServiceMessage:
+      type: object
+      properties:
+        startDate:
+          type: integer
+          format: int64
+          description: Start Date of the service (In Milliseconds).
+        retailPrice:
+          type: integer
+          description: Retail price of the product.
+        orderID:
+          type: string
+          description: Unique ID for that Order.
+        status:
+          type: string
+          description: Status of the service.
+        description:
+          type: string
+          description: Description of the Service.
+        serviceID:
+          type: string
+          description: SKU/Quick code of the service.
+        isRenewal:
+          type: boolean
+          description: Indicates whether SKU will renewal or not.
+        validityTill:
+          type: integer
+          format: int64
+          description: Validity date in Milliseconds.
+        serviceName:
+          type: string
+          description: Service Name.
+        currencyCode:
+          type: string
+          description: Currency code of the subscription.
+        displayName:
+          type: string
+          description: Display name of the Subscription.
+        period:
+          type: string
+          description: Period of the Subscription.
+        duration:
+          type: string
+          description: Duration of the Subscription.
+        promotions:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotionss'
+          description: Applied promotional detail of the service.
+        isInFreeTrail:
+          type: boolean
+          description: Indicates whether the service is in free trial or not.
+        type:
+          type: string
+          description: Type of the Subscription.
+        validityPeriod:
+          type: string
+          description: Validity Period type.
+        subscriptionType:
+          type: string
+          description: Type of Subscription.
+        startDateInMillis:
+          type: integer
+          description: Start Date of the service (In Milliseconds).
+        validityDuration:
+          type: integer
+          description: Validity duration of the service.
+        paymentMethod:
+          type: string
+          description: Payment Method of the subscription.
+          enum:
+            - Credit/Debit Card
+            - App Store Billing
+            - Google Wallet
+            - Roku Payment
+        opID:
+          type: string
+          description: Unique orderedProduct ID for the subscription.
+        discounts:
+          type: object
+          items:
+            $ref: '#/components/schemas/discounts'
+          description: Applied discounts related details.
+        transactionId:
+          type: string
+          description: Current Roku transaction Id.
+        originalTransactionId:
+          type: string
+          description: Transaction ID for Evergent purposes.
+    getEntitlements:
+      type: object
+      required:
+        - authorization
+        - channelPartnerID
+        - apiKey
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication key.
+    AccountServiceMessage_getEntitlements:
+      type: object
+      properties:
+        isContent:
+          type: string
+          description: Unique ID for that Order.
+        startDate:
+          type: integer
+          format: int64
+          description: Start Date of the service (In Milliseconds).
+        deviceType:
+          type: string
+          description: Device type of the user.
+        status:
+          type: string
+          description: Status of the service.
+        description:
+          type: string
+          description: Description of the Service.
+        serviceID:
+          type: string
+          description: SKU/Quick code of the service.
+        isRenewal:
+          type: boolean
+          description: Indicates whether SKU will renewal or not.
+        validityTill:
+          type: integer
+          format: int64
+          description: Validity date in Milliseconds.
+        serviceName:
+          type: string
+          description: Service Name.
+        name:
+          type: string
+          description: Display name of the Subscription.
+        isUpgradeAllowed:
+          type: boolean
+          description: Indicates if upgrade is allowed or not.
+        subscriptionStatus:
+          type: string
+          description: Subscription status of the subscription.
+    promotionss:
+      properties:
+        promotionId:
+          type: string
+          description: SKU of Promotion.
+        promotionName:
+          type: string
+          description: Promotion Name.
+        promotionType:
+          type: string
+          description: Type of Promotion.
+        amount:
+          type: integer
+          format: int64
+          description: Amount of promotion.
+        promotionalPrice:
+          type: integer
+          format: int64
+          description: Promotional Price of the service.
+        startDate:
+          type: string
+          description: Start Date of the promotion(In Milliseconds).
+        endDate:
+          type: string
+          description: End Date of the promotion (In Milliseconds).
+        isVODPromotion:
+          type: boolean
+          description: If promotion is VOD or not.
+        promoDescrip:
+          type: string
+          description: Desciption of promotion applied.
+        isFreeTrial:
+          type: boolean
+          description: Whether the promotion is free trial or not.
+        isDefaultPromo:
+          type: boolean
+          description: Whether the promotion is default or not.
+        couponCode:
+          type: string
+          description: coupon code applied to avail the promotion.
+    discounts:
+      type: object
+      properties:
+        discount:
+          type: number
+          description: Percentage of Discount.
+        discountType:
+          type: string
+          description: Type of Discount.
+        priceAfterDiscount:
+          type: number
+          description: Price charged after discount.
+        discountAmount:
+          type: number
+          description: Discounted amount.
+        couponCode:
+          type: string
+          description: Discount Coupon code redeemed.
+    renewSubscription:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - country
+        - customerAccountNumber
+        - status
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        country:
+          type: string
+          description: Country in which user is registered.
+        customerAccountNumber:
+          type: string
+          description: Unique customer identification between partner and TPay.
+        subscriptionContractId:
+          type: string
+          description: Id of the Subscription contract
+        startDateInMillis:
+          type: string
+          description: Start date of the renewal.
+        endDateInMillis:
+          type: string
+          description: End date of the renewal.
+        mobileNumber:
+          type: string
+          description: Mobile number of the user
+        spAccountId:
+          type: string
+          description: A unique ID of the account in EV systems.
+        email:
+          type: string
+          description: Email of the user
+        productCatalogName:
+          type: string
+          description: Catalog name defined at TPay.
+        amount:
+          type: string
+          description: Price of the product.
+        status:
+          type: string
+          description: Status of the subscription
+          example: SUCCESS/FAILURE
+    reactivateService:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - serviceID
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        serviceID:
+          type: string
+          description: Product id of the service that needs to be reactivated.
+        serviceName:
+          type: string
+          description: Product name of the service that needs to be reactivated.
+    pauseSubscription:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - sku
+        - startDateInMillis
+        - endDateInMillis
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        sku:
+          type: string
+          description: Product id of the service that needs to be paused.
+        startDateInMillis:
+          type: string
+          description: Start date of the subscription pause.
+        endDateInMillis:
+          type: string
+          description: End date of the subscription pause.
+        noOfDays:
+          type: string
+          description: Duration of the pause period.
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+    resumeSubscription:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - dmaID
+        - serviceId
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        serviceId:
+          type: string
+          description: Product id of the service that needs to be paused.
+        startDate:
+          type: string
+          description: Start date of the subscription resume.
+        endDate:
+          type: string
+          description: End date of the subscription resume.
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+    getVoucherDetails:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - country
+        - voucherCode
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        country:
+          type: string
+          description: Country in which user is registered.
+        voucherCode:
+          type: string
+          description: Coupon code generated on the product.
+    CouponCodeDetails:
+      type: object
+      properties:
+        couponCode:
+          type: string
+          description: Coupon code defined for the product
+        descrip:
+          type: string
+          description: Description of the coupon
+        applicableFromDate:
+          type: number
+          description: Start date of the coupon
+        applicableToDate:
+          type: number
+          description: End date of the coupon
+        discountAmount:
+          type: string
+          description: Coupon amount defined.
+        discountType:
+          type: string
+          description: Type of coupon
+          example: Free, Flat, Flat Off, Percentage, Percentage Off
+        CouponItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/applicablePlans'
+        duration:
+          type: string
+          description: Duration of the coupon
+        paymentMethodRequired:
+          type: boolean
+          description: Indicates if payment method is required or not
+        period:
+          type: string
+          description: Period of the coupon
+        validityEndDate:
+          type: number
+          description: Validity of the coupon
+        promotionID:
+          type: string
+          description: Promotion id on which the coupon is defined
+        couponBatchName:
+          type: string
+          description: Name of the coupon batch
+        couponExpiry:
+          type: number
+          description: Expiry of the coupon
+        promotionName:
+          type: number
+          description: Promotion name on which the coupon is defined
+        status:
+          type: number
+          description: Status of the coupon
+          example: New, Redeemed
+    applicablePlans:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Price of the product
+        name:
+          type: string
+          description: Name of the product
+        discountAmount:
+          type: number
+          description: Discount amount applied on the product after applying the coupon
+        priceToBeCharged:
+          type: number
+          description: Price to be charged afer coupon applied.
+        sku:
+          type: string
+          description: Product id
+        type:
+          type: string
+          description: Type of the product
+          example: PRODUCT/PACKAGE 
+    getPaymentMethods:
+      type: object
+      required:
+        - apiKey
+        - authorization
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+    PaymentMethods:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Status of the card.
+        label:
+          type: string
+          description: Label of the card.
+        CardInfoMessage:
+          type: object
+          $ref: '#/components/schemas/CardInfoMessages'
+        isAutoPayment:
+          type: boolean
+          description: Describes whether the card is auto payment method or not.
+    CardInfoMessages:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Unique number of the credit/debit card.
+        expiryDate:
+          type: string
+          description: expiryDate of the card in MM/YYYY format
+        cardType:
+          type: string
+          description: Card type of the account holder.
+        nameOnCard:
+          type: string
+          description: Name on the card.
+        methodType:
+          type: string
+          description: Payment method type.
+        nickName:
+          type: string
+          description: Payment method type.
+        paymentMethodId:
+          type: string
+          description: Payment method type.
+    updatePaymentInfo:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - label
+        - isAutoPayment
+        - CardInfoMessage
+        - authorization
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        label:
+          type: string
+          description: Label of the payment method.
+        status:
+          type: string
+          description: status of the Payment method.
+        isAutoPayment:
+          type: string
+          description: 'true, if auto Payment Method. Else, false'
+        cpCustomerID:
+          type: string
+          description: Unique ID of customer account in Ev system.
+        CardInfoMessage:
+          type: object
+          $ref: '#/components/schemas/CardInfoMessage'
+    CardInfoMessage:
+      type: object
+      required:
+        - sessionID
+        - paymentMethodId
+      properties:
+        sessionID:
+          type: string
+          description: Unique id returned from partner system to EV.
+        paymentMethodId:
+          type: string
+          description: Unique id generated for the payment method.
+    getPaymentsV2:
+      type: object
+      required:
+        - apiKey
+        - authorization
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+    order:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: Currency charged to the customer.
+        currencySymbol:
+          type: string
+          description: Currency symbol of the country.
+        orderProductInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderProductInfo'
+          description: Order product details.
+        orderID:
+          type: number
+          description: Unique id generated for the order in EV system.
+        status:
+          type: string
+          description: Status of the order.
+        type:
+          type: string
+          description: Type of the order.
+        totalPriceCharged:
+          type: number
+          description: Total amount charged for the order.
+        totalTaxCharged:
+          type: number
+          description: Total tax charged for the order.
+        paymentsInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/paymentsInfo'
+          description: Payment information details.
+    orderProductInfo:
+      type: object
+      properties:
+        serviceId:
+          type: string
+          description: Product id of the purchase.
+        displayName:
+          type: string
+          description: Display name of the purchased product.
+        retailPrice:
+          type: number
+          description: Retail price of the purchased product.
+        chargedPrice:
+          type: number
+          description: Charged price of the purchased product.
+        startDate:
+          type: number
+          description: Start date of the order.
+        endDate:
+          type: number
+          description: End date of the order.
+        taxCharged:
+          type: number
+          description: Tax charged for the order.
+    paymentsInfo:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Price of the product.
+        receivedDate:
+          type: number
+          description: Received date of the payment.
+        paymentType:
+          type: string
+          description: Type of payment.
+        postingStatus:
+          type: string
+          description: Posting status of the order.
+        gatewayResponse:
+          type: string
+          description: Gateway response for the order.
+        paymentID:
+          type: string
+          description: Unique ID generated for the payment in EV system.
+        paymentMethodID:
+          type: string
+          description: Unique ID generated for the payment method in EV system.
+        creditCardNumber:
+          type: string
+          description: Credit card number for the order.
+        paymentCategory:
+          type: string
+          description: Payment category for the order.
