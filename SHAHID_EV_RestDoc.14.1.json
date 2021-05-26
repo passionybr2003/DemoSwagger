@@ -4,13 +4,13 @@ servers:
     description: Dev API server
 info:
   description: >-
-    <b>Last Updated Date 25th May 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 27th May 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.4
+  title: EV Shahid API - V14.5
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -2464,8 +2464,7 @@ paths:
                   ProvisionUserRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    cpCustomerId: '0210420110156520'
-                    spAccountId: '19111214155649085145'
+                    spAccountID: '19111214155649085145'
                     country: JO
                     ipAddress: 192.34.33.63
                     authZToken: dfdfsidtyksdfjsfkahdf
@@ -2652,7 +2651,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  GetVoucherDetailsResponse:
+                  GetVoucherDetailsResponseMessage:
                     type: object
                     properties:
                       message:
@@ -2671,22 +2670,17 @@ paths:
                         type: object
                         $ref: '#/components/schemas/CouponCodeDetails'
                         description: Coupon code details.
-                      applicablePlans:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/applicablePlans'
-                        description: Plan details.
               examples:
                 '111111111':
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       failureMessage:
                         - errorMessage: Authentication Failed
                           errorCode: '111111111'
                       responseCode: '0'
                 Sample Successful response:
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       CouponCodeDetails:
                         duration: '1'
                         couponBatchName: Test coupon batch for VIP product
@@ -2698,42 +2692,43 @@ paths:
                         discountType: Free
                         couponCode: 1MFC4598fjks
                         validityEndDate: 1621304628943
+                        applicableFromDate: '-1'
                         status: New
-                      applicablePlans:
-                        - price: 4.99
-                          name: VIP Monthly
-                          discountAmount: 4.99
-                          period: NoOfMonths
-                          priceToBeCharged: 0
-                          sku: VIPM
-                          type: Product
+                        couponItems:
+                          - price: 4.99
+                            name: VIP Monthly
+                            discountAmount: 4.99
+                            period: NoOfMonths
+                            priceToBeCharged: 0
+                            sku: VIPM
+                            type: Product
                       responseCode: '1'
                       message: SUCCESS
                       channelPartnerID: SHAHID_IQ
                 eV1842:
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       failureMessage:
                         - errorMessage: Please enter a valid coupon code
                           errorCode: eV1842
                       responseCode: '0'
                 eV1861:
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has already been redeemed
                           errorCode: eV1861
                       responseCode: '0'
                 eV1862:
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has expired
                           errorCode: eV1862
                       responseCode: '0'
                 eV1863:
                   value:
-                    GetVoucherDetailsResponse:
+                    GetVoucherDetailsResponseMessage:
                       failureMessage:
                         - errorMessage: This coupon has been disabled
                           errorCode: eV1863
@@ -2762,11 +2757,11 @@ paths:
             examples:
               Successful request:
                 value:
-                  GetVoucherDetailsRequest:
+                  GetVoucherDetailsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     country: IQ
-                    voucherCode: 1MFC4598fjks
+                    voucherCode: TCBIQARZGR
   /authorizeCard:
     post:
       tags:
@@ -3605,11 +3600,13 @@ paths:
               Sample request:
                 value:
                   ActivateCustomerV3RequestMessage:
+                    channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     sku: tok_ctynkwcksdru3nzh7fzhszcxzu
                     paymentMethod: TPay_Zain
                     method: activate
                     country: IQ
+                    spAccountID: '5427895041326478392'
   /serviceEligibilityCheck:
     post:
       tags:
@@ -5559,6 +5556,9 @@ components:
         - channelPartnerID
         - apiKey
         - spAccountId
+        - country
+        - authZToken
+        - serviceProvider
       properties:
         channelPartnerID:
           type: string
@@ -5837,6 +5837,7 @@ components:
         - paymentMethod
         - method
         - country
+        - spAccountID
       properties:
         channelPartnerID:
           type: string
@@ -5871,6 +5872,15 @@ components:
         country:
           type: string
           description: Country of the user.
+        spAccountID:
+          type: string
+          description: Unique id generated in EV system.
+        msisdn:
+          type: string
+          description: Mobile number of the user
+        externalAccountID:
+          type: string
+          description: Unique payment method reference number.
     serviceEligibilityCheck:
       type: object
       required:
@@ -6599,10 +6609,10 @@ components:
           type: string
           description: Type of coupon
           example: 'Free, Flat, Flat Off, Percentage, Percentage Off'
-        CouponItems:
+        couponItems:
           type: array
           items:
-            $ref: '#/components/schemas/applicablePlans'
+            $ref: '#/components/schemas/couponItems'
         duration:
           type: string
           description: Duration of the coupon
@@ -6631,7 +6641,7 @@ components:
           type: number
           description: Status of the coupon
           example: 'New, Redeemed'
-    applicablePlans:
+    couponItems:
       type: object
       properties:
         price:
