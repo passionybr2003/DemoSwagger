@@ -1685,7 +1685,16 @@
                       "paymentMode": "Google Wallet",
                       "rateType": "Google Wallet",
                       "externalPromotionType": "Contract",
-                      "customerClassification": "New Customer"
+                      "customerClassification": "New Customer",
+                      "promotionDeviceDetails": {
+                        "brand": "HAIER",
+                        "category\"": "UHD",
+                        "model\"": "H65S6UG",
+                        "internalModelNo": 98765,
+                        "chasis": "chasis_4",
+                        "inchFrom": 2,
+                        "inchTo": 3
+                      }
                     }
                   }
                 }
@@ -4441,6 +4450,7 @@
                       "serviceType": "PRODUCT",
                       "serviceID": "VIP3M",
                       "quantity": "1",
+                      "isSkipDefaultPromo": "true",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -4460,6 +4470,7 @@
                       "serviceID": "VIP3M",
                       "quantity": "1",
                       "promotionID": "FT6MP001",
+                      "isSkipDefaultPromo": "true",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5183,10 +5194,10 @@
                       "ServiceEligibilityCheckResponseMessage": {
                         "message": "SUCCESS",
                         "responseCode": "1",
-                        "spAccountID": "16180566411121361348348536",
-                        "mobileNumber": "7093004212",
                         "subscriptionDetails": [
                           {
+                            "spAccountID": "16180566411121361348348536",
+                            "mobileNumber": "7093004212",
                             "paymentMethod": "TPay_Jain",
                             "sku": "VIP3M",
                             "subscriptionStatus": "Active",
@@ -6850,7 +6861,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           },
           "dmaId": {
@@ -6861,7 +6893,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           },
           "ipAddress": {
@@ -7934,7 +7987,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           }
         }
@@ -7987,7 +8061,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           }
         }
@@ -8132,7 +8227,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           },
           "paymentmethodInfo": {
@@ -8412,7 +8528,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           }
         }
@@ -9192,7 +9329,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           }
         }
@@ -9230,7 +9388,28 @@
               "KW(Kuwait)",
               "OM(Oman)",
               "IQ(Iraq)",
-              "QA(Qatar)"
+              "QA(Qatar)",
+              "DZ(Algeria)",
+              "AU(Australia)",
+              "BH(Bahrain )",
+              "CA(Canada )",
+              "EG(Egypt)",
+              "EU(Europe)",
+              "SA (KSA)",
+              "LB(Lebanon)",
+              "LY(Libya)",
+              "MR (Mauritania)",
+              "MA(Morroco)",
+              "PS(Palestine)",
+              "SE(Sweden)",
+              "SY(Syria)",
+              "TN(Tunisia)",
+              "TR(Turkey)",
+              "AE(UAE)",
+              "GB (UK)",
+              "US(US)",
+              "WW(WW)",
+              "YE(Yemen)"
             ]
           }
         }
