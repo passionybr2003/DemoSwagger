@@ -4957,7 +4957,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "GetActiveSubscriptionsRequestMessage": {
+                  "GetSubscriptionHistoryRequestMessage": {
                     "type": "Object",
                     "$ref": "#/components/schemas/getActiveSubscriptions"
                   }
@@ -4966,7 +4966,7 @@
               "examples": {
                 "Sample Successful request": {
                   "value": {
-                    "GetActiveSubscriptionsRequestMessage": {
+                    "GetSubscriptionHistoryRequestMessage": {
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS"
                     }
@@ -6192,7 +6192,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "GetPaymentsRequestMessage": {
+                  "GetPaymentsV2RequestMessage": {
                     "type": "Object",
                     "$ref": "#/components/schemas/getPaymentsV2"
                   }
@@ -6201,7 +6201,7 @@
               "examples": {
                 "Sample Request": {
                   "value": {
-                    "GetPaymentsRequestMessage": {
+                    "GetPaymentsV2RequestMessage": {
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS"
                     }
