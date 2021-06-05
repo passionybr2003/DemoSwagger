@@ -10,7 +10,7 @@ info:
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.5
+  title: EV Shahid API - V14.7
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -83,12 +83,6 @@ paths:
                         type: string
                         description: Social login type of the account.
               examples:
-                '20003':
-                  value:
-                    SearchAccountV2ResponseMessage:
-                      failureMessage:
-                        - errorMessage: Missing Required Parameter
-                          errorCode: '20003'
                 '111111111':
                   value:
                     SearchAccountV2ResponseMessage:
@@ -101,17 +95,18 @@ paths:
                     SearchAccountV2ResponseMessage:
                       contactUserName: testdemo54@yopmail.com
                       email: testdemo54@yopmail.com
-                      channelPartnerID: SHAHIDJRD
+                      channelPartnerID: SHAHID_JO
                       responseCode: '1'
                       message: SUCCESS
                       status: Active
                       accountID: '191112141556490851453453453'
                       cpCustomerID: '21041207271310334'
+                      isEmailVerified: true
                 Sample successful response with mobile number:
                   value:
                     SearchAccountV2ResponseMessage:
                       phoneNumber: '971676667877'
-                      channelPartnerID: SHAHIDQTR
+                      channelPartnerID: SHAHID_OM
                       responseCode: '1'
                       message: SUCCESS
                       status: Active
@@ -121,7 +116,7 @@ paths:
                   value:
                     SearchAccountV2ResponseMessage:
                       socialLoginID: '1618221797892482622'
-                      channelPartnerID: SHAHOMN
+                      channelPartnerID: SHAHID_JO
                       responseCode: '1'
                       message: SUCCESS
                       status: Active
@@ -157,19 +152,19 @@ paths:
                   SearchAccountV2RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    spAccountID: '191112114157906490851'
+                    spAccountID: '1622808115'
               Sample request with Phone number:
                 value:
                   SearchAccountV2RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    phone: '971501200006'
+                    phone: '971501200010'
               Sample request with email:
                 value:
                   SearchAccountV2RequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    email: swaggertest1@yopmail.com
+                    email: shahidtest1@yopmail.com
   /createUser:
     post:
       tags:
@@ -1160,12 +1155,12 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/getPromotions'
             examples:
-              getPromotions request:
+              getPromotions request with additional data:
                 value:
                   GetPromotionsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
-                    dmaID: IQ
+                    dmaID: OM
                     returnAppChannels: T
                     promotionID: FTPIQ001
                     paymentMode: Google Wallet
@@ -1174,12 +1169,20 @@ paths:
                     customerClassification: New Customer
                     promotionDeviceDetails:
                       brand: HAIER
-                      category": UHD
-                      model": H65S6UG
-                      internalModelNo: 98765
-                      chasis: chasis_4
-                      inchFrom: 2
-                      inchTo: 3
+                      category: UHD HQLED
+                      model: H65S6UG
+                      internalModelNo: S6UG
+                      chasis: "6886"
+                      inchFrom: "65"
+                      inchTo: "3"
+              getPromotions request with product id:
+                value:
+                  GetPromotionsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: OM
+                    skus:
+                      - VIPM01
   /getProductPromotion:
     post:
       tags:
@@ -2446,13 +2449,13 @@ paths:
               Sample Request:
                 value:
                   GetPaymentModeMetaDataRequestMessage:
-                    channelPartnerID: WB30POFF2M
+                    channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
               Sample Request with paymentMode:
                 value:
                   GetPaymentModeMetaDataRequestMessage:
-                    channelPartnerID: WB30POFF2M
+                    channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
                     paymentMode: Credit Card
@@ -2505,6 +2508,11 @@ paths:
                         enum:
                           - 'true'
                           - 'false'
+                      subscriptionDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/subscriptionDetails_actV3'
+                        description: Subscription purchase details.
               examples:
                 '111111111':
                   value:
@@ -2525,6 +2533,18 @@ paths:
                       expiresIn: '1618298742823'
                       status: SUCCESS
                       subscriptionStatus: Active
+                      subscriptionDetails:
+                        - paymentMethod:
+                            label: Credit Card
+                            referenceNumber: '5343453453453'
+                            paymentMethodID: '763852'
+                          sku: VIPW
+                          subscriptionStatus: Active
+                          startDate: 1622528865000
+                          endDate: 1625120865000
+                          buCountry: IQ
+                          purchaseType: SVOD
+                          isRenewable: true
         x- 111111111:
           description: Authentication Failed
       requestBody:
@@ -2545,8 +2565,9 @@ paths:
                     spAccountID: '19111214155649085145'
                     country: JO
                     ipAddress: 192.34.33.63
-                    authZToken: dfdfsidtyksdfjsfkahdf
-                    serviceProvider: DISH
+                    authZToken: 15F40F40-A44B-11E7-B400-F6BF1D22E007_516205464442147483647000MBCretro693160416908570
+                    serviceProvider: SLING
+                    externalAccountID: '986798645549458'
   /redeemCoupon:
     post:
       security:
@@ -2834,7 +2855,7 @@ paths:
             schema:
               type: object
               properties:
-                GetVoucherDetailsRequest:
+                GetVoucherDetailsRequestMessage:
                   type: Object
                   $ref: '#/components/schemas/getVoucherDetails'
             examples:
@@ -3316,6 +3337,97 @@ paths:
                         amount: '12.99'
                         txID: '45497543947'
                         txMsg: Success
+  /changeService:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: ChangeServiceRequestMessage
+      description: >-
+        changeService() REST API is used to upgrade/downgrade the users subscription.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ChangeServiceResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid successful message
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: SUCCESS/FAIL
+                      subscriptionDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/subscriptionDetails_Sub'
+                        description: Subscription purchase details.
+              examples:
+                '111111111':
+                  value:
+                    ChangeServiceResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Successful purchase:
+                  value:
+                    ChangeServiceResponseMessage:
+                      message: Service changed successfully
+                      responseCode: '1'
+                      status: SUCCESS
+                      subscriptionDetails:
+                        - paymentMethod:
+                            label: Credit Card
+                            country: IQ
+                            expiryDate: 10/2023
+                            bankName: JPMORGAN CHASE BANK NA
+                            paymentMethodID: 760352
+                            creditCardNumber: xxxxxxxxxxxx4242
+                            cardType: Visa
+                          sku: VIP3M
+                          ovpSku: SHAHIDVIP
+                          subscriptionStatus: Active
+                          startDate: 1622528865000
+                          endDate: 1625120865000
+                          buCountry: IQ
+                          purchaseType: SVOD
+                          isRenewable: true
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ChangeServiceRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/changeService'
+            examples:
+              Credit/Debit card purchase with promotion:
+                value:
+                  ChangeServiceRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: IQ
+                    newServiceID: VIP3M,
+                    oldServiceID: VIPM01
+                    paymentmethodInfo:
+                      label: Credit Card
+                      makeAutoPayment: 'true'
+                      CardTokenInfoMessage:
+                        paymentMethodID: '4324733'
   /getActiveSubscriptions:
     post:
       security:
@@ -3365,7 +3477,7 @@ paths:
                       message: SUCCESS
                       responseCode: '1'
                       AccountServiceMessage:
-                        - orderID: 1161900
+                        - orderID: '1161900'
                           isContent: false
                           isFreemium: false
                           planPriceWithTax: 6.49
@@ -3641,6 +3753,11 @@ paths:
                   ActivateCustomerV3RespMessage:
                     type: object
                     properties:
+                      subscriptionDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/subscriptionDetails_actV3'
+                        description: Subscription purchase details.
                       message:
                         type: string
                         description: Success/Fail.
@@ -3650,6 +3767,15 @@ paths:
                           Indicates if the response was successfully processed.
                           Accepted values are <br> “1” – Success <br> “0” –
                           Failure.
+                      sku:
+                        type: string
+                        description: Product id defined in EV system
+                      startDate:
+                        type: number
+                        description: Start date of the subscription
+                      endDate:
+                        type: number
+                        description: End date of the subscription
               examples:
                 '111111111':
                   value:
@@ -3661,8 +3787,24 @@ paths:
                 Successful response:
                   value:
                     ActivateCustomerV3RespMessage:
-                      message: SUCCESS
+                      subscriptionDetails:
+                        - paymentMethod:
+                            label: TPay_Zain
+                            gatewayName: Zain
+                            referenceNumber: 
+                            paymentMethodID: '761201'
+                          sku: VIPM01
+                          subscriptionStatus: Active
+                          startDate: 1622619399652
+                          endDate: 1625211399652
+                          buCountry: IQ
+                          purchaseType: SVOD
+                          isRenewable: true
                       responseCode: '1'
+                      message: SUCCESS
+                      sku: VIPM01
+                      startDate: 1622619399652
+                      endDate: 1625211399652
                 eV2364:
                   value:
                     ActivateCustomerV3RespMessage:
@@ -3710,10 +3852,13 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     sku: tok_ctynkwcksdru3nzh7fzhszcxzu
-                    paymentMethod: TPay_Zain
+                    paymentMethod: TPay_Bundle
                     method: activate
                     country: IQ
                     spAccountID: '5427895041326478392'
+                    pmMobileNumber: '9715433434378'
+                    pmEmail: zehra@gmail.com
+                    externalAccountId: '4535673746988'
   /serviceEligibilityCheck:
     post:
       tags:
@@ -3750,7 +3895,7 @@ paths:
                       subscriptionDetails:
                         type: array
                         items:
-                          $ref: '#/components/schemas/subscriptionDetails'
+                          $ref: '#/components/schemas/subscriptionDetails_actV3'
                         description: Subscription details.
               examples:
                 '111111111':
@@ -3766,12 +3911,18 @@ paths:
                       message: SUCCESS
                       responseCode: '1'
                       subscriptionDetails:
-                        - spAccountID: '16180566411121361348348536'
-                          mobileNumber: '7093004212'
-                          paymentMethod: TPay_Jain
-                          sku: VIP3M
+                        - paymentMethod:
+                            label: TPay_Zain
+                            gatewayName: Zain
+                            referenceNumber: 
+                            paymentMethodID: '761201'
+                          sku: VIPM01
                           subscriptionStatus: Active
-                          orderID: '456930951'
+                          startDate: 1622619399652
+                          endDate: 1625211399652
+                          buCountry: IQ
+                          purchaseType: SVOD
+                          isRenewable: true
         x- 111111111:
           description: Authentication Failed
       requestBody:
@@ -3967,6 +4118,11 @@ paths:
                           Indicates if the response was successfully processed.
                           Accepted values are <br> “1” – Success. <br> “0” –
                           Failure.
+                      subscriptionDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/subscriptionDetails_actV3'
+                        description: Subscription purchase details.
               examples:
                 '111111111':
                   value:
@@ -3981,6 +4137,19 @@ paths:
                       message: Renewal successful
                       responseCode: '1'
                       success: SUCCESS
+                      subscriptionDetails:
+                        - paymentMethod:
+                            label: TPay_Zain
+                            gatewayName: Zain
+                            referenceNumber: 
+                            paymentMethodID: '761201'
+                          sku: VIPM01
+                          subscriptionStatus: Active
+                          startDate: 1622619399652
+                          endDate: 1625211399652
+                          buCountry: IQ
+                          purchaseType: SVOD
+                          isRenewable: true
                 eV1684:
                   value:
                     RenewSubscriptionResponseMessage:
@@ -4003,7 +4172,7 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/renewSubscription'
             examples:
-              Sample Successful request:
+              Sample request:
                 value:
                   RenewSubscriptionRequestMessage:
                     channelPartnerID: SHAHID
@@ -4190,17 +4359,32 @@ paths:
                       paymentMethodId:
                         type: string
                         description: Unique Id of the customer’s existing payment method
-                      status:
-                        type: string
-                        description: Status of the payment method
+                      paymentMethods:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/PaymentMethods'
               examples:
                 Sample Success Response:
                   value:
                     UpdatePaymentInfoResponseMessage:
                       message: SUCCESS
                       responseCode: '1'
-                      paymentMethodId: '152467'
-                      status: Active
+                      paymentMethodId: '761152'
+                      paymentMethods:
+                        - label: Credit Card
+                          isAutoPayment: true
+                          status: Active
+                          modifiedTs: 1622615420000
+                          CardInfoMessage:
+                            cardType: Visa
+                            name: JPMORGAN CHASE BANK NA
+                            cardNumber: xxxxxxxxxxxx4242
+                            expiryDate: 10/2023
+                            methodType: General
+                            paymentMethodId: '761152'
+                            billingAddress:
+                              country: IQ
+                            bin: '424242'
                 Success Response to remove payment method:
                   value:
                     UpdatePaymentInfoResponseMessage:
@@ -4274,7 +4458,7 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     label: Card
                     status: InActive
-                    isAutoPayment: true
+                    isAutoPayment: false
                     CardTokenInfoMessage:
                       paymentMethodID: '4324733'
   /getPaymentMethods:
@@ -4599,6 +4783,7 @@ paths:
                     transactionId: '45664344556553344'
                     transactionStatus: PENDING
                     priceCharged: '39'
+                    email: shahidtestfawry1@yopmail.com
               Sample failure request(TPay):
                 value:
                   RecordTransactionRequestMessage:
@@ -4970,9 +5155,12 @@ components:
         phone:
           type: string
           description: Unique mobile number of the user provided during registration.
-        transactionId:
+        uniqueAccountId:
           type: string
-          description: Unique payment transaction Id.
+          description: External payment account number.
+        isEmailVerified:
+          type: boolean
+          description: Indicates if email is verified or not.
     getOAuthAccessTokenv2:
       type: object
       required:
@@ -5309,6 +5497,11 @@ components:
         promotionDeviceDetails:
           type: object
           $ref: '#/components/schemas/promotionDeviceDetails'
+        skus:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceID'
+            description: Service ids mapped for the promotions.
     promotionDeviceDetails:
       type: object
       properties:
@@ -5489,7 +5682,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/serviceID'
-            description: Payment mode details.
+            description: service id defined for the payment modes
         appChannels:
           type: array
           items:
@@ -5767,6 +5960,9 @@ components:
         serviceProvider:
           type: string
           description: Service provider
+        externalAccountID:
+          type: string
+          description: Unique external id from the client
         country:
           type: string
           description: Country in which user has registered.(2 letter country code)
@@ -5881,7 +6077,7 @@ components:
         - token
         - transactionType
         - serviceType
-        - serviceId
+        - serviceID
       properties:
         channelPartnerID:
           type: string
@@ -5905,7 +6101,7 @@ components:
           type: string
           description: serviceType of the Service.
           example: PRODUCT
-        serviceId:
+        serviceID:
           type: string
           description: Unique id of the Service defined in EV system.
         country:
@@ -6146,6 +6342,37 @@ components:
     orderedProductIds:
       type: object
       description: Unique id of the ordered product.
+    changeService:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - newServiceID
+        - oldServiceID
+        - paymentmethodInfo
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        Authorization:
+          type: string
+          description: Access token generated to the account.
+        newServiceID:
+          type: string
+          description: Product id to which user wants to upgrade or downgrade.
+        oldServiceID:
+          type: string
+          description: Existing active subscription id.
+        currencyCode:
+          type: string
+          description: Currency code in which transaction is processed
+        paymentmethodInfo:
+          type: object
+          $ref: '#/components/schemas/paymentmethodInfo'
+          description: Payment method related details.
     activateCustomerV3:
       type: object
       required:
@@ -6156,6 +6383,9 @@ components:
         - method
         - country
         - spAccountID
+        - pmMobileNumber
+        - pmEmail
+        - externalAccountId
       properties:
         channelPartnerID:
           type: string
@@ -6202,6 +6432,47 @@ components:
         externalAccountId:
           type: string
           description: Unique payment method reference number.
+    subscriptionDetails_actV3:
+      type: object
+      properties:
+        paymentMethod:
+          type: object
+          $ref: '#/components/schemas/paymentMethod_actV3'
+        sku:
+          type: string
+          description: Unique product id defined in EV system.
+        subscriptionStatus:
+          type: string
+          description: Subscription status of the user.
+        startDate:
+          type: number
+          description: Start date of the subscription
+        endDate:
+          type: number
+          description: End date of the subscription
+        buCountry:
+          type: string
+          description: Country in which purchase is done
+        purchaseType:
+          type: string
+          description: Indicates if the purchase is SVOD/TVOD.
+        isRenewable:
+          type: string
+          description: Indicates if service is renewal or not.
+    paymentMethod_actV3:
+      properties:
+        label:
+          type: string
+          description: Label of the card
+        gatewayName:
+          type: string
+          description: Country in which transaction is made
+        paymentMethodID:
+          type: string
+          description: Unique Id for the payment method
+        referenceNumber:
+          type: string
+          description: External accountid
     serviceEligibilityCheck:
       type: object
       required:
@@ -6227,6 +6498,9 @@ components:
         email:
           type: string
           description: Email of the user
+        paymentType:
+          type: string
+          description: Type of payment method
     subscriptionDetails:
       type: object
       properties:
@@ -6325,6 +6599,9 @@ components:
         externalAccountID:
           type: string
           description: Unique payment method reference number.
+        spAccountID:
+          type: string
+          description: Unique ID generated in EV system.
         customerClassification:
           type: string
           description: Customer classification type
@@ -6514,6 +6791,15 @@ components:
           type: string
           description: Unique ID of the channel partner DMA.
           example: IQ/KW/IR/QA/OM
+        rateType:
+          type: string
+          description: Rate type used for the purchase
+        paymentMode:
+          type: string
+          description: Payment mode of the purchase
+        currencyCode:
+          type: string
+          description: Currency code used for the transaction
         selectedServices:
           type: array
           items:
@@ -6551,6 +6837,15 @@ components:
         promotionId:
           type: string
           description: Unique id of the promotion.
+        rateType:
+          type: string
+          description: Rate type used for the purchase
+        paymentMode:
+          type: string
+          description: Payment mode of the purchase
+        currencyCode:
+          type: string
+          description: Currency code used for the transaction
     discountsss:
       type: object
       properties:
@@ -7162,21 +7457,24 @@ components:
         cardType:
           type: string
           description: Card type of the account holder.
-        nameOnCard:
+        name:
           type: string
           description: Name on the card.
         methodType:
           type: string
           description: Payment method type.
-        nickName:
-          type: string
-          description: Nick name for the card.
         paymentMethodId:
           type: string
           description: Unique id generated for the payment method.
         xid:
           type: string
           description: Card secure level(2D/3D)
+        bin:
+          type: string
+          description: Bin of the card
+        billingAddress:
+          type: object
+          $ref: '#/components/schemas/billingAddress'
     OtherPaymentMethod:
       type: object
       properties:
@@ -7241,6 +7539,12 @@ components:
         paymentMethodId:
           type: string
           description: Unique id generated for the payment method.
+    billingAddress:
+      type: object
+      properties:
+        country:
+          type: string
+          description: Country in which transaction is made
     getPaymentsV2:
       type: object
       required:
