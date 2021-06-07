@@ -4,13 +4,13 @@ servers:
     description: Dev API server
 info:
   description: >-
-    <b>Last Updated Date 27th May 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 07th June, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.7
+  title: EV Shahid API - V14.8
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -4017,13 +4017,23 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/removeSubscription'
             examples:
-              Sample Successful request:
+              Sample request with auth key:
                 value:
                   RemoveSubscriptionRequestMessage:
                     apiKey: 8uMMWK58TY2fGjJS
                     serviceID: VIP3M
                     serviceType: PRODUCT
                     orderId: '457067951'
+              Sample request with spAccountID:
+                value:
+                  RemoveSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    serviceID: VIP3M
+                    serviceType: PRODUCT
+                    orderId: '457067951'
+                    spAccountID: '62352519753313525311'
+                    country: IQ
   /reactivateService:
     post:
       security:
@@ -6654,6 +6664,12 @@ components:
         orderId:
           type: string
           description: Unique id generated for the order.
+        country:
+          type: string
+          description: Country in which user has registered.
+        spAccountID:
+          type: string
+          description: Unique Id genereated in the EV system.
     recordTransaction:
       type: object
       required:
