@@ -4,7 +4,7 @@ servers:
     description: Dev API server
 info:
   description: >-
-    <b>Last Updated Date 07th June, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 08th June, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
@@ -3475,7 +3475,7 @@ paths:
                         - errorMessage: Authentication Failed
                           errorCode: '111111111'
                       responseCode: '0'
-                Sample successful response:
+                Sample successful response with credit card:
                   value:
                     GetActiveSubscriptionsResponseMessage:
                       country: IQ
@@ -3523,6 +3523,55 @@ paths:
                           basicService: false
                           isPackage: false
                           planPrice: 6.49
+                Sample successful response with TPay:
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      country: IQ
+                      message: SUCCESS
+                      responseCode: '1'
+                      AccountServiceMessage:
+                        - orderID: 1194749
+                          isContent: false
+                          isFreemium: false
+                          planPriceWithTax: 7.99
+                          serviceType: SVOD
+                          mobileNumber: 971585172303
+                          externalAccountID: CAN1234561
+                          serviceName: VIP 3 Months
+                          serviceID: VIP3M
+                          startDate: 1623164392000
+                          validityTill: 1631113192000
+                          retailPrice: 7.99
+                          description: VIP 3 Months
+                          status: Active
+                          paymentMethodDetails:
+                            label: TPay_Zain
+                            country: JO
+                            phoneNumber: 971585172303
+                            subscriptionID: SCI1234561
+                            referenceNumber: CAN1234561
+                            paymentMethodID: 766702
+                            contractID: 1234567
+                          currencyCode: JOD
+                          cancellable: false
+                          hasAction: false
+                          subscriptionType: Monthly
+                          displayName: VIP 3 Months
+                          isRenewal: true
+                          period: NoOfMonths
+                          duration: 3
+                          paymentMethod: TPay_Zain
+                          opId: 1511196
+                          priceCharged: 7.99
+                          validityPeriod: NoOfMonths
+                          validityDuration: 3
+                          isInFreeTrail: false
+                          startDateInMillis: 1623164392000
+                          productCategory: Subscription
+                          type: Prepaid
+                          basicService: false
+                          isPackage: false
+                          planPrice: 7.99
                 Account with no service or expired service:
                   value:
                     GetActiveSubscriptionsResponseMessage:
@@ -3547,11 +3596,13 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/getActiveSubscriptions'
             examples:
-              Sample Successful request:
+              Sample request:
                 value:
                   GetActiveSubscriptionsRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
+                    spAccountID: '1623162848'
+                    country: JO
   /getEntitlements:
     post:
       security:
@@ -3754,6 +3805,8 @@ paths:
                   GetSubscriptionHistoryRequestMessage:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
+                    spAccountID: '1623162848'
+                    country: JO
   /activateCustomerV3:
     post:
       tags:
@@ -5281,6 +5334,256 @@ paths:
                     couponIDs:
                       - TJOAPIJWQZh
                         TJOAPIJRYEN
+  /recordRedeemCouponDetails:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Order Processing
+      operationId: RecordRedeemCouponRequestMessage
+      description: >-
+        recordRedeemCouponDetails() REST API is used to record the redeemed coupon to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  RecordRedeemCouponResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: SUCCESS
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    RecordRedeemCouponResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    RecordRedeemCouponResponseMessage:
+                      message: Coupon code applied successfully
+                      responseCode: '1'
+                eV1842:
+                  value:
+                    RedeemCouponResponseMessage:
+                      failureMessage:
+                        - errorMessage: Please enter a valid coupon code
+                          errorCode: eV1842
+                      responseCode: '0'
+                eV2572:
+                  value:
+                    RedeemCouponResponseMessage:
+                      failureMessage:
+                        - errorMessage: SPAccountID is mandatory
+                          errorCode: eV2572
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV1842:
+          description: Please enter a valid coupon code
+        x- eV2572:
+          description: SPAccountID is mandatory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RecordRedeemCouponRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/recordRedeemCouponDetails'
+            examples:
+              Successful request:
+                value:
+                  RecordRedeemCouponRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    dmaID: JO
+                    spAccountId: PRODUCT
+                    redeemDate: 1623119699000
+                    couponCode: JOFTAVRFj
+  /getUpgradablePlans:
+    post:
+      tags:
+        - Offer Management APIs
+      operationId: GetUpgradablePlansRequestMessage
+      description: >-
+        getUpgradablePlans() REST API is used to return Upgradable plans.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetUpgradablePlansResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      upgradablePlansDetail:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/upgradablePlansDetail'
+                        description: Upgradable plan details.
+                      skuORQuickCode:
+                        type: string
+                        description: Existing product id
+              examples:
+                '111111111':
+                  value:
+                    GetUpgradablePlansResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Successful response:
+                  value:
+                    GetUpgradablePlansResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      upgradablePlansDetail:
+                        - dmaName:
+                          basicService: Jordan
+                          currencyCode: JOD
+                          productDescription: VIP Annual
+                          renewable: true
+                          displayName: VIP Annual
+                          isAdsEnabled: false
+                          isBannerAdsEnabled: false
+                          serviceType: SVOD
+                          productCategory: Subscription
+                          planInfo:
+                            - productName: VIP Annual
+                              skuORQuickCode: VIP12M
+                              retailPrice: 19.99
+                              period: Month(s)
+                              duration: 12
+                              displayName: VIP Annual
+                              suggestedPrice: 0
+                          isInterstitialAdsEnabled: false
+                eV2355:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Invalid sku
+                          errorCode: eV2355
+                      responseCode: '0'
+                eV2127:
+                  value:
+                    GetProductsAndPaymentModesResponseMessage:
+                      message: FAIL
+                      failureMessage:
+                        - errorMessage: Sku/QuickCode should not be null
+                          errorCode: eV2127
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2355:
+          description: Invalid sku
+        x- eV2127:
+          description: Sku/QuickCode should not be null
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetUpgradablePlansRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getUpgradablePlans'
+            examples:
+              Sample request:
+                value:
+                  GetUpgradablePlansRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    skuORQuickCode: VIP6M
+                    dmaID: JO
+  /generateSignatureKey:
+    post:
+      tags:
+        - Offer Management APIs
+      operationId: GenerateSignatureKeyRequestMessage
+      description: >-
+        generateSignatureKey() REST API is used to generate signature key.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GenerateSignatureKeyResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    GenerateSignatureKeyResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Successful response:
+                  value:
+                    GenerateSignatureKeyResponseMessage:
+                      message: Signature generated successfuly
+                      responseCode: '1'
+                      offerSignature: Tdfpsiduf78sdfadsgkdf
+                      status: SUCCESS
+                      promotionId: MO001
+                      serviceId: VIP3M
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GenerateSignatureKeyRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/generateSignatureKey'
+            examples:
+              Sample request:
+                value:
+                  GenerateSignatureKeyRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    externalOfferId: Mobile Deals
+                    appServiceId: apps.apple.shahid3m1
+                    dmaId: JO
+                    appBundleId: apple.vip2.test
 components:
   securitySchemes:
     bearerAuth:
@@ -8114,3 +8417,223 @@ components:
     couponCodes:
       type: object
       description: Coupon codes
+    recordRedeemCouponDetails:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - spAccountId
+        - couponCode
+        - dmaID
+      properties:
+        apiKey:
+          type: string
+          description: Valid message retunred in the API
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        couponCode:
+          type: string
+          description: Coupon code redeemed
+        spAccountId:
+          type: string
+          description: Unique ID generated in EV system
+        redeemDate:
+          type: number
+          description: Date of redemption
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+    getUpgradablePlans:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - skuORQuickCode
+        - dmaID
+      properties:
+        apiKey:
+          type: string
+          description: Valid message retunred in the API
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        skuORQuickCode:
+          type: number
+          description: Unique product id defined in EV system
+        spAccountId:
+          type: string
+          description: Unique ID generated in EV system
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+    upgradablePlansDetail:
+      type: object
+      properties:
+        planInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/planInfo'
+            description: Details of the products.
+        dmaName:
+          type: string
+          description: Name of the DMA
+        basicService:
+          type: string
+          description: Indicates if service is basic service or not
+        currencyCode:
+          type: string
+          description: Currency code defined to the product
+        productDescription:
+          type: string
+          description: Description for the product
+        displayName:
+          type: string
+          description: Display name of the product.
+        renewable:
+          type: string
+          description: Indicates if service is renewal or not
+        isAdsEnabled:
+          type: string
+          description: Indicates if ads is enable for this product
+        isBannerAdsEnabled:
+          type: string
+          description: Indicates if banner ads are enable or not
+        serviceType:
+          type: string
+          description: Service type defined on the product
+        productCategory:
+          type: string
+          description: Product category
+    planInfo:
+      type: object
+      properties:
+        skuORQuickCode:
+          type: string
+          description: Service id of the products.
+        productName:
+          type: string
+          description: Name of the service defined in EV system.
+        retailPrice:
+          type: integer
+          description: Price of the upgraded product
+        suggestedPrice:
+          type: integer
+          description: Suggested price of the product
+        displayName:
+          type: string
+          description: Display name of the product.
+        period:
+          type: string
+          description: Period defined on the product.
+        duration:
+          type: string
+          description: Duration of the product.
+    generateSignatureKey:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - externalOfferId
+        - dmaId
+        - appServiceId
+      properties:
+        apiKey:
+          type: string
+          description: Valid message retunred in the API
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+        externalOfferId:
+          type: number
+          description: External offer id linked to promotion in EV system
+        appServiceId:
+          type: string
+          description: External product id defined in 3rd party system mapped with EV product
+        appBundleId:
+          type: string
+          description: App bundle id of the product defined in 3rd party system.
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
