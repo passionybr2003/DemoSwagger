@@ -3530,12 +3530,12 @@ paths:
                       message: SUCCESS
                       responseCode: '1'
                       AccountServiceMessage:
-                        - orderID: 1194749
+                        - orderID: '1194749'
                           isContent: false
                           isFreemium: false
                           planPriceWithTax: 7.99
                           serviceType: SVOD
-                          mobileNumber: 971585172303
+                          mobileNumber: '971585172303'
                           externalAccountID: CAN1234561
                           serviceName: VIP 3 Months
                           serviceID: VIP3M
@@ -3547,11 +3547,11 @@ paths:
                           paymentMethodDetails:
                             label: TPay_Zain
                             country: JO
-                            phoneNumber: 971585172303
+                            phoneNumber: '971585172303'
                             subscriptionID: SCI1234561
                             referenceNumber: CAN1234561
-                            paymentMethodID: 766702
-                            contractID: 1234567
+                            paymentMethodID: '766702'
+                            contractID: '1234567'
                           currencyCode: JOD
                           cancellable: false
                           hasAction: false
@@ -3561,7 +3561,7 @@ paths:
                           period: NoOfMonths
                           duration: 3
                           paymentMethod: TPay_Zain
-                          opId: 1511196
+                          opId: '1511196'
                           priceCharged: 7.99
                           validityPeriod: NoOfMonths
                           validityDuration: 3
