@@ -3462,6 +3462,11 @@ paths:
                         items:
                           $ref: '#/components/schemas/AccountServiceMessage'
                         description: User service related details.
+                      paymentMethodDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/paymentMethod'
+                        description: Payment method details
               examples:
                 '111111111':
                   value:
@@ -3489,6 +3494,15 @@ paths:
                           retailPrice: 6.49
                           description: VIP 3 Months
                           status: Active
+                          paymentMethodDetails:
+                            label: Credit Card
+                            country: IQ
+                            expiryDate: '11/2027'
+                            paymentMethodID: '765752'
+                            cardType: Visa
+                            cardNumber: xxxxxxxxxxxx4242
+                            last4Digits: '4242'
+                            IIN: '424242'
                           currencyCode: KWD
                           cancellable: false
                           hasAction: false
@@ -3659,6 +3673,11 @@ paths:
                         items:
                           $ref: '#/components/schemas/AccountServiceMessage'
                         description: User service related details.
+                      paymentMethodDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/paymentMethod'
+                        description: Payment method details
               examples:
                 '111111111':
                   value:
@@ -4034,6 +4053,7 @@ paths:
                     orderId: '457067951'
                     spAccountID: '62352519753313525311'
                     country: IQ
+                    comment: Cancellation reason
   /reactivateService:
     post:
       security:
@@ -5034,6 +5054,233 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     transactionId: '12333443'
                     paymentChannel: Fawry
+  /generateCoupons:
+    post:
+      tags:
+        - Order Processing
+      operationId: GenerateCouponsRequestMessage
+      description: >-
+        generateCoupons() REST API is used to generate different types of coupons on the products.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GenerateCouponsResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful generation message.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    GenerateCouponsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    GenerateCouponsResponseMessage:
+                      message: Coupons generated successfully
+                      responseCode: '1'
+                      status: SUCCESS
+                eV4458:
+                  value:
+                    GenerateCouponsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Already exists with the given batch name
+                          errorCode: eV4458
+                      responseCode: '0'
+                eV4005:
+                  value:
+                    GenerateCouponsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Coupon Amount should not be null or zero
+                          errorCode: eV4005
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV4458:
+          description: Already exists with the given batch name
+        x- eV4005:
+          description: Coupon Amount should not be null or zero
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GenerateCouponsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/generateCoupons'
+            examples:
+              Sample request for Free coupons:
+                value:
+                  GenerateCouponsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaId: JO
+                    prefix: TJOAPI
+                    batchName: API Test batch JO
+                    couponType: Free
+                    noOfCoupons: '10'
+                    period: NoOfDays
+                    duration: '7'
+                    multipleRedemptions: false
+                    singleRedemptionByUser: false
+                    hasMultipleRedemptionsBySingleUser: false
+                    makeAsPrefixCouponCode: false
+                    caseSensitive: false
+                    isGift: false
+                    inHeritable: false
+                    isAllItemsMandatory: false
+                    skipPaymentMethod: true
+                    couponDescription: API Test batch JO
+                    successMessage: Success message
+                    warningMessage: Warning message
+                    productDetails:
+                      - sku: VIPW
+                      - sku: VIPM01
+              Sample request for Free coupons(Multiple redemptions):
+                value:
+                  GenerateCouponsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaId: JO
+                    prefix: TJOAPI
+                    batchName: API Test batch JORD
+                    couponType: Free
+                    noOfCoupons: '10'
+                    period: NoOfDays
+                    duration: '7'
+                    multipleRedemptions: true
+                    maximumRedemptions: '1000'
+                    maximumRedemptionsBySingleUser: '1'
+                    singleRedemptionByUser: false
+                    hasMultipleRedemptionsBySingleUser: false
+                    makeAsPrefixCouponCode: false
+                    caseSensitive: false
+                    isGift: false
+                    inHeritable: false
+                    isAllItemsMandatory: false
+                    skipPaymentMethod: true
+                    couponDescription: API Test batch JORD
+                    successMessage: Success message
+                    warningMessage: Warning message
+                    productDetails:
+                      - sku: VIP3M
+              Sample request for discounted coupons:
+                value:
+                  GenerateCouponsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaId: JO
+                    prefix: TJOAPI
+                    batchName: API Test batch JORDON
+                    couponType: Percentage Off
+                    amount: '30'
+                    noOfCoupons: '10'
+                    period: NoOfDays
+                    duration: '7'
+                    multipleRedemptions: false
+                    singleRedemptionByUser: false
+                    hasMultipleRedemptionsBySingleUser: false
+                    makeAsPrefixCouponCode: false
+                    caseSensitive: false
+                    isGift: false
+                    inHeritable: false
+                    isAllItemsMandatory: false
+                    skipPaymentMethod: true
+                    couponDescription: API Test batch JORDON
+                    successMessage: Success message
+                    warningMessage: Warning message
+                    productDetails:
+                      - sku: VIPM01
+  /disableCoupons:
+    post:
+      tags:
+        - Order Processing
+      operationId: DisableCouponsRequestMessage
+      description: >-
+        disableCoupons() REST API is used to disable the coupons.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  DisableCouponsResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful generation message.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    DisableCouponsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    DisableCouponsResponseMessage:
+                      message: Coupons disabled successfully
+                      responseCode: '1'
+                      status: SUCCESS
+                'eV2623':
+                  value:
+                    DisableCouponsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Missing coupon information
+                          errorCode: 'eV2623'
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2623:
+          description: Missing coupon information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                DisableCouponsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/disableCoupons'
+            examples:
+              Sample request:
+                value:
+                  DisableCouponsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    couponIDs:
+                      - TJOAPIJWQZh
+                        TJOAPIJRYEN
 components:
   securitySchemes:
     bearerAuth:
@@ -6670,6 +6917,9 @@ components:
         spAccountID:
           type: string
           description: Unique Id genereated in the EV system.
+        comment:
+          type: string
+          description: Cancellation reason
     recordTransaction:
       type: object
       required:
@@ -7684,3 +7934,183 @@ components:
         price:
           type: string
           description: Price of the service
+    generateCoupons:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaId
+        - prefix
+        - batchName
+        - couponType
+        - noOfCoupons
+        - productDetails
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        dmaId:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+        prefix:
+          type: string
+          description: Prefix of the coupon
+        batchName:
+          type: string
+          description: Coupon batch name
+        couponType:
+          type: string
+          description: Type of coupon
+        noOfCoupons:
+          type: string
+          description: No of coupons
+        period:
+          type: string
+          description: Period of the coupon batch
+        duration:
+          type: string
+          description: Duration of the coupon batch
+        productDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/productDetails'
+            description: product id details.
+        maximumRedemptions:
+          type: string
+          description: Count of maximum redemptions
+        maximumRedemptionsBySingleUser:
+          type: string
+          description: Count of maximum redemptions by single user
+        multipleRedemptions:
+          type: string
+          description: Indicates if multiple redemptions are available for the coupon
+        singleRedemptionByUser:
+          type: string
+          description: Indicates only single redemption by user
+        hasMultipleRedemptionsBySingleUser:
+          type: string
+          description: Indicates if coupon can redeemed multiple times by single user
+        makeAsPrefixCouponCode:
+          type: string
+          description: Indicates if prefix provided can be made as payment mode
+        couponLength:
+          type: string
+          description: Lenght of the coupon
+        caseSensitive:
+          type: string
+          description: Indicates if coupon generated is case sensitive or not
+        isGift:
+          type: string
+          description: Indicates if coupon created can be shared as gift
+        inHeritable:
+          type: string
+          description: Indicates if coupon can be inherited to child BU's
+        isAllItemsMandatory:
+          type: string
+          description: Indicates if all fields are mandatory
+        skipPaymentMethod:
+          type: string
+          description: Indicates to skip payment method or not
+        couponDescription:
+          type: string
+          description: Description of the coupon
+        successMessage:
+          type: string
+          description: Success message defined to couopn batch
+        warningMessage:
+          type: string
+          description: Warning message defined to couopn batch
+    productDetails:
+      type: object
+      required:
+        - sku
+      properties:
+        sku:
+          type: string
+          description: Unique product id defined in EV system
+    disableCoupons:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaId
+        - couponCodes
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        dmaID:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+        couponCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/couponCodes'
+          description: Coupon codes
+    couponCodes:
+      type: object
+      description: Coupon codes
