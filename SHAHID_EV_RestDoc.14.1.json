@@ -3008,6 +3008,16 @@ paths:
                     serviceID: VIP3M
                     country: IQ
                     couponCode: FTMS001
+              Sample request for upgrade subscription with existing card:
+                value:
+                  AuthorizeCardRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    token: tok_ctynkwcksdru3nzh7fzhszcxzu
+                    transactionType: UPGRADE
+                    country: IQ
+                    serviceID: VIP3M
+                    oldServiceId: VIPM01
+                    paymentMethodID: '12334'
   /addSubscription:
     post:
       security:
@@ -3337,6 +3347,20 @@ paths:
                         amount: '12.99'
                         txID: '45497543947'
                         txMsg: Success
+              Sample request for TV offer:
+                value:
+                  AddSubscriptionRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: JO
+                    serviceType: PRODUCT
+                    serviceID: VIP3M
+                    quantity: '1'
+                    promotionID: TV001
+                    deviceSerialNo: LE65K6600UG
+                    paymentmethodInfo:
+                      label: TV Offer
+                      transactionReferenceMsg:
+                        txMsg: Success
   /changeService:
     post:
       security:
@@ -3416,18 +3440,30 @@ paths:
                   type: Object
                   $ref: '#/components/schemas/changeService'
             examples:
-              Credit/Debit card purchase with promotion:
+              Sample request with payment method id:
                 value:
                   ChangeServiceRequestMessage:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: IQ
-                    newServiceID: VIP3M,
+                    newServiceID: VIP3M
                     oldServiceID: VIPM01
                     paymentmethodInfo:
                       label: Credit Card
                       makeAutoPayment: 'true'
                       CardTokenInfoMessage:
                         paymentMethodID: '4324733'
+              Sample request with sessionId:
+                value:
+                  ChangeServiceRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: IQ
+                    newServiceID: VIP3M
+                    oldServiceID: VIPM01
+                    paymentmethodInfo:
+                      label: Credit Card
+                      makeAutoPayment: 'true'
+                      CardTokenInfoMessage:
+                        sessionID: 'sid_i7fgslj2t2gexbv7rrznnum5di'
   /getActiveSubscriptions:
     post:
       security:
@@ -6159,6 +6195,29 @@ components:
           items:
             $ref: '#/components/schemas/paymentModes'
             description: Payment mode details.
+        promotionalProducts:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotionalProducts'
+            description: Promotional product details.
+    promotionalProducts:
+      type: object
+      properties:
+        prodName:
+          type: string
+          description: Name of the product.
+        sku:
+          type: string
+          description: Unique id of the product
+        period:
+          type: string
+          description: Period of the product
+        duration:
+          type: integer
+          description: Duration of the product.
+        price:
+          type: integer
+          description: Price of the product.
     getProductPromotion:
       type: object
       required:
@@ -6670,6 +6729,12 @@ components:
         promotionID:
           type: string
           description: Unique promotion id defined aganist the products.
+        oldServiceId:
+          type: string
+          description: Existing service id for the account
+        paymentMethodID:
+          type: string
+          description: Unique id generated for the payment method.
         couponCode:
           type: string
           description: Coupon codes generated aganist the products.
