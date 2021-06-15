@@ -4903,6 +4903,7 @@ paths:
                     transactionStatus: PENDING
                     priceCharged: '39'
                     email: shahidtestfawry1@yopmail.com
+                    country: EG
               Sample failure request(TPay):
                 value:
                   RecordTransactionRequestMessage:
@@ -4913,6 +4914,7 @@ paths:
                     transactionId: '453451234254654'
                     transactionStatus: FAILURE
                     priceCharged: '39'
+                    country: EG
   /updateTransaction:
     post:
       security:
@@ -5027,6 +5029,7 @@ paths:
                     transactionStatus: COMPLETED
                     mobileNumber: '971502217847'
                     email: fawrytest1@yopmail.com
+                    country: EG
               Sample failure request:
                 value:
                   UpdateTransactionRequestMessage:
@@ -5037,6 +5040,7 @@ paths:
                     comment: <Reason for failure.>
                     mobileNumber: '971502217847'
                     email: fawrytest1@yopmail.com
+                    country: EG
               Sample cancelled request:
                 value:
                   UpdateTransactionRequestMessage:
@@ -5047,6 +5051,7 @@ paths:
                     comment: <Reason for failure.>
                     mobileNumber: '971502217847'
                     email: fawrytest1@yopmail.com
+                    country: EG
   /getTransactionInfoDetails:
     post:
       security:
@@ -7347,6 +7352,9 @@ components:
         externalOrderId:
           type: string
           description: Merchant reference used for transaction
+        country:
+          type: string
+          description: Country in which user made the transaction.
     updateTransaction:
       type: object
       required:
@@ -7383,7 +7391,10 @@ components:
           description: Name of the payment channel.
         comments:
           type: string
-          description: Description of the resaon for failure or cancellation of the transac
+          description: Description of the resaon for failure or cancellation of the transaction.
+        country:
+          type: string
+          description: Country in which user made the transaction.
     getTransactionInfoDetails:
       type: object
       required:
