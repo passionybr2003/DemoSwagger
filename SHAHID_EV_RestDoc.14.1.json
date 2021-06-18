@@ -2877,6 +2877,12 @@ paths:
                     token: tok_ctynkwcksdru3nzh7fzhszcxzu
                     transactionType: AUTH
                     country: IQ
+                    billingAddress:
+                      address1: 321 Jenna Lane
+                      city: Lebanon
+                      state: Ohio
+                      country: United States
+                      zipCode: '45036'
               Sample request for onetime subscription with promotion:
                 value:
                   AuthorizeCardRequestMessage:
@@ -2887,6 +2893,12 @@ paths:
                     serviceID: VIP3M
                     country: IQ
                     promotionID: FTMS001
+                    billingAddress:
+                      address1: 321 Jenna Lane
+                      city: Lebanon
+                      state: Ohio
+                      country: United States
+                      zipCode: '45036'
               Sample request for onetime subscription with coupon:
                 value:
                   AuthorizeCardRequestMessage:
@@ -2897,6 +2909,12 @@ paths:
                     serviceID: VIP3M
                     country: IQ
                     couponCode: FTMS001
+                    billingAddress:
+                      address1: 321 Jenna Lane
+                      city: Lebanon
+                      state: Ohio
+                      country: United States
+                      zipCode: '45036'
               Sample request for upgrade subscription with existing card:
                 value:
                   AuthorizeCardRequestMessage:
@@ -2907,6 +2925,12 @@ paths:
                     serviceID: VIP3M
                     oldServiceId: VIPM01
                     paymentMethodID: '12334'
+                    billingAddress:
+                      address1: 321 Jenna Lane
+                      city: Lebanon
+                      state: Ohio
+                      country: United States
+                      zipCode: '45036'
   /addSubscription:
     post:
       security:
