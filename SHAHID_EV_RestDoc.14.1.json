@@ -3,9 +3,8 @@ servers:
   - url: 'https://rest-dev-shahid.evergent.com/shahid'
     description: Dev API server
 info:
-  description: >-
-    <b>Last Updated Date 08th June, 2021 </b><br> <br><h1><b>Evergent-Shahid
-    consolidated API document</h1> </b>
+  description: |-
+    <b>Last Updated Date 18th June, 2021 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
@@ -25,9 +24,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: SearchAccountV2RequestMessage
-      description: >-
-        searchAccountV2() REST API is used to search for the account in EV
-        system by providing valid registered email/Phone number of the customer.
+      description: searchAccountV2() REST API is used to search for the account in EV system by providing valid registered email/Phone number of the customer.
       responses:
         '200':
           description: Success
@@ -58,15 +55,10 @@ paths:
                         description: Success/Fail
                       accountID:
                         type: string
-                        description: >-
-                          A unique SP Account Id of the customer in Partner
-                          systems.
+                        description: A unique SP Account Id of the customer in Partner systems.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       isProfileComplete:
                         type: string
                         description: Indicates profile is complete or not.
@@ -170,10 +162,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: CreateUserRequestMessage
-      description: >-
-        createUser() REST API is used to create an account in Evergent system.
-        <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required
-        based on registration type.
+      description: 'createUser() REST API is used to create an account in Evergent system. <br><br> <b>Note:</b> Either cpCustomerID or spAccountID is required based on registration type.'
       responses:
         '200':
           description: Success
@@ -190,10 +179,7 @@ paths:
                         example: SUCCESS
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                         example: 1
                       spAccountID:
                         type: string
@@ -203,9 +189,7 @@ paths:
                         description: A unique identifier of the account in EV systems.
                       accessToken:
                         type: string
-                        description: >-
-                          Unique token generated which is required for
-                          authentication.
+                        description: Unique token generated which is required for authentication.
                       refreshToken:
                         type: string
                         description: Unique refresh token to generate accessToken.
@@ -225,8 +209,7 @@ paths:
                     CreateUserResponseMessage:
                       cpCustomerID: '21021323488386788'
                       spAccountID: '2102132348178598386788'
-                      accessToken: >-
-                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJsb2MiOiJTRyIsInZzdGF0dXMiOmZhbHNlLCJpc3MiOiJldiIsImNwIjoiU2luZ3RlbF9IQk8iLCJzaWQiOiIxNjE4MDU2NjQxNjkxIiwidWlkIjoiMjEwNDExMTkzMzEzNDgzNjc2MjkiLCJhdWQiOiJzaGFoaWQiLCJuYmYiOjE2MTgxNDk3OTAsImV4cCI6MTYxOTQ0NTc5NSwiaWF0IjoxNjE4MTQ5Nzk1LCJqdGkiOiIyaEdRLTRJM1QtVWdEby1zOExzLVFSbmotSTllWi1WaiIsImNpZCI6IjE5ODE1NDc3NzQifQ.FPSkIYNeKGM6k_rmO2pzaqLQxZVYiNt0R5S8AI5iUH5M6JzgJu4VZPgRVQ7N4KOoc407YmJg50HsyEndbJ74N4tHPKtxOGc95cJRIN7WcTQ24hvpomIc3VcZdPHuTqXFOMlouh13WDGxG7WBgWaXV177udGoaVfXcoEVltpoD-Am81c_ONjh-ikwr0zuexs0bEvBy4pAVCpJtquKotQAsKjLwv83MnGmAr5dqlVVCI7Ngwzsycg-kEy91mW9lMktppASmsqMRGzLVeuUPjKEj2YAPjiVzJiBOKv1wurvT7-JlmggBzt_gM-JBD3qWPQt2JDR1011VCJn_d6CIp8dmDay8HprVvWX7x1VixB4rdxrknycrNaGhUiuZ6X0cHTqOELIfLTQYS157JhPP_6-KKVbQjpvjncxx9m5m1frVTFyB7K84EEAoxNbt54HdElL67VUKvrL8lXkEKtKAYESDKklFKyrrYUdHi5hmh3BebowOp6W6x9sTPXkEdDHudsgiIJAT0XmXJ5vLMG7fa2wlPyDsSeW934WaaYg2IZN-m-e3lHqmdVEBhjeFUuyuR_3X43E1YklfpeX4cqmHwfjWGsjrQxsyfqpJqUxbb50AWNHyR3udSSaw6dfyDyVrIOZvqPvlHo1cBDJm4t8_iOSWOxyBQxZNdpiGWMnOCL6F_Q
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJsb2MiOiJTRyIsInZzdGF0dXMiOmZhbHNlLCJpc3MiOiJldiIsImNwIjoiU2luZ3RlbF9IQk8iLCJzaWQiOiIxNjE4MDU2NjQxNjkxIiwidWlkIjoiMjEwNDExMTkzMzEzNDgzNjc2MjkiLCJhdWQiOiJzaGFoaWQiLCJuYmYiOjE2MTgxNDk3OTAsImV4cCI6MTYxOTQ0NTc5NSwiaWF0IjoxNjE4MTQ5Nzk1LCJqdGkiOiIyaEdRLTRJM1QtVWdEby1zOExzLVFSbmotSTllWi1WaiIsImNpZCI6IjE5ODE1NDc3NzQifQ.FPSkIYNeKGM6k_rmO2pzaqLQxZVYiNt0R5S8AI5iUH5M6JzgJu4VZPgRVQ7N4KOoc407YmJg50HsyEndbJ74N4tHPKtxOGc95cJRIN7WcTQ24hvpomIc3VcZdPHuTqXFOMlouh13WDGxG7WBgWaXV177udGoaVfXcoEVltpoD-Am81c_ONjh-ikwr0zuexs0bEvBy4pAVCpJtquKotQAsKjLwv83MnGmAr5dqlVVCI7Ngwzsycg-kEy91mW9lMktppASmsqMRGzLVeuUPjKEj2YAPjiVzJiBOKv1wurvT7-JlmggBzt_gM-JBD3qWPQt2JDR1011VCJn_d6CIp8dmDay8HprVvWX7x1VixB4rdxrknycrNaGhUiuZ6X0cHTqOELIfLTQYS157JhPP_6-KKVbQjpvjncxx9m5m1frVTFyB7K84EEAoxNbt54HdElL67VUKvrL8lXkEKtKAYESDKklFKyrrYUdHi5hmh3BebowOp6W6x9sTPXkEdDHudsgiIJAT0XmXJ5vLMG7fa2wlPyDsSeW934WaaYg2IZN-m-e3lHqmdVEBhjeFUuyuR_3X43E1YklfpeX4cqmHwfjWGsjrQxsyfqpJqUxbb50AWNHyR3udSSaw6dfyDyVrIOZvqPvlHo1cBDJm4t8_iOSWOxyBQxZNdpiGWMnOCL6F_Q
                       refreshToken: DMFq-JspI-i1aI-e8vJ-BD5x-j11x-Pp
                       tokenType: Bearer
                       responseCode: '1'
@@ -340,10 +323,7 @@ paths:
                         description: Successful login message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       accessToken:
                         type: string
                         description: Encrypted string of account info and device info.
@@ -383,8 +363,7 @@ paths:
                     GetOAuthAccessTokenv2ResponseMessage:
                       responseCode: '1'
                       message: User Logged in successfully.
-                      accessToken: >-
-                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
                       expiresIn: '1618298742823'
@@ -420,9 +399,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: RefreshTokenRequestMessage
-      description: >-
-        refreshToken() REST API is used to generate new access token to the
-        account.
+      description: refreshToken() REST API is used to generate new access token to the account.
       responses:
         '200':
           description: Success
@@ -441,10 +418,7 @@ paths:
                         description: Successful login message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       accessToken:
                         type: string
                         description: Encrypted string of account info and device info.
@@ -484,8 +458,7 @@ paths:
                     RefreshTokenResponseMessage:
                       responseCode: '1'
                       message: User Logged in successfully.
-                      accessToken: >-
-                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
                       expiresIn: '1618298742823'
@@ -521,9 +494,7 @@ paths:
       tags:
         - Selfcare
       operationId: UpdateProfileRequestMessage
-      description: >-
-        updateProfile() REST API is used to update the user details like name,
-        email, phone number etc..
+      description: 'updateProfile() REST API is used to update the user details like name, email, phone number etc..'
       responses:
         '200':
           description: Success
@@ -542,10 +513,7 @@ paths:
                         description: Contact updated successfully
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -616,9 +584,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetProductsRequestMessage
-      description: >-
-        getProducts() REST API is used to get the products list available to
-        that DMA.
+      description: getProducts() REST API is used to get the products list available to that DMA.
       responses:
         '200':
           description: Success
@@ -634,10 +600,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       productsResponseMessage:
                         type: array
                         items:
@@ -751,9 +714,7 @@ paths:
                     GetProductsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            No products defined for the given DMA:XXXX for 
-                            Shahid
+                        - errorMessage: 'No products defined for the given DMA:XXXX for  Shahid'
                           errorCode: eV1397
                       responseCode: '0'
                 eV1267:
@@ -802,9 +763,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: UpdateOrderQuoteV3RequestMessage
-      description: >-
-        updateOrderQuoteV3() REST API is used to get the product and price
-        details of the service.
+      description: updateOrderQuoteV3() REST API is used to get the product and price details of the service.
       responses:
         '200':
           description: Success
@@ -820,10 +779,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       updatedItems:
                         type: array
                         items:
@@ -950,9 +906,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetOrderQuotationDetailsRequestMessage
-      description: >-
-        getOrderQuotationDetails() REST API is used to get the final price that
-        needs to be charged to the customer considering promotions and coupons.
+      description: getOrderQuotationDetails() REST API is used to get the final price that needs to be charged to the customer considering promotions and coupons.
       responses:
         '200':
           description: Success
@@ -968,10 +922,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       discounts:
                         type: array
                         items:
@@ -1063,9 +1014,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetPromotionsRequestMessage
-      description: >-
-        getPromotions() REST API is used to get the available promotions to the
-        products and packages to that DMA.
+      description: getPromotions() REST API is used to get the available promotions to the products and packages to that DMA.
       responses:
         '200':
           description: Success
@@ -1081,10 +1030,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       promotionsResponseMessage:
                         type: array
                         items:
@@ -1126,9 +1072,7 @@ paths:
                     GetPromotionsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            No promotions defined for the given DMA:XXXX for
-                            SHAHAD
+                        - errorMessage: 'No promotions defined for the given DMA:XXXX for SHAHAD'
                           errorCode: eV1416
                       responseCode: '0'
                 eV2511:
@@ -1172,9 +1116,9 @@ paths:
                       category: UHD HQLED
                       model: H65S6UG
                       internalModelNo: S6UG
-                      chasis: "6886"
-                      inchFrom: "65"
-                      inchTo: "3"
+                      chasis: '6886'
+                      inchFrom: '65'
+                      inchTo: '3'
               getPromotions request with product id:
                 value:
                   GetPromotionsRequestMessage:
@@ -1188,9 +1132,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetProductPromotionRequestMessage
-      description: >-
-        getProductPromotion() REST API is used to get the promotions available
-        to the products.
+      description: getProductPromotion() REST API is used to get the promotions available to the products.
       responses:
         '200':
           description: Success
@@ -1206,10 +1148,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       promotionsResponseMessage:
                         type: array
                         items:
@@ -1268,9 +1207,7 @@ paths:
                     GetPromotionsResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            No promotions defined for the given DMA:XXXX for
-                            SHAHAD
+                        - errorMessage: 'No promotions defined for the given DMA:XXXX for SHAHAD'
                           errorCode: eV1416
                       responseCode: '0'
                 eV2511:
@@ -1313,9 +1250,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetProductsAndPaymentModesRequestMessage
-      description: >-
-        getProductsAndPaymentModes() REST API is used to get the products and
-        associated payment modes defined.
+      description: getProductsAndPaymentModes() REST API is used to get the products and associated payment modes defined.
       responses:
         '200':
           description: Success
@@ -1331,10 +1266,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       paymentModes:
                         type: array
                         items:
@@ -2034,9 +1966,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: IsCustomerEligibleForFreeTrialRequestMessage
-      description: >-
-        isCustomerEligibleForFreeTrial() REST API is used to verify whether the
-        customer is eligible for free trial for the account or not.
+      description: isCustomerEligibleForFreeTrial() REST API is used to verify whether the customer is eligible for free trial for the account or not.
       responses:
         '200':
           description: Success
@@ -2052,10 +1982,7 @@ paths:
                         description: Free Trial Eligibility Status
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       status:
                         type: string
                         description: Success/Fail
@@ -2131,9 +2058,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: isUserEligibleForPromotionRequestMessage
-      description: >-
-        isUserEligibleForPromotion() REST API is used to verify whether the
-        customer is eligible for promotion or not.
+      description: isUserEligibleForPromotion() REST API is used to verify whether the customer is eligible for promotion or not.
       responses:
         '200':
           description: Success
@@ -2149,10 +2074,7 @@ paths:
                         description: Promotion Eligibility Status
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       status:
                         type: string
                         description: Success/Fail
@@ -2224,10 +2146,7 @@ paths:
                         description: SUCCESS/FAL
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       reasonCodeDescription:
                         type: string
                         description: Reason code description
@@ -2274,9 +2193,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetPaymentModeMetaDataRequestMessage
-      description: >-
-        getPaymentModeMetaData() REST API is used to fetch payment modes meta
-        data
+      description: getPaymentModeMetaData() REST API is used to fetch payment modes meta data
       responses:
         '200':
           description: Success
@@ -2292,10 +2209,7 @@ paths:
                         description: Payment Modes Data
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       status:
                         type: string
                         description: Success/Fail
@@ -2464,10 +2378,7 @@ paths:
       tags:
         - Acquisition and Authentication
       operationId: ProvisionUserRequestMessage
-      description: >-
-        provisionUser() REST API is used to check subscription status of the
-        user at operator side and authenticate the user based on the
-        subscription status.
+      description: provisionUser() REST API is used to check subscription status of the user at operator side and authenticate the user based on the subscription status.
       responses:
         '200':
           description: Success
@@ -2486,10 +2397,7 @@ paths:
                         description: Successful login message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       accessToken:
                         type: string
                         description: Encrypted string of account info and device info.
@@ -2526,8 +2434,7 @@ paths:
                     ProvisionUserResponseMessage:
                       responseCode: '1'
                       message: Provision successful
-                      accessToken: >-
-                        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
+                      accessToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkZXZpY2VUeXBlIjoiTU9CSUxFIiwibG9jIjpudWxsLCJ2c3RhdHVzIjpmYWxzZSwibG9naW5UeXBlIjoiQ29udGFjdFVzZXJOYW1lIiwiaXNzIjoiZXYiLCJtb2RlbE5vIjoiU0cgTTAxIiwiY3AiOiJUVlBBU1MiLCJkZXZpY2VOYW1lIjoiSHlkaWUgbW9iaWxlIiwic2lkIjoiMjEwMzAxMTE0NjI3MTkyODQ4NDYyNTg0ODQ2MjUiLCJzZXJpYWxObyI6IjE2MTYyMzcyMTUiLCJ1aWQiOiI5NjNkNDI4ZC1hOWVkLTQ4YmYtOWY2OC1mNDM1MjgxN2UyNTciLCJhdWQiOiJUVlBBU1MiLCJuYmYiOjE2MTYyMzcwNzgsImV4cCI6MTYxNjI0MDY4MywiaWF0IjoxNjE2MjM3MDgzLCJqdGkiOiIxWTJZLTcxTzAtUzlMai1JYVllLXhSMXctbTZiYS1lciIsImNpZCI6Ijg0OTM1OTcifQ.MPDCqX9YySJqD1OFaruEPMiDj80A866uDD-5HMYWZZgMivrfF5SfHSi2jvhxW8YsMScosPUd46rXQFunKQV2UQkoYOMzTknj4SP6D7El7doAoFYD9SUMSGotSgor83l3cqhJRBq0Eva8BKZPrD3q3DcNlRbWg_YscQNKFwCjncBNd0K9zpNfOSZ0qGCdPvu1VPZT4VfVofxozOnvVc1wenDkwkE75GVrdLLvAOU-qWftiyRP4ZXmP_YKL0AmWvFjOoX66dugK_eR_gzWDt7KnaBK_LGAGzGTE0ODxyWCEjQphz01Ho9IgL7cjBsrPH_Reqt3zahGuBpbnlECgHOR0ram_XQdL2IFlsdWRZLxA9L-hNDNWutMKp2PwOJwzZQj-R3lxNlUlm6ie3cyKZ_cDMttacU6W2Lck3O2mIbDHDquamXt0uT2HjDxGujvuesHxMrEDs5HvYi3THYi4szZBTBTFwn9yN0RHB6W0kB-qlKcPDkLPrR7-1iJzSrexpGhYtQfwKyFHGEwG8OmLkXNRwyoVwOosFKrvObfpMlq0B6W0tPa6UdKSW3hFnjVW3rbtAAeLJCcr12xaLiD45KU9tX1j_e1m1v8ANm3LJ9CcH2fWfIqgx9zP0YErJ72kNxJDB7Hb6Tzuq-ZJfURaHaYQ-wY1tFD5Eh-zkFCd4PwKuo
                       tokenType: Bearer
                       refreshToken: qsRE-30Jx-Z5GT-4Rde-VW6s-plwW-yB
                       expiresIn: '1618298742823'
@@ -2575,9 +2482,7 @@ paths:
       tags:
         - Order Processing
       operationId: RedeemCouponRequestMessage
-      description: >-
-        redeemCoupon() REST API is used to redeem the coupon on existing order
-        or to place new order.
+      description: redeemCoupon() REST API is used to redeem the coupon on existing order or to place new order.
       responses:
         '200':
           description: Success
@@ -2596,10 +2501,7 @@ paths:
                         description: Successful redemption message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       paramMessage:
                         type: array
                         items:
@@ -2668,9 +2570,7 @@ paths:
                   value:
                     RedeemCouponResponseMessage:
                       failureMessage:
-                        - errorMessage: >-
-                            No Packages/Products associated with the given
-                            coupon code
+                        - errorMessage: No Packages/Products associated with the given coupon code
                           errorCode: eV1845
                       responseCode: '0'
                 eV1861:
@@ -2745,9 +2645,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetVoucherDetailsRequest
-      description: >-
-        getVoucherDetails() REST API is used to verify whether the coupon is
-        valid or not and get the coucher details if valid.
+      description: getVoucherDetails() REST API is used to verify whether the coupon is valid or not and get the coucher details if valid.
       responses:
         '200':
           description: Success
@@ -2763,10 +2661,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       channelPartnerID:
                         type: string
                         description: Details of the BU in which coupon is created.
@@ -2871,9 +2766,7 @@ paths:
       tags:
         - Order Processing
       operationId: AuthorizeCardRequestMessage
-      description: >-
-        authorizeCard() REST API is used to authorize the card and place the
-        subscription to the account.
+      description: authorizeCard() REST API is used to authorize the card and place the subscription to the account.
       responses:
         '200':
           description: Success
@@ -2889,10 +2782,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       redirect3DSURL:
                         type: string
                         description: Redirect URL for 3DS page
@@ -2920,8 +2810,7 @@ paths:
                     AuthorizeCardResponseMessage:
                       message: SUCCESS
                       responseCode: '1'
-                      redirect3DSURL: >-
-                        https://3ds2-sandbox.ckotech.co/interceptor/3ds_swat52bjvj3uhpb6ezvh2msiiq
+                      redirect3DSURL: 'https://3ds2-sandbox.ckotech.co/interceptor/3ds_swat52bjvj3uhpb6ezvh2msiiq'
                 Successful purchase for non 3DS flow:
                   value:
                     AuthorizeCardResponseMessage:
@@ -3025,9 +2914,7 @@ paths:
       tags:
         - Order Processing
       operationId: AddSubscriptionRequestMessage
-      description: >-
-        addSubscription() REST API is used to place a subscription at a go to
-        the customer.
+      description: addSubscription() REST API is used to place a subscription at a go to the customer.
       responses:
         '200':
           description: Success
@@ -3043,10 +2930,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       orderID:
                         type: string
                         description: Order ID of the service placed.
@@ -3099,9 +2983,7 @@ paths:
                   value:
                     AddSubscriptionResponseMessage:
                       failureMessage:
-                        - errorMessage: >-
-                            Customer has already subscribed to  Service Id
-                            XXXXX.
+                        - errorMessage: Customer has already subscribed to  Service Id XXXXX.
                           errorCode: eV1144
                       responseCode: '0'
                 eV1665:
@@ -3184,42 +3066,27 @@ paths:
         x- eV2244:
           description: The receipt could not be authenticated
         x- eV2245:
-          description: >-
-            The shared secret you provided does not match the shared secret on
-            file for your account
+          description: The shared secret you provided does not match the shared secret on file for your account
         x- eV2246:
           description: The receipt server is not currently available
         x- eV2247:
-          description: >-
-            This receipt is valid but the subscription has expired. When this
-            status code is returned to your server, the receipt data is also
-            decoded and returned as part of the response
+          description: 'This receipt is valid but the subscription has expired. When this status code is returned to your server, the receipt data is also decoded and returned as part of the response'
         x- eV2248:
-          description: >-
-            This receipt is from the test environment, but it was sent to the
-            production environment for verification. Send it to the test
-            environment instead
+          description: 'This receipt is from the test environment, but it was sent to the production environment for verification. Send it to the test environment instead'
         x- eV2249:
-          description: >-
-            This receipt is from the production environment, but it was sent to
-            the test environment for verification. Send it to the production
-            environment instead
+          description: 'This receipt is from the production environment, but it was sent to the test environment for verification. Send it to the production environment instead'
         x- eV2292:
           description: Google Wallet receipt expired
         x- eV2293:
           description: Google wallet receipt validation failed
         x- eV2591:
-          description: >-
-            The transaction represented by this Purchase Token is no longer
-            valid
+          description: The transaction represented by this Purchase Token is no longer valid
         x- eV2592:
           description: Invalid sharedSecret
         x- eV2594:
           description: Invalid Purchase Token
         x- eV2595:
-          description: >-
-            The Purchase Token was created with credentials that have
-            expired.Use renew to generate a valid purchase token
+          description: The Purchase Token was created with credentials that have expired.Use renew to generate a valid purchase token
         x- eV2596:
           description: There was an Internal Server Error
         x- eV2374:
@@ -3368,8 +3235,7 @@ paths:
       tags:
         - Order Processing
       operationId: ChangeServiceRequestMessage
-      description: >-
-        changeService() REST API is used to upgrade/downgrade the users subscription.
+      description: changeService() REST API is used to upgrade/downgrade the users subscription.
       responses:
         '200':
           description: Success
@@ -3385,10 +3251,7 @@ paths:
                         description: Valid successful message
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       status:
                         type: string
                         description: SUCCESS/FAIL
@@ -3463,7 +3326,7 @@ paths:
                       label: Credit Card
                       makeAutoPayment: 'true'
                       CardTokenInfoMessage:
-                        sessionID: 'sid_i7fgslj2t2gexbv7rrznnum5di'
+                        sessionID: sid_i7fgslj2t2gexbv7rrznnum5di
   /getActiveSubscriptions:
     post:
       security:
@@ -3471,9 +3334,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetActiveSubscriptionsRequestMessage
-      description: >-
-        getActiveSubscriptions() REST API is used to get the active 
-        subscriptions of an account in Evergent system.
+      description: getActiveSubscriptions() REST API is used to get the active  subscriptions of an account in Evergent system.
       responses:
         '200':
           description: Success
@@ -3489,10 +3350,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       AccountServiceMessage:
                         type: array
                         items:
@@ -3533,7 +3391,7 @@ paths:
                           paymentMethodDetails:
                             label: Credit Card
                             country: IQ
-                            expiryDate: '11/2027'
+                            expiryDate: 11/2027
                             paymentMethodID: '765752'
                             cardType: Visa
                             cardNumber: xxxxxxxxxxxx4242
@@ -3617,9 +3475,7 @@ paths:
         x- 111111111:
           description: Authentication failed
         x- eV2235:
-          description: >-
-            Either SP Account ID or CP Customer ID or Contact ID or Session
-            Token is required
+          description: Either SP Account ID or CP Customer ID or Contact ID or Session Token is required
         x- eV2138:
           description: Generic Failure
       requestBody:
@@ -3646,9 +3502,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetEntitlementsRequestMessage
-      description: >-
-        getEntitlements() REST API is used to get the active  subscriptions of
-        an account in Evergent system.
+      description: getEntitlements() REST API is used to get the active  subscriptions of an account in Evergent system.
       responses:
         '200':
           description: Success
@@ -3664,15 +3518,11 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       AccountServiceMessage:
                         type: array
                         items:
-                          $ref: >-
-                            #/components/schemas/AccountServiceMessage_getEntitlements
+                          $ref: '#/components/schemas/AccountServiceMessage_getEntitlements'
                         description: User service related details.
               examples:
                 '111111111':
@@ -3733,9 +3583,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetSubscriptionHistoryRequestMessage
-      description: >-
-        getSubscriptionHistory() REST API is used to get the history of the
-        subscriptions that expired in the Evergent system.
+      description: getSubscriptionHistory() REST API is used to get the history of the subscriptions that expired in the Evergent system.
       responses:
         '200':
           description: Success
@@ -3751,10 +3599,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       AccountServiceMessage:
                         type: array
                         items:
@@ -3821,9 +3666,7 @@ paths:
         x- 111111111:
           description: Authentication failed
         x- eV2235:
-          description: >-
-            Either SP Account ID or CP Customer ID or Contact ID or Session
-            Token is required
+          description: Either SP Account ID or CP Customer ID or Contact ID or Session Token is required
         x- eV2138:
           description: Generic Failure
       requestBody:
@@ -3848,9 +3691,7 @@ paths:
       tags:
         - TPay
       operationId: ActivateCustomerV3RequestMessage
-      description: >-
-        activateCustomerV3() REST API is used to place the Tpay order to the
-        user.
+      description: activateCustomerV3() REST API is used to place the Tpay order to the user.
       responses:
         '200':
           description: Success
@@ -3871,10 +3712,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       sku:
                         type: string
                         description: Product id defined in EV system
@@ -3899,7 +3737,7 @@ paths:
                         - paymentMethod:
                             label: TPay_Zain
                             gatewayName: Zain
-                            referenceNumber: 
+                            referenceNumber: null
                             paymentMethodID: '761201'
                           sku: VIPM01
                           subscriptionStatus: Active
@@ -3972,9 +3810,7 @@ paths:
       tags:
         - TPay
       operationId: ServiceEligibilityCheckRequestMessage
-      description: >-
-        serviceEligibilityCheck() REST API is used to check service eligibility
-        at operator end.
+      description: serviceEligibilityCheck() REST API is used to check service eligibility at operator end.
       responses:
         '200':
           description: Success
@@ -3990,10 +3826,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       spAccountID:
                         type: string
                         description: Unique id generated in EV system.
@@ -4022,7 +3855,7 @@ paths:
                         - paymentMethod:
                             label: TPay_Zain
                             gatewayName: Zain
-                            referenceNumber: 
+                            referenceNumber: null
                             paymentMethodID: '761201'
                           sku: VIPM01
                           subscriptionStatus: Active
@@ -4074,10 +3907,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -4104,9 +3934,7 @@ paths:
                     RemoveSubscriptionResponseMessage:
                       message: FAIL
                       failureMessage:
-                        - errorMessage: >-
-                            Insufficient parameters. Please provide Services
-                            Info
+                        - errorMessage: Insufficient parameters. Please provide Services Info
                           errorCode: eV1106
                       responseCode: '0'
         x- 111111111:
@@ -4150,9 +3978,7 @@ paths:
       tags:
         - Order Processing
       operationId: ReactivateServiceRequestMessage
-      description: >-
-        reactivateService() REST API is used to reactivate the cancelled service
-        of the customer in the Evergent system.
+      description: reactivateService() REST API is used to reactivate the cancelled service of the customer in the Evergent system.
       responses:
         '200':
           description: Success
@@ -4171,10 +3997,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -4212,9 +4035,7 @@ paths:
       tags:
         - TPay
       operationId: RenewSubscriptionRequestMessage
-      description: >-
-        renewSubscription() REST API is used to renew the TPay subscription of
-        the customer.
+      description: renewSubscription() REST API is used to renew the TPay subscription of the customer.
       responses:
         '200':
           description: Success
@@ -4233,10 +4054,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       subscriptionDetails:
                         type: array
                         items:
@@ -4260,7 +4078,7 @@ paths:
                         - paymentMethod:
                             label: TPay_Zain
                             gatewayName: Zain
-                            referenceNumber: 
+                            referenceNumber: null
                             paymentMethodID: '761201'
                           sku: VIPM01
                           subscriptionStatus: Active
@@ -4307,9 +4125,7 @@ paths:
       tags:
         - Order Processing
       operationId: PauseSubscriptionRequestMessage
-      description: >-
-        pauseSubscription() REST API is used to pause the subscription of the
-        Customer.
+      description: pauseSubscription() REST API is used to pause the subscription of the Customer.
       responses:
         '200':
           description: Success
@@ -4334,10 +4150,7 @@ paths:
                         description: End date when subscription pause will end.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -4389,9 +4202,7 @@ paths:
       tags:
         - Order Processing
       operationId: ResumeSubscriptionRequestMessage
-      description: >-
-        resumeSubscription() REST API is used to resume the subscription of the
-        Customer.
+      description: resumeSubscription() REST API is used to resume the subscription of the Customer.
       responses:
         '200':
           description: Success
@@ -4410,10 +4221,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -4454,9 +4262,7 @@ paths:
       tags:
         - Order Processing
       operationId: UpdatePaymentInfoRequestMessage
-      description: >-
-        updatePaymentInfo() REST API is used to add/update/remove the payment
-        information for a customer Account.
+      description: updatePaymentInfo() REST API is used to add/update/remove the payment information for a customer Account.
       responses:
         '200':
           description: Success
@@ -4472,9 +4278,7 @@ paths:
                         description: SUCCESS /FAIL
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are “1” – Success "0” – Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are “1” – Success "0” – Failure.
                       paymentMethodId:
                         type: string
                         description: Unique Id of the customer’s existing payment method
@@ -4531,9 +4335,7 @@ paths:
         x- eV1584:
           description: Label cannot be empty
         x- eV1592:
-          description: >-
-            We cannot select AutoPayment option while inactivating the Payment
-            Method
+          description: We cannot select AutoPayment option while inactivating the Payment Method
         x- eV1588:
           description: Status must be either Active or InActive
         x- eV2124:
@@ -4587,9 +4389,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetPaymentMethodsRequestMessage
-      description: >-
-        getPaymentMethods() REST API is used to fetch all the existing payment
-        methods to the customer.
+      description: getPaymentMethods() REST API is used to fetch all the existing payment methods to the customer.
       responses:
         '200':
           description: Success
@@ -4605,9 +4405,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are “1” – Success "0” – Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are “1” – Success "0” – Failure.
                       PaymentMethods:
                         type: array
                         items:
@@ -4661,9 +4459,7 @@ paths:
       tags:
         - Order Processing
       operationId: GetPaymentsRequestMessage
-      description: >-
-        getPayments() REST API is used to get all the successful and declined
-        payments to the account.
+      description: getPayments() REST API is used to get all the successful and declined payments to the account.
       responses:
         '200':
           description: Success
@@ -4679,9 +4475,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are “1” – Success "0” – Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are “1” – Success "0” – Failure.
                       order:
                         type: array
                         items:
@@ -4841,9 +4635,7 @@ paths:
       tags:
         - Fawry
       operationId: RecordTransactionRequestMessage
-      description: >-
-        recordTransaction() REST API is used to record the payment for the
-        transaction.
+      description: recordTransaction() REST API is used to record the payment for the transaction.
       responses:
         '200':
           description: Success
@@ -4859,10 +4651,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       transactionId:
                         type: string
                         description: Unique ID generated for the payment.
@@ -4922,9 +4711,7 @@ paths:
       tags:
         - Fawry
       operationId: UpdateTransactionRequestMessage
-      description: >-
-        updateTransaction() REST API is used to update existing  pending
-        transaction.
+      description: updateTransaction() REST API is used to update existing  pending transaction.
       responses:
         '200':
           description: Success
@@ -4940,10 +4727,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       transactionId:
                         type: string
                         description: Unique ID generated for the payment.
@@ -5001,9 +4785,7 @@ paths:
                   value:
                     UpdateTransactionResponseMessage:
                       failureMessage:
-                        - errorMessage: >-
-                            No Pending Transaction found with transaction id
-                            XXXX
+                        - errorMessage: No Pending Transaction found with transaction id XXXX
                           errorCode: eV2888
                       responseCode: '0'
         x- 111111111:
@@ -5059,9 +4841,7 @@ paths:
       tags:
         - Fawry
       operationId: GetTransactionInfoDetailsRequestMessage
-      description: >-
-        getTransactionInfoDetails() REST API is used to get the pending
-        transactions to the account before expiry time.
+      description: getTransactionInfoDetails() REST API is used to get the pending transactions to the account before expiry time.
       responses:
         '200':
           description: Success
@@ -5077,10 +4857,7 @@ paths:
                         description: Success/Fail
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure.
                       transactionId:
                         type: string
                         description: Unique ID generated for the payment.
@@ -5153,8 +4930,7 @@ paths:
       tags:
         - Order Processing
       operationId: GenerateCouponsRequestMessage
-      description: >-
-        generateCoupons() REST API is used to generate different types of coupons on the products.
+      description: generateCoupons() REST API is used to generate different types of coupons on the products.
       responses:
         '200':
           description: Success
@@ -5173,10 +4949,7 @@ paths:
                         description: Successful generation message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -5308,8 +5081,7 @@ paths:
       tags:
         - Order Processing
       operationId: DisableCouponsRequestMessage
-      description: >-
-        disableCoupons() REST API is used to disable the coupons.
+      description: disableCoupons() REST API is used to disable the coupons.
       responses:
         '200':
           description: Success
@@ -5328,10 +5100,7 @@ paths:
                         description: Successful generation message.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -5346,12 +5115,12 @@ paths:
                       message: Coupons disabled successfully
                       responseCode: '1'
                       status: SUCCESS
-                'eV2623':
+                eV2623:
                   value:
                     DisableCouponsResponseMessage:
                       failureMessage:
                         - errorMessage: Missing coupon information
-                          errorCode: 'eV2623'
+                          errorCode: eV2623
                       responseCode: '0'
         x- 111111111:
           description: Authentication Failed
@@ -5373,8 +5142,7 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     couponIDs:
-                      - TJOAPIJWQZh
-                        TJOAPIJRYEN
+                      - TJOAPIJWQZh TJOAPIJRYEN
   /recordRedeemCouponDetails:
     post:
       security:
@@ -5382,8 +5150,7 @@ paths:
       tags:
         - Order Processing
       operationId: RecordRedeemCouponRequestMessage
-      description: >-
-        recordRedeemCouponDetails() REST API is used to record the redeemed coupon to the account.
+      description: recordRedeemCouponDetails() REST API is used to record the redeemed coupon to the account.
       responses:
         '200':
           description: Success
@@ -5399,10 +5166,7 @@ paths:
                         description: SUCCESS
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -5460,8 +5224,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GetUpgradablePlansRequestMessage
-      description: >-
-        getUpgradablePlans() REST API is used to return Upgradable plans.
+      description: getUpgradablePlans() REST API is used to return Upgradable plans.
       responses:
         '200':
           description: Success
@@ -5477,10 +5240,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
                       upgradablePlansDetail:
                         type: array
                         items:
@@ -5503,8 +5263,27 @@ paths:
                       message: SUCCESS
                       responseCode: '1'
                       upgradablePlansDetail:
-                        - dmaName:
-                          basicService: Jordan
+                        - dmaName: Jordan
+                          basicService: false
+                          currencyCode: JOD
+                          productDescription: VIP 6 Months
+                          renewable: true
+                          displayName: VIP 6 Months
+                          isAdsEnabled: false
+                          isBannerAdsEnabled: false
+                          serviceType: SVOD
+                          productCategory: Subscription
+                          planInfo:
+                            - productName: VIP 6 Months
+                              skuORQuickCode: VIP6M
+                              retailPrice: 18.99
+                              period: Month(s)
+                              duration: 6
+                              displayName: VIP 6 Months
+                              suggestedPrice: 0
+                          isInterstitialAdsEnabled: false
+                        - dmaName: Jordan
+                          basicService: false
                           currencyCode: JOD
                           productDescription: VIP Annual
                           renewable: true
@@ -5515,13 +5294,55 @@ paths:
                           productCategory: Subscription
                           planInfo:
                             - productName: VIP Annual
-                              skuORQuickCode: VIP12M
+                              skuORQuickCode: VIP6M
                               retailPrice: 19.99
                               period: Month(s)
                               duration: 12
                               displayName: VIP Annual
                               suggestedPrice: 0
                           isInterstitialAdsEnabled: false
+                      skuORQuickCode: VIP3M
+                      downgradablePlansDetail:
+                        - dmaName: Jordan
+                          basicService: false
+                          currencyCode: JOD
+                          productDescription: VIP Monthly
+                          renewable: true
+                          displayName: VIP Monthly
+                          isAdsEnabled: false
+                          isBannerAdsEnabled: false
+                          serviceType: SVOD
+                          productCategory: Subscription
+                          planInfo:
+                            - productName: VIP Monthly
+                              skuORQuickCode: VIP6M
+                              retailPrice: 2.99
+                              period: Month(s)
+                              duration: 1
+                              displayName: VIP Monthly
+                              suggestedPrice: 0
+                          isInterstitialAdsEnabled: false
+                        - dmaName: Jordan
+                          basicService: false
+                          currencyCode: JOD
+                          productDescription: VIP Weekly
+                          renewable: true
+                          displayName: VIP Weekly
+                          isAdsEnabled: false
+                          isBannerAdsEnabled: false
+                          serviceType: SVOD
+                          productCategory: Subscription
+                          planInfo:
+                            - productName: VIP Weekly
+                              skuORQuickCode: VIP6M
+                              retailPrice: 0.99
+                              period: Month(s)
+                              duration: 1
+                              displayName: VIP Weekly
+                              suggestedPrice: 0
+                          isInterstitialAdsEnabled: false
+                      upgradePreference: IMMEDIATE_AND_CHARGE_PRORATED_PRICE
+                      downgradePreference: DEFERRED
                 eV2355:
                   value:
                     GetProductsAndPaymentModesResponseMessage:
@@ -5566,8 +5387,7 @@ paths:
       tags:
         - Offer Management APIs
       operationId: GenerateSignatureKeyRequestMessage
-      description: >-
-        generateSignatureKey() REST API is used to generate signature key.
+      description: generateSignatureKey() REST API is used to generate signature key.
       responses:
         '200':
           description: Success
@@ -5583,10 +5403,7 @@ paths:
                         description: Success/Fail.
                       responseCode:
                         type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success <br> “0” –
-                          Failure.
+                        description: Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure.
               examples:
                 '111111111':
                   value:
@@ -6906,9 +6723,7 @@ components:
             - Card
         makeAutoPayment:
           type: string
-          description: >-
-            Indicates whether the payment method used should be made as auto
-            payment method or not.
+          description: Indicates whether the payment method used should be made as auto payment method or not.
         CardTokenInfoMessage:
           type: object
           $ref: '#/components/schemas/CardTokenInfoMessage'
@@ -6963,9 +6778,7 @@ components:
       properties:
         sessionID:
           type: string
-          description: >-
-            Session id received from Checkout after successful 3DS
-            authentication.
+          description: Session id received from Checkout after successful 3DS authentication.
         paymentMethodID:
           type: string
           description: Unique payment method ID generated for the account.
@@ -7473,9 +7286,7 @@ components:
           description: Unique service id of the product defined in EV system.
         spAccountID:
           type: string
-          description: >-
-            Unique identification generated in EV system. Either spAccountID or
-            accessToken is mandatory.
+          description: Unique identification generated in EV system. Either spAccountID or accessToken is mandatory.
         couponCode:
           type: string
           description: Coupon code generated on the products.
