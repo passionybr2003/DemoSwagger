@@ -2,9 +2,10 @@ openapi: 3.0.0
 servers:
   - url: 'https://rest-dev-shahid.evergent.com/shahid'
     description: Dev API server
+  - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 22st June, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 1st July, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
@@ -2200,6 +2201,119 @@ paths:
                     promotionCode: WB30POFF2M
                     paymentMode: Credit Card
                     customerClassification: New Customer
+  /isUserEligibleForPromotions:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: IsUserEligibleForPromotionsRequestMessage
+      description: >-
+        isUserEligibleForPromotions() REST API is used to verify whether the
+        customer is eligible for promotion or not with multiple promotion id's in the request at a time.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  IsUserEligibleForPromotionsResponseMessage:
+                    type: object
+                    properties:
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+                      promotionDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/promotionDetails'
+                        description: Promotion details.
+              examples:
+                '111111111':
+                  value:
+                    IsUserEligibleForPromotionsResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successful Response:
+                  value:
+                    IsUserEligibleForPromotionsResponseMessage:
+                      responseCode: '1'
+                      status: SUCCESS
+                      promotionDetails:
+                        - isUserEligibleForPromotion: true
+                          promotionCategory: Product
+                          promotionID: 30DISPROIQ
+                          promotionName: 30%PROMO
+                          promotionalPrice: 3899.70
+                          dmaName: Iraq
+                          startDate: 1609439400000
+                          period: NoOfMonths
+                          duration: 1
+                          promotionType: Percentage
+                          product: VIP 3 Months
+                          percentage: 30.00
+                          displayName: 30%PROMO
+                          skuORQuickCode: VIP3M
+                          isFreeTrial: 'false'
+                          externalOfferId: apple.offer.id
+                          isIgnoreActivePromotionLimit: false
+                          isSelfPromotion: T
+                          startDateWithMillSec: 1609439400000
+                          promoItems:
+                            - VIP 3 Months
+                        - isUserEligibleForPromotion: false
+                          promotionCategory: Product
+                          promotionID: SPRIQ
+                          promotionName: SPRIQ
+                          promotionalPrice": 0.00
+                          dmaName: Iraq
+                          startDate: 1609439400000
+                          period: LifeTime
+                          promotionType: Free
+                          product: VIP Annual
+                          displayName: SPRIQ
+                          skuORQuickCode: VIP12M
+                          isFreeTrial: false
+                          isIgnoreActivePromotionLimit: false,
+                          isSelfPromotion: T
+                          startDateWithMillSec: 1609439400000
+                          promoItems:
+                            - VIP Annual
+                            - VIP 6 Months
+                            - VIP Monthly
+                            - VIP 3 Months
+                            - VIP Weekly
+        x- 111111111:
+          description: Authorization failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                IsUserEligibleForPromotionsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/isUserEligibleForPromotion'
+            examples:
+              Sample Request:
+                value:
+                  IsUserEligibleForPromotionsRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaID: IQ
+                    promotionCode: WB30POFF2M
+                    mobileNumber: '962791496678'
+                    promotionCodes:
+                      - TV001
+                      - TPay10DFT
   /getReasonCodes:
     post:
       tags:
@@ -2321,26 +2435,56 @@ paths:
                       paymentModeMetaData:
                         - paymentMode: TPay_Zain
                           paymentModeId: 130
-                          buPaymentModeId: 7970
-                          dmaPaymentTypeId: 7369
+                          buPaymentModeId: 7820
+                          dmaPaymentTypeId: '7219'
                           cancellationAPIForActiveSub: true
                           cancellationAPIForDunningSub: true
-                          cancellationInstruction: null
-                          couponDuringPurchase: true
+                          cancellationInstruction: 'null'
                           failureChargeNotification: true
                           freeTrialAllowed: true
                           freeTrialDynamicSupport: true
-                          imageURLApp: null
-                          imageURLWeb: null
+                          imageURLApp: 'null'
+                          imageURLWeb: 'null'
                           notifyCustomerStatus: true
                           pendingChargeNotification: true
                           reactivationAPI: true
-                          reactivationInstruction: null
+                          reactivationInstruction: 'null'
                           refundAllowed: true
                           statusChargeNotification: true
                           successChargeNotification: true
                           suspensionAPI: true
-                          taxType: null
+                          taxType: VAT
+                          operatorCode: '41601'
+                          operatorName: 'Zain'
+                          operatorCountry: 'JO'
+                          operatorCurrency: 'JOD'
+                          regex: '^(9627)\\d{8}'
+                          countryCode: 
+                          lightImageURLApp: https://static.s3.shahid.mbc.net/widget-images/carriers/Zain.svg
+                          lightImageURLWeb: https://static.s3.shahid.mbc.net/widget-images/carriers/Zain.svg
+                          isActive: true
+                          isAllowMultipleFreeTrials: false
+                          isAllowCustomFreeTrials: true
+                          isAllowSMSOnActivate: true
+                          isAllowSMSOnRecur: true
+                          isAllowSMSOnCancel: true
+                          isAllowSMSOnReactivate: true
+                          isAllowSMSOnSuspend: true
+                          isAllowGracePeriod: true
+                          isManageable: true
+                          isAllowConcurrentSubscrription: true
+                          isAllowUpgrade: true
+                          isAllowDowngrade: true
+                          isAllowSkipBill: true
+                          isTaxInclusive: false
+                          carrierImageUrl: https://static.s3.shahid.mbc.net/widget-images/carriers/Zain.svg
+                          darkCarrierImageUrl: https://static.s3.shahid.mbc.net/widget-images/carriers/Zain.svg
+                          prorationMode: Immediate
+                          notifyCustomerOnCancel: true
+                          isAllowStackingCoupons: true
+                          isAllowSeamlessReactivate: true
+                          isTwoStepUpdateSubscriptionTierProcessor: true
+                          isAllowCouponOnActivation: true
                         - paymentMode: Credit Card
                           paymentModeId: 15
                           buPaymentModeId: 4236
@@ -2801,6 +2945,7 @@ paths:
                         validityEndDate: 1621304628943
                         applicableFromDate: '-1'
                         status: New
+                        isPaidCoupon: false
                         couponItems:
                           - price: 4.99
                             name: VIP Monthly
@@ -2997,6 +3142,20 @@ paths:
                       state: Ohio
                       country: United States
                       zipCode: '45036'
+              Sample request for Mada subscription:
+                value:
+                  AuthorizeCardRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    token: tok_ctynkwcksdru3nzh7fzhszcxzu
+                    transactionType: AUTH
+                    country: IQ
+                    cardServiceType: MADA
+                    billingAddress:
+                      address1: 321 Jenna Lane
+                      city: Lebanon
+                      state: Ohio
+                      country: United States
+                      zipCode: '45036'
               Sample request for onetime subscription with promotion:
                 value:
                   AuthorizeCardRequestMessage:
@@ -3005,6 +3164,7 @@ paths:
                     transactionType: CAPTURE
                     serviceType: PRODUCT
                     serviceID: VIP3M
+                    cardServiceType: mada
                     country: IQ
                     promotionID: FTMS001
                     billingAddress:
@@ -6742,6 +6902,27 @@ components:
         taxType:
           type: string
           description: Type of the tax
+        darkCarrierImageUrl:
+          type: string
+          description: Dark carrier image url
+        carrierImageUrl:
+          type: string
+          description: Carrier image url
+        prorationMode:
+          type: boolean
+          description: Indicates if product is eligible for proration mode
+        notifyCustomerOnCancel:
+          type: boolean
+          description: Indicates if customer is allowed to cancel
+        isAllowStackingCoupons:
+          type: boolean
+          description: Indicates id coupon stacking is allowed to payment mode or not
+        isAllowSeamlessReactivate:
+          type: boolean
+          description: Indicates if user is eligible for seamless ractivate
+        isTwoStepUpdateSubscriptionTierProcessor:
+          type: boolean
+          description: Indicates is user is eligible for two step update subscription tier processor.
     paymentModesList-product:
       type: object
       properties:
@@ -6864,6 +7045,9 @@ components:
         couponCode:
           type: string
           description: Coupon code generated on the products.
+        promotionId:
+          type: string
+          description: Promotion id defined on the products.
         quantity:
           type: string
           description: Quantity of the product.
@@ -7457,6 +7641,35 @@ components:
           type: string
           description: Customer classification type
           example: 'New Customer, Existing Customer, Win Back'
+    isUserEligibleForPromotions:
+      type: object
+      required:
+        - apiKey
+        - dmaID
+        - promotionCodes
+        - spAccountID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        promotionCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotionCodes'
+            description: Promotion id defined for the promotions
+        mobileNumber:
+          type: string
+          description: Mobile number for the account
+        spAccountID:
+          type: string
+          description: Unique ID generated in EV system.
     getReasonCodes:
       type: object
       required:
@@ -7520,8 +7733,6 @@ components:
         - apiKey
         - Authorization
         - itemCode
-        - expiryDate
-        - transactionId
         - transactionStatus
         - priceCharged
       properties:
@@ -7543,6 +7754,8 @@ components:
         transactionStatus:
           type: string
           description: Status of the transaction.
+          enum:
+            - PENDING/CANCELLED/FAILEDTOCHARGE
         priceCharged:
           type: string
           description: Price charged for the transaction.
@@ -8249,12 +8462,15 @@ components:
           type: number
           description: Expiry of the coupon
         promotionName:
-          type: number
+          type: string
           description: Promotion name on which the coupon is defined
         status:
-          type: number
+          type: string
           description: Status of the coupon
           example: 'New, Redeemed'
+        isPaidCoupon:
+          type: boolean
+          description: Indicates if coupon is paid or not.
     couponItems:
       type: object
       properties:
@@ -8993,3 +9209,74 @@ components:
             - US(US)
             - WW(WW)
             - YE(Yemen)
+    promotionDetails:
+      type: object
+      properties:
+        isUserEligibleForPromotion:
+          type: string
+          description: Indicates if the promotion is eligible
+        promotionCategory:
+          type: string
+          description: Category of the promotion
+        promotionID:
+          type: string
+          description: Unique id of the promotion
+        promotionName:
+          type: string
+          description: Name of the promotion
+        promotionalPrice:
+          type: integer
+          description: Price of the promotion defined on the product
+        dmaName:
+          type: string
+          description: Dma name
+        startDate:
+          type: number
+          description: Start date of the promotion
+        period:
+          type: string
+          description: Period of the promotion
+        duration:
+          type: integer
+          description: Duration of the promotion
+        promotionType:
+          type: string
+          description: Type of the promotion
+        product:
+          type: string
+          description: Name of the product
+        percentage:
+          type: string
+          description: Percentage of the promotion defined on the product
+        displayName:
+          type: string
+          description: Display name of the promotion
+        skuORQuickCode:
+          type: string
+          description: SKU of the product
+        isFreeTrial:
+          type: string
+          description: Indicates if promotion is free trial
+        externalOfferId:
+          type: string
+          description: External offer id of the promotion
+        isIgnoreActivePromotionLimit:
+          type: string
+          description: Indicates to ignore active promotion to the account.
+        isSelfPromotion:
+          type: string
+          description: Indicates if promotion is self promotion
+        startDateWithMillSec:
+          type: string
+          description: Start date of the promotion in milliseconds
+        promoItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/promoItems'
+            description: service id defined for the payment modes
+    promoItems:
+      type: object
+      description: Details of the products inked to promotion.
+    promotionCodes:
+      type: object
+      description: Details of the products inked to promotion.
