@@ -3641,7 +3641,7 @@ paths:
                     dmaID: IQ
                     newServiceID: VIP3M
                     oldServiceID: VIPM01
-                    paymentmethodInfo:
+                    paymentMethodInfo:
                       label: Credit Card
                       makeAutoPayment: 'true'
                       CardTokenInfoMessage:
@@ -3653,7 +3653,7 @@ paths:
                     dmaID: IQ
                     newServiceID: VIP3M
                     oldServiceID: VIPM01
-                    paymentmethodInfo:
+                    paymentMethodInfo:
                       label: Credit Card
                       makeAutoPayment: 'true'
                       CardTokenInfoMessage:
@@ -9279,4 +9279,4 @@ components:
       description: Details of the products inked to promotion.
     promotionCodes:
       type: object
-      description: Details of the products inked to promotion.
+      description: Details of the products inked to promotion.    
