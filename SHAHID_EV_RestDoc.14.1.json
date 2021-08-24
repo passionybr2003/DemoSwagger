@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 1st July, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 23rd Aug, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.9
+  title: EV Shahid API - V14.10
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -1122,6 +1122,38 @@ paths:
                           productPrice: 149
                           customerClassification: New Customer
                           externalPromotiontype: Contract
+                Successful promotionresponse:
+                  value:
+                    GetPromotionsResponseMessage:
+                      message: SUCCESS
+                      promotionsResponseMessage:
+                        - promotionCategory: Product
+                          promotionID: TVOP_AN_SAMSUNG_TAUXUM
+                          promotionName: TV Offer Promotion Samsung TAUXUM
+                          promotionalPrice: 0.00
+                          dmaName: Product Market Area
+                          startDate: 1627776000000
+                          period: NoOfMonths
+                          duration: 12
+                          promotionType: Free
+                          product: KSA_Shahid VIP Yearly
+                          displayName: TV Offer Promotion Samsung TAUXUM
+                          skuORQuickCode: KSA_B2C_SHAHID_VIP_12M
+                          discountAmount: 239.99
+                          productPrice: 239.99
+                          isFreeTrial: 'false'
+                          promotionalProducts:
+                            - prodName: KSA_Shahid VIP Yearly
+                              sku: KSA_B2C_SHAHID_VIP_12M
+                              price: '239.99'
+                              period: NoOfYears
+                              duration: 1
+                          promotionDeviceDetails:
+                            - brand: Samsung
+                              category: TV
+                              model: QA43LS05TAUXUM
+                              internalModelNo: 
+                              chasis: 
                 eV1416:
                   value:
                     GetPromotionsResponseMessage:
@@ -2154,6 +2186,10 @@ paths:
                           Indicates if the response was successfully processed.
                           Accepted values are <br> “1” – Success. <br> “0” –
                           Failure.
+                      promotionDetails:
+                        type: object
+                        $ref: '#/components/schemas/promotionDetails'
+                        description: Promotion details.
                       status:
                         type: string
                         description: Success/Fail
@@ -2171,6 +2207,47 @@ paths:
                       responseCode: '1'
                       status: SUCCESS
                       isUserEligibleForPromotion: SUCCESS
+                      promotionDetails:
+                        promotionCategory: Product
+                        promotionID: 50POFFLT
+                        promotionName: 50% discount life time
+                        promotionalPrice: 0.55
+                        dmaName: Jordan
+                        startDate: 1617132720000
+                        endDate: 1640806320000
+                        period: LifeTime
+                        promotionType: Percentage Off
+                        product: Shahid VIP Daily
+                        percentage: 50.00
+                        displayName: 50% discount life time
+                        skuORQuickCode: Shahid_VIP01D
+                        promoItems:
+                         - Shahid VIP Daily
+                         - Shahid VIP 6 Months
+                         - Shahid VIP+Sport 12 Months
+                         - JOR_Shahid VIP 1 Month
+                         - Shahid VIP+Sport Weekly
+                         - VIP+Sport 1 Hourly
+                         - Shahid VIP+Sport 3 Months
+                         - Shahid VIP 1 Month
+                         - Shahid VIP 12 Months
+                        isFreeTrial: 'false'
+                        isOverrideEligibilityRule: false
+                        isContinueAfterPeriod: false
+                        isIgnoreActivePromotionLimit: false
+                        isSelfPromotion: T
+                        startDateWithMillSec: 1617132720000
+                        endDateWithMillSec: 1640806320000
+                        customerClassification: New Customer
+                        paymentModeList:
+                          - paymentMode: Google Wallet
+                            order: '16'
+                            paymentTitle: Google Wallet
+                            name: Google Wallet
+                        promotionAttributes:
+                          - attributeName: MobileNumber
+                            attributeValue: '796104612,962782690725'
+                        VODPromotions: ''
         x- 111111111:
           description: Authorization failed
       requestBody:
@@ -2251,47 +2328,51 @@ paths:
                       promotionDetails:
                         - isUserEligibleForPromotion: true
                           promotionCategory: Product
-                          promotionID: 30DISPROIQ
-                          promotionName: 30%PROMO
-                          promotionalPrice: 3899.70
-                          dmaName: Iraq
-                          startDate: 1609439400000
-                          period: NoOfMonths
-                          duration: 1
-                          promotionType: Percentage
-                          product: VIP 3 Months
-                          percentage: 30.00
-                          displayName: 30%PROMO
-                          skuORQuickCode: VIP3M
+                          promotionID: 50POFFLT
+                          promotionName: 50% discount life time
+                          promotionalPrice: 0.55
+                          dmaName: Jordan
+                          startDate: 1617132720000
+                          endDate: 1640806320000
+                          period: LifeTime
+                          promotionType: Percentage Off
+                          product: Shahid VIP Daily
+                          percentage: 50.00
+                          displayName: 50% discount life time
+                          skuORQuickCode: Shahid_VIP01D
+                          promoItems:
+                           - Shahid VIP Daily
+                           - Shahid VIP 6 Months
+                           - Shahid VIP+Sport 12 Months
+                           - JOR_Shahid VIP 1 Month
+                           - Shahid VIP+Sport Weekly
+                           - VIP+Sport 1 Hourly
+                           - Shahid VIP+Sport 3 Months
+                           - Shahid VIP 1 Month
+                           - Shahid VIP 12 Months
                           isFreeTrial: 'false'
-                          externalOfferId: apple.offer.id
+                          isOverrideEligibilityRule: false
+                          isContinueAfterPeriod: false
                           isIgnoreActivePromotionLimit: false
                           isSelfPromotion: T
-                          startDateWithMillSec: 1609439400000
-                          promoItems:
-                            - VIP 3 Months
+                          startDateWithMillSec: 1617132720000
+                          endDateWithMillSec: 1640806320000
+                          customerClassification: New Customer
+                          paymentModeList:
+                            - paymentMode: Google Wallet
+                              order: '16'
+                              paymentTitle: Google Wallet
+                              name: Google Wallet
+                          promotionAttributes:
+                            - attributeName: MobileNumber
+                              attributeValue: '796104612,962782690725'
+                          VODPromotions: ''
                         - isUserEligibleForPromotion: false
-                          promotionCategory: Product
-                          promotionID: SPRIQ
-                          promotionName: SPRIQ
-                          promotionalPrice": 0.00
-                          dmaName: Iraq
-                          startDate: 1609439400000
-                          period: LifeTime
-                          promotionType: Free
-                          product: VIP Annual
-                          displayName: SPRIQ
-                          skuORQuickCode: VIP12M
-                          isFreeTrial: false
-                          isIgnoreActivePromotionLimit: false,
-                          isSelfPromotion: T
-                          startDateWithMillSec: 1609439400000
-                          promoItems:
-                            - VIP Annual
-                            - VIP 6 Months
-                            - VIP Monthly
-                            - VIP 3 Months
-                            - VIP Weekly
+                          reasonForInEligibility: NOT_AVAILABLE_IN_COUNTRY
+                          promotionID: 50POFFLT
+                        - isUserEligibleForPromotion: false
+                          reasonForInEligibility: NOT_STARTED
+                          promotionID: NYP202201
         x- 111111111:
           description: Authorization failed
       requestBody:
@@ -2312,7 +2393,8 @@ paths:
                     promotionCode: WB30POFF2M
                     mobileNumber: '962791496678'
                     promotionCodes:
-                      - TV001
+                      - 40POFFNEWUSER
+                      - NYP202201
                       - TPay10DFT
   /getReasonCodes:
     post:
@@ -2486,27 +2568,64 @@ paths:
                           isTwoStepUpdateSubscriptionTierProcessor: true
                           isAllowCouponOnActivation: true
                         - paymentMode: Credit Card
-                          paymentModeId: 15
-                          buPaymentModeId: 4236
-                          dmaPaymentTypeId: 3426
+                          paymentModeId: 12
+                          buPaymentModeId: 10371
+                          dmaPaymentTypeId: '15636'
                           cancellationAPIForActiveSub: true
                           cancellationAPIForDunningSub: true
-                          cancellationInstruction: null
+                          cancellationInstruction: ''
                           couponDuringPurchase: true
                           failureChargeNotification: true
-                          freeTrialAllowed: true
-                          freeTrialDynamicSupport: true
-                          imageURLApp: null
-                          imageURLWeb: null
+                          freeTrialAllowed: false
+                          freeTrialDynamicSupport: false
+                          imageURLApp: ''
+                          imageURLWeb: ''
                           notifyCustomerStatus: true
                           pendingChargeNotification: true
                           reactivationAPI: true
-                          reactivationInstruction: null
+                          reactivationInstruction: ''
                           refundAllowed: true
                           statusChargeNotification: true
                           successChargeNotification: true
                           suspensionAPI: true
-                          taxType: null
+                          taxType: Regular
+                          operatorCode: ''
+                          operatorName: ''
+                          operatorCountry: ''
+                          operatorCurrency: ''
+                          regex: ''
+                          countryCode: ''
+                          lightImageURLApp: ''
+                          lightImageURLWeb: ''
+                          isActive: false
+                          isAllowMultipleFreeTrials: false
+                          isAllowCustomFreeTrials: false
+                          isAllowSMSOnActivate: true
+                          isAllowSMSOnRecur: true
+                          isAllowSMSOnCancel: true
+                          isAllowSMSOnReactivate: true
+                          isAllowSMSOnSuspend: false
+                          isAllowGracePeriod: true
+                          isManageable: true
+                          isAllowConcurrentSubscrription: false
+                          isAllowUpgrade: true
+                          isAllowDowngrade: true
+                          isAllowSkipBill: false
+                          taxRate: 5.0
+                          isTaxInclusive: false
+                          carrierImageUrl: ''
+                          darkCarrierImageUrl: ''
+                          prorationMode: IMMEDIATE
+                          notifyCustomerOnCancel: false
+                          isAllowStackingCoupons: false
+                          isAllowSeamlessReactivate: false
+                          isTwoStepUpdateSubscriptionTierProcessor: false
+                          isSupportsCancellation: false
+                          isSupportsReactivate: false
+                          isSupportsCoupon: false
+                          upgradeProrationMode: IMMEDIATE_AND_CHARGE_PRORATED_PRICE
+                          downgradeProrationMode: DEFERRED
+                          isAllowCouponOnActivation: false
                         - paymentMode: App Store Billing
                           paymentModeId: 110
                           buPaymentModeId: 2433
@@ -6584,6 +6703,11 @@ components:
           items:
             $ref: '#/components/schemas/promotionalProducts'
             description: Promotional product details.
+        promotionDeviceDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotionDeviceDetails'
+            description: Promotion device details.
     promotionalProducts:
       type: object
       properties:
@@ -6902,6 +7026,96 @@ components:
         taxType:
           type: string
           description: Type of the tax
+        operatorCode:
+          type: string
+          description: Operator code
+        operatorName:
+          type: string
+          description: Operator name
+        operatorCountry:
+          type: string
+          description: Operator country
+        operatorCurrency:
+          type: string
+          description: Operator currency
+        regex:
+          type: string
+          description: Regular expression
+        countryCode:
+          type: string
+          description: Country code
+        lightImageURLApp:
+          type: string
+          description: Light image url app
+        lightImageURLWeb:
+          type: string
+          description: Light image url web
+        isActive:
+          type: boolean
+          description: Indicates if it is active
+        isAllowMultipleFreeTrials:
+          type: boolean
+          description: Indicates if multiple free trials are allowed
+        isAllowCustomFreeTrials:
+          type: boolean
+          description: Indicates if custom free trials are allowed
+        isAllowSMSOnActivate:
+          type: boolean
+          description: Indicates if sms is allowed on activation
+        isAllowSMSOnRecur:
+          type: boolean
+          description: Indicates if sms is allowed on recurring
+        isAllowSMSOnCancel:
+          type: boolean
+          description: Indicates if sms is allowed on cancel
+        isAllowSMSOnReactivate:
+          type: boolean
+          description: Indicates if sms is allowed on reactivation
+        isAllowSMSOnSuspend:
+          type: boolean
+          description: Indicates if sms is allowed on suspend
+        isAllowGracePeriod:
+          type: boolean
+          description: Indicates if grace period is allowed or not
+        isManageable:
+          type: boolean
+          description: Indicates if manageble is allowed or not
+        isAllowConcurrentSubscrription:
+          type: boolean
+          description: Indicates if concurrent subscription is allowed or not
+        isAllowUpgrade:
+          type: boolean
+          description: Indicates if upgrade is allowed or not
+        isAllowDowngrade:
+          type: boolean
+          description: Indicates if downgrade is allowed or not
+        isAllowSkipBill:
+          type: boolean
+          description: Indicates if skip bill is allowed or not
+        taxRate:
+          type: string
+          description: Tax rate
+        isTaxInclusive:
+          type: boolean
+          description: Indicates if tax is inclusive or not
+        isSupportsCancellation:
+          type: boolean
+          description: Indicates if cancellation is allowed or not
+        isSupportsReactivate:
+          type: boolean
+          description: Indicates if reactivate is allowed or not
+        isSupportsCoupon:
+          type: boolean
+          description: Indicates if coupon is allowed or not
+        upgradeProrationMode:
+          type: string
+          description: Upgrade proration mode
+        downgradeProrationMode:
+          type: string
+          description: Downgrade proration mode
+        isAllowCouponOnActivation:
+          type: boolean
+          description: Allow coupon on activation
         darkCarrierImageUrl:
           type: string
           description: Dark carrier image url
@@ -9213,11 +9427,14 @@ components:
       type: object
       properties:
         isUserEligibleForPromotion:
-          type: string
-          description: Indicates if the promotion is eligible
+          type: boolean
+          description: Indicates if user is eligible for promotion
         promotionCategory:
           type: string
           description: Category of the promotion
+        reasonForInEligibility:
+          type: string
+          description: Reason for ineligibility of the promotion
         promotionID:
           type: string
           description: Unique id of the promotion
@@ -9233,6 +9450,9 @@ components:
         startDate:
           type: number
           description: Start date of the promotion
+        endDate:
+          type: number
+          description: End date of the promotion
         period:
           type: string
           description: Period of the promotion
@@ -9260,6 +9480,12 @@ components:
         externalOfferId:
           type: string
           description: External offer id of the promotion
+        isOverrideEligibilityRule:
+          type: string
+          description: Indicates to over ride eligibility rule
+        isContinueAfterPeriod:
+          type: string
+          description: Indicates to continue after period
         isIgnoreActivePromotionLimit:
           type: string
           description: Indicates to ignore active promotion to the account.
@@ -9269,14 +9495,54 @@ components:
         startDateWithMillSec:
           type: string
           description: Start date of the promotion in milliseconds
+        endDateWithMillSec:
+          type: string
+          description: End date of the promotion in milliseconds
+        customerClassification:
+          type: string
+          description: Customer classification
         promoItems:
           type: array
           items:
             $ref: '#/components/schemas/promoItems'
             description: service id defined for the payment modes
+        paymentModeList:
+          type: array
+          items:
+            $ref: '#/components/schemas/paymentModeList'
+            description: Payment mode list
+        promotionAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/promotionAttributes'
+            description: Attributes list
     promoItems:
       type: object
       description: Details of the products inked to promotion.
     promotionCodes:
       type: object
       description: Details of the products inked to promotion.    
+    paymentModeList:
+      type: object
+      properties:
+        paymentMode:
+          type: string
+          description: Payment mode
+        order:
+          type: string
+          description: Order of the mode
+        paymentTitle:
+          type: string
+          description: Title of the payment mode
+        name:
+          type: string
+          description: Name of the payment mode
+    promotionAttributes:
+      type: object
+      properties:
+        attributeName:
+          type: string
+          description: Name of the attribute
+        attributeValue:
+          type: string
+          description: Value for the attribute
