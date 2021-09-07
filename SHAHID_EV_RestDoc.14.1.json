@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 23rd Aug, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 7th Srp, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.10
+  title: EV Shahid API - V14.11
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -132,7 +132,7 @@ paths:
                           errorCode: eV2327
                       responseCode: '0'
                       message: No Accounts Found
-        x- 20003:
+        x- eV2511:
           description: Missing Required Parameter
         x- 111111111:
           description: Authentication Failed
@@ -1614,6 +1614,10 @@ paths:
                                   displayName: VIP Annual
                                   period: NoOfMonths
                                   duration: 12
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPM01
@@ -1622,6 +1626,10 @@ paths:
                                   displayName: VIP Monthly
                                   period: NoOfMonths
                                   duration: 1
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                           paymentMode: Credit/Debit Card
                           paymentChannel: Credit/Debit Card
@@ -1643,6 +1651,10 @@ paths:
                                   displayName: VIP 3 Months
                                   period: NoOfMonths
                                   duration: 3
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIP6M
@@ -1651,6 +1663,10 @@ paths:
                                   displayName: VIP 6 Months
                                   period: NoOfMonths
                                   duration: 6
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIP12M
@@ -1659,6 +1675,10 @@ paths:
                                   displayName: VIP Annual
                                   period: NoOfMonths
                                   duration: 12
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPM01
@@ -1667,6 +1687,10 @@ paths:
                                   displayName: VIP Monthly
                                   period: NoOfMonths
                                   duration: 1
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPW
@@ -1675,6 +1699,10 @@ paths:
                                   displayName: VIP Weekly
                                   period: NoOfDays
                                   duration: 7
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                           paymentMode: App Store Billing
                           paymentChannel: App Store Billing
@@ -1696,6 +1724,10 @@ paths:
                                   displayName: VIP 3 Months
                                   period: NoOfMonths
                                   duration: 3
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIP6M
@@ -1704,6 +1736,10 @@ paths:
                                   displayName: VIP 6 Months
                                   period: NoOfMonths
                                   duration: 6
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIP12M
@@ -1712,6 +1748,10 @@ paths:
                                   displayName: VIP Annual
                                   period: NoOfMonths
                                   duration: 12
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPM01
@@ -1720,6 +1760,10 @@ paths:
                                   displayName: VIP Monthly
                                   period: NoOfMonths
                                   duration: 1
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPW
@@ -1728,6 +1772,10 @@ paths:
                                   displayName: VIP Weekly
                                   period: NoOfDays
                                   duration: 7
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                           paymentMode: Google Wallet
                           paymentChannel: Google Wallet
@@ -1749,6 +1797,10 @@ paths:
                                   displayName: VIP Monthly
                                   period: NoOfMonths
                                   duration: 1
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIPW
@@ -1757,6 +1809,10 @@ paths:
                                   displayName: VIP Weekly
                                   period: NoOfDays
                                   duration: 7
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                           paymentMode: TPay Zain
                           paymentChannel: TPay_Zain
@@ -1778,6 +1834,10 @@ paths:
                                   displayName: VIP 3 Months
                                   period: NoOfMonths
                                   duration: 3
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                                 - recurrence: Recurring
                                   serviceID: VIP6M
@@ -1786,6 +1846,10 @@ paths:
                                   displayName: VIP 6 Months
                                   period: NoOfMonths
                                   duration: 6
+                                  productAttribute:
+                                    - attributeLabel: b2b_or_b2c
+                                      attributeType: String
+                                      attributeValue: B2C
                                   currency: IQD
                           paymentMode: Credit Card
                           paymentChannel: Credit Card
@@ -3160,20 +3224,36 @@ paths:
                           Indicates if the response was successfully processed.
                           Accepted values are <br> “1” – Success <br> “0” –
                           Failure.
-                      redirect3DSURL:
+                      paymentMethodID:
                         type: string
-                        description: Redirect URL for 3DS page
-                      orderID:
+                        description: Unique id for the payment method.
+                      cardNumber:
                         type: string
-                        description: Order ID of the service placed.
-                      validityTill:
+                        description: Card number of the user
+                      expiryDate:
                         type: number
-                        description: Ordered product expiry time stamp in milliseconds.
-                      orderedProductIds:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/orderedProductIds'
-                        description: Order product details.
+                        description: Expiry date of the card.
+                      cardType:
+                        type: string
+                        description: Card type
+                      cardIssuer:
+                        type: string
+                        description: Issuer details of the card
+                      cardBin:
+                        type: number
+                        description: Card bin.
+                      issuerCountry:
+                        type: string
+                        description: Issuer country of the card
+                      last4Digits:
+                        type: string
+                        description: Last 4 digits of the card.
+                      xid:
+                        type: number
+                        description: XID of the card.
+                      cardServiceType:
+                        type: number
+                        description: Card service type.
               examples:
                 '111111111':
                   value:
@@ -3192,10 +3272,18 @@ paths:
                 Successful purchase for non 3DS flow:
                   value:
                     AuthorizeCardResponseMessage:
+                      responseCode: 1
                       message: SUCCESS
-                      responseCode: '1'
-                      orderID: '748200'
-                      validityTill: 1570627009000
+                      paymentMethodID: 980502
+                      cardNumber: 424242xxxxx4242
+                      expiryDate: 03/2030
+                      cardType: Visa
+                      cardIssuer: JPMORGAN CHASE BANK NA
+                      cardBin: 424242
+                      issuerCountry: US
+                      last4Digits: 4242
+                      xid: 2D
+                      cardServiceType: Credit Card
                 eV4313:
                   value:
                     AuthorizeCardResponseMessage:
@@ -4994,6 +5082,7 @@ paths:
                       PaymentMethods:
                         - status: Active
                           label: Card
+                          modifiedTs: 1631007032000
                           CardInfoMessage:
                             methodType: General
                             nickName: Damon
@@ -5001,7 +5090,12 @@ paths:
                             name: Damon
                             paymentMethodId: '152152'
                             cardType: Visa
+                            billingAddress:
+                              country: US
                             cardNumber: xxxxxxxxxxxx4113
+                            subscriptionID: '3295942516'
+                            xid: 2D
+                            bin: '424242'
                           isAutoPayment: 'true'
                 Authentication Failed:
                   value:
@@ -6238,6 +6332,7 @@ components:
         - channelPartnerID
         - apiKey
         - spAccountID
+        
       properties:
         channelPartnerID:
           type: string
@@ -6346,6 +6441,7 @@ components:
       required:
         - channelPartnerID
         - apiKey
+        - dmaID
       properties:
         channelPartnerID:
           type: string
@@ -6915,6 +7011,23 @@ components:
         currency:
           type: string
           description: Currency of the product.
+        productAttribute:
+          type: array
+          items:
+            $ref: '#/components/schemas/productDetailsList-productAttribute'
+            description: Attirbutes available for the products.
+    productDetailsList-productAttribute:
+      type: object
+      properties:
+        attributeLabel:
+          type: string
+          description: Attribute label.
+        attributeType:
+          type: string
+          description: Attribute type.
+        attributeValue:
+          type: string
+          description: Attribute value.
     productDetails-product:
       type: object
       properties:
@@ -6949,6 +7062,14 @@ components:
         duration:
           type: string
           description: Duration of the product.
+        ovpSKU:
+          type: string
+          description: OVP SKU.
+        productAttribute:
+          type: array
+          items:
+            $ref: '#/components/schemas/productDetailsList-productAttribute'
+            description: Attirbutes available for the products.
     paymentModesList-paymentMode:
       type: object
       properties:
@@ -8768,6 +8889,9 @@ components:
           type: string
           description: Card secure level(2D/3D)
         bin:
+          type: string
+          description: Bin of the card
+        subscriptionID: 
           type: string
           description: Bin of the card
         billingAddress:
