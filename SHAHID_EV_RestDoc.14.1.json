@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 7th Sep, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 19th Sep, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.11
+  title: EV Shahid API - V14.12
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -6146,6 +6146,208 @@ paths:
                     paymentID: '1089028'
                     country: IQ
                     downloadPDF: true
+  /addDeviceForAccount:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - GOBOX
+      operationId: AddDeviceForAccountRequestMessage
+      description: >-
+        addDeviceForAccount() REST API is used to add the device to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  AddDeviceForAccountResponseMessage:
+                    type: object
+                    properties:
+                      success:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    AddDeviceForAccountResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Success response:
+                  value:
+                    AddDeviceForAccountResponseMessage:
+                      responseCode: '1'
+                      message: SUCCESS
+                      success: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AddDeviceForAccountRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/addDeviceForAccount'
+            examples:
+              Sample request:
+                value:
+                  AddDeviceForAccountRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    accountID: testdemo20@yopmail.com
+                    deviceDetails:
+                      serialNo: 'T8100178429459'
+                      registrationToken: '966505719119'
+                      status: Active
+                      deviceName: 'T8100178429459'
+                      deviceType: 'GO_BOX'
+  /getAccountDevices:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - GOBOX
+      operationId: GetAccountDevicesRequestMessage
+      description: >-
+        getAccountDevices() REST API is used to get the available devices to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetAccountDevicesResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      deviceDetails:
+                        type: Object
+                        $ref: '#/components/schemas/deviceDetails'
+              examples:
+                '111111111':
+                  value:
+                    GetAccountDevicesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Success response:
+                  value:
+                    GetAccountDevicesResponseMessage:
+                      responseCode: '1'
+                      message: SUCCESS
+                      deviceDetails:
+                        - serialNo: 'T8100178429459'
+                          registrationToken: '966505719119'
+                          status: Active
+                          deviceName: 'T8100178429459'
+                          deviceType: 'GO_BOX'
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetAccountDevicesRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getAccountDevices'
+            examples:
+              Sample request:
+                value:
+                  GetAccountDevicesRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    accountID: 5a381bc51ed54c1f9ce2b6876ae9181d
+                    dmaID: SA
+  /changeBU:
+    post:
+      tags:
+        - Selfcare
+      operationId: ChangeBURequestMessage
+      description: >-
+        changeBU() REST API is used to change the BU of the user.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ChangeBURequestMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Business unit changed successfully
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    ChangeBUResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    ChangeBUResponseMessage:
+                      responseCode: '1'
+                      message: Business unit changed successfully
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ChangeBURequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/changeBU'
+            examples:
+              Sample request:
+                value:
+                  ChangeBURequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID_JO
+                    buId: SHAHID_SA
+                    newDmaId: SA
+                    spAccountId: '1631642544'
+                    isSkipValidateService: 'true'
 components:
   securitySchemes:
     bearerAuth:
@@ -9617,3 +9819,101 @@ components:
         attributeValue:
           type: string
           description: Value for the attribute
+    addDeviceForAccount:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        accountID:
+          type: string
+          description: SP account id generated for the account.
+        deviceDetails:
+          type: Object
+          $ref: '#/components/schemas/deviceDetails'
+    deviceDetails:
+      type: object
+      properties:
+        serialNo:
+          type: string
+          description: Serial number of the device.
+        registrationToken:
+          type: string
+          description: Unique token for the registration.
+        status:
+          type: string
+          description: Status of the device.
+        deviceName:
+          type: string
+          description: Name of the device.
+        deviceType:
+          type: string
+          description: Type of the device.
+        externalID:
+          type: string
+          description: External id of the account.
+        opID:
+          type: string
+          description: Order id for the account.
+    getAccountDevices:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - dmaID
+        - accountID
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        dmaID:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        accountID:
+          type: string
+          description: Unique sp account id for the account.
+    changeBU:
+      type: object
+      required:
+        - channelPartnerID
+        - apiKey
+        - spAccountId
+        - buId
+        - newDmaId
+        - isSkipValidateService
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        apiKey:
+          type: string
+          description: Partner authentication Key.
+        buId:
+          type: string
+          description: Current business unit for the account.
+        newDmaId:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        spAccountId:
+          type: string
+          description: Unique sp account id for the account.
+        isSkipValidateService:
+          type: string
+          description: Indicated when to skip service validation.
