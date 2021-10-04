@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 19th Sep, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 04th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.12
+  title: EV Shahid API - V14.13
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -6215,6 +6215,69 @@ paths:
                       status: Active
                       deviceName: 'T8100178429459'
                       deviceType: 'GO_BOX'
+  /removeDeviceForAccount:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - GOBOX
+      operationId: RemoveDevicesRequestMessage
+      description: >-
+        removeDeviceForAccount() REST API is used to remove the device to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  RemoveDevicesResponseMessage:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      message:
+                        type: string
+                        description: Successful message.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    RemoveDevicesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Success response:
+                  value:
+                    RemoveDevicesResponseMessage:
+                      responseCode: '1'
+                      message: Device removed from the account successfully
+                      status: SUCCESS
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RemoveDevicesRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/removeDeviceForAccount'
+            examples:
+              Sample request:
+                value:
+                  RemoveDevicesRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    accountID: '27092021001000001'
   /getAccountDevices:
     post:
       security:
@@ -9863,6 +9926,27 @@ components:
         opID:
           type: string
           description: Order id for the account.
+    removeDeviceForAccount:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - accountID
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        accountID:
+          type: string
+          description: SP account id generated for the account.
+        serialNo:
+          type: string
+          description: Serial number for the account.
     getAccountDevices:
       type: object
       required:
