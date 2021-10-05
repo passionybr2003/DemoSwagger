@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 04th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 05th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.13
+  title: EV Shahid API - V14.14
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -3664,6 +3664,23 @@ paths:
                       label: TV Offer
                       transactionReferenceMsg:
                         txMsg: Success
+              Sample request for reward promotion:
+                value:
+                  AddSubscriptionRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    dmaID: IQ
+                    serviceType: PRODUCT
+                    serviceID: KSA_B2C_SHAHID_VIP_3M
+                    quantity: '1'
+                    spAccountID: '05102021000002'
+                    rewardPromotionID: KSARD1MPROMO01
+                    isSkipDefaultPromo: 'true'
+                    paymentmethodInfo:
+                      label: Credit Card
+                      makeAutoPayment: 'true'
+                      CardTokenInfoMessage:
+                        paymentMethodID: '4324733'
   /changeService:
     post:
       security:
@@ -5851,6 +5868,15 @@ paths:
                     spAccountId: PRODUCT
                     redeemDate: 1623119699000
                     couponCode: JOFTAVRFj
+              Successful request with promotionID:
+                value:
+                  RecordRedeemCouponRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    dmaID: JO
+                    spAccountId: PRODUCT
+                    redeemDate: 1623119699000
+                    promotionID: KSARD1MPROMO01
   /getUpgradablePlans:
     post:
       tags:
@@ -7759,10 +7785,14 @@ components:
             - US(US)
             - WW(WW)
             - YE(Yemen)
+        rewardPromotionID:
+          type: string
+          description: Reward promotion id defined aganist the products.
         paymentmethodInfo:
           type: object
           $ref: '#/components/schemas/paymentmethodInfo'
           description: Payment method related details.
+        
     subscriptionDetails_Sub:
       type: object
       properties:
@@ -9536,6 +9566,9 @@ components:
             - US(US)
             - WW(WW)
             - YE(Yemen)
+        promotionID:
+          type: string
+          description: Promotion id defined aganist the products.
     getUpgradablePlans:
       type: object
       required:
