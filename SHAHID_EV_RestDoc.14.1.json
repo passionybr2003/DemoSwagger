@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 05th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 26th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.14
+  title: EV Shahid API - V14.15
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -6437,6 +6437,147 @@ paths:
                     newDmaId: SA
                     spAccountId: '1631642544'
                     isSkipValidateService: 'true'
+  /pairCustomer:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: AccountPairedVoucherCodesRequestMessage
+      description: >-
+        pairCustomer() REST API is used to pair the coupon to customer account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  AccountPairedVoucherCodesResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Successful redemption message.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    AccountPairedVoucherCodesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    AccountPairedVoucherCodesResponseMessage:
+                      message: Customer paired successfully.
+                      responseCode: '1'
+                eV2342:
+                  value:
+                    AccountPairedVoucherCodesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Sorry! That is not a valid voucher code. Please double check the code and try again.
+                          errorCode: eV2342
+                      responseCode: '0'
+        x- 111111111:
+          description: Authentication Failed
+        x- eV2342:
+          description: Sorry! That is not a valid voucher code. Please double check the code and try again.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                AccountPairedVoucherCodesRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/pairCustomer'
+            examples:
+              Successful request:
+                value:
+                  AccountPairedVoucherCodesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    voucherCode: aQbxka32rwlher
+                    method: pair
+                    comments: Coupon paired succesfully
+                    spAccountId: '1635253786'
+                    country: JO
+  /getAccountPairedCouponCodes:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: GetAccountPairedCouponCodesRequestMessage
+      description: >-
+        getAccountPairedCouponCodes() REST API is used to get the coupon codes that are paired to the account.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  AccountPairedVoucherCodesResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      AcctPairedCouponCodes:
+                        type: Object
+                        $ref: '#/components/schemas/AcctPairedCouponCodes'
+              examples:
+                '111111111':
+                  value:
+                    AccountPairedVoucherCodesResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample Successful response:
+                  value:
+                    AccountPairedVoucherCodesResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      AcctPairedCouponCodes:
+                        - voucherType: Promotions
+                          status: New
+                          couponCode: pair_AaJC
+                          promotionType: SVOD
+                          comments: Samsung campaign batch
+        x- 111111111:
+          description: Authentication Failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetAccountPairedCouponCodesRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getAccountPairedCouponCodes'
+            examples:
+              Successful request:
+                value:
+                  GetAccountPairedCouponCodesRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    spAccountId: '1635253786'
+                    country: JO
 components:
   securitySchemes:
     bearerAuth:
@@ -7792,7 +7933,6 @@ components:
           type: object
           $ref: '#/components/schemas/paymentmethodInfo'
           description: Payment method related details.
-        
     subscriptionDetails_Sub:
       type: object
       properties:
@@ -10034,3 +10174,139 @@ components:
         isSkipValidateService:
           type: string
           description: Indicated when to skip service validation.
+    pairCustomer:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - serviceID
+        - voucherCode
+        - country
+        - spAccountId
+        - method
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        Authorization:
+          type: string
+          description: Access token generated to the account.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        voucherCode:
+          type: string
+          description: Coupon code generated on the products.
+        method:
+          type: string
+          description: Action that is performed on the voucher.
+        comments:
+          type: string
+          description: Comments passed on succesful pairing of voucher
+        spAccountId:
+          type: string
+          description: Unique id generated for the customer.
+        country:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+    getAccountPairedCouponCodes:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - country
+        - spAccountId
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        Authorization:
+          type: string
+          description: Access token generated to the account.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner.
+          enum:
+            - SHAHID
+        spAccountId:
+          type: string
+          description: Unique id generated for the customer.
+        country:
+          type: string
+          description: DMA ID of the account.(2 letter country code)
+          enum:
+            - JO(Jordon)
+            - KW(Kuwait)
+            - OM(Oman)
+            - IQ(Iraq)
+            - QA(Qatar)
+            - DZ(Algeria)
+            - AU(Australia)
+            - BH(Bahrain )
+            - CA(Canada )
+            - EG(Egypt)
+            - EU(Europe)
+            - SA (KSA)
+            - LB(Lebanon)
+            - LY(Libya)
+            - MR (Mauritania)
+            - MA(Morroco)
+            - PS(Palestine)
+            - SE(Sweden)
+            - SY(Syria)
+            - TN(Tunisia)
+            - TR(Turkey)
+            - AE(UAE)
+            - GB (UK)
+            - US(US)
+            - WW(WW)
+            - YE(Yemen)
+    AcctPairedCouponCodes:
+      type: object
+      properties:
+        voucherType:
+          type: string
+          description: Type of the voucher
+        status:
+          type: string
+          description: Status of the voucher
+        couponCode:
+          type: string
+          description: Voucher code paired to the account.
+          enum:
+            - SHAHID
+        promotionType:
+          type: string
+          description: Type of promotion.
+        comments:
+          type: string
+          description: Comments provided when voucher is paired.
