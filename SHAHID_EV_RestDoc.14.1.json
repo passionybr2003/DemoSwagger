@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 26th Oct, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 6th Nov, 2021 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.15
+  title: EV Shahid API - V14.16
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -4763,71 +4763,6 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     dmaID: JO
                     noOfDays: '5'
-  /resumeSubscription:
-    post:
-      security:
-        - bearerAuth: []
-      tags:
-        - Order Processing
-      operationId: ResumeSubscriptionRequestMessage
-      description: >-
-        resumeSubscription() REST API is used to resume the subscription of the
-        Customer.
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                properties:
-                  ResumeSubscriptionResponseMessage:
-                    type: object
-                    properties:
-                      message:
-                        type: string
-                        description: Valid message retunred in the API
-                      status:
-                        type: string
-                        description: Success/Fail
-                      responseCode:
-                        type: string
-                        description: >-
-                          Indicates if the response was successfully processed.
-                          Accepted values are <br> “1” – Success. <br> “0” –
-                          Failure.
-              examples:
-                '111111111':
-                  value:
-                    ResumeSubscriptionResponseMessage:
-                      failureMessage:
-                        - errorMessage: Authentication Failed
-                          errorCode: '111111111'
-                      responseCode: '0'
-                Sample successful Response:
-                  value:
-                    ResumeSubscriptionResponseMessage:
-                      message: Service resumed
-                      responseCode: '1'
-                      success: SUCCESS
-        x- 111111111:
-          description: Authentication failed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                ResumeSubscriptionRequestMessage:
-                  type: Object
-                  $ref: '#/components/schemas/resumeSubscription'
-            examples:
-              Sample request:
-                value:
-                  ResumeSubscriptionRequestMessage:
-                    channelPartnerID: SHAHID
-                    apiKey: 8uMMWK58TY2fGjJS
-                    serviceId: VIP3M
-                    dmaID: JO
   /updatePaymentInfo:
     post:
       security:
@@ -6068,6 +6003,24 @@ paths:
                           Indicates if the response was successfully processed.
                           Accepted values are <br> “1” – Success <br> “0” –
                           Failure.
+                      offerSignature:
+                        type: string
+                        description: Unique signature offer key
+                      status:
+                        type: string
+                        description: Success/Fail.
+                      promotionId:
+                        type: string
+                        description: Promotion id received.
+                      serviceId:
+                        type: string
+                        description: Service id of the offer
+                      nonce:
+                        type: string
+                        description: Unique UUID value
+                      timestamp:
+                        type: string
+                        description: Time stamp of when signature is generated.
               examples:
                 '111111111':
                   value:
@@ -6084,6 +6037,8 @@ paths:
                       offerSignature: Tdfpsiduf78sdfadsgkdf
                       promotionId: MO001
                       serviceId: VIP3M
+                      nonce: fsdafsd6f7asd9fasd7f
+                      timestamp: '1635508446527'
         x- 111111111:
           description: Authentication Failed
       requestBody:
@@ -6578,6 +6533,143 @@ paths:
                     apiKey: 8uMMWK58TY2fGjJS
                     spAccountId: '1635253786'
                     country: JO
+  /resumeSubscription:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Frictionless
+      operationId: ResumeSubscriptionRequestMessage
+      description: >-
+        resumeSubscription() REST API is used to resume the subscription of the
+        Customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  ResumeSubscriptionResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    ResumeSubscriptionResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    ResumeSubscriptionResponseMessage:
+                      message: Service resumed
+                      responseCode: '1'
+                      success: SUCCESS
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ResumeSubscriptionRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/resumeSubscription'
+            examples:
+              Sample request:
+                value:
+                  ResumeSubscriptionRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    serviceId: JOR_B2C_SHAHID_VIP_1M
+                    serviceType: PRODUCT
+                    endDate: '1635508446527'
+                    startDate: '1635508446527'
+                    accountID: '2910202101'
+  /suspendService:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Frictionless
+      operationId: SuspendServiceRequestMessage
+      description: >-
+        suspendService() REST API is used to suspend the subscription of the Customer.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  SuspendServiceResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    SuspendServiceResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    SuspendServiceResponseMessage:
+                      message: Service suspended
+                      responseCode: '1'
+                      success: SUCCESS
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SuspendServiceRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/suspendService'
+            examples:
+              Sample request:
+                value:
+                  SuspendServiceRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    serviceInfo:
+                      serviceId: JOR_B2C_SHAHID_VIP_1M
+                      serviceType: PRODUCT
+                    suspendEndDate: '11/05/2021'
+                    suspendStartDate: '11/02/2021'
+                    status: 'SUSPEND'
+                    spAccountID: '2910202101'
 components:
   securitySchemes:
     bearerAuth:
@@ -9072,45 +9164,24 @@ components:
         apiKey:
           type: string
           description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
         serviceId:
           type: string
           description: Product id of the service that needs to be paused.
+        serviceType:
+          type: string
+          description: Service type defined on the product.
         startDate:
           type: string
           description: Start date of the subscription resume.
         endDate:
           type: string
           description: End date of the subscription resume.
-        dmaID:
+        accountID:
           type: string
-          description: DMA ID of the account.(2 letter country code)
-          enum:
-            - JO(Jordon)
-            - KW(Kuwait)
-            - OM(Oman)
-            - IQ(Iraq)
-            - QA(Qatar)
-            - DZ(Algeria)
-            - AU(Australia)
-            - BH(Bahrain )
-            - CA(Canada )
-            - EG(Egypt)
-            - EU(Europe)
-            - SA (KSA)
-            - LB(Lebanon)
-            - LY(Libya)
-            - MR (Mauritania)
-            - MA(Morroco)
-            - PS(Palestine)
-            - SE(Sweden)
-            - SY(Syria)
-            - TN(Tunisia)
-            - TR(Turkey)
-            - AE(UAE)
-            - GB (UK)
-            - US(US)
-            - WW(WW)
-            - YE(Yemen)
+          description: Unique sp account id generated on the account.
     getVoucherDetails:
       type: object
       required:
@@ -10310,3 +10381,44 @@ components:
         comments:
           type: string
           description: Comments provided when voucher is paired.
+    suspendService:
+      type: object
+      required:
+        - Authorization
+        - apiKey
+        - serviceInfo
+        - suspendStartDate
+        - suspendEndDate
+        - spAccountID
+        - status
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        serviceInfo:
+          type: object
+          $ref: '#/components/schemas/serviceInfo'
+        suspendStartDate:
+          type: string
+          description: Start date of the subscription suspension.
+        suspendEndDate:
+          type: string
+          description: End date of the subscription suspension.
+        spAccountID:
+          type: string
+          description: Unique sp account id generated on the account.
+        status:
+          type: string
+          description: Status of the subscription that needs to be updated.
+    serviceInfo:
+      type: object
+      properties:
+        serviceId:
+          type: string
+          description: Product id of the service that needs to be paused.
+        serviceType:
+          type: string
+          description: Service type defined on the product.
