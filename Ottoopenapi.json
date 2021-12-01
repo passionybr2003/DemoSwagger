@@ -1,0 +1,4648 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "",
+    "title": "OTTO Rest API's"
+  },
+  "tags": [
+    {
+      "name": "0Auth",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Acquisition and Authentication",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Offers, Personlization and Product Catalogue",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Order Processing",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Selfcare",
+      "description": "Secured Demo-only calls"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://rest-demo2.evergent.com/otto",
+      "description": "Demo API server"
+    }
+  ],
+  "paths": {
+    "/getOAuthAccessTokenv2": {
+      "post": {
+        "description": "Rest API to get access token for a subscriber account in Evergent system for selected business unit",
+        "tags": [
+          "0Auth"
+        ],
+        "summary": "getOAuthAccessTokenv2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/authenticateCustomerRequestMessage",
+                "example": {
+                  "GetOAuthAccessTokenv2RequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "contactUserName": "user20345GF81@yopmail.com",
+                    "contactPassword": "pass1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/get0AuthAccessTokenV2ResponseMessage",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPkgsAndProdsWithPromos": {
+      "post": {
+        "tags": [
+          "Offers, Personlization and Product Catalogue"
+        ],
+        "summary": "getPkgsAndProdsWithPromos",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPkgsAndProdsWithPromosRequestMessage",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPkgsAndProdsWithPromosResponseMsg",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/searchAccount": {
+      "post": {
+        "description": "Rest API to search an subscriber account in Evergent system for selected business unit",
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "summary": "searchAccount",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchAccountRequestMessage",
+                "example": {
+                  "SearchAccountRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "email": "{{Username}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAccountResponseMessage"
+                },
+                "example": {
+                  "SearchAccountResponseMessage": {
+                    "isProfileComplete": false,
+                    "contactUserName": "bljbhv@y.com",
+                    "email": "bljbhv@y.com",
+                    "channelPartnerID": "OTTODEMO1",
+                    "name": "hvelwkjhbj  hvkjb j",
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "status": "Active",
+                    "accountID": "2111051001437361115481",
+                    "cpCustomerID": "21110510011115481"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/createUser": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "summary": "createUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequestMessage",
+                "type": "object",
+                "example": {
+                  "CreateUserRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "firstName": "{{channelPartnerID}}",
+                    "lastName": "User",
+                    "customerUsername": "{{Username}}",
+                    "email": "{{Username}}",
+                    "customerPassword": "password1",
+                    "dmaId": "001",
+                    "isGenerateToken": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "CreateUserResponseMessage": {
+                    "cpCustomerID": "21110618371115578",
+                    "spAccountID": "2111061837141211115578",
+                    "sessionToken": "yCMK-nFr1-mN6r-hx7Q-qLdi-kZAb-AB",
+                    "responseCode": "1",
+                    "message": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authenticateCustomer": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "summary": "authenticateCustomer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/authenticateCustomerRequestMessage",
+                "type": "object",
+                "example": {
+                  "AuthenticateCustomerRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "contactUserName": "{{Username}}",
+                    "contactPassword": "password1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/authenticateCustomerResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "AuthenticateCustomerResponseMessage": {
+                    "isPrimaryContact": "true",
+                    "responseCode": "1",
+                    "message": "User Logged in successfully",
+                    "contactID": "1119257",
+                    "cpCustomerID": "21110510011115481",
+                    "channelPartner": "EV OTTO Demo",
+                    "channelPartnerID": "OTTODEMO1",
+                    "status": "SUCCESS",
+                    "firstName": "hvelwkjhbj",
+                    "lastName": "hvkjb j",
+                    "sessionToken": "ih0U-k1fy-KGV4-Af5V-djG3-KNTF-61",
+                    "name": "hvelwkjhbj hvkjb j",
+                    "tokenExpiryTime": 1637520031133,
+                    "accountStatus": "Active",
+                    "dmaID": "001"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/isValidCoupon": {
+      "post": {
+        "tags": [
+          "Offers, Personlization and Product Catalogue"
+        ],
+        "summary": "isValidCoupon",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IsValidCouponRequestMessage",
+                "type": "object",
+                "example": {
+                  "IsValidCouponRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "couponCode": "BASIC"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IsValidCouponResponseMessage",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addSubscriptions": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "summary": "addSubscriptions",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addSubscriptions",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addSubscriptionsResponse",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addTVODOrder": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "summary": "addTVODOrder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addTVODOrder",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addTVODOrderResp",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aeg/changeBasicService": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "summary": "changeBasicService",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/changeBasicService",
+                "type": "object",
+                "example": {
+                  "ChangeServiceRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "newServiceID": "OTTOBASIC01"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sat, 06 Nov 2021 18:47:23 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "120"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string",
+                  "example": "POST, GET, OPTIONS, DELETE"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "type": "string",
+                  "example": "GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "ChangeServiceResponseMessage": {
+                    "responseCode": "1",
+                    "message": "Basic service changed successfully ",
+                    "status": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateCustomerPassword": {
+      "post": {
+        "description": "Rest API is used to update the customer password in Evergent system.",
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "updateCustomerPassword",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCustomerPasswordRequest",
+                "type": "object",
+                "example": {
+                  "UpdateCustomerPasswordReqMessage": {
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "contactPassword": "Password1",
+                    "email": "bljbhv@y.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCustomerPasswordRespMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "UpdateCustomerPasswordRespMessage": {
+                    "message": "SUCCESS",
+                    "responseCode": "1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addContact": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "addContact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addContact",
+                "type": "object",
+                "example": {
+                  "AddContactRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "cpCustomerID": "",
+                    "contactID": "654256",
+                    "firstName": "Accdeo",
+                    "lastName": "chaild1",
+                    "email": "sameusertest04chil343d18@yopmail.com",
+                    "customerPassword": "password1",
+                    "customerUsername": "sameuser444test04child18@yopmail.com",
+                    "gender": "Male",
+                    "dmaId": "001",
+                    "makePrimary": "false"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addContactResp",
+                  "type": "object"
+                },
+                "example": {
+                  "AddContactResponseMessage": {
+                    "responseCode": "1",
+                    "message": "Contact added successfully ",
+                    "contactID": "1119353",
+                    "status": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getContact": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getContact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getContact",
+                "type": "object",
+                "example": {
+                  "GetContactRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetContactResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "GetContactResponseMessage": {
+                    "accountRegistrationDate": 1636106503000,
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "contactMessage": [
+                      {
+                        "ageGroup": "",
+                        "alertNotificationEmail": false,
+                        "alertNotificationPush": false,
+                        "allowTracking": false,
+                        "contactID": "1119257",
+                        "email": "bljbhv@y.com",
+                        "emailIsVerified": false,
+                        "firstName": "hvelwkjhbj",
+                        "isAccessProfile": false,
+                        "isAgeGroupSet": false,
+                        "isPasswordExists": true,
+                        "isPrimaryContact": true,
+                        "isVIP": false,
+                        "lastName": "hvkjb j",
+                        "main": true,
+                        "parentalControl": false,
+                        "pin": false,
+                        "userName": "bljbhv@y.com"
+                      },
+                      {
+                        "ageGroup": "",
+                        "alertNotificationEmail": false,
+                        "alertNotificationPush": false,
+                        "allowTracking": false,
+                        "contactID": "1119353",
+                        "email": "sameusertest04chil343d18@yopmail.com",
+                        "emailIsVerified": false,
+                        "firstName": "Accdeo",
+                        "gender": "Male",
+                        "isAccessProfile": false,
+                        "isAgeGroupSet": false,
+                        "isPasswordExists": true,
+                        "isPrimaryContact": false,
+                        "isVIP": false,
+                        "lastName": "chaild1",
+                        "main": false,
+                        "parentalControl": false,
+                        "pin": false,
+                        "userName": "sameuser444test04child18@yopmail.com"
+                      }
+                    ],
+                    "cpCustomerID": "21110510011115481",
+                    "spAccountID": "2111051001437361115481",
+                    "verificationStatus": false,
+                    "isProfileComplete": false,
+                    "isMobileVerified": false,
+                    "lastLoginTime": 1636224031000,
+                    "channelPartnerID": "OTTODEMO1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateContact": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "updateContact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateContactRequestMessage",
+                "type": "object",
+                "example": {
+                  "UpdateContactRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "email": "{{customerUsername}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "firstName": "OTTO",
+                    "lastName": "Updated Contact",
+                    "contactID": "1119257",
+                    "mobileNumber": "9078563412"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateContactResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "UpdateContactResponseMessage": {
+                    "status": "SUCCESS",
+                    "responseCode": "1",
+                    "message": "Contact updated successfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPaymentsV2": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getPaymentsV2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getPaymentsV2",
+                "type": "object",
+                "example": {
+                  "GetPaymentsV2RequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPaymentsV2Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getActiveSubscriptions": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getActiveSubscriptions",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getActiveSubscriptions",
+                "type": "object",
+                "example": {
+                  "GetActiveSubscriptionsRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "returnTVOD": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getActiveSubscriptionsResp",
+                  "type": "object"
+                },
+                "example": {
+                  "GetActiveSubscriptionsResponseMessage": {
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "nextBillingDateTime": 1638662400000,
+                    "nextBillingAmount": 43.1,
+                    "AccountServiceMessage": [
+                      {
+                        "promotions": [
+                          {
+                            "isFreeTrail": false,
+                            "promotionId": "ST001",
+                            "promotionName": "Show Time",
+                            "promotionType": "Free",
+                            "amount": 0,
+                            "promotionalPrice": 0,
+                            "startDate": "2018-01-01 11:11:11 Etc/GMT",
+                            "endDate": "2021-11-12 00:00:00 Etc/GMT",
+                            "isVODPromotion": false,
+                            "promoEndDateInMillis": 1636675200000,
+                            "promoStartDateInMillis": 1636070400000,
+                            "displayName": "SHOW TIME 7 DAYS FREE",
+                            "isDefaultPromo": false
+                          }
+                        ],
+                        "orderID": "927077",
+                        "isContent": false,
+                        "isFreemium": false,
+                        "planPriceWithTax": 7,
+                        "serviceType": "Subscription",
+                        "serviceName": "SHOWTIME",
+                        "serviceID": "PREMIUM003",
+                        "startDate": 1636106506000,
+                        "retailPrice": 7,
+                        "description": "Stream original series, movies, sports, documentaries, comedy and more!\n\n• SHOWTIME East\n• SHOWTIME ON DEMAND",
+                        "status": "Active",
+                        "currencyCode": "USD",
+                        "currencySymbol": "&#36;",
+                        "cancellable": false,
+                        "hasAction": false,
+                        "subscriptionType": "Monthly",
+                        "displayName": "SHOWTIME",
+                        "isRenewal": false,
+                        "paymentMethod": "Credit/Debit Card",
+                        "opId": "826480",
+                        "priceCharged": 45,
+                        "validityDuration": 0,
+                        "productAttributes": [
+                          {
+                            "attributeValue": "https://dev-ottodemo.evergent.com/Otto/channels/showtime.jpg",
+                            "attributeName": "imgSource"
+                          }
+                        ],
+                        "isInFreeTrail": false,
+                        "startDateInMillis": 1636106506000,
+                        "productCategory": "Premium Channels",
+                        "type": "Prepaid",
+                        "basicService": false,
+                        "isPackage": false,
+                        "planPrice": 7,
+                        "subscriptionStatus": "Active",
+                        "isDiscountedPrice": false,
+                        "quantity": 1
+                      },
+                      {
+                        "promotions": [
+                          {
+                            "isFreeTrail": false,
+                            "promotionId": "FREETRIAL",
+                            "promotionName": "7 day free trial",
+                            "promotionType": "Free",
+                            "amount": 0,
+                            "promotionalPrice": 0,
+                            "startDate": "2019-01-01 00:00:00 Etc/GMT",
+                            "endDate": "2021-11-12 00:00:00 Etc/GMT",
+                            "isVODPromotion": false,
+                            "promoEndDateInMillis": 1636675200000,
+                            "promoStartDateInMillis": 1636070400000,
+                            "displayName": "7 day free trial",
+                            "description": "7 day free trial",
+                            "isDefaultPromo": false
+                          }
+                        ],
+                        "orderID": "927077",
+                        "isContent": false,
+                        "isFreemium": false,
+                        "planPriceWithTax": 6,
+                        "serviceType": "Subscription",
+                        "serviceName": "CINEMAX",
+                        "serviceID": "PREMIUM002",
+                        "startDate": 1636106506000,
+                        "retailPrice": 6,
+                        "description": "Watch thrilling series and entertaining movies anytime, anywhere. • Max GO • Cinemax East • On demand library",
+                        "status": "Active",
+                        "currencyCode": "USD",
+                        "currencySymbol": "&#36;",
+                        "cancellable": false,
+                        "hasAction": false,
+                        "subscriptionType": "Monthly",
+                        "displayName": "CINEMAX",
+                        "isRenewal": false,
+                        "paymentMethod": "Credit/Debit Card",
+                        "opId": "826482",
+                        "priceCharged": 45,
+                        "validityDuration": 0,
+                        "productAttributes": [
+                          {
+                            "attributeValue": "https://dev-ottodemo.evergent.com/Otto/channels/cinemax.jpg",
+                            "attributeName": "imgSource"
+                          }
+                        ],
+                        "isInFreeTrail": false,
+                        "startDateInMillis": 1636106506000,
+                        "productCategory": "Premium Channels",
+                        "type": "Prepaid",
+                        "basicService": false,
+                        "isPackage": false,
+                        "planPrice": 6,
+                        "subscriptionStatus": "Active",
+                        "isDiscountedPrice": false,
+                        "quantity": 1
+                      },
+                      {
+                        "orderID": "927167",
+                        "isContent": false,
+                        "planPriceWithTax": 30,
+                        "displayOrder": "1",
+                        "serviceName": "OTTO Basic",
+                        "serviceID": "OTTOBASIC01",
+                        "startDate": 1636224443000,
+                        "retailPrice": 30,
+                        "description": "60 Channels",
+                        "status": "Active",
+                        "currencyCode": "USD",
+                        "currencySymbol": "&#36;",
+                        "cancellable": false,
+                        "hasAction": false,
+                        "subscriptionType": "Monthly",
+                        "displayName": "Bronze",
+                        "isRenewal": false,
+                        "opId": "826561",
+                        "validityDuration": 0,
+                        "startDateInMillis": 1636224443000,
+                        "basicService": true,
+                        "isPackage": true,
+                        "quantity": 1,
+                        "packageItems": [
+                          {
+                            "serviceName": "Ion Television",
+                            "serviceID": "BASIC051"
+                          },
+                          {
+                            "serviceName": "Aljazeera",
+                            "serviceID": "BASIC037"
+                          },
+                          {
+                            "serviceName": "Smithsonian Channel",
+                            "serviceID": "BASIC041"
+                          },
+                          {
+                            "serviceName": "Hallmark Channel",
+                            "serviceID": "BASIC013"
+                          },
+                          {
+                            "serviceName": "Paramount Network",
+                            "serviceID": "BASIC005"
+                          },
+                          {
+                            "serviceName": "A & E",
+                            "serviceID": "BASIC043"
+                          },
+                          {
+                            "serviceName": "Roku Express",
+                            "serviceID": "HARDWARE01"
+                          },
+                          {
+                            "serviceName": "Formula 1",
+                            "serviceID": "BASIC001"
+                          },
+                          {
+                            "serviceName": "PlayBoy TV",
+                            "serviceID": "GOLD010"
+                          },
+                          {
+                            "serviceName": "Adult Swim",
+                            "serviceID": "BASIC009"
+                          },
+                          {
+                            "serviceName": "Music Television",
+                            "serviceID": "BASIC022"
+                          },
+                          {
+                            "serviceName": "Disney Channel",
+                            "serviceID": "BASIC020"
+                          },
+                          {
+                            "serviceName": "The CW",
+                            "serviceID": "GOLD009"
+                          },
+                          {
+                            "serviceName": "AFC",
+                            "serviceID": "BASIC008"
+                          },
+                          {
+                            "serviceName": "Comedy Central",
+                            "serviceID": "BASIC032"
+                          },
+                          {
+                            "serviceName": "SKY1",
+                            "serviceID": "GOLD008"
+                          },
+                          {
+                            "serviceName": "Univision",
+                            "serviceID": "BASIC034"
+                          },
+                          {
+                            "serviceName": "PBS",
+                            "serviceID": "BASIC048"
+                          },
+                          {
+                            "serviceName": "HGTV",
+                            "serviceID": "BASIC021"
+                          },
+                          {
+                            "serviceName": "BBC First",
+                            "serviceID": "BASIC012"
+                          },
+                          {
+                            "serviceName": "Esquire Network",
+                            "serviceID": "BASIC017"
+                          },
+                          {
+                            "serviceName": "Universal",
+                            "serviceID": "BASIC014"
+                          },
+                          {
+                            "serviceName": "Fetch",
+                            "serviceID": "BASIC044"
+                          },
+                          {
+                            "serviceName": "The Weather Channel",
+                            "serviceID": "BASIC007"
+                          },
+                          {
+                            "serviceName": "USA Network",
+                            "serviceID": "BASIC024"
+                          },
+                          {
+                            "serviceName": "Bravo",
+                            "serviceID": "BASIC056"
+                          },
+                          {
+                            "serviceName": "BET",
+                            "serviceID": "BASIC030"
+                          },
+                          {
+                            "serviceName": "VICE",
+                            "serviceID": "BASIC039"
+                          },
+                          {
+                            "serviceName": "SYFY",
+                            "serviceID": "BASIC052"
+                          },
+                          {
+                            "serviceName": "Quest",
+                            "serviceID": "BASIC055"
+                          },
+                          {
+                            "serviceName": "abc",
+                            "serviceID": "BASIC047"
+                          },
+                          {
+                            "serviceName": "Spike",
+                            "serviceID": "BASIC050"
+                          },
+                          {
+                            "serviceName": "Chiller Scary Good",
+                            "serviceID": "BASIC002"
+                          },
+                          {
+                            "serviceName": "FOX",
+                            "serviceID": "BASIC004"
+                          },
+                          {
+                            "serviceName": "G4",
+                            "serviceID": "BASIC033"
+                          },
+                          {
+                            "serviceName": "Cartoon Network",
+                            "serviceID": "BASIC053"
+                          },
+                          {
+                            "serviceName": "Nat  Geo WILD",
+                            "serviceID": "BASIC057"
+                          },
+                          {
+                            "serviceName": "Azteca",
+                            "serviceID": "BASIC035"
+                          },
+                          {
+                            "serviceName": "astro",
+                            "serviceID": "BASIC025"
+                          },
+                          {
+                            "serviceName": "NBC",
+                            "serviceID": "BASIC011"
+                          },
+                          {
+                            "serviceName": "Outdoor Channel",
+                            "serviceID": "BASIC059"
+                          },
+                          {
+                            "serviceName": "Sundance TV",
+                            "serviceID": "BASIC040"
+                          },
+                          {
+                            "serviceName": "Sky",
+                            "serviceID": "BASIC010"
+                          },
+                          {
+                            "serviceName": "Disney Junior",
+                            "serviceID": "BASIC018"
+                          },
+                          {
+                            "serviceName": "Cooking Channel",
+                            "serviceID": "BASIC036"
+                          },
+                          {
+                            "serviceName": "ESPN PPV",
+                            "serviceID": "BASIC058"
+                          },
+                          {
+                            "serviceName": "AMC",
+                            "serviceID": "BASIC003"
+                          },
+                          {
+                            "serviceName": "Nickelodeon",
+                            "serviceID": "BASIC028"
+                          },
+                          {
+                            "serviceName": "Animal Planet",
+                            "serviceID": "BASIC042"
+                          },
+                          {
+                            "serviceName": "Lifetime",
+                            "serviceID": "BASIC038"
+                          },
+                          {
+                            "serviceName": "IFC",
+                            "serviceID": "BASIC019"
+                          },
+                          {
+                            "serviceName": "TLC",
+                            "serviceID": "BASIC023"
+                          },
+                          {
+                            "serviceName": "WB",
+                            "serviceID": "BASIC027"
+                          },
+                          {
+                            "serviceName": "SCI",
+                            "serviceID": "BASIC049"
+                          },
+                          {
+                            "serviceName": "MTV2",
+                            "serviceID": "BASIC045"
+                          },
+                          {
+                            "serviceName": "CNN",
+                            "serviceID": "BASIC026"
+                          },
+                          {
+                            "serviceName": "FOX Sports",
+                            "serviceID": "BASIC006"
+                          },
+                          {
+                            "serviceName": "CNBC",
+                            "serviceID": "BASIC060"
+                          },
+                          {
+                            "serviceName": "TruTV",
+                            "serviceID": "BASIC031"
+                          },
+                          {
+                            "serviceName": "Travel Channel",
+                            "serviceID": "BASIC054"
+                          },
+                          {
+                            "serviceName": "Tennis Channel",
+                            "serviceID": "BASIC029"
+                          }
+                        ]
+                      },
+                      {
+                        "orderID": "927236",
+                        "isContent": false,
+                        "isFreemium": false,
+                        "planPriceWithTax": 0.1,
+                        "serviceType": "Subscription",
+                        "serviceName": "Universal",
+                        "serviceID": "BASIC014",
+                        "startDate": 1636224216000,
+                        "retailPrice": 0.1,
+                        "description": "Universal",
+                        "status": "Active",
+                        "currencyCode": "USD",
+                        "currencySymbol": "&#36;",
+                        "cancellable": false,
+                        "hasAction": false,
+                        "subscriptionType": "Monthly",
+                        "displayName": "Universal",
+                        "isRenewal": false,
+                        "paymentMethod": "Credit/Debit Card",
+                        "opId": "826630",
+                        "priceCharged": 0.1,
+                        "validityDuration": 0,
+                        "productAttributes": [
+                          {
+                            "attributeValue": "https://dev-ottodemo.evergent.com/Otto/channels/universal.jpg",
+                            "attributeName": "imgSource"
+                          }
+                        ],
+                        "isInFreeTrail": false,
+                        "startDateInMillis": 1636224216000,
+                        "productCategory": "Subscription Channels",
+                        "type": "Prepaid",
+                        "basicService": false,
+                        "isPackage": false,
+                        "planPrice": 0.1,
+                        "subscriptionStatus": "Active",
+                        "isDiscountedPrice": false,
+                        "quantity": 1
+                      },
+                      {
+                        "orderID": "927338",
+                        "isContent": true,
+                        "isFreemium": false,
+                        "serviceType": "TVOD",
+                        "serviceName": "",
+                        "serviceID": "MOVIE001",
+                        "startDate": 1636224299000,
+                        "retailPrice": 2.99,
+                        "status": "Active",
+                        "currencyCode": "USD",
+                        "currencySymbol": "&#36;",
+                        "cancellable": false,
+                        "hasAction": false,
+                        "isRenewal": false,
+                        "vodItems": [
+                          {
+                            "vodItem": {
+                              "id": null,
+                              "title": "",
+                              "rentalPeriod": null,
+                              "videoFormat": null,
+                              "viewingPeriod": null,
+                              "programID": null
+                            }
+                          }
+                        ],
+                        "paymentMethod": "Credit/Debit Card",
+                        "opId": "826745",
+                        "priceCharged": 2.99,
+                        "validityDuration": 0,
+                        "productAttributes": [
+                          {
+                            "attributeValue": "https://dev-ottodemo.evergent.com/Otto/channels/august_osage_county.jpg",
+                            "attributeName": "imgSource"
+                          }
+                        ],
+                        "isInFreeTrail": false,
+                        "startDateInMillis": 1636224299000,
+                        "productCategory": "VOD",
+                        "type": "Prepaid",
+                        "basicService": false,
+                        "isPackage": false,
+                        "isDiscountedPrice": false,
+                        "quantity": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addTroubleTicket": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "addTroubleTicket",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTroubleTicketRequestMessage",
+                "type": "object",
+                "example": {
+                  "AddTroubleTicketRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "cpCustomerID": "{{cpCustomerID}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "title": "Test Trouble Ticket",
+                    "ticketDomain": "Financial",
+                    "ticketType": "Trouble",
+                    "subType": "",
+                    "comments": "Test ticket comments",
+                    "ticketPriority": "low",
+                    "ticketStatus": "Open",
+                    "group": "",
+                    "attachWorkflow": "Incorrect Charge",
+                    "promiseDate": "'2020-08-20T09:08:22.786Z'",
+                    "estimatedHours": 15,
+                    "attachedFileName": "https://ccb3images.s3.amazonaws.com/1597645387513_demo2.txt"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddTroubleTicketResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "AddTroubleTicketResponseMessage": {
+                    "status": "SUCCESS",
+                    "ticketID": "8133",
+                    "responseCode": "1",
+                    "message": "Ticket added successfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateTroubleTicket": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "updateTroubleTicket",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTroubleTicketRequestMessage",
+                "type": "object",
+                "example": {
+                  "UpdateTroubleTicketRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "cpCustomerID": "{{cpCustomerID}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "promiseDate": "2020-08-19T06:23:00.000Z",
+                    "title": "Test ticket",
+                    "ticketID": 8133,
+                    "group": "",
+                    "ticketDomain": "Technical",
+                    "ticketType": "Bill Dispute",
+                    "subType": "Incorrect Charge",
+                    "ticketPriority": "Critical",
+                    "ticketStatus": "Closed",
+                    "comments": "Ticket Testting Comments",
+                    "outage": "F",
+                    "attachedFileName": "https://ccb3images.s3.amazonaws.com/1597645019270_uat%20details.txt"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTroubleTicketResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "UpdateTroubleTicketResponseMessage": {
+                    "status": "SUCCESS",
+                    "responseCode": "1",
+                    "message": "Ticket Information is Modified"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getTicketInfo": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getTicketInfo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "GetTicketInfoRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "cpCustomerID": "21110618371115578",
+                    "ticketID": "8183"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "headers": {
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sat, 06 Nov 2021 18:58:33 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "1371"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string",
+                  "example": "POST, GET, OPTIONS, DELETE"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string",
+                  "example": "client_type, content-type, accept, accept-language, auth_token_base64, appID, accept-encoding, content-length, x-requested-with"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "type": "string",
+                  "example": "GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "GetTicketInfoResponseMessage": {
+                    "status": "SUCCESS",
+                    "ticketInformation": [
+                      {
+                        "ticketID": 8183,
+                        "openedOn": 1636199804000,
+                        "openedBy": "EvOTTO API User",
+                        "buName": "EV OTTO Demo",
+                        "timeZone": "PDT",
+                        "title": "Test Trouble Ticket",
+                        "domain": "Financial",
+                        "priority": "Low",
+                        "status": "Open",
+                        "workFlowName": "Incorrect Charge",
+                        "type": "Trouble",
+                        "promisedDate": 0,
+                        "actualHours": "",
+                        "estimatedHours": "0015",
+                        "commentHistory": "\n-------------------------\nModified By EvOTTO API User on Sat Nov 6,2021 at 11:56 AM PDT\nTest ticket comments\nEstimated Hours0015\nDomain:  Financial\nPriority: Low\nType: Trouble\nStatus:  Open\nGroup: \nTitle: Test Trouble Ticket\n",
+                        "filePath": "https://ccb3images.s3.amazonaws.com/1597645387513_demo2.txt",
+                        "openedOnWithTZ": "11/6/21",
+                        "originatorGroup": "OTTO Admin Group",
+                        "lastLoginDateWithTZ": "11/6/21",
+                        "lastLoginDate": 1636199804000,
+                        "workFlows": [
+                          {
+                            "activityName": "START",
+                            "status": "Completed",
+                            "completeDate": 1636225004000,
+                            "completeDateWithTZ": "11/6/21, 6:56 PM"
+                          },
+                          {
+                            "activityName": "Customer Inquiry",
+                            "status": "Running"
+                          },
+                          {
+                            "activityName": "Issuer Investigates claim",
+                            "status": "NotStarted"
+                          },
+                          {
+                            "activityName": "Acquirer reviews the case",
+                            "status": "NotStarted"
+                          },
+                          {
+                            "activityName": "Compile and Submit representment case",
+                            "status": "NotStarted"
+                          },
+                          {
+                            "activityName": "Issuer returns funds to customer",
+                            "status": "NotStarted"
+                          }
+                        ]
+                      }
+                    ],
+                    "canShowAddTicket": true,
+                    "responseCode": "1",
+                    "message": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAccountDevices": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getAccountDevices",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getAccountDevicesRequestMessage",
+                "type": "object",
+                "example": {
+                  "GetAccountDevicesRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountDevicesResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "GetAccountDevicesResponseMessage": {
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "AccountDeviceDetails": [
+                      {
+                        "deviceName": "Samsung",
+                        "deviceType": "Android",
+                        "deviceId": "323542",
+                        "modelNo": "1114",
+                        "owner": "Customer",
+                        "returnLater": false,
+                        "sendCarton": false,
+                        "serialNo": "147852",
+                        "status": "Active",
+                        "startDate": 1636156800000,
+                        "lastLoginTime": "11/06/2021 18:40:31",
+                        "isSessionDevice": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addDeviceForAccount": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "addDeviceForAccount",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddDeviceForAccountRequestMessage",
+                "type": "object",
+                "example": {
+                  "AddDeviceForAccountRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "deviceDetails": {
+                      "comments": "Device a565",
+                      "modelNo": "S1234",
+                      "owner": "Customer",
+                      "serialNo": "ser4565",
+                      "status": "Active",
+                      "deviceName": "APLLE",
+                      "deviceType": "mobile",
+                      "externalID": "9875"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddDeviceForAccountResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "AddDeviceForAccountResponseMessage": {
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "success": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/removeDeviceForAccount": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "removeDeviceForAccount",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/removeDeviceForAccount",
+                "type": "object",
+                "example": {
+                  "RemoveDeviceRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "serialNo": "147852"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveDeviceResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "RemoveDeviceResponseMessage": {
+                    "responseCode": "1",
+                    "message": "Device removed from the account successfully",
+                    "status": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAccountPaymentMethods": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "getAccountPaymentMethods",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountPaymentMethodsRequestMessage",
+                "type": "object",
+                "example": {
+                  "GetAccountPaymentMethodsRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "cpCustomerID": "{{cpCustomerID}}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountPaymentMethodsResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "GetAccountPaymentMethodsResponseMessage": {
+                    "responseCode": "1",
+                    "canShowSetUP": true,
+                    "accountPaymentMethodsResponseMessage": [
+                      {
+                        "paymentType": "Credit/Debit Card",
+                        "canShowInActive": true,
+                        "canShowAllowUnlimit": true,
+                        "canShowEdit": true,
+                        "fromDate": "11/6/21",
+                        "paymentMethodRefNumber": "100",
+                        "label": "Card",
+                        "CardInfoMessage": {
+                          "cardType": "Visa",
+                          "name": "Baggin",
+                          "cardNumber": "xxxxxxxxxxxx1111",
+                          "expiryDate": "09/2024",
+                          "methodType": "General",
+                          "paymentMethodId": "561594",
+                          "billingAddress": {
+                            "addrLine1": "1ST Main Steet",
+                            "city": "CA",
+                            "state": "AL",
+                            "zip": "10020",
+                            "country": "US"
+                          }
+                        },
+                        "isAutoPayment": true,
+                        "status": "Active"
+                      }
+                    ],
+                    "status": "SUCCESS"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatePaymentInfo": {
+      "post": {
+        "description": "Rest API to update the paymnet information of an subscriber account in Evergent system for selected business unit",
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "updatePaymentInfo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePaymentInfoRequestMessage",
+                "type": "object",
+                "example": {
+                  "UpdatePaymentInfoRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "{{sessionToken}}",
+                    "label": "Card",
+                    "status": "Active",
+                    "isAutoPayment": "true",
+                    "CardInfoMessage": {
+                      "cardNumber": "5105105105105100",
+                      "cardType": "MasterCard",
+                      "expiryDate": "02/2022",
+                      "methodType": "General",
+                      "nameOnCard": "Testuser",
+                      "securityCode": "123"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePaymentInfoResponseMessage",
+                  "type": "object"
+                },
+                "example": {
+                  "UpdatePaymentInfoResponseMessage": {
+                    "responseCode": "1",
+                    "message": "SUCCESS",
+                    "paymentMethodId": "561744"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/removeOrderedProducts": {
+      "post": {
+        "description": "Rest API to remove an order from an subscriber account in Evergent system for selected business unit",
+        "tags": [
+          "Selfcare"
+        ],
+        "summary": "removeOrderedProducts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveOrderedProductsRequestMessage",
+                "example": {
+                  "RemoveOrderedProductsRequestMessage": {
+                    "channelPartnerID": "{{channelPartnerID}}",
+                    "apiUser": "{{apiUser}}",
+                    "apiPassword": "{{apiPassword}}",
+                    "sessionToken": "kQhv-04pP-wWbR-QVYr-jOTe-jm9p-Ey",
+                    "cpCustomerID": "",
+                    "services": [
+                      {
+                        "serviceType": "PRODUCT",
+                        "serviceId": "BASIC014",
+                        "quantity": "1"
+                      }
+                    ],
+                    "comments": "test",
+                    "endDate": "1636226059421"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Apple WebObjects",
+            "headers": {
+              "message": {
+                "schema": {
+                  "type": "string",
+                  "example": "Product removed successfully"
+                }
+              },
+              "status": {
+                "schema": {
+                  "type": "string",
+                  "example": "SUCCESS"
+                }
+              },
+              "params": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/params"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RemoveOrderedProductsResponseMessage"
+                  }
+                },
+                "example": {
+                  "RemoveOrderedProductsResponseMessage": {
+                    "responseCode": "1",
+                    "removeOrderedProducts": [
+                      {
+                        "message": "Product removed successfully",
+                        "status": "SUCCESS",
+                        "params": [
+                          {
+                            "paramName": "Service Id",
+                            "paramValue": "BASIC014"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateUserRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "customerUsername",
+          "customerPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "customerUsername": {
+            "type": "string",
+            "description": "Customer username"
+          },
+          "customerPassword": {
+            "type": "string",
+            "description": "Customer password"
+          },
+          "customerEmail": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "User First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "User Last Name"
+          },
+          "isGenerateToken": {
+            "type": "boolean",
+            "description": "Indicate whether session token to be generated on successful registration or not"
+          }
+        }
+      },
+      "CreateUserResponseMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "spAccountID": {
+            "type": "string",
+            "example": 12345678,
+            "description": "Unique service provider account ID"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "Response code"
+          }
+        }
+      },
+      "addSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "services"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique identifier of the account."
+          },
+          "isSkipDefaultPromo": {
+            "type": "boolean",
+            "description": "DefaultPromo is been Skipped"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          },
+          "paymentmethodInfo": {
+            "type": "object",
+            "$ref": "#/components/schemas/paymentmethodInfo"
+          },
+          "services": {
+            "type": "object",
+            "$ref": "#/components/schemas/services"
+          }
+        }
+      },
+      "paymentmethodInfo": {
+        "type": "object",
+        "required": [
+          "label",
+          "cardInfoMsg",
+          "transactionReferenceMsg"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Label of the payment method."
+          },
+          "transactionReferenceMsg": {
+            "type": "object",
+            "$ref": "#/components/schemas/transactionReferenceMsg"
+          }
+        }
+      },
+      "transactionReferenceMsg": {
+        "type": "object",
+        "required": [
+          "amount",
+          "txID",
+          "txMsg"
+        ],
+        "properties": {
+          "amount": {
+            "type": "string",
+            "description": "amount ."
+          },
+          "txID": {
+            "type": "string",
+            "description": "transaction ID."
+          },
+          "txMsg": {
+            "type": "string",
+            "description": "transaction Message."
+          },
+          "cardInfoMsg": {
+            "type": "object",
+            "$ref": "#/components/schemas/cardInfoMsg"
+          }
+        }
+      },
+      "cardInfoMsg": {
+        "type": "object",
+        "required": [
+          "cardNumber",
+          "expiryDate",
+          "nameOnCard",
+          "securityCode",
+          "cardType"
+        ],
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Credit Card Number."
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Expiry Date of Credit Card."
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the Credit Card."
+          },
+          "securityCode": {
+            "type": "string",
+            "description": "CVV/ Security code of the card."
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the card."
+          }
+        }
+      },
+      "services": {
+        "type": "object",
+        "required": [
+          "service"
+        ],
+        "properties": {
+          "service": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/service"
+            }
+          }
+        }
+      },
+      "service": {
+        "type": "object",
+        "required": [
+          "serviceName",
+          "serviceId",
+          "serviceType",
+          "quantity"
+        ],
+        "properties": {
+          "serviceName": {
+            "type": "string",
+            "description": "Service Name of the Service"
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "serviceId of the Service"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "serviceType of the Service"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity of the Service"
+          }
+        }
+      },
+      "authenticateCustomerRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "contactUserName",
+          "contactPassword"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "contactUserName": {
+            "type": "string",
+            "description": "Unique userName of the contact."
+          },
+          "contactPassword": {
+            "type": "string",
+            "description": "Unique userName of the contact."
+          }
+        }
+      },
+      "authenticateCustomerResponseMessage": {
+        "type": "object",
+        "properties": {
+          "isPrimaryContact": {
+            "type": "string",
+            "description": "Primary contact True/False status"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "Response code"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "contactID": {
+            "type": "string",
+            "description": "Contact ID in Evergent System"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID"
+          },
+          "channelPartner": {
+            "type": "string",
+            "description": "Unique ID for ther business in Evergent system."
+          },
+          "status": {
+            "type": "string",
+            "description": "API response status."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the contact."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the contact."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the contact"
+          },
+          "tokenExpiryTime": {
+            "type": "string",
+            "description": "Session token expirty time"
+          },
+          "accountStatus": {
+            "type": "string",
+            "description": "Status of the account"
+          },
+          "dmaID": {
+            "type": "string",
+            "description": "Discrete market area ID"
+          }
+        }
+      },
+      "addContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "customerUsername",
+          "customerPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "A unique ID of the account in EV systems."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          },
+          "customerUserName": {
+            "type": "string",
+            "description": "Customer Username"
+          },
+          "customerPassword": {
+            "type": "string",
+            "description": "Customer password"
+          },
+          "email": {
+            "type": "string",
+            "description": "Contact Email"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Contact First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Contact Last Name"
+          },
+          "mobileNumber": {
+            "type": "string",
+            "description": "Contact Mobile Number"
+          },
+          "makePrimary": {
+            "type": "boolean",
+            "description": "Indicate whether the contact should be Primary or not"
+          },
+          "socialLoginID": {
+            "type": "string",
+            "description": "SocialLoginID of the User"
+          },
+          "socialLogin  type": {
+            "type": "string",
+            "description": "SocialLoginType of the User"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          },
+          "Oauth Token/Bearer Token": {
+            "type": "string",
+            "description": "Unique Autherization token for the user"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique account id of user"
+          },
+          "Date of Birth": {
+            "type": "string",
+            "description": "Date of Birth of the customer"
+          },
+          "identity  type": {
+            "type": "string",
+            "description": "User identity number"
+          },
+          "identityValue": {
+            "type": "string",
+            "description": "Identity value"
+          },
+          "department": {
+            "type": "string",
+            "description": "Department of the user"
+          },
+          "salutation": {
+            "type": "string",
+            "description": "User salutation"
+          },
+          "workPhone": {
+            "type": "string",
+            "description": "User work phone"
+          },
+          "language": {
+            "type": "string",
+            "description": "Language"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender"
+          },
+          "profilePic": {
+            "type": "string",
+            "description": "User Profile Pic"
+          },
+          "contactType": {
+            "type": "string",
+            "description": "Customer Profile Type"
+          },
+          "minAge": {
+            "type": "integer",
+            "description": "Minimum age"
+          },
+          "maxAge": {
+            "type": "integer",
+            "description": "Maximum age"
+          },
+          "recvPersonalizedRecommendations": {
+            "type": "boolean",
+            "description": "Receive personalize Recommendations"
+          }
+        }
+      },
+      "getContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique identifier of the account."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "A unique ID of the account in EV systems."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "A unique ID of the account in partner systems."
+          },
+          "contactID": {
+            "type": "string",
+            "description": "A unique ID of the Contact."
+          },
+          "locale": {
+            "type": "string",
+            "description": "Unique set of parameters that define a Particular user’s language, country, and any special Variant preferences. Usually a locale identifier consists of at least a language identifier and a region identifier."
+          }
+        }
+      },
+      "addTVODOrder": {
+        "type": "object",
+        "required": [
+          "price",
+          "productID"
+        ],
+        "properties": {
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique token generated for the account on successful authentication."
+          },
+          "assetId": {
+            "type": "string",
+            "description": "Id of the asset."
+          },
+          "assetRentalPeriod": {
+            "type": "string",
+            "description": "Rental Period of the asset."
+          },
+          "assetTitle": {
+            "type": "string",
+            "description": "Title of the VOD."
+          },
+          "productID": {
+            "type": "string",
+            "description": "Quick Code of the SKU"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price of the VOD product."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          },
+          "cardInfoMsg": {
+            "type": "object",
+            "$ref": "#/components/schemas/cardInfoMsg3"
+          }
+        }
+      },
+      "getActiveSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication"
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          }
+        }
+      },
+      "SearchAccountResponseMessage": {
+        "type": "object",
+        "properties": {
+          "isProfileComplete": {
+            "type": "string",
+            "example": false,
+            "description": "Profile completion status"
+          },
+          "contactUserName": {
+            "type": "string",
+            "example": "example@yopmail.com",
+            "description": "Customer user name"
+          },
+          "email": {
+            "type": "string",
+            "example": "example@yopmail.com",
+            "description": "Customer email"
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "example": "keep-alive",
+            "description": "Unique identification number of channel"
+          },
+          "name": {
+            "type": "string",
+            "example": "Example",
+            "description": "Name  of the customer"
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Status of the account"
+          },
+          "accountID": {
+            "type": "string",
+            "example": 12345678,
+            "description": "Unique account ID"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID"
+          }
+        }
+      },
+      "SearchAccountRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "email": {
+            "type": "string",
+            "description": "Unique email of the account."
+          }
+        }
+      },
+      "getAccountDevicesRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique token generated for the account on successful authentication."
+          }
+        }
+      },
+      "GetAccountDevicesResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "AccountDeviceDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountDeviceDetails"
+            }
+          }
+        }
+      },
+      "AccountDeviceDetails": {
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "description": "Name of the device"
+          },
+          "deviceType": {
+            "type": "string",
+            "description": "Type of device"
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "ID of the device"
+          },
+          "modelNo": {
+            "type": "string",
+            "description": "Model number of the device"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Owner of the device"
+          },
+          "returnLater": {
+            "type": "boolean",
+            "description": "Return Later"
+          },
+          "sendCarton": {
+            "type": "string",
+            "description": "Send carton"
+          },
+          "serialNo": {
+            "type": "string",
+            "description": "Serial number of the device"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the Account"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Account start date"
+          },
+          "lastLoginTime": {
+            "type": "string",
+            "description": "Last login time on the device"
+          },
+          "isSessionDevice": {
+            "type": "string",
+            "description": "Is session Device"
+          }
+        }
+      },
+      "IsValidCouponRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "couponCode"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "couponCode": {
+            "type": "string",
+            "description": "Coupon code which is to be redeemed on the product."
+          }
+        }
+      },
+      "IsValidCouponResponseMessage": {
+        "type": "object",
+        "properties": {
+          "payMethRequired": {
+            "type": "string",
+            "description": "Payment method required."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of coupon search"
+          },
+          "couponItemMsg": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/couponItemMsg2"
+            }
+          }
+        }
+      },
+      "couponItemMsg2": {
+        "type": "object",
+        "properties": {
+          "couponAmount": {
+            "type": "string",
+            "description": "Coupon Amount"
+          },
+          "isPackage": {
+            "type": "string",
+            "description": "Is package"
+          },
+          "packageName": {
+            "type": "string",
+            "description": "Package Name"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Unique ID for the product"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "Reason Code"
+          }
+        }
+      },
+      "getPaymentsV2": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the customer on successful authentication."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system."
+          }
+        }
+      },
+      "removeDeviceForAccount": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID",
+          "accountID",
+          "serialNo"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique token generated for the account on successful authentication."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "Unique id of the customer in EV system."
+          },
+          "accountID": {
+            "type": "string",
+            "description": "A unique id of the account"
+          },
+          "serialNo": {
+            "type": "string",
+            "description": "Unique id of the customer device serial number."
+          },
+          "deviceID": {
+            "type": "string",
+            "description": "A unique id of the device."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Identifier between Partner and EV system"
+          }
+        }
+      },
+      "RemoveDeviceResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Status of the account"
+          }
+        }
+      },
+      "RemoveOrderedProductsRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID"
+          },
+          "status": {
+            "type": "string",
+            "description": "API response status"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments provided while removing the product"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End Date for removing the product"
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/services2"
+            }
+          }
+        }
+      },
+      "services2": {
+        "type": "object",
+        "properties": {
+          "serviceType": {
+            "type": "string"
+          },
+          "serviceId": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          }
+        }
+      },
+      "RemoveOrderedProductsResponseMessage": {
+        "type": "object",
+        "properties": {
+          "removeSubscriptionsMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/removeSubscriptionsMessage"
+            }
+          },
+          "responseCode": {
+            "type": "string"
+          },
+          "transactionId": {
+            "type": "string"
+          }
+        }
+      },
+      "removeSubscriptionsMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/params"
+            }
+          }
+        }
+      },
+      "params": {
+        "type": "object",
+        "properties": {
+          "paramValue": {
+            "type": "string"
+          },
+          "paramName": {
+            "type": "string"
+          }
+        }
+      },
+      "GetContactResponseMessage": {
+        "type": "object",
+        "properties": {
+          "contactMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/contactMessage"
+            }
+          },
+          "message": {
+            "type": "string"
+          },
+          "cpCustomerID": {
+            "type": "string"
+          },
+          "spAccountID": {
+            "type": "string"
+          },
+          "isProfileComplete": {
+            "type": "boolean"
+          },
+          "concurrentPlayLimit": {
+            "type": "string"
+          },
+          "verificationStatus": {
+            "type": "boolean"
+          },
+          "isMobileVerified": {
+            "type": "boolean"
+          },
+          "transactionId": {
+            "type": "string"
+          },
+          "lastLoginTime": {
+            "type": "string"
+          },
+          "lastLoginDevice": {
+            "type": "string"
+          },
+          "accountRegistrationDate": {
+            "type": "string"
+          },
+          "receiveOffers": {
+            "type": "boolean"
+          },
+          "receiveRecommendations": {
+            "type": "boolean"
+          },
+          "termsConditions": {
+            "type": "string"
+          },
+          "privacyPolicy": {
+            "type": "string"
+          },
+          "maximumProfilesAllowed": {
+            "type": "integer"
+          }
+        }
+      },
+      "contactMessage": {
+        "type": "object",
+        "properties": {
+          "isPrimaryContact": {
+            "type": "boolean"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "allowTracking": {
+            "type": "boolean"
+          },
+          "parentalControl": {
+            "type": "boolean"
+          },
+          "parentalControlLevel": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "isPasswordExists": {
+            "type": "boolean"
+          },
+          "emailIsVerified": {
+            "type": "boolean"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "alertNotificationPush": {
+            "type": "boolean"
+          },
+          "alertNotificationEmail": {
+            "type": "boolean"
+          },
+          "mobileNumber": {
+            "type": "integer"
+          },
+          "dateOfBirth": {
+            "type": "integer"
+          },
+          "contactID": {
+            "type": "string"
+          },
+          "pin": {
+            "type": "boolean"
+          },
+          "socialLoginType": {
+            "type": "string"
+          },
+          "socialLoginID": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "main": {
+            "type": "boolean"
+          },
+          "operatorID": {
+            "type": "integer"
+          },
+          "operatorName": {
+            "type": "string"
+          },
+          "isProfileComplete": {
+            "type": "boolean"
+          },
+          "verificationStatus": {
+            "type": "boolean"
+          },
+          "isMobileVerified": {
+            "type": "boolean"
+          },
+          "lastLoginTime": {
+            "type": "string"
+          },
+          "lastLoginDevice": {
+            "type": "string"
+          },
+          "profilePic": {
+            "type": "string"
+          },
+          "socialProfilePic": {
+            "type": "string"
+          },
+          "primaryContact": {
+            "type": "boolean"
+          },
+          "maxAge": {
+            "type": "integer"
+          },
+          "minAge": {
+            "type": "integer"
+          }
+        }
+      },
+      "scOfferTypes": {
+        "type": "object",
+        "properties": {
+          "offerType": {
+            "type": "string"
+          },
+          "salesChannel": {
+            "type": "string"
+          }
+        }
+      },
+      "attributes": {
+        "type": "object",
+        "properties": {
+          "attributeLabel": {
+            "type": "string"
+          },
+          "attributeValue": {
+            "type": "string"
+          },
+          "attributeType": {
+            "type": "string"
+          }
+        }
+      },
+      "order": {
+        "type": "object",
+        "properties": {
+          "currencyCode": {
+            "type": "string"
+          },
+          "currencySymbol": {
+            "type": "string"
+          },
+          "orderID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "string"
+          },
+          "totalPriceCharged": {
+            "type": "integer"
+          },
+          "totalTaxCharged": {
+            "type": "integer"
+          },
+          "orderProductInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/orderProductInfo"
+            }
+          },
+          "paymentsInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/paymentsInfo"
+            }
+          }
+        }
+      },
+      "orderProductInfo": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "retailPrice": {
+            "type": "integer"
+          },
+          "chargedPrice": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "taxCharged": {
+            "type": "integer"
+          },
+          "discounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/discounts"
+            }
+          },
+          "discount": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/discount"
+            }
+          }
+        }
+      },
+      "discounts": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "discountType": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "discountAmount": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "discount": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "discountType": {
+            "type": "string"
+          },
+          "discountAmount": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "paymentsInfo": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer"
+          },
+          "receivedDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paymentType": {
+            "type": "string"
+          },
+          "postingStatus": {
+            "type": "string"
+          },
+          "gatewayResponse": {
+            "type": "string"
+          },
+          "paymentID": {
+            "type": "string"
+          },
+          "paymentMethodID": {
+            "type": "integer"
+          },
+          "creditCardNumber": {
+            "type": "string"
+          },
+          "cardType": {
+            "type": "string"
+          },
+          "paymentCategory": {
+            "type": "string"
+          }
+        }
+      },
+      "nextBillInformation": {
+        "type": "object",
+        "properties": {
+          "nextBillingAmount": {
+            "type": "string"
+          },
+          "nextBillingDateTime": {
+            "type": "string"
+          },
+          "subscriptionsInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/subscriptionsInfo"
+            }
+          }
+        }
+      },
+      "subscriptionsInfo": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "originalPrice": {
+            "type": "integer"
+          }
+        }
+      },
+      "UpdateCustomerPasswordRequest": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "contactPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "email": {
+            "type": "string",
+            "description": "Email ID of the contact"
+          },
+          "contactPassword": {
+            "type": "string",
+            "description": "Password to be updated to the provided contact email ID."
+          }
+        }
+      },
+      "UpdateCustomerPasswordRespMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Status of the account"
+          }
+        }
+      },
+      "UpdatePaymentInfoRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID",
+          "spAccountID",
+          "sessionToken",
+          "label"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "label": {
+            "type": "string",
+            "description": "Label of the payment method."
+          },
+          "CardInfoMessage": {
+            "type": "object",
+            "$ref": "#/components/schemas/cardInfoMsg2"
+          }
+        }
+      },
+      "cardInfoMsg2": {
+        "type": "object",
+        "required": [
+          "cardNumber",
+          "expiryDate",
+          "nameOnCard",
+          "securityCode",
+          "cardType",
+          "methodType"
+        ],
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Credit Card Number."
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Expiry Date of Credit Card."
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the Credit Card."
+          },
+          "securityCode": {
+            "type": "string",
+            "description": "CVV/ Security code of the card."
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the card."
+          },
+          "methodType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the payment method."
+          }
+        }
+      },
+      "UpdatePaymentInfoResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "paymentMethodId": {
+            "type": "string",
+            "example": "Active",
+            "description": "Unique Payment method ID of the customer."
+          }
+        }
+      },
+      "GetAccountPaymentMethodsRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID"
+          }
+        }
+      },
+      "GetAccountPaymentMethodsResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "canShowSetUP": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Can show Set-up"
+          },
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Status"
+          },
+          "accountPaymentMethodsResponseMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AcctPymtResp"
+            }
+          }
+        }
+      },
+      "AcctPymtResp": {
+        "type": "object",
+        "properties": {
+          "paymentType": {
+            "type": "string",
+            "example": "credit card",
+            "description": "Type of Payment method"
+          },
+          "canShowInActive": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Can show Inactive payment methods."
+          },
+          "canShowEdit": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Can show"
+          },
+          "canShowAllowUnlimit": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Can show allow unlimited"
+          },
+          "fromDate": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Can show allow unlimited"
+          },
+          "label": {
+            "type": "string",
+            "example": "card",
+            "description": "Label of the payment method."
+          },
+          "paymentMethodRefNumber": {
+            "type": "string",
+            "description": "Unique reference number for a Payment method."
+          },
+          "CardInfoMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cardInfoMsg3"
+            }
+          }
+        }
+      },
+      "cardInfoMsg3": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Credit Card Number."
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Expiry Date of Credit Card."
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the Credit Card."
+          },
+          "securityCode": {
+            "type": "string",
+            "description": "CVV/ Security code of the card."
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the card."
+          },
+          "methodType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the payment method."
+          },
+          "paymentMethodId": {
+            "type": "string",
+            "description": "Payment method ID."
+          },
+          "billingAddress": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/billingAddress"
+            }
+          }
+        }
+      },
+      "billingAddress": {
+        "type": "object",
+        "properties": {
+          "addrLine1": {
+            "type": "string",
+            "description": "Billing address of the customer"
+          },
+          "city": {
+            "type": "string",
+            "description": "City of the customer"
+          },
+          "state": {
+            "type": "string",
+            "description": "State of the customer"
+          },
+          "zip": {
+            "type": "string",
+            "description": "Zipcode of the customer"
+          },
+          "country": {
+            "type": "string",
+            "description": "country of the customer"
+          }
+        }
+      },
+      "AddDeviceForAccountRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "deviceDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/deviceDetails"
+            }
+          }
+        }
+      },
+      "deviceDetails": {
+        "type": "object",
+        "properties": {
+          "comments": {
+            "type": "string",
+            "description": "comments"
+          },
+          "modelNo": {
+            "type": "string",
+            "description": "Model number of the device"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Owner of the device."
+          },
+          "serialNo": {
+            "type": "string",
+            "description": "Serial number of the device."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the device."
+          },
+          "devicename": {
+            "type": "string",
+            "description": "Name of the device"
+          },
+          "deviceType": {
+            "type": "string",
+            "description": "Type of device"
+          },
+          "externalID": {
+            "type": "string",
+            "description": "External ID of the device."
+          }
+        }
+      },
+      "AddDeviceForAccountResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "success": {
+            "type": "string",
+            "example": "Active",
+            "description": "Success message of the API"
+          }
+        }
+      },
+      "GetPkgsAndProdsWithPromosRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "dmaID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "dmaID": {
+            "type": "string",
+            "description": "Discreet Market Area ID."
+          },
+          "returnAttributes": {
+            "type": "boolean",
+            "description": "Return Attributes."
+          },
+          "returnInstallmentInfo": {
+            "type": "boolean",
+            "description": "Return Installment Details."
+          },
+          "returnAppChannels": {
+            "type": "boolean",
+            "description": "Return App Channels."
+          },
+          "returnPriceInLocalCurrency": {
+            "type": "boolean",
+            "description": "Return price in local currency."
+          }
+        }
+      },
+      "GetPkgsAndProdsWithPromosResponseMsg": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "pkgWithPromos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pkgWithPromos"
+            }
+          },
+          "prodWithPromos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/prodWithPromos"
+            }
+          }
+        }
+      },
+      "pkgWithPromos": {
+        "type": "object",
+        "properties": {
+          "preRequisitedItems": {
+            "type": "string",
+            "description": "preRequisited items"
+          },
+          "accountType": {
+            "type": "string",
+            "description": "Account Type"
+          },
+          "packageItemWeightages": {
+            "type": "string",
+            "description": "Package item weightages"
+          },
+          "productAttribute": {
+            "type": "string",
+            "description": "Product Attributes"
+          },
+          "packageAttribute": {
+            "type": "string",
+            "description": "Package Attributes"
+          },
+          "pre-Requisites": {
+            "type": "string",
+            "description": "preRequisites"
+          },
+          "eligibiliityRules": {
+            "type": "string",
+            "description": "Eligibility rules"
+          },
+          "upgradableItems": {
+            "type": "string",
+            "description": "Upgradeable items"
+          },
+          "downgradableItems": {
+            "type": "string",
+            "description": "Downgradable items"
+          },
+          "pkgMsg": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PkgMessage"
+            }
+          }
+        }
+      },
+      "PkgMessage": {
+        "type": "object",
+        "properties": {
+          "isContent": {
+            "type": "string",
+            "description": "is Content"
+          },
+          "packageID": {
+            "type": "string",
+            "description": "Unique Package ID in the market area"
+          },
+          "packageName": {
+            "type": "string",
+            "description": "Name of the package"
+          },
+          "bbDescription": {
+            "type": "string",
+            "description": "Basic description of the package"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "Channel Partner description of the package"
+          },
+          "dmaName": {
+            "type": "string",
+            "description": "Name of the market area."
+          },
+          "chargeType": {
+            "type": "string",
+            "description": "Package Charge Type"
+          },
+          "frequency": {
+            "type": "string",
+            "description": "Frequency of the package"
+          },
+          "retailPriceDate": {
+            "type": "string",
+            "description": "Retail price start date"
+          },
+          "retailPrice": {
+            "type": "number",
+            "description": "Retail price value"
+          },
+          "basicService": {
+            "type": "string",
+            "description": "Basic Service Status"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display Name of the package"
+          },
+          "disPlayOrder": {
+            "type": "string",
+            "description": "Display Order of the package"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrdsResponse"
+            }
+          },
+          "packages": {
+            "type": "string",
+            "description": "Packages included inthe main package"
+          },
+          "scOfferTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/scOfferTypes"
+            }
+          }
+        }
+      },
+      "prodWithPromos": {
+        "type": "object",
+        "properties": {
+          "skuORQuickCode": {
+            "type": "string",
+            "description": "SKU of the product"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Name of the product"
+          },
+          "bbDescription": {
+            "type": "string",
+            "description": "Basic description of the product"
+          },
+          "dmaName": {
+            "type": "string",
+            "description": "DMA Name of the product"
+          },
+          "productType": {
+            "type": "string",
+            "description": "Type of the product"
+          },
+          "productCategory": {
+            "type": "string",
+            "description": "Category of the product"
+          },
+          "chargeType": {
+            "type": "string",
+            "description": "Charge type of the product"
+          },
+          "frequency": {
+            "type": "string",
+            "description": "Frequency of the product"
+          },
+          "retailPriceDate": {
+            "type": "string",
+            "description": "Retail price start date of the product"
+          },
+          "retailPrice": {
+            "type": "string",
+            "description": "Retaoil price of the product"
+          },
+          "basicService": {
+            "type": "string",
+            "description": "Basic Service condition"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the product"
+          },
+          "type": {
+            "type": "string",
+            "description": "Charge Type"
+          },
+          "isDependent": {
+            "type": "string",
+            "description": "is dependent condition"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Curency Code"
+          },
+          "currencySymbol": {
+            "type": "string",
+            "description": "Currency Symbol"
+          },
+          "productAttribute": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/attributes"
+            }
+          }
+        }
+      },
+      "PrdsResponse": {
+        "type": "object",
+        "properties": {
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the product"
+          },
+          "serviceID": {
+            "type": "string",
+            "description": "SKU of the product"
+          },
+          "type": {
+            "type": "string",
+            "description": "Product charge type"
+          },
+          "price": {
+            "type": "string",
+            "description": "Price of the product"
+          },
+          "isPackage": {
+            "type": "string",
+            "description": "is Package or not"
+          }
+        }
+      },
+      "UpdateTroubleTicketRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID",
+          "sessionToken",
+          "ticketID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "promiseDate": {
+            "type": "string",
+            "description": "Promise date for closing the ticket"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the ticket"
+          },
+          "ticketID": {
+            "type": "string",
+            "description": "Ticket ID"
+          },
+          "group": {
+            "type": "string",
+            "description": "Group to which the ticket is escalated."
+          },
+          "ticketDomain": {
+            "type": "string",
+            "description": "Ticket Domain"
+          },
+          "ticketType": {
+            "type": "string",
+            "description": "Ticket Type"
+          },
+          "subType": {
+            "type": "string",
+            "description": "Sub type of the ticket"
+          },
+          "ticketPriority": {
+            "type": "string",
+            "description": "Priority of the ticket"
+          },
+          "ticketStatus": {
+            "type": "string",
+            "description": "Status of the ticket"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments provided for the ticket"
+          },
+          "outage": {
+            "type": "string",
+            "description": "Outage"
+          },
+          "attachedFileName": {
+            "type": "string",
+            "description": "File name of the attachments"
+          }
+        }
+      },
+      "UpdateTroubleTicketResponseMessage": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "Active",
+            "description": "Status of the account"
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message."
+          }
+        }
+      },
+      "AddTroubleTicketRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "example": 123456764,
+            "description": "Unique channel partner customer ID. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique session token for the account. Either cpCustomerID or sessionToken is mandatory."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the ticket"
+          },
+          "ticketDomain": {
+            "type": "string",
+            "description": "Ticket Domain"
+          },
+          "ticketType": {
+            "type": "string",
+            "description": "Ticket Type"
+          },
+          "subType": {
+            "type": "string",
+            "description": "Sub type of the ticket"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comments provided for the ticket"
+          },
+          "ticketPriority": {
+            "type": "string",
+            "description": "Priority of the ticket"
+          },
+          "ticketStatus": {
+            "type": "string",
+            "description": "Status of the ticket"
+          },
+          "group": {
+            "type": "string",
+            "description": "Group to which the ticket is escalated."
+          },
+          "attachWorkflow": {
+            "type": "string",
+            "description": "Attach workflow"
+          },
+          "promiseDate": {
+            "type": "string",
+            "description": "Promise date for closing the ticket"
+          },
+          "estimatedHours": {
+            "type": "string",
+            "description": "Total estimated hours for the ticket"
+          },
+          "attachedFileName": {
+            "type": "string",
+            "description": "File name of the attachments"
+          }
+        }
+      },
+      "AddTroubleTicketResponseMessage": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "Success",
+            "description": "Status of the ticket"
+          },
+          "ticketID": {
+            "type": "string",
+            "example": "Active",
+            "description": "Ticket ID"
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message."
+          }
+        }
+      },
+      "updateContactRequestMessage": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique identification number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "email": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "User First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "User Last Name"
+          },
+          "contactID": {
+            "type": "string",
+            "description": "Unique ID of the contact"
+          },
+          "mobileNumber": {
+            "type": "string",
+            "description": "User Mobile Number"
+          }
+        }
+      },
+      "updateContactResponseMessage": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "Success",
+            "description": "Status of the update contact"
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          }
+        }
+      },
+      "addSubscriptionsResponse": {
+        "type": "object",
+        "properties": {
+          "orderID": {
+            "type": "string",
+            "example": 76897,
+            "description": "Unique Order ID."
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          }
+        }
+      },
+      "addTVODOrderResp": {
+        "type": "object",
+        "properties": {
+          "orderID": {
+            "type": "string",
+            "example": 76897,
+            "description": "Unique Order ID."
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "Indicates the success and failure message"
+          },
+          "txID": {
+            "type": "string",
+            "example": 76897,
+            "description": "Unique transaction ID."
+          },
+          "authorized": {
+            "type": "string",
+            "example": "True/False",
+            "description": "Entitlement authorization"
+          }
+        }
+      },
+      "changeBasicService": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken",
+          "newServiceID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique identifier of the account."
+          },
+          "newServiceID": {
+            "type": "string",
+            "description": "new service SKU to which service is to be changed."
+          }
+        }
+      },
+      "addContactResp": {
+        "type": "object",
+        "properties": {
+          "contactID": {
+            "type": "string",
+            "example": 76897,
+            "description": "Unique Contact ID."
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "status": {
+            "type": "string",
+            "example": "Success/Fail",
+            "description": "API run status"
+          },
+          "message": {
+            "type": "string",
+            "example": "Contact added successfully",
+            "description": "Indicates the success and failure message"
+          }
+        }
+      },
+      "getPaymentsV2Response": {
+        "type": "object",
+        "properties": {
+          "previousBalance": {
+            "type": "string",
+            "example": 76897,
+            "description": "Unique Contact ID."
+          },
+          "responseCode": {
+            "type": "string",
+            "example": "0,1",
+            "description": "Indicates if the response was successfully processed"
+          },
+          "message": {
+            "type": "string",
+            "example": "Contact added successfully",
+            "description": "Indicates the success and failure message"
+          },
+          "order": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/order"
+            }
+          },
+          "nextBillInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/nextBillInformation"
+            }
+          }
+        }
+      },
+      "getActiveSubscriptionsResp": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "get0AuthAccessTokenV2ResponseMessage": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "description": "Response code"
+          },
+          "message": {
+            "type": "string",
+            "example": "User Logged in successfully",
+            "description": "Indicates the success and failure message"
+          },
+          "accessToken": {
+            "type": "string",
+            "example": 12345678,
+            "description": "User accont access token"
+          },
+          "refreshToken": {
+            "type": "string",
+            "example": 123456764,
+            "description": "User account refresh token"
+          },
+          "status": {
+            "type": "string",
+            "example": "SUCCESS / FAIL",
+            "description": "status of APi response"
+          },
+          "tokenType": {
+            "type": "string",
+            "example": "BearerL",
+            "description": "Token Type"
+          },
+          "expiresIn": {
+            "type": "string",
+            "example": 975698798,
+            "description": "Token expiry period"
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "example": "ABCD",
+            "description": "Channel Partner ID"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}
