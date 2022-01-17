@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 6th Nov, 2021 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 17th Jan, 2022 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.16
+  title: EV Shahid API - V14.17
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -2363,6 +2363,72 @@ paths:
                       - 40POFFNEWUSER
                       - NYP202201
                       - TPay10DFT
+  /isUserEligibleForParkingPeriod:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: IsUserEligibleForParkingPeriodRequestMessage
+      description: >-
+        isUserEligibleForParkingPeriod() REST API is used to verify whether the
+        customer is eligible for parking period or not.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  IsUserEligibleForParkingPeriodResponseMessage:
+                    type: object
+                    properties:
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+                      isUserEligibleForParkingPeriod:
+                        type: boolean
+                        description: Parking period eligibility status
+              examples:
+                '111111111':
+                  value:
+                    IsUserEligibleForParkingPeriodResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successful Response:
+                  value:
+                    IsUserEligibleForParkingPeriodResponseMessage:
+                      responseCode: '1'
+                      status: SUCCESS
+                      isUserEligibleForParkingPeriod: true
+        x- 111111111:
+          description: Authorization failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                IsUserEligibleForParkingPeriodRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/isUserEligibleForParkingPeriod'
+            examples:
+              Sample Request:
+                value:
+                  IsUserEligibleForParkingPeriodRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    country: JO
+                    paymentType: TPay_Zain
+                    mobileNumber: '962791496678'
   /getReasonCodes:
     post:
       tags:
@@ -8479,6 +8545,31 @@ components:
         spAccountID:
           type: string
           description: Unique ID generated in EV system.
+    isUserEligibleForParkingPeriod:
+      type: object
+      required:
+        - apiKey
+        - dmaID
+        - country
+        - mobileNumber
+        - paymentType
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        country:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        mobileNumber:
+          type: string
+          description: Mobile number for the account
+        paymentType:
+          type: string
+          description: Payment mode for the account.
     getReasonCodes:
       type: object
       required:
