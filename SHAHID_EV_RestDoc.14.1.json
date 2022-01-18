@@ -3966,6 +3966,7 @@ paths:
                           validityTill: 1631113192000
                           retailPrice: 7.99
                           description: VIP 3 Months
+                          transactionId: '2fsdd7495364624'
                           status: Active
                           paymentMethodDetails:
                             label: TPay_Zain
@@ -4414,6 +4415,7 @@ paths:
                     pmMobileNumber: '9715433434378'
                     pmEmail: zehra@gmail.com
                     externalAccountId: '4535673746988'
+                    transactionId: '2fsdd7495364624'
   /serviceEligibilityCheck:
     post:
       tags:
@@ -8341,7 +8343,10 @@ components:
           description: email of the user
         externalAccountId:
           type: string
-          description: Unique payment method reference number.
+          description: Unique TPay unique accountId.
+        transactionId:
+          type: string
+          description: Unique TPay transaction number.
     subscriptionDetails_actV3:
       type: object
       properties:
@@ -8982,9 +8987,6 @@ components:
           items:
             $ref: '#/components/schemas/discounts'
           description: Applied discounts related details.
-        transactionId:
-          type: string
-          description: Current Roku transaction Id.
         orgTrasnactionId:
           type: string
           description: Unique Appstore Original transaction id
@@ -8994,6 +8996,9 @@ components:
         externalAccountId:
           type: string
           description: Unique payment method reference number
+        transactionId:
+          type: string
+          description: Unique TPay transaction number.
     getEntitlements:
       type: object
       required:
