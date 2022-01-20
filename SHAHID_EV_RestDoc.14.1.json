@@ -3715,6 +3715,7 @@ paths:
                         amount: '12.99'
                         txID: '45497543947'
                         txMsg: Success
+                        txStatus: Pending
               Sample request for TV offer:
                 value:
                   AddSubscriptionRequestMessage:
@@ -3747,6 +3748,22 @@ paths:
                       makeAutoPayment: 'true'
                       CardTokenInfoMessage:
                         paymentMethodID: '4324733'
+              Sample request for TVOffer promotion:
+                value:
+                  AddSubscriptionRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    dmaID: JO
+                    serviceType: PRODUCT
+                    serviceID: JOR_B2C_SHAHID_VIP_12M
+                    quantity: '1'
+                    promotionID: 'TVOF_SONY_AN'
+                    deviceSerialNo: LE55K7500UG123
+                    deviceModelNo: 'BRAVIA 8K UR2'
+                    paymentmethodInfo:
+                      label: TV Offer
+                      transactionReferenceMsg:
+                      "txMsg": "Success"
   /changeService:
     post:
       security:
@@ -8056,6 +8073,12 @@ components:
         rateType:
           type: string
           description: Returns price of the product based on the parameter passed.
+        deviceSerialNo:
+          type: string
+          description: Unique serial number of the TV.
+        deviceModelNo:
+          type: string
+          description: TV model received in the request.
         dmaID:
           type: string
           description: DMA ID of the account.(2 letter country code)
@@ -8221,6 +8244,9 @@ components:
         txMsg:
           type: string
           description: Transaction Message.
+        txStatus:
+          type: string
+          description: Status returned from TPay.
     operatorInfoMessage:
       type: object
       required:
