@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 17th Jan, 2022 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 25th Jan, 2022 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.17
+  title: EV Shahid API - V14.18
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -2429,6 +2429,69 @@ paths:
                     country: JO
                     paymentType: TPay_Zain
                     mobileNumber: '962791496678'
+  /updateTemporarySubscriptionStatus:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Offer Management APIs
+      operationId: UpdateTemporarySubscriptionStatusRequestMessage
+      description: >-
+        updateTemporarySubscriptionStatus() REST API is used to update the temporary subscription status.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  UpdateTemporarySubscriptionStatusResponseMessage:
+                    type: object
+                    properties:
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+                      status:
+                        type: string
+                        description: Success/Fail
+              examples:
+                '111111111':
+                  value:
+                    UpdateTemporarySubscriptionStatusResponseMessage:
+                      responseCode: '0'
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                Sample Successful Response:
+                  value:
+                    UpdateTemporarySubscriptionStatusResponseMessage:
+                      responseCode: '1'
+                      status: SUCCESS
+        x- 111111111:
+          description: Authorization failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UpdateTemporarySubscriptionStatusRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/updateTemporarySubscriptionStatus'
+            examples:
+              Sample Request:
+                value:
+                  UpdateTemporarySubscriptionStatusRequestMessage:
+                    apiKey: 8uMMWK58TY2fGjJS
+                    channelPartnerID: SHAHID
+                    country: JO
+                    sku: JOR_B2C_SHAHID_VIP_1M
+                    subscriptionContractID: '7345d43425qaf6'
+                    transactionReferenceMsg:
+                      txStatus: Success
   /getReasonCodes:
     post:
       tags:
@@ -8591,7 +8654,7 @@ components:
         apiKey:
           type: string
           description: Partner authentication key.
-        country:
+        dmaID:
           type: string
           description: Unique ID of the channel partner DMA.
           example: IQ/KW/IR/QA/OM
@@ -8601,6 +8664,42 @@ components:
         paymentType:
           type: string
           description: Payment mode for the account.
+    updateTemporarySubscriptionStatus:
+      type: object
+      required:
+        - apiKey
+        - country
+        - subscriptionContractID
+        - transactionReferenceMsg
+      properties:
+        channelPartnerID:
+          type: string
+          description: Unique identification number of channel partner.
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        country:
+          type: string
+          description: Unique ID of the channel partner DMA.
+          example: IQ/KW/IR/QA/OM
+        subscriptionContractID:
+          type: string
+          description: Unique id received from TPay.
+        sku:
+          type: string
+          description: Product id defined in EV.
+        transactionReferenceMsg:
+          type: object
+          $ref: '#/components/schemas/transactionReferenceMsg_parkingperiod'
+          description: Transaction Reference Message details.
+    transactionReferenceMsg_parkingperiod:
+      type: object
+      required:
+        - txStatus
+      properties:
+        txStatus:
+          type: string
+          description: Status returned from TPay.
     getReasonCodes:
       type: object
       required:
