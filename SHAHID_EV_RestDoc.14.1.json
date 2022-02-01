@@ -5,13 +5,13 @@ servers:
   - url: 'https://rest-uat-shahid.evergent.com/shahid'
 info:
   description: >-
-    <b>Last Updated Date 25th Jan, 2022 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 01th Feb, 2022 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.18
+  title: EV Shahid API - V14.19
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -166,6 +166,12 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     email: shahidtest1@yopmail.com
+              Sample request with homePhone:
+                value:
+                  SearchAccountV2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    homePhone: '962000432543'
   /createUser:
     post:
       tags:
@@ -293,6 +299,20 @@ paths:
                     lastName: Afridi
                     isEmailVerified: true
                     ipAddress: 45.45.1.212
+              Customer Registration using email and homePhone:
+                value:
+                  CreateUserRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    dmaId: IQ
+                    email: testdemo2@yopmail.com
+                    homePhone: 962000432543
+                    spAccountID: '191112114157906490851'
+                    country: IQ
+                    firstName: Shahid
+                    lastName: Afridi
+                    isEmailVerified: true
+                    ipAddress: 45.45.1.212
               Customer Registration using phone number:
                 value:
                   CreateUserRequestMessage:
@@ -414,6 +434,14 @@ paths:
                     channelPartnerID: SHAHID
                     apiKey: 8uMMWK58TY2fGjJS
                     spAccountID: '191112114157906490851'
+                    ipAddress: 45.45.1.212
+                    source: iOS
+              Sample request with homePhone:
+                value:
+                  GetOAuthAccessTokenv2RequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    homePhone: '962000432543'
                     ipAddress: 45.45.1.212
                     source: iOS
   /refreshToken:
@@ -4492,6 +4520,7 @@ paths:
                     method: activate
                     country: IQ
                     spAccountID: '5427895041326478392'
+                    homePhone: 962000432543
                     pmMobileNumber: '9715433434378'
                     pmEmail: zehra@gmail.com
                     externalAccountId: '4535673746988'
@@ -6852,6 +6881,9 @@ components:
         mobileNumber:
           type: string
           description: Mobile number of the customer.
+        homePhone:
+          type: string
+          description: Unique home phone number.
         spAccountID:
           type: string
           description: Unique account id in EV system.
@@ -6956,6 +6988,9 @@ components:
         isEmailVerified:
           type: boolean
           description: Indicates if email is verified or not.
+        homePhone:
+          type: string
+          description: Unique home phone number.
     getOAuthAccessTokenv2:
       type: object
       required:
@@ -6979,6 +7014,9 @@ components:
         source:
           type: string
           description: Device type of the user.
+        homePhone:
+          type: string
+          description: Unique home phone number.
     refreshToken:
       type: object
       required:
@@ -8253,7 +8291,7 @@ components:
         originalTransactionID:
           type: string
           description: Original transaction id of the  inApp purchases.
-        mobileNumber:
+        phoneNumber:
           type: string
           description: Mobile number used for transaction
         contractID:
@@ -8436,6 +8474,9 @@ components:
         transactionId:
           type: string
           description: Unique TPay transaction number.
+        homePhone:
+          type: string
+          description: Unique home phone number.
     subscriptionDetails_actV3:
       type: object
       properties:
