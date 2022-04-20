@@ -5,13 +5,13 @@ servers:
   - url: https://rest-uat-shahid.evergent.com/shahid
 info:
   description: >-
-    <b>Last Updated Date 01 Feb, 2022 </b><br> <br><h1><b>Evergent-Shahid
+    <b>Last Updated Date 20 April, 2022 </b><br> <br><h1><b>Evergent-Shahid
     consolidated API document</h1> </b>
 
      <br><br>
      <b>Note:</b> "<b>x-</b>" symbol should be ignored infront of Error Codes.  
   version: ''
-  title: EV Shahid API - V14.19
+  title: EV Shahid API - V14.20
   contact:
     email: pavankumar.a@evergent.com
   license:
@@ -6917,6 +6917,247 @@ paths:
                     suspendStartDate: 11/02/2021
                     status: SUSPEND
                     spAccountID: '2910202101'
+  /getRegisteredIDs:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Disney
+      operationId: GetRegisteredIDsRequestMessage
+      description: >-
+        GetRegisteredIDs REST API is used to get the unique register Ids for given reference Type.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                properties:
+                  GetRegisteredIDsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    GetRegisteredIDsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    GetRegisteredIDsResponseMessage:
+                      message: SUCCESS
+                      responseCode: '1'
+                      referenceInfo:
+                        - partnerReferenceId: 7093004179
+                          partnerName: TPay_STC_Zain
+                        - partnerReferenceId: 7093004178
+                          partnerName: Profile
+                        - partnerReferenceId: 7093004171
+                          partnerName: Disney
+                      
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                GetRegisteredIDsRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/getRegisteredIDs'
+            examples:
+              Sample request:
+                value:
+                  GetRegisteredIDsRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    spAccountId: 0d2525e80f2a4618b0189e3214914e4d
+                    referenceType: Mobile   
+  /updatePartnerProvisioningInfo:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Disney
+      operationId: UpdatePartnerProvisioningInfoRequestMessage
+      description: >-
+        updatePartnerProvisioningInfo REST is used to update the partner mobile number at evergent account level.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: 
+                properties:
+                  UpdatePartnerProvisioningInfoResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Valid message retunred in the API
+                      status:
+                        type: string
+                        description: Success/Fail
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success. <br> “0” –
+                          Failure.
+              examples:
+                '111111111':
+                  value:
+                    UpdatePartnerProvisioningInfoResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful Response:
+                  value:
+                    UpdatePartnerProvisioningInfoResponseMessage:
+                      status: SUCCESS
+                      responseCode: '1'
+                      message: Partner provisioning info updated successfully
+                      
+        x- 111111111:
+          description: Authentication failed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                UpdatePartnerProvisioningInfoRequestMessage:
+                  type: Object
+                  $ref: '#/components/schemas/updatePartnerProvisioningInfo'
+            examples:
+              Sample request:
+                value:
+                  UpdatePartnerProvisioningInfoRequestMessage:
+                    channelPartnerID: SHAHID
+                    apiKey: 8uMMWK58TY2fGjJS
+                    spAccountId: 0d2525e80f2a4618b0189e3214914e4d
+                    partnerName: Disney 
+                    partnerReferenceId: 7093004179
+  /getActiveSubscriptions - disney:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Disney
+      operationId: GetActiveSubscriptionsRequestMessage - disney
+      description: >-
+        getActiveSubscriptions() REST API is used to get the active 
+        subscriptions of an account in Evergent system.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  GetActiveSubscriptionsResponseMessage:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Success/Fail.
+                      responseCode:
+                        type: string
+                        description: >-
+                          Indicates if the response was successfully processed.
+                          Accepted values are <br> “1” – Success <br> “0” –
+                          Failure.
+                      AccountServiceMessage:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/AccountServiceMessage'
+                        description: User service related details.
+                      paymentMethodDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/paymentMethod'
+                        description: Payment method details
+                      partnerProvisioningDetails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/partnerProvisioningDetails'
+                        description: partner Provisioning Details
+              examples:
+                '111111111':
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      failureMessage:
+                        - errorMessage: Authentication Failed
+                          errorCode: '111111111'
+                      responseCode: '0'
+                Sample successful response with credit card:
+                  value:
+                    GetActiveSubscriptionsResponseMessage:
+                      country: IQ
+                      message: SUCCESS
+                      responseCode: '1'
+                      AccountServiceMessage:
+                        - orderID: '1161900'
+                          isContent: false
+                          isFreemium: false
+                          planPriceWithTax: 6.49
+                          serviceType: SVOD
+                          serviceName: VIP 3 Months
+                          serviceID: VIP3M
+                          startDate: 1621301522000
+                          validityTill: 1637199122000
+                          retailPrice: 6.49
+                          description: VIP 3 Months
+                          status: Active
+                          paymentMethodDetails:
+                            label: Credit Card
+                            country: IQ
+                            expiryDate: 11/2027
+                            paymentMethodID: '765752'
+                            cardType: Visa
+                            cardNumber: xxxxxxxxxxxx4242
+                            last4Digits: '4242'
+                            IIN: '424242'
+                          currencyCode: KWD
+                          cancellable: false
+                          hasAction: false
+                          subscriptionType: Monthly
+                          displayName: VIP 3 Months
+                          isRenewal: true
+                          period: NoOfMonths
+                          duration: 3
+                          paymentMethod: TPay_Zain
+                          opId: 1478847
+                          validityPeriod: NoOfMonths
+                          validityDuration: 3
+                          recPaymentsInd: T
+                          isInFreeTrail: false
+                          startDateInMillis: 1621301522000
+                          productCategory: Subscription
+                          type: Prepaid
+                          basicService: false
+                          isPackage: false
+                          planPrice: 6.49
+                          partnerProvisioningDetails:
+                            - partnerName: Disney
+                              provisioningStatus: Active  
+                              activationDate: 143265470000
 components:
   securitySchemes:
     bearerAuth:
@@ -10764,3 +11005,65 @@ components:
         serviceType:
           type: string
           description: Service type defined on the product.
+    getRegisteredIDs:
+      type: object
+      required:
+        - Authorization
+        - channelPartnerID
+        - apiKey
+        - spAccountId
+        - referenceType
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        spAccountId:
+          type: string
+          description: Unique sp account id generated on the account
+        referenceType:
+          type: string
+          description: To indicate the external partner uniqueId type either email or mobile number.(possible values 'Mobile', 'Email')
+    updatePartnerProvisioningInfo:
+      type: object
+      required:
+        - Authorization
+        - channelPartnerID
+        - apiKey
+        - spAccountId
+        - partnerName
+        - partnerReferenceId
+      properties:
+        apiKey:
+          type: string
+          description: Partner authentication key.
+        channelPartnerID:
+          type: string
+          description: Unique ID number of channel partner
+        spAccountId:
+          type: string
+          description: Unique sp account id generated on the account
+        partnerName:
+          type: string
+          description: Indicate the Partner Name
+        partnerReferenceId:
+          type: string
+          description: To indicate the external partner reference ID
+    partnerProvisioningDetails:
+      type: object
+      required:
+        - partnerName
+        - provisioningStatus
+        - activationDate
+      properties:
+        partnerName:
+          type: string
+          description: Partner name
+        provisioningStatus:
+          type: string
+          description: provisioning Status
+        activationDate:
+          type: string
+          description: Activation Date
