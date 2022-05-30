@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 13th May, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 30th May, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.21",
+    "title": "EV Shahid API - V14.22",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -7235,6 +7235,21 @@
                       }
                     }
                   }
+                },
+                "Sample Request to Disable card": {
+                  "value": {
+                    "UpdatePaymentInfoRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "label": "Card",
+                      "status": "InActive",
+                      "isAutoPayment": false,
+                      "isDisable": true,
+                      "CardTokenInfoMessage": {
+                        "paymentMethodID": "4324733"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -13916,7 +13931,8 @@
           "label",
           "isAutoPayment",
           "CardTokenInfoMessage",
-          "authorization"
+          "authorization",
+          "isDisable"
         ],
         "properties": {
           "channelPartnerID": {
@@ -13942,6 +13958,10 @@
           "cpCustomerID": {
             "type": "string",
             "description": "Unique ID of customer account in Ev system."
+          },
+          "isDisable": {
+            "type": "boolean",
+            "description": "True, If anonymise the card details. Else, false"
           },
           "CardTokenInfoMessage": {
             "type": "object",
