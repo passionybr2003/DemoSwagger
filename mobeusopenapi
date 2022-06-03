@@ -1,0 +1,3560 @@
+{
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "url": "https://rest-uat-mobeus.evergent.com/mobeus"
+    }
+  ],
+  "info": {
+    "description": "<b>Last Updated Date 09th June 2022 </b><br> <br><b> Revision History: </b> <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.",
+    "version": "",
+    "title": "Evergent Rest APIs --V1.01",
+    "contact": {
+      "email": "Contact@evergent.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Acquisition and Authentication",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Offers, Personalization and Product Catalogue",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Order Processing",
+      "description": "Secured Demo-only calls"
+    },
+    {
+      "name": "Selfcare",
+      "description": "Secured Demo-only calls"
+    }
+  ],
+  "paths": {
+    "/createUser": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "operationId": "CreateUserRequestMessage",
+        "description": "createUser() REST API is used to create an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "CreateUserResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "spAccountID": {
+                          "type": "string",
+                          "description": "Service Provider Account ID"
+                        },
+                        "cpCustomerID": {
+                          "type": "string",
+                          "description": "Channel Partner Customer ID"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 11111111": {
+            "description": "Authentication Failed"
+          },
+          "x- 1062": {
+            "description": "UserName already exists"
+          },
+          "x- 1065": {
+            "description": "UserName length should be minimum 4"
+          },
+          "x- 1069": {
+            "description": "Password length should be minimum 4"
+          },
+          "x- 1058": {
+            "description": "Please enter a valid email"
+          },
+          "x- 2359": {
+            "description": "SocialLoginType Should not be empty"
+          },
+          "x- 2018": {
+            "description": "Either SocialLoginType or Password should be mandatory"
+          },
+          "x- 1268": {
+            "description": "NO Zone X Reference exists with the DMA ID XXXXX"
+          },
+          "x- 1001": {
+            "description": "User Authentication Failed for UserName with ChannelPartnerName."
+          },
+          "x- 2511": {
+            "description": "Missing Required Parameter(s)"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CreateUserRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/createUser"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPaymentMethods": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "GetPaymentMethodsRequestMessage",
+        "description": "getPaymentMethods() REST API is used to fetch all the existing payment methods to the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetPaymentMethodsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "PaymentMethods": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/PaymentMethods"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 2138": {
+            "description": "Generic Failure"
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          },
+          "x- 2307": {
+            "description": "Invalid Email."
+          },
+          "x- 2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- 1258": {
+            "description": "CustomerID is mandatory"
+          },
+          "x- 1342": {
+            "description": "Invalid customer ID"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetPaymentMethodsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getPaymentMethods"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addSubscription": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "AddSubscriptionRequestMessage",
+        "description": "addSubscription() REST API is used to place subscription for the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "AddSubscriptionResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "orderID": {
+                          "type": "string",
+                          "description": "Unique order ID"
+                        },
+                        "orderedProductIds": {
+                          "type": "string",
+                          "description": "Individual ordered product Ids"
+                        },
+                        "validityTill": {
+                          "type": "string",
+                          "description": "Validity end date of the service"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- 1663": {
+            "description": "Either ServiceId or ServiceName is required"
+          },
+          "x- 1668": {
+            "description": "Service Type should be PRODUCT/PACKAGE"
+          },
+          "x- 1513": {
+            "description": "Invalid label"
+          },
+          "x- 1108": {
+            "description": "Label cannot be empty in Payment Method Info"
+          },
+          "x- 1107": {
+            "description": "Insufficient parameters. Please provide payment method Info"
+          },
+          "x- 2597": {
+            "description": "Your order is in progress. Please try again later."
+          },
+          "x- 1132": {
+            "description": "Invalid Parameter expiry date in CardInformation, Enter current or later month"
+          },
+          "x- 1129": {
+            "description": "Parameter Card Number is not valid in CardInformation"
+          },
+          "x- 1744": {
+            "description": "Account does not exists with given details"
+          },
+          "x- 1703": {
+            "description": "Account is already in inactive state"
+          },
+          "x- 1106": {
+            "description": "Insufficient parameters. Please provide Services Info"
+          },
+          "x- 3212": {
+            "description": "Amount should not be -ve"
+          },
+          "x- 3211": {
+            "description": "Price charged should not be -ve"
+          },
+          "x- 2374": {
+            "description": "No Service exists with the given App service ID :XXX"
+          },
+          "x- 1135": {
+            "description": "Invalid Quantity, Quantity of the Service should be greater than or equal to one"
+          },
+          "x- 1136": {
+            "description": "Invalid Quantity, should be in numbers"
+          },
+          "x- 1110": {
+            "description": "Invalid Parameters in Payment Method Info"
+          },
+          "x- 1682": {
+            "description": "Insufficient Card billing Parameters"
+          },
+          "x- 1684": {
+            "description": "Payment method is mandatory"
+          },
+          "x- 2755": {
+            "description": "This coupon has already been expired"
+          },
+          "x- 1861": {
+            "description": "This coupon has already been redeemed"
+          },
+          "x- 1863": {
+            "description": "This coupon has been disabled"
+          },
+          "x- 1862": {
+            "description": "This coupon has expired"
+          },
+          "x- 1882": {
+            "description": "Maximum redemptions reached"
+          },
+          "x- 1845": {
+            "description": "No Packages/Products associated with the given coupon code"
+          },
+          "x- 1679": {
+            "description": "No Promotional Item exists with the given"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AddSubscriptionRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/addSubscription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getProrate": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "GetProrateRequestMessage",
+        "description": "getProrate() REST API to fetch prorate calculation for the selected services.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetProrateResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "addedItems": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/addedItems"
+                        },
+                        "totalTax": {
+                          "type": "string",
+                          "description": "Total tax for selected services"
+                        },
+                        "totalPriceAfterTax": {
+                          "type": "string",
+                          "description": "Total price after tax for selected services"
+                        },
+                        "totalDiscountAmount": {
+                          "type": "string",
+                          "description": "Total discount amount for selected services"
+                        },
+                        "nextBillingDateTime": {
+                          "type": "string",
+                          "description": "Next billing date in milli seconds"
+                        },
+                        "amountDueToday": {
+                          "type": "string",
+                          "description": "Amount due today for selected services"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- 1663": {
+            "description": "Either Service id or Service name is required"
+          },
+          "x- 1668": {
+            "description": "Service Type should be PRODUCT/PACKAGE"
+          },
+          "x- 1513": {
+            "description": "Invalid label"
+          },
+          "x- 1108": {
+            "description": "Label cannot be empty in Payment Method Info"
+          },
+          "x- 1107": {
+            "description": "Insufficient parameters. Please provide payment method Info"
+          },
+          "x- 2597": {
+            "description": "Your order is in progress. Please try again later."
+          },
+          "x- 1132": {
+            "description": "Invalid Parameter expiry date in Card information, Enter current or later month"
+          },
+          "x- 1129": {
+            "description": "Parameter Card Number is not valid in Card information"
+          },
+          "x- 1744": {
+            "description": "Account does not exists with given details"
+          },
+          "x- 1703": {
+            "description": "Account is already in inactive state"
+          },
+          "x- 1106": {
+            "description": "Insufficient parameters. Please provide Services Info"
+          },
+          "x- 3212": {
+            "description": "Amount should not be -ve"
+          },
+          "x- 3211": {
+            "description": "Price charged should not be -ve"
+          },
+          "x- 2374": {
+            "description": "No Service exists with the given App service ID :XXX"
+          },
+          "x- 1135": {
+            "description": "Invalid Quantity, Quantity of the Service should be greater than or equal to one"
+          },
+          "x- 1136": {
+            "description": "Invalid Quantity, should be in numbers"
+          },
+          "x- 1110": {
+            "description": "Invalid Parameters in Payment Method Info"
+          },
+          "x- 1682": {
+            "description": "Insufficient Card billing Parameters"
+          },
+          "x- 1684": {
+            "description": "Payment method is mandatory"
+          },
+          "x- 2755": {
+            "description": "This coupon has already been expired"
+          },
+          "x- 1861": {
+            "description": "This coupon has already been redeemed"
+          },
+          "x- 1863": {
+            "description": "This coupon has been disabled"
+          },
+          "x- 1862": {
+            "description": "This coupon has expired"
+          },
+          "x- 1882": {
+            "description": "Maximum redemptions reached"
+          },
+          "x- 1845": {
+            "description": "No Packages/Products associated with the given coupon code"
+          },
+          "x- 1679": {
+            "description": "No Promotional Item exists with the given"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetProrateRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getProrateReq"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateContact": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "UpdateContactRequestMessage",
+        "description": "updateContact() REST API is used to update the contact of an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "UpdateContactResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "API response status"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          },
+          "x- 2138": {
+            "description": "Generic Failure"
+          },
+          "x- 1258": {
+            "description": "CustomerID is mandatory"
+          },
+          "x- 1342": {
+            "description": "Invalid customer ID"
+          },
+          "x- 2123": {
+            "description": "Either SP Account ID or CP Customer ID or Session Token is required"
+          },
+          "x- 2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- 1047": {
+            "description": "First Name should not exceed 100 characters"
+          },
+          "x- 1048": {
+            "description": "Last Name should not exceed 100 characters"
+          },
+          "x- 1073": {
+            "description": "length should be 10 digits"
+          },
+          "x- 1057": {
+            "description": "Email should not exceed 256 characters"
+          },
+          "x- 1058": {
+            "description": "Please enter a valid email"
+          },
+          "x- 1064": {
+            "description": "UserName length should not exceed 256"
+          },
+          "x- 1065": {
+            "description": "UserName length should be minimum 4"
+          },
+          "x- 1066": {
+            "description": "UserName - Spaces are not allowed"
+          },
+          "x- 1068": {
+            "description": "Password length should not exceed 100"
+          },
+          "x- 1070": {
+            "description": "Password - Spaces are not allowed"
+          },
+          "x- 2034": {
+            "description": "UserName is mandatory"
+          },
+          "x- 2473": {
+            "description": "Parental Control PIN shouldn't have exceeded 4 digits"
+          },
+          "x- 2457": {
+            "description": "New parental control pin should be numeric"
+          },
+          "x- 1724": {
+            "description": "Your Request has already been submitted"
+          },
+          "x- 1023": {
+            "description": "Error While Processing the Request"
+          },
+          "x- 2505": {
+            "description": "Old password is required"
+          },
+          "x- 2504": {
+            "description": "Invalid old password"
+          },
+          "x- 2515": {
+            "description": "Your password is shorter than 8 characters"
+          },
+          "x- 2516": {
+            "description": "Your given password Shouldn't be \\\"Password\\"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UpdateContactRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/updateContact"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changeService": {
+      "post": {
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "ChangeServiceRequestMessage",
+        "description": "changeService() REST API is used to upgrade or downgrade the existing service of the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ChangeServiceResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "status": {
+                          "type": "string",
+                          "description": "API response status"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- eV2235": {
+            "description": "Either SP Account ID or CP Customer ID or Contact ID or Session Token is required"
+          },
+          "x- eV2124": {
+            "description": "Invalid session token"
+          },
+          "x- eV1003": {
+            "description": "Invalid SP Account ID XXX  for  BU [ where XXX = SP Account ID]"
+          },
+          "x- eV1342": {
+            "description": "Invalid customer ID XXXXXXXXX  for  XXXXXX\"    [where YYY = customer ID]"
+          },
+          "x- eV1638": {
+            "description": "Account doesn't exists with the given SP Account ID XXX and Customer ID YYY [ where XXX = SP Account ID]  [where YYY =  customerID]"
+          },
+          "x- eV1214": {
+            "description": "Account is already Inactive. Basic Service can't be changed"
+          },
+          "x- eV2252": {
+            "description": "Invalid Service Names or ID's , Names or ID's cannot be empty"
+          },
+          "x- eV2253": {
+            "description": "There is no subscription product or package with the given name in the product area"
+          },
+          "x- eV2255": {
+            "description": "The account already has the service"
+          },
+          "x- eV2254": {
+            "description": "Given service name or ID is not attached to this account"
+          },
+          "x- eV1219": {
+            "description": "Pricing not defined for the product\\ XXXXXXX(XXXX represents product display name) \\  with quantity 1 as on  XXXX(XXXXX  represents  effectivestartdate)"
+          },
+          "x- eV1221": {
+            "description": "Pricing not defined for the package \\ XXXXXXX(XXXX represents product display name) \\  with quantity 1 as on  XXXX(XXXXX represents effectivestartdate)"
+          },
+          "x- eV1223": {
+            "description": "Invalid date format"
+          },
+          "x- eV1224": {
+            "description": "should be greater than or equal to Current Date"
+          },
+          "x- eV1684": {
+            "description": "Payment method is mandatory"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ChangeServiceRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/changeService"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getContact": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "GetContactRequestMessage",
+        "description": "getContact() REST API is used to get the contact details of an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetContactResponseMessage": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/GetContactResponseMessage"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          },
+          "x- 2493": {
+            "description": "Either SP Account ID or CP Customer ID or Session Token or Contact ID is required"
+          },
+          "x- 2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- 1003": {
+            "description": "Invalid SP Account ID XXXXXXXX  for YYYYYY Where X==SP Account ID and Y ==BU Name"
+          },
+          "x- 1342": {
+            "description": "Invalid customer ID XXXXXXXXX  for  YYYYYY Where X==customer ID  and  Y ==BU Name"
+          },
+          "x- 2223": {
+            "description": "Invalid Contact ID XXXX  for YYYYY Where X==Contact ID  and Y ==BU Name"
+          },
+          "x- 1638": {
+            "description": "Account doesn't exists with the given Contact ID XXXX  and  Customer ID Where X==SP Account ID"
+          },
+          "x- 1907": {
+            "description": "Invalid ContactId"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetContactRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getContact"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getProducts": {
+      "post": {
+        "tags": [
+          "Offers, Personalization and Product Catalogue"
+        ],
+        "operationId": "GetProductsRequestMessage",
+        "description": "getProducts() REST API is used to get the products list available to that DMA.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetProductsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "productsResponseMessage": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/productsResponseMessage"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          },
+          "x- 1267": {
+            "description": "DMA id is mandatory"
+          },
+          "x- 1397": {
+            "description": "No products defined for the given DMA:XXXX | YYYY  for   ZZZZZZ Where X==DMAID ,Y= DMA Name  and   Z ==BU Name No products defined for the given DMA:XXXX  for   YYYYY Where X==DMAID ,Y= BU Name No products defined for the given DMA:XXXX   for   YYYYY\" Where X==DMA Name and Y= BU Name"
+          },
+          "x- 1391": {
+            "description": "Invalid pricing date"
+          },
+          "x- 2086": {
+            "description": "Invalid return promotions"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetProductsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getProducts"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/removeSubscription": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "RemoveSubscriptionRequestMessage",
+        "description": "removeSubscription() REST API removes subscription from the customer account.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "removeSubscriptionResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 20001": {
+            "description": "Generic Failure"
+          },
+          "x- 20003": {
+            "description": "Missing Required Parameter"
+          },
+          "x- 20005": {
+            "description": "Invalid session token"
+          },
+          "x- 20237": {
+            "description": "Invalid customer ID XXXXXXXXX  for  XXXXXX"
+          },
+          "x- 20268": {
+            "description": "Invalid SP Account ID XXXXXXXX"
+          },
+          "x- 20327": {
+            "description": "Invalid End Date"
+          },
+          "x- 20329": {
+            "description": "CpCustomer ID or spAccountID or session token is required"
+          },
+          "x- 20369": {
+            "description": "Can't Remove This Service Prior To Its Bill Start Date"
+          },
+          "x- 20372": {
+            "description": "end date should be greater than or equal to start date"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "RemoveSubscriptionRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/removeSubscription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getActiveSubscriptions": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "GetActiveSubscriptionsRequestMessage",
+        "description": "getActiveSubscriptions() REST API is used to get the active  subscriptions of an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetActiveSubscriptionsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "API response message"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "API response code"
+                        },
+                        "Country": {
+                          "type": "string",
+                          "description": "Two letter country code. Identifies the Country of customer accessing the portal"
+                        },
+                        "nextBillingDateTime": {
+                          "type": "string",
+                          "description": "Next billing date of the account"
+                        },
+                        "nextBillingAmount": {
+                          "type": "string",
+                          "description": "Next billing amount of the account"
+                        },
+                        "AccountServiceMessage": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/AccountServiceMessage"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          },
+          "x- 2235": {
+            "description": "Either SP Account ID or CP Customer ID or Contact ID or Session Token is required"
+          },
+          "x- 2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- 1003": {
+            "description": "Invalid SP Account ID XXXX   for  BU"
+          },
+          "x- 1342": {
+            "description": "Invalid customer ID YYYY for  BU"
+          },
+          "x- 1638": {
+            "description": "Account doesn't exists with the given  SP Account ID  XXXX  and Customer ID    YYYYY  and\"  Email AAA"
+          },
+          "x- 2223": {
+            "description": "Invalid Email. AAA for Bu"
+          },
+          "x- 2138": {
+            "description": "Generic Failure"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetActiveSubscriptionsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/getActiveSubscriptions"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatePaymentInfo": {
+      "post": {
+        "tags": [
+          "Selfcare"
+        ],
+        "operationId": "UpdatePaymentInfoRequestMessage",
+        "description": "updatePaymentInfo() REST API is used to update payment method information of an account in Evergent system.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "UpdatePaymentInfoResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string"
+                        },
+                        "responseCode": {
+                          "type": "string"
+                        },
+                        "paymentMethodId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          },
+          "x- 2235": {
+            "description": "Either SP Account ID or CP Customer ID or Contact ID or Session Token is required"
+          },
+          "x- 2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- 1003": {
+            "description": "Invalid SP Account ID XXXX   for  BU"
+          },
+          "x- 1342": {
+            "description": "Invalid customer ID YYYY for  BU"
+          },
+          "x- 1638": {
+            "description": "Account doesn't exists with the given  SP Account ID  XXXX  and Customer ID    YYYYY  and\"  Email AAA"
+          },
+          "x- 2223": {
+            "description": "Invalid Email. AAA for Bu"
+          },
+          "x- 2138": {
+            "description": "Generic Failure"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UpdatePaymentInfoRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/updatePaymentInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "createUser": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "customerUsername",
+          "customerPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "Customer Email ID"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Customer First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Customer Last Name"
+          },
+          "country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of customer accessing the portal"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "A unique identifier of the account in Partner systems."
+          },
+          "dmaId": {
+            "type": "string",
+            "description": "Discrete market area ID in which product catalog is defined"
+          }
+        }
+      },
+      "changeService": {
+        "type": "object",
+        "required": [
+          "channelPartnerId",
+          "apiUser",
+          "apiPassword",
+          "oldServiceID",
+          "newServiceID",
+          "spAccountID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Channel partner ID"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account Id."
+          },
+          "oldServiceID": {
+            "type": "string",
+            "description": "ID of the existing service."
+          },
+          "newServiceID": {
+            "type": "string",
+            "description": "ID of the service which is going to add."
+          }
+        }
+      },
+      "getAccountProfileResponseMessage": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "API response message"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "API response code"
+          },
+          "downloadLimit": {
+            "type": "string",
+            "description": "Download limit of the account"
+          },
+          "downloadCount": {
+            "type": "string",
+            "description": "Download count of the account"
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "description": "Status of the subscription"
+          },
+          "subscriptionExpDateTime": {
+            "type": "string",
+            "description": "Subscription expiry date and time"
+          },
+          "nextBillingDateTime": {
+            "type": "string",
+            "description": "Next bill date of the account"
+          },
+          "subscribedProductCodes": {
+            "type": "string",
+            "description": "Account subscribed products"
+          },
+          "accountStatus": {
+            "type": "string",
+            "description": "Account status"
+          },
+          "numDeviceRegistered": {
+            "type": "string",
+            "description": "Number of registered devices at the account"
+          },
+          "customerFirstName": {
+            "type": "string",
+            "description": "Customer first name"
+          },
+          "customerLastName": {
+            "type": "string",
+            "description": "Customer Last name"
+          },
+          "isUserFreeTrial": {
+            "type": "string",
+            "description": "Denotes if customer is under free trial"
+          },
+          "hasActivationCode": {
+            "type": "string",
+            "description": "Denotes if customer has activation code"
+          },
+          "freeTrialStartDate": {
+            "type": "string",
+            "description": "Free trial start date"
+          },
+          "freeTrialendDate": {
+            "type": "string",
+            "description": "Free trial end date"
+          }
+        }
+      },
+      "productsResponseMessage": {
+        "type": "object",
+        "properties": {
+          "dmaName": {
+            "type": "string",
+            "description": "Discrete market area name"
+          },
+          "basicService": {
+            "type": "boolean",
+            "description": "Denotes product is basic service or not"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Name of the product"
+          },
+          "skuORQuickCode": {
+            "type": "string",
+            "description": "Unique code of the product in the system"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code of the product"
+          },
+          "currencySymbol": {
+            "type": "string",
+            "description": "Currency symbol of the product for front end to use"
+          },
+          "productDescription": {
+            "type": "string",
+            "description": "Description of the product"
+          },
+          "period": {
+            "type": "string",
+            "description": "Period of the product"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration of the defined period"
+          },
+          "productCategory": {
+            "type": "string",
+            "description": "Category of the product"
+          },
+          "renewable": {
+            "type": "boolean",
+            "description": "Denotes if product is renewable or not"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Type of the product service"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the product"
+          },
+          "displayOrder": {
+            "type": "string",
+            "description": "Display order of the product"
+          },
+          "retailPrice": {
+            "type": "integer",
+            "description": "Retail price of the product"
+          },
+          "isAdsEnabled": {
+            "type": "boolean",
+            "description": "Denotes if product is ads enabled or not"
+          },
+          "isBannerAdsEnabled": {
+            "type": "boolean",
+            "description": "Denotes if product is banner ads enabled or not"
+          },
+          "isInterstitialAdsEnabled": {
+            "type": "boolean",
+            "description": "Denotes if product is interstitial ads enabled or not"
+          },
+          "isFreemium": {
+            "type": "boolean",
+            "description": "Denotes if product under free trail or not"
+          }
+        }
+      },
+      "getParentalControlDetails": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          }
+        }
+      },
+      "setString": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "sessionToken",
+          "objectTypeName",
+          "attributeName",
+          "attributeValue"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          },
+          "objectTypeName": {
+            "type": "string",
+            "description": "Name of the object type."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique token generated for the account on successful authentication."
+          },
+          "attributeName": {
+            "type": "string",
+            "description": "Unique name of the attribute."
+          },
+          "attributeValue": {
+            "type": "string",
+            "description": "Attribute Value."
+          }
+        }
+      },
+      "getContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account id."
+          },
+          "locale": {
+            "type": "string",
+            "description": "Language supported to the customer"
+          }
+        }
+      },
+      "getAccountProfile": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique identifier of the account."
+          }
+        }
+      },
+      "validateParentalControlPIN": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "sessionToken",
+          "parentalControlPin"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication Key."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          },
+          "parentalControlPin": {
+            "type": "string",
+            "description": "Secure pin of parental control."
+          }
+        }
+      },
+      "GetAllSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique token generated for the account on successful authentication."
+          }
+        }
+      },
+      "activeSubscriptions": {
+        "type": "object",
+        "properties": {
+          "serialNo": {
+            "type": "string"
+          },
+          "isContent": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string"
+          },
+          "serviceID": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "validityTill": {
+            "type": "string"
+          },
+          "retailPrice": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "currencyCode": {
+            "type": "string"
+          },
+          "cancellable": {
+            "type": "string"
+          },
+          "hasAction": {
+            "type": "string"
+          },
+          "subscriptionType": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "isRenewal": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "paymentMethod": {
+            "type": "string"
+          },
+          "opId": {
+            "type": "string"
+          },
+          "validityPeriod": {
+            "type": "string"
+          },
+          "validityDuration": {
+            "type": "string"
+          },
+          "startDateInMillis": {
+            "type": "string"
+          },
+          "productCategory": {
+            "type": "string"
+          },
+          "basicService": {
+            "type": "string"
+          },
+          "isPackage": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          }
+        }
+      },
+      "getPaymentsV2": {
+        "type": "object",
+        "required": [
+          "apiUser",
+          "apiPassword"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the customer on successful authentication."
+          }
+        }
+      },
+      "getProrateReq": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID",
+          "dmaId",
+          "itemsInfo",
+          "serviceId",
+          "serviceType",
+          "quantity",
+          "addressMsg"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account ID."
+          },
+          "dmaID": {
+            "type": "string",
+            "description": "Market area id of the customer."
+          },
+          "itemsInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/itemsInfo"
+            }
+          },
+          "addressMsg": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/addressMsg"
+            }
+          }
+        }
+      },
+      "addressMsg": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "description": "Two letter state code of the customer"
+          },
+          "zipCode": {
+            "type": "string",
+            "description": "Zip code of the state"
+          }
+        }
+      },
+      "itemsInfo": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string",
+            "description": "Unique Id of the service"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Type of the service"
+          },
+          "quantity": {
+            "type": "string",
+            "description": "Quantity of the service"
+          }
+        }
+      },
+      "order": {
+        "type": "object",
+        "properties": {
+          "orderID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "totalPriceCharged": {
+            "type": "integer"
+          },
+          "totalTaxCharged": {
+            "type": "integer"
+          },
+          "orderProductInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/orderProductInfo"
+            }
+          },
+          "paymentsInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/paymentsInfo"
+            }
+          }
+        }
+      },
+      "orderProductInfo": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "retailPrice": {
+            "type": "integer"
+          },
+          "chargedPrice": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "taxCharged": {
+            "type": "integer"
+          }
+        }
+      },
+      "paymentsInfo": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "integer"
+          },
+          "receivedDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "paymentType": {
+            "type": "string"
+          },
+          "postingStatus": {
+            "type": "string"
+          },
+          "gatewayResponse": {
+            "type": "string"
+          },
+          "paymentID": {
+            "type": "string"
+          },
+          "paymentMethodID": {
+            "type": "integer"
+          },
+          "creditCardNumber": {
+            "type": "string"
+          },
+          "cardType": {
+            "type": "string"
+          },
+          "paymentCategory": {
+            "type": "string"
+          }
+        }
+      },
+      "getParentalControlLevels": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          }
+        }
+      },
+      "parentalControlLevels": {
+        "type": "object",
+        "properties": {
+          "descrip": {
+            "type": "string"
+          },
+          "businessUnitId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "getVoucherDetails": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "voucherCode"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "voucherCode": {
+            "type": "string",
+            "description": "Voucher code."
+          }
+        }
+      },
+      "couponCodeDetails": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "string"
+          },
+          "validityEndDate": {
+            "type": "string"
+          },
+          "couponBatchName": {
+            "type": "string"
+          },
+          "couponCode": {
+            "type": "string"
+          },
+          "applicableToDate": {
+            "type": "string"
+          },
+          "discountType": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "paymentMethodRequired": {
+            "type": "string"
+          },
+          "isTVODPromo": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "isPaidCoupon": {
+            "type": "string"
+          }
+        }
+      },
+      "resendVerificationEmail": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "email": {
+            "type": "string",
+            "description": "email of the customer."
+          }
+        }
+      },
+      "changePassword": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "sessionToken",
+          "parentalControlPin"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication Key."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          },
+          "parentalControlPin": {
+            "type": "string",
+            "description": "Secure pin of parental control."
+          }
+        }
+      },
+      "sendEmail": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken",
+          "email",
+          "emailTemplate"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          },
+          "email": {
+            "type": "string",
+            "description": "Unique email of the account."
+          },
+          "emailTemplate": {
+            "type": "string",
+            "description": "Description of the template."
+          }
+        }
+      },
+      "logoutAllDevices": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "sessionToken",
+          "isExemptCurrentDevice"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          },
+          "isExemptCurrentDevice": {
+            "type": "string",
+            "description": "Excempt current device for logging out."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          }
+        }
+      },
+      "getString": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID",
+          "attributeName",
+          "objectTypeName"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "A unique identifier of the account in EV systems."
+          },
+          "attributeName": {
+            "type": "string",
+            "description": "Unique name of the attribute."
+          },
+          "objectTypeName": {
+            "type": "string",
+            "description": "Object type name."
+          }
+        }
+      },
+      "removeSubscription": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID",
+          "serviceType",
+          "serviceId"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider Account ID."
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Service of the customer."
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "SKU/Quick Code of the Product"
+          }
+        }
+      },
+      "getActiveSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account ID"
+          }
+        }
+      },
+      "AccountServiceMessage": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Service start date"
+          },
+          "retailPrice": {
+            "type": "integer",
+            "description": "Retail price of the service"
+          },
+          "orderID": {
+            "type": "string",
+            "description": "Order Id for the service"
+          },
+          "isContent": {
+            "type": "boolean",
+            "description": "Denotes content service or not"
+          },
+          "isfreemium": {
+            "type": "boolean",
+            "description": "Denotes if service is in free trial"
+          },
+          "planPriceWithTax": {
+            "type": "string",
+            "description": "The plan price with tax"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Type of the service"
+          },
+          "isInFreeTrial": {
+            "type": "string",
+            "description": "Denotes if the service is in free trial or not"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the service"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the service"
+          },
+          "serviceID": {
+            "type": "string"
+          },
+          "isRenewal": {
+            "type": "boolean",
+            "description": "Denotes if the service is renewable or not"
+          },
+          "validityTill": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Validity till date of the service"
+          },
+          "serviceOfType": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the service"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code"
+          },
+          "currencySymbol": {
+            "type": "string",
+            "description": "Currency symbol"
+          },
+          "cancellable": {
+            "type": "string",
+            "description": "denotes the service is cancellable or not"
+          },
+          "hasAction": {
+            "type": "string",
+            "description": "Denotes if the service has actions"
+          },
+          "subscriptionType": {
+            "type": "string",
+            "description": "The type of subscription"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the service"
+          },
+          "period": {
+            "type": "string",
+            "description": "Period of the service"
+          },
+          "duration": {
+            "type": "string",
+            "description": "Duration of the service"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "description": "Customer preferred payment method"
+          },
+          "opId": {
+            "type": "string",
+            "description": "Operational Id"
+          },
+          "priceCharged": {
+            "type": "string",
+            "description": "Price charged for the service"
+          },
+          "validityPeriod": {
+            "type": "string",
+            "description": "Validity period of the service"
+          },
+          "validityDuration": {
+            "type": "string",
+            "description": "Validity duration of the service"
+          },
+          "cancellationDate": {
+            "type": "string",
+            "description": "Cancellation date of the service"
+          },
+          "startDateInMillis": {
+            "type": "string",
+            "description": "Start date in milli seconds"
+          },
+          "productCategory": {
+            "type": "string",
+            "description": "service category of the product"
+          },
+          "type": {
+            "type": "string",
+            "description": "Charging type"
+          },
+          "basicService": {
+            "type": "boolean",
+            "description": "Denotes basic service or not"
+          },
+          "isPackage": {
+            "type": "boolean",
+            "description": "Denotes package or not"
+          },
+          "planPrice": {
+            "type": "string",
+            "description": "Plan price"
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "description": "Status of the subscription"
+          },
+          "isDiscountedPrice": {
+            "type": "boolean",
+            "description": "Denotes if discount is provided"
+          },
+          "quantity": {
+            "type": "string",
+            "description": "Service quantity"
+          },
+          "formattedValidityEndDateWithTZ": {
+            "type": "string",
+            "description": "Validity end date formatted to business time zone specified."
+          },
+          "orderDateTimeInMillis": {
+            "type": "string",
+            "description": "Order date and time in milli seconds"
+          }
+        }
+      },
+      "getProducts": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "dmaID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "dmaID": {
+            "type": "string",
+            "description": "Unique ID of the channel partner."
+          },
+          "returnAppChannels": {
+            "type": "string",
+            "description": "Parameter to return app channels of products in the response."
+          },
+          "returnLocaleDisplayName": {
+            "type": "string",
+            "description": "Parameter to return local display name captured at the products in the response."
+          },
+          "returnPromotions": {
+            "type": "string",
+            "description": "Parameter to return promotions of products in the response."
+          },
+          "returnAttributes": {
+            "type": "string",
+            "description": "Parameter to return attributes of products in the response."
+          }
+        }
+      },
+      "addSubscription": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "spAccountID",
+          "apiUser",
+          "apiPassword",
+          "serviceID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account id."
+          },
+          "isSkipDefaultPromo": {
+            "type": "string",
+            "description": "Denotes if default promo to be applied or not."
+          },
+          "serviceID": {
+            "type": "string",
+            "description": "Unique ID of the service to be ordered"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Denotes if selected service is a product or a package."
+          },
+          "paymentmethodInfo": {
+            "type": "object",
+            "$ref": "#/components/schemas/paymentmethodInfo"
+          }
+        }
+      },
+      "paymentmethodInfo": {
+        "type": "object",
+        "required": [
+          "label",
+          "cardInfoMsg",
+          "transactionReferenceMsg"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Label of the payment method."
+          },
+          "makeAutoPayment": {
+            "type": "string",
+            "description": "Denotes if provided payment method is to be set as auto payment method for the account."
+          },
+          "cardInfoMsg": {
+            "type": "object",
+            "$ref": "#/components/schemas/cardInfoMessage2"
+          }
+        }
+      },
+      "cardInfoMsg": {
+        "type": "object",
+        "required": [
+          "cardNumber",
+          "expiryDate",
+          "nameOnCard",
+          "securityCode",
+          "cardType"
+        ],
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Credit Card Number."
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Expiry Date of Credit Card."
+          },
+          "txID": {
+            "type": "string",
+            "description": "Unique transaction ID."
+          },
+          "txRefNo": {
+            "type": "string",
+            "description": "Unique transaction reference number."
+          },
+          "txMsg": {
+            "type": "string",
+            "description": "Transaction Message."
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the Credit Card."
+          },
+          "securityCode": {
+            "type": "string",
+            "description": "CVV/ Security code of the card."
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type mentioned or sanctioned on the card."
+          }
+        }
+      },
+      "services": {
+        "type": "object",
+        "required": [
+          "service"
+        ],
+        "properties": {
+          "service": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/service"
+            }
+          }
+        }
+      },
+      "service": {
+        "type": "object",
+        "required": [
+          "serviceName",
+          "serviceId",
+          "serviceType",
+          "quantity"
+        ],
+        "properties": {
+          "serviceName": {
+            "type": "string",
+            "description": "Service Name of the Service"
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "serviceId of the Service"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "serviceType of the Service"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity of the Service"
+          }
+        }
+      },
+      "getPaymentMethods": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service Provider Account ID."
+          }
+        }
+      },
+      "promotionss": {
+        "properties": {
+          "promotionId": {
+            "type": "string"
+          },
+          "promotionName": {
+            "type": "string"
+          },
+          "promotionType": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "percentage": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "promotionalPrice": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rateType": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "isVODPromotion": {
+            "type": "boolean"
+          },
+          "promoDescrip": {
+            "type": "string"
+          },
+          "isFreeTrial": {
+            "type": "boolean"
+          },
+          "isDefaultPromo": {
+            "type": "boolean"
+          },
+          "promotionExpiry": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "vodItems": {
+        "properties": {
+          "commercialModel": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string"
+          },
+          "videoFormat": {
+            "type": "string"
+          },
+          "viewingPeriod": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "price": {
+            "type": "integer"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "RentalPeriod": {
+            "type": "string"
+          }
+        }
+      },
+      "addContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email",
+          "customerUsername",
+          "customerPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "customerUsername": {
+            "type": "string",
+            "description": "User provided username"
+          },
+          "customerPassword": {
+            "type": "string",
+            "description": "User provided username"
+          }
+        }
+      },
+      "forgotContactPassword": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "User Email"
+          }
+        }
+      },
+      "PaymentMethods": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "Payment Method Status"
+          },
+          "label": {
+            "type": "string",
+            "description": "Card label"
+          },
+          "cardInfoMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cardInfoMessage1"
+            }
+          },
+          "nickName": {
+            "type": "string",
+            "description": "card holder nick name"
+          },
+          "isAutoPayment": {
+            "type": "boolean",
+            "description": "Denotes if payment method is selected as auto payment method"
+          },
+          "modifiedTs": {
+            "type": "string",
+            "description": "Payment method last modified date and time."
+          }
+        }
+      },
+      "cardInfoMessage1": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Card Number"
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type of card"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Card expiry date"
+          },
+          "paymentMethodId": {
+            "type": "string",
+            "description": "Payment method unique ID"
+          },
+          "methodType": {
+            "type": "string",
+            "description": "Payment method type"
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the card"
+          },
+          "billingAddress": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/billingAddress1"
+            }
+          }
+        }
+      },
+      "billingAddress1": {
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "description": "Address line 1"
+          },
+          "city": {
+            "type": "string",
+            "description": "Customer billing address city"
+          },
+          "state": {
+            "type": "string",
+            "description": "Customer billing address state"
+          },
+          "country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of user accessing the portal"
+          },
+          "zipCode": {
+            "type": "string",
+            "description": "Zipcode of the provided country."
+          }
+        }
+      },
+      "cardInfoMessage2": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Card Number"
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type of card"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Card expiry date"
+          },
+          "methodType": {
+            "type": "string",
+            "description": "Payment method type"
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the card"
+          },
+          "billingAddress": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/billingAddress"
+            }
+          }
+        }
+      },
+      "updateContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "spAccountID",
+          "firstName",
+          "contactID",
+          "email"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "Customer Email"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account Id"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Customer First Name"
+          },
+          "language": {
+            "type": "string",
+            "description": "Customer selected language"
+          },
+          "contactID": {
+            "type": "string",
+            "description": "Customer ContactID"
+          },
+          "alertNotificationEmail": {
+            "type": "boolean",
+            "description": "Opt in for alert notification via email"
+          }
+        }
+      },
+      "anonymizeAccount": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "cpCustomerID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "User Email"
+          }
+        }
+      },
+      "AccountDeviceDetails": {
+        "type": "object",
+        "properties": {
+          "serialNo": {
+            "type": "string"
+          },
+          "modelNo": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "returnLater": {
+            "type": "boolean"
+          },
+          "deviceName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "sendCarton": {
+            "type": "boolean"
+          },
+          "deviceType": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "deviceId": {
+            "type": "string"
+          }
+        }
+      },
+      "AccountPayments": {
+        "type": "object",
+        "properties": {
+          "paymentID": {
+            "type": "string"
+          },
+          "postingStatus": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer"
+          },
+          "paymentMethodID": {
+            "type": "string"
+          },
+          "orderedProductID": {
+            "type": "string"
+          },
+          "paymentType": {
+            "type": "string"
+          },
+          "gatewayResponse": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string"
+          },
+          "receivedDate": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AccountDeviceDetailsREQ": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique Token of the user account"
+          }
+        }
+      },
+      "removeDevices": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique Token of the user account"
+          }
+        }
+      },
+      "GetContactResponseMessage": {
+        "type": "object",
+        "properties": {
+          "contactMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/contactMessage"
+            }
+          },
+          "message": {
+            "type": "string",
+            "description": "API response message"
+          },
+          "responseCode": {
+            "type": "string",
+            "description": "API response code"
+          },
+          "cpCustomerID": {
+            "type": "string",
+            "description": "Channel Partner customer ID"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service provider account ID"
+          },
+          "isProfileComplete": {
+            "type": "string",
+            "description": "Denotes profile complteness"
+          },
+          "verificationStatus": {
+            "type": "boolean",
+            "description": "Profile verification status"
+          },
+          "isMobileVerified": {
+            "type": "boolean",
+            "description": "Denotes if user customer mobile number is verified or not"
+          },
+          "Country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of user accessing the portal"
+          },
+          "channelParnerID": {
+            "type": "string",
+            "description": "Unique channel partner ID of the customer"
+          }
+        }
+      },
+      "contactMessage": {
+        "type": "object",
+        "properties": {
+          "ageGroup": {
+            "type": "string",
+            "description": "Age group of the customer"
+          },
+          "isPrimaryContact": {
+            "type": "boolean",
+            "description": "Denotes if it is primary contact in account"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Customer first name"
+          },
+          "isAccessProfile": {
+            "type": "string",
+            "description": "Denotes if customer profile can be accessed."
+          },
+          "isAgeGroupSet": {
+            "type": "string",
+            "description": "Denotes if age group is defined"
+          },
+          "isVIP": {
+            "type": "string",
+            "description": "Denotes account VIP status"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Customer last name"
+          },
+          "allowTracking": {
+            "type": "boolean",
+            "description": "Denotes if profile tracting is allowed"
+          },
+          "parentalControl": {
+            "type": "boolean",
+            "description": "Opt in for parental control"
+          },
+          "email": {
+            "type": "string",
+            "description": "Customer email"
+          },
+          "isPasswordExists": {
+            "type": "boolean",
+            "description": "Password storage in the system"
+          },
+          "emailIsVerified": {
+            "type": "boolean",
+            "description": "Customer email verfication status."
+          },
+          "alertNotificationPush": {
+            "type": "boolean",
+            "description": "Opt in for alert push notification"
+          },
+          "alertNotificationEmail": {
+            "type": "boolean",
+            "description": "Opt in for alert email notification"
+          },
+          "contactID": {
+            "type": "string",
+            "description": "Unique contact ID in system"
+          },
+          "pin": {
+            "type": "boolean",
+            "description": "Profile pin for transactions"
+          },
+          "main": {
+            "type": "boolean",
+            "description": "Denotes if it is main profile"
+          }
+        }
+      },
+      "deletContact": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "sessionToken",
+          "contactID"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "Unique Token of the user account"
+          },
+          "contactID": {
+            "type": "string",
+            "description": "ContactID of the user account"
+          }
+        }
+      },
+      "createOTP": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email",
+          "country"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of user accessing the portal"
+          }
+        }
+      },
+      "logOutUser": {
+        "type": "object",
+        "required": [
+          "apiUser",
+          "apiPassword"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username."
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password."
+          },
+          "sessionToken": {
+            "type": "string",
+            "description": "A unique token generated for the account on successful authentication."
+          }
+        }
+      },
+      "updatePaymentInfo": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "lable",
+          "status",
+          "spAccountID",
+          "cardInfoMessage"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "label": {
+            "type": "string",
+            "description": "Denotes label of the card"
+          },
+          "isAutoPayment": {
+            "type": "string",
+            "description": "To specify if the card to be used for auto payments."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Service Provider account ID."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the card."
+          },
+          "cardInfoMessage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cardInfoMessage"
+            }
+          }
+        }
+      },
+      "cardInfoMessage": {
+        "type": "object",
+        "properties": {
+          "cardNumber": {
+            "type": "string",
+            "description": "Card Number"
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type of card"
+          },
+          "expiryDate": {
+            "type": "string",
+            "description": "Card expiry date"
+          },
+          "methodType": {
+            "type": "string",
+            "description": "Payment method type"
+          },
+          "nameOnCard": {
+            "type": "string",
+            "description": "Name on the card"
+          },
+          "billingAddress": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/billingAddress"
+            }
+          }
+        }
+      },
+      "billingAddress": {
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "description": "Address line 1"
+          },
+          "address2": {
+            "type": "string",
+            "description": "Address line 2"
+          },
+          "city": {
+            "type": "string",
+            "description": "Customer billing address city"
+          },
+          "state": {
+            "type": "string",
+            "description": "Customer billing address state"
+          },
+          "country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of user accessing the portal"
+          },
+          "zipCode": {
+            "type": "string",
+            "description": "Zipcode of the provided country."
+          }
+        }
+      },
+      "addedItems": {
+        "type": "object",
+        "properties": {
+          "orderQuotationInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/orderQuotationInfo"
+            }
+          }
+        }
+      },
+      "orderQuotationInfo": {
+        "type": "object",
+        "properties": {
+          "costBreakDown": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/costBreakDown"
+            }
+          },
+          "serviceID": {
+            "type": "string",
+            "description": "Service id"
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Type of service"
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the service"
+          },
+          "displayOrder": {
+            "type": "string",
+            "description": "Display order of the service"
+          },
+          "diaplayName": {
+            "type": "string",
+            "description": "Dispay name of the service"
+          },
+          "originalPrice": {
+            "type": "string",
+            "description": "Orginal price of the service"
+          }
+        }
+      },
+      "costBreakDown": {
+        "type": "object",
+        "properties": {
+          "bill": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/bill"
+            }
+          }
+        }
+      },
+      "bill": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Service charge start date"
+          },
+          "priceTobeCharged": {
+            "type": "string",
+            "description": "Price to be charged"
+          },
+          "priceAfterTax": {
+            "type": "string",
+            "description": "Price to be charged including tax amount"
+          },
+          "tax": {
+            "type": "string",
+            "description": "Tax amount"
+          },
+          "taxRate": {
+            "type": "string",
+            "description": "Applicable tax rate"
+          }
+        }
+      },
+      "confirmOTP": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiUser",
+          "apiPassword",
+          "email",
+          "country",
+          "otp",
+          "isGenerateToken"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "apiUser": {
+            "type": "string",
+            "description": "Partner authentication username"
+          },
+          "apiPassword": {
+            "type": "string",
+            "description": "Partner authentication password"
+          },
+          "email": {
+            "type": "string",
+            "description": "User Email"
+          },
+          "otp": {
+            "type": "string",
+            "description": "Entered otp"
+          },
+          "isGenerateToken": {
+            "type": "string",
+            "description": "description"
+          },
+          "country": {
+            "type": "string",
+            "description": "Two letter country code. Identifies the Country of user accessing the portal"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "Content-Type": {
+        "name": "Content-Type",
+        "in": "header",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "application/json"
+        }
+      },
+      "Authorization": {
+        "name": "Authorization",
+        "in": "header",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxOTA5MjUxNzQwMTgyNDk0NTQiLCJzaWQiOiIxOTA5MjUxNzQwMDk4ODkxODI0OTQ1NCIsIm5iZiI6MTU2OTQxMzUyNiwiaXNzIjoiZXYiLCJsb2MiOm51bGwsImlhdCI6MTU2OTQxMzUzMSwiY2lkIjoiNzc3OTg3IiwibG9naW5UeXBlIjoiY3BDdXN0b21lcklEIiwidnN0YXR1cyI6ZmFsc2UsImV4cCI6MTU2OTQ5OTkzMSwic2VyaWFsTm8iOiJmMjo5ODo4ZDpjNDoxNTo4NyIsIm1vZGVsTm8iOiJpUGhvbmUgWCIsImNwIjoiQlJJVEJPWFVTIiwiZGV2aWNlTmFtZSI6ImlQaG9uZSBTaW11bGF0b3IiLCJkZXZpY2VUeXBlIjoiaXBob25lIiwiYXVkIjoiQlJJVEJPWCIsImp0aSI6IjdqNU4tOEpTNi1lMk95LXcyaWItVUZEby1DeTNTLWhzIn0.PBWelrgEcql_g4ngTZushVTyw1nLaQe1udyWNg0k0cngUhxkDRb5RTfSHz60Kqjl3c7nQBm9xjvOmmlxyCqlSn608q7Io7L-Nt316ddJzGdW54CT8ZQrTBh1x0pmhZwp6Q7hLgbpfrohoCGSojTUhTs2ApND96vPEEi259muL77GjbS-XepmJ6GNcCVAfYY0XKn3fXamZGxY8Q4FqISKSJIK7VZx6NEW0atw3PcbURVvXdtYpZgzaa0Q2An87FMMVfXBi4f4gwS1KnHh-eY0FmWQRNpFJsbmH49WuntzVfGoRDpHijKeN6-BByMI4ZdoVqWhE7IyxvZmt_cBDMrxYi-S5hqKfYyw5w9gLB1wBHGzGaG46vcyVwuSzGMGaiKUvdkqFiH7jCehhNDLmOZw_FAQk08SkfyahgxqjFxiTgnWe7Vvz9aZ6LJDa7ZFGvZRbaxs9l-ScP6TORd0IbfJ1uTh1MT6RUBNMfHyZcS11bqGpLbJc-a08J3FQYHNIYcxOrXI2H0_dPKsVkns_-pcsScDV8lGl5dCLZHGz68y7SOedtW02mEJq6lCxm_8d-rohQmOflVyrG3ccduhtgrFd-K7rzOjiXQINdX9yEBUzq3GsMwW-cs7Ud2t2ja2TafkIn7udFtLf4ELUv-a_RpRiSkraUqMk5_ZXZ_1JbkIsnM"
+        }
+      },
+      "Accept": {
+        "name": "Accept",
+        "in": "header",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "application/json"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    },
+    {
+      "bearer": []
+    }
+  ]
+}
