@@ -10,7 +10,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 30th May, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 09th June, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.22",
     "contact": {
@@ -4120,6 +4120,93 @@
                       "authZToken": "15F40F40-A44B-11E7-B400-F6BF1D22E007_516205464442147483647000MBCretro693160416908570",
                       "serviceProvider": "SLING",
                       "externalAccountID": "986798645549458"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anonymizeAccount": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "operationId": "AnonymizeAccountRequestMessage",
+        "description": "AnonymizeAccount() REST API is used to anonomize the account from the EV System.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "AnonymyzeAccountResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success Status when Account anonimimized succesfully."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "AnonymyzeAccountResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "AnonymyzeAccountResponseMessage": {
+                        "responseCode": "1",
+                        "message": "success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AnonymizeAccountRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/anonymizeAccount"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "AnonymizeAccountRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "19111214155649085145"
                     }
                   }
                 }
@@ -8451,7 +8538,7 @@
         }
       }
     },
-    "/recordRedeemCouponDetails": {
+    "/reasonForCancellation": {
       "post": {
         "security": [
           {
@@ -8461,8 +8548,8 @@
         "tags": [
           "Order Processing"
         ],
-        "operationId": "RecordRedeemCouponRequestMessage",
-        "description": "recordRedeemCouponDetails() REST API is used to record the redeemed coupon to the account.",
+        "operationId": "ReasonForCancellationRequestMessage",
+        "description": "reasonForCancellation() REST API is used to map reason codes to the already cancelled subscription.",
         "responses": {
           "200": {
             "description": "Success",
@@ -8470,7 +8557,7 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "RecordRedeemCouponResponseMessage": {
+                    "ReasonForCancellationResponseMessage": {
                       "type": "object",
                       "properties": {
                         "message": {
@@ -8488,7 +8575,7 @@
                 "examples": {
                   "111111111": {
                     "value": {
-                      "RecordRedeemCouponResponseMessage": {
+                      "ReasonForCancellationResponseMessage": {
                         "failureMessage": [
                           {
                             "errorMessage": "Authentication Failed",
@@ -8499,37 +8586,11 @@
                       }
                     }
                   },
-                  "Sample Successful response": {
+                  "Success Response": {
                     "value": {
-                      "RecordRedeemCouponResponseMessage": {
-                        "message": "Coupon code applied successfully",
-                        "responseCode": "1"
-                      }
-                    }
-                  },
-                  "eV1842": {
-                    "value": {
-                      "RedeemCouponResponseMessage": {
-                        "failureMessage": [
-                          {
-                            "errorMessage": "Please enter a valid coupon code",
-                            "errorCode": "eV1842"
-                          }
-                        ],
-                        "responseCode": "0"
-                      }
-                    }
-                  },
-                  "eV2572": {
-                    "value": {
-                      "RedeemCouponResponseMessage": {
-                        "failureMessage": [
-                          {
-                            "errorMessage": "SPAccountID is mandatory",
-                            "errorCode": "eV2572"
-                          }
-                        ],
-                        "responseCode": "0"
+                      "ReasonForCancellationResponseMessage": {
+                        "responseCode": "1",
+                        "message": "Success"
                       }
                     }
                   }
@@ -8539,12 +8600,6 @@
           },
           "x- 111111111": {
             "description": "Authentication Failed"
-          },
-          "x- eV1842": {
-            "description": "Please enter a valid coupon code"
-          },
-          "x- eV2572": {
-            "description": "SPAccountID is mandatory"
           }
         },
         "requestBody": {
@@ -8553,34 +8608,24 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "RecordRedeemCouponRequestMessage": {
+                  "ReasonForCancellationRequestMessage": {
                     "type": "Object",
-                    "$ref": "#/components/schemas/recordRedeemCouponDetails"
+                    "$ref": "#/components/schemas/reasonForCancellation"
                   }
                 }
               },
               "examples": {
                 "Successful request": {
                   "value": {
-                    "RecordRedeemCouponRequestMessage": {
+                    "ReasonForCancellationRequestMessage": {
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "channelPartnerID": "SHAHID",
-                      "dmaID": "JO",
-                      "spAccountId": "PRODUCT",
-                      "redeemDate": 1623119699000,
-                      "couponCode": "JOFTAVRFj"
-                    }
-                  }
-                },
-                "Successful request with promotionID": {
-                  "value": {
-                    "RecordRedeemCouponRequestMessage": {
-                      "apiKey": "8uMMWK58TY2fGjJS",
-                      "channelPartnerID": "SHAHID",
-                      "dmaID": "JO",
-                      "spAccountId": "PRODUCT",
-                      "redeemDate": 1623119699000,
-                      "promotionID": "KSARD1MPROMO01"
+                      "spAccountID": 1654757242,
+                      "ordProdId": 2191847,
+                      "reasonDescription": "product removal reasoncodes mapping",
+                      "reasonCodes": [
+                        10089
+                      ]
                     }
                   }
                 }
@@ -15330,7 +15375,7 @@
           "Authorization",
           "channelPartnerID",
           "apiKey",
-          "spAccountId",
+          "spAccountID",
           "partnerName",
           "partnerReferenceId"
         ],
@@ -15343,7 +15388,7 @@
             "type": "string",
             "description": "Unique ID number of channel partner"
           },
-          "spAccountId": {
+          "spAccountID": {
             "type": "string",
             "description": "Unique sp account id generated on the account"
           },
@@ -15391,6 +15436,67 @@
           "partnerReferenceId": {
             "type": "string",
             "description": "Partner Reference ID"
+          }
+        }
+      },
+      "anonymizeAccount": {
+        "type": "object",
+        "required": [
+          "Authorization",
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Partner authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account"
+          }
+        }
+      },
+      "reasonForCancellation": {
+        "type": "object",
+        "required": [
+          "Authorization",
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID",
+          "ordProdId",
+          "reasonDescription",
+          "reasonCodes"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account"
+          },
+          "ordProdId": {
+            "type": "string",
+            "description": "cancelled subscription Order ID"
+          },
+          "reasonDescription": {
+            "type": "string",
+            "description": "Comments to cancel the subscription"
+          },
+          "reasonCodes": {
+            "type": "Array",
+            "description": "Specific Reasons to cancel the subscription"
           }
         }
       }
