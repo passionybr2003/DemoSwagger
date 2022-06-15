@@ -4216,6 +4216,95 @@
         }
       }
     },
+    "/deprovisionPartnerInfo": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "operationId": "DeprovisionPartnerInfoRequestMessage",
+        "description": "deprovisionPartnerInfo() REST API is used to remove phone number from payment method,contact info.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "DeprovisionPartnerInfoResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success Status"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "DeprovisionPartnerInfoResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "DeprovisionPartnerInfoResponseMessage": {
+                        "responseCode": "1",
+                        "message": "success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "DeprovisionPartnerInfoRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/deprovisionPartnerInfo"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "DeprovisionPartnerInfoRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "19111214155649085145",
+                      "homePhone": "9078564322",
+                      "isRemoveSubscription": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/redeemCoupon": {
       "post": {
         "security": [
@@ -15519,6 +15608,39 @@
           "reasonCodes": {
             "type": "object",
             "description": "Reason Codes"
+          }
+        }
+      },
+      "deprovisionPartnerInfo": {
+        "type": "object",
+        "required": [
+          "Authorization",
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID",
+          "homePhone",
+          "isRemoveSubscription"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account"
+          },
+          "homePhone": {
+            "type": "string",
+            "description": "Home Phone Number of the customer"
+          },
+          "isRemoveSubscription": {
+            "type": "boolean",
+            "description": "True - It removes subscription for that customer"
           }
         }
       }
