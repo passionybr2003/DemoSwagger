@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 09th June, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 15th June, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.22",
+    "title": "EV Shahid API - V14.23",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -8622,9 +8622,19 @@
                       "channelPartnerID": "SHAHID",
                       "spAccountID": 1654757242,
                       "ordProdId": 2191847,
-                      "reasonDescription": "product removal reasoncodes mapping",
                       "reasonCodes": [
-                        10089
+                        {
+                          "reasonDescription": "product removal reasoncodes mapping",
+                          "reasonCodes": [
+                            10089
+                          ]
+                        },
+                        {
+                          "reasonDescription": "product removal reasoncodes mapping",
+                          "reasonCodes": [
+                            10089
+                          ]
+                        }
                       ]
                     }
                   }
@@ -15470,7 +15480,6 @@
           "apiKey",
           "spAccountID",
           "ordProdId",
-          "reasonDescription",
           "reasonCodes"
         ],
         "properties": {
@@ -15490,13 +15499,26 @@
             "type": "string",
             "description": "cancelled subscription Order ID"
           },
+          "reasonCodes": {
+            "type": "object",
+            "$ref": "#/components/schemas/reasonCodes"
+          }
+        }
+      },
+      "reasonCodes": {
+        "type": "object",
+        "required": [
+          "reasonDescription",
+          "reasonCodes"
+        ],
+        "properties": {
           "reasonDescription": {
             "type": "string",
             "description": "Comments to cancel the subscription"
           },
           "reasonCodes": {
-            "type": "Array",
-            "description": "Specific Reasons to cancel the subscription"
+            "type": "object",
+            "description": "Reason Codes"
           }
         }
       }
