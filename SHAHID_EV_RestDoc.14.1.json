@@ -10664,6 +10664,10 @@
               "Facebook",
               "Apple"
             ]
+          },
+          "isUpdateAccountId": {
+            "type": "boolean",
+            "description": "to update SpAccountID."
           }
         }
       },
