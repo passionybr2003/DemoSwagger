@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 27th June, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 11th July, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.24",
+    "title": "EV Shahid API - V14.25",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -8743,6 +8743,99 @@
         }
       }
     },
+    "/stopRetries": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "StopRetriesRequestMessage",
+        "description": "stopRetries() REST API is used to stop the retries.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "StopRetriesResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "SUCCESS"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "StopRetriesResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "StopRetriesResponseMessage": {
+                        "responseCode": "1",
+                        "message": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "StopRetriesRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/stopRetries"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "StopRetriesRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "SHAHID",
+                      "spAccountID": 1654757242,
+                      "ordProdId": 2191847
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/getUpgradablePlans": {
       "post": {
         "tags": [
@@ -15654,6 +15747,34 @@
           "isRemoveSubscription": {
             "type": "boolean",
             "description": "True - It removes subscription for that customer"
+          }
+        }
+      },
+      "stopRetries": {
+        "type": "object",
+        "required": [
+          "Authorization",
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID",
+          "orderID"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account"
+          },
+          "orderID": {
+            "type": "string",
+            "description": "Order ID"
           }
         }
       }
