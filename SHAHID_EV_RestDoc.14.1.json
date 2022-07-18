@@ -10,7 +10,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 11th July, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 18th July, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.25",
     "contact": {
@@ -230,7 +230,9 @@
                     "SearchAccountV2RequestMessage": {
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS",
-                      "homePhone": "962000432543"
+                      "contact": {
+                        "homePhone": "962000432543"
+                      }
                     }
                   }
                 }
