@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 18th July, 2022 </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 2nd Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.25",
+    "title": "EV Shahid API - V14.26",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -4307,6 +4307,99 @@
                       "spAccountID": "19111214155649085145",
                       "homePhone": "9078564322",
                       "isRemoveSubscription": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sendEmail": {
+      "post": {
+        "tags": [
+          "Acquisition and Authentication"
+        ],
+        "operationId": "SendEmailRequestMessage",
+        "description": "sendEmail() REST API is used to send email.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "SendEmailResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "description": "Success"
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "Mail Sent Successfully"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "SendEmailResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "SendEmailResponseMessage": {
+                        "responseCode": "1",
+                        "message": "Mail sent successfully",
+                        "status": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SendEmailRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/sendEmail"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "SendEmailRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "165936568212",
+                      "emailTemplate": "Anonymize Account"
                     }
                   }
                 }
@@ -15777,6 +15870,34 @@
           "orderID": {
             "type": "string",
             "description": "Order ID"
+          }
+        }
+      },
+      "sendEmail": {
+        "type": "object",
+        "required": [
+          "Authorization",
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID",
+          "emailTemplate"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account"
+          },
+          "emailTemplate": {
+            "type": "string",
+            "description": "Email Template."
           }
         }
       }
