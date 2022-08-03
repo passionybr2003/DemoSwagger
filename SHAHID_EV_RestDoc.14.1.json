@@ -10,7 +10,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 2nd Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 3rd Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.26",
     "contact": {
@@ -4400,6 +4400,22 @@
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "spAccountID": "165936568212",
                       "emailTemplate": "Anonymize Account"
+                    }
+                  }
+                },
+                "Successful request with own Email Address": {
+                  "value": {
+                    "SendEmailRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "165936568212",
+                      "emailTemplate": "Anonymize Account",
+                      "parameterMesgs": [
+                        {
+                          "paramName": "to",
+                          "paramValue": "testuser893@yopmail.com"
+                        }
+                      ]
                     }
                   }
                 }
@@ -15898,6 +15914,27 @@
           "emailTemplate": {
             "type": "string",
             "description": "Email Template."
+          },
+          "parameterMesgs": {
+            "type": "object",
+            "$ref": "#/components/schemas/parameterMesgs"
+          }
+        }
+      },
+      "parameterMesgs": {
+        "type": "object",
+        "required": [
+          "paramName",
+          "paramValue"
+        ],
+        "properties": {
+          "paramName": {
+            "type": "string",
+            "description": "to - refers to the mail address"
+          },
+          "paramValue": {
+            "type": "string",
+            "description": "Email address value"
           }
         }
       }
