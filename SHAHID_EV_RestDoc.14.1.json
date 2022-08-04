@@ -10,7 +10,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 3rd Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 4th Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.26",
     "contact": {
@@ -4414,6 +4414,30 @@
                         {
                           "paramName": "to",
                           "paramValue": "testuser893@yopmail.com"
+                        },
+                        {
+                          "paramName": "an_name",
+                          "paramValue": "Afrid shah"
+                        },
+                        {
+                          "paramName": "an_email",
+                          "paramValue": "testuser893@yopmail.com"
+                        },
+                        {
+                          "paramName": "an_phone",
+                          "paramValue": "90785644532"
+                        },
+                        {
+                          "paramName": "an_reason",
+                          "paramValue": "account removal"
+                        },
+                        {
+                          "paramName": "an_comments",
+                          "paramValue": "anonymize account due to unsatisfiled content"
+                        },
+                        {
+                          "paramName": "an_consent",
+                          "paramValue": "true"
                         }
                       ]
                     }
