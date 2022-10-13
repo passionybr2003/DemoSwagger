@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 4th Aug, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 13th Oct, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.26",
+    "title": "EV Shahid API - V14.27",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -8971,6 +8971,224 @@
         }
       }
     },
+    "/getActiveOrSuspendSubscriptions": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "GetActiveOrSuspendSubscriptionsRequestMessage",
+        "description": "getActiveOrSuspendSubscriptions() REST API is used to fetch Active - Freeze subscriptions present for the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GetActiveOrSuspendSubscriptionsResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "accountServiceMsg": {
+                          "type": "array",
+                          "description": "Active Service info",
+                          "items": {
+                            "$ref": "#/components/schemas/accountServiceMsg"
+                          }
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "GetActiveOrSuspendSubscriptionsResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "GetActiveOrSuspendSubscriptionsResponseMessage": {
+                        "accountServiceMsg": [
+                          {
+                            "orderedProductId": "2439496,",
+                            "subscriptionStatus": "Active - In Freeze,",
+                            "isInFreeTrail": "false,",
+                            "isInGracePeriod": "false,",
+                            "skuOrQuickCode": "JOR_B2C_SHAHID_VIP_SPORT_12M,",
+                            "validityTill": "1696101854000,",
+                            "startDateInMillis": "1664565854000,",
+                            "retailPrice": "39.99,",
+                            "ovpSku": "SHAHID_VIP_SPORT,",
+                            "promotions": [
+                              {
+                                "promotionId": "586095,",
+                                "promotionName": "VIP Sports 12 Month WW,",
+                                "promotionType": "Free,",
+                                "startDate": "1664565854000,",
+                                "endDate": "1696101854000,",
+                                "voucherCode": "12msAKUgRHDG,",
+                                "amount": 0
+                              }
+                            ]
+                          }
+                        ],
+                        "responseCode": "1,",
+                        "message": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GetActiveOrSuspendSubscriptionsRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/GetActiveOrSuspendSubscriptions"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "GetActiveOrSuspendSubscriptionsRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "SHAHID",
+                      "spAccountID": "78ad46175bb34ff5855ee113db0f10d2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateSubscriptionStatus": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "UpdateSubscriptionStatusRequestMessage",
+        "description": "updateSubscriptionStatus() REST API is used to update the subscription status for the service of the customer.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "UpdateSubscriptionStatusResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "UpdateSubscriptionStatusResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "UpdateSubscriptionStatusResponseMessage": {
+                        "responseCode": "1,",
+                        "message": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UpdateSubscriptionStatusRequestMessage": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/updateSubscriptionStatus"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "UpdateSubscriptionStatusRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "SHAHID",
+                      "spAccountID": "78ad46175bb34ff5855ee113db0f10d2",
+                      "orderedProductId": 1637643,
+                      "status": "Active - In Freeze",
+                      "country": "JO"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/getUpgradablePlans": {
       "post": {
         "tags": [
@@ -15959,6 +16177,166 @@
           "paramValue": {
             "type": "string",
             "description": "Email address value"
+          }
+        }
+      },
+      "GetActiveOrSuspendSubscriptions": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "spAccountID"
+        ],
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique authentication key."
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique sp account id generated on the account."
+          }
+        }
+      },
+      "accountServiceMsg": {
+        "type": "object",
+        "required": [
+          "orderedProductId",
+          "subscriptionStatus",
+          "isInFreeTrail",
+          "isInGracePeriod",
+          "skuOrQuickCode",
+          "validityTill",
+          "startDateInMillis",
+          "retailPrice",
+          "ovpSku",
+          "promotions"
+        ],
+        "properties": {
+          "orderedProductId": {
+            "type": "string",
+            "description": "Unique ordered product ID."
+          },
+          "subscriptionStatus": {
+            "type": "string",
+            "description": "Subscription status for the service."
+          },
+          "isInFreeTrail": {
+            "type": "string",
+            "description": "wheather in free trail or not."
+          },
+          "isInGracePeriod": {
+            "type": "string",
+            "description": "wheathe rin grace period or not."
+          },
+          "skuOrQuickCode": {
+            "type": "string",
+            "description": "Unique SKU."
+          },
+          "validityTill": {
+            "type": "string",
+            "description": "Service validity period."
+          },
+          "startDateInMillis": {
+            "type": "string",
+            "description": "Service start date."
+          },
+          "retailPrice": {
+            "type": "string",
+            "description": "Retail price of the product."
+          },
+          "ovpSku": {
+            "type": "string",
+            "description": "OVP SKU Details."
+          },
+          "promotions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromoInfoDetails"
+            }
+          }
+        }
+      },
+      "PromoInfoDetails": {
+        "type": "object",
+        "required": [
+          "promotionId",
+          "promotionName",
+          "promotionType",
+          "startDate",
+          "endDate",
+          "voucherCode",
+          "amount"
+        ],
+        "properties": {
+          "promotionId": {
+            "type": "string",
+            "description": "Unique ordered promotion ID."
+          },
+          "promotionName": {
+            "type": "string",
+            "description": "Promotion name."
+          },
+          "promotionType": {
+            "type": "string",
+            "description": "Type of the promotion."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "start Date of the promotion."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End date of the promotion."
+          },
+          "voucherCode": {
+            "type": "string",
+            "description": "Voucher code of the promotoin."
+          },
+          "amount": {
+            "type": "string",
+            "description": "Amount."
+          }
+        }
+      },
+      "updateSubscriptionStatus": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "spAccountId",
+          "orderedProductId",
+          "status",
+          "country"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique channel partneer ID."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key."
+          },
+          "spAccountId": {
+            "type": "string",
+            "description": "Unique SP account Id of the customer."
+          },
+          "orderedProductId": {
+            "type": "string",
+            "description": "Unique Order product Id for the service."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the subscription."
+          },
+          "country": {
+            "type": "string",
+            "description": "Country."
           }
         }
       }
