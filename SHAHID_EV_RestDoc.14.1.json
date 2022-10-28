@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 13th Oct, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 28th Oct, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.27",
+    "title": "EV Shahid API - V14.28",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -9189,6 +9189,101 @@
         }
       }
     },
+    "/addOPPromotion": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Order Processing"
+        ],
+        "operationId": "AddOPPromotionRequestMessage",
+        "description": "addOPPromotion() REST API is used to add promotion on ordered product.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "AddOPPromotionResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail."
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success <br> “0” – Failure."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "AddOPPromotionResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Success Response": {
+                    "value": {
+                      "AddOPPromotionResponseMessage": {
+                        "responseCode": "1,",
+                        "message": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication Failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AddOPPromotionRequestMessage": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/addOPPromotion"
+                  }
+                }
+              },
+              "examples": {
+                "Successful request": {
+                  "value": {
+                    "AddOPPromotionRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "SHAHID",
+                      "spAccountID": "78ad46175bb34ff5855ee113db0f10d2",
+                      "promoCode": 1637643,
+                      "isImmediateEffect": true,
+                      "country": "JO"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/getUpgradablePlans": {
       "post": {
         "tags": [
@@ -16333,6 +16428,43 @@
           "status": {
             "type": "string",
             "description": "Status of the subscription."
+          },
+          "country": {
+            "type": "string",
+            "description": "Country."
+          }
+        }
+      },
+      "addOPPromotion": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "promoCode",
+          "spAccountID",
+          "isImmediateEffect",
+          "country"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique channel partneer ID."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key."
+          },
+          "spAccountId": {
+            "type": "string",
+            "description": "Unique SP account Id of the customer."
+          },
+          "promoCode": {
+            "type": "string",
+            "description": "Unique promotion ID."
+          },
+          "isImmediateEffect": {
+            "type": "boolean",
+            "description": "to effect immediately or not"
           },
           "country": {
             "type": "string",
