@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 28th Oct, 2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 15thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.28",
+    "title": "EV Shahid API - V14.29",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -5538,6 +5538,7 @@
                       "quantity": "1",
                       "promotionID": "FT6MP001",
                       "currency": "IQD",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5558,6 +5559,7 @@
                       "quantity": "1",
                       "currency": "IQD",
                       "couponCode": "shahid_iraqAmsC2",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5577,6 +5579,7 @@
                       "serviceID": "VIP3M",
                       "quantity": "1",
                       "currency": "IQD",
+                      "partnerSource": "XXXXXXX",
                       "isSkipDefaultPromo": "true",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
@@ -5599,6 +5602,7 @@
                       "promotionID": "FT6MP001",
                       "currency": "IQD",
                       "isSkipDefaultPromo": "true",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5620,6 +5624,7 @@
                       "quantity": "1",
                       "currency": "USD",
                       "isSkipDefaultPromo": "true",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "App Store Billing",
                         "transactionReferenceMsg": {
@@ -5643,6 +5648,7 @@
                       "quantity": "1",
                       "currency": "USD",
                       "isSkipDefaultPromo": "true",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Google Wallet",
                         "transactionReferenceMsg": {
@@ -5666,6 +5672,7 @@
                       "endDate": "1619851332000",
                       "currency": "IQD",
                       "enforceFreeTrial": true,
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "TPay_Zain",
                         "operatorInfoMessage": {
@@ -5694,6 +5701,7 @@
                       "currency": "JOD",
                       "promotionID": "TV001",
                       "deviceSerialNo": "LE65K6600UG",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "TV Offer",
                         "transactionReferenceMsg": {
@@ -5715,6 +5723,7 @@
                       "spAccountID": "05102021000002",
                       "rewardPromotionID": "KSARD1MPROMO01",
                       "isSkipDefaultPromo": "true",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5737,6 +5746,7 @@
                       "spAccountID": "05102021000002",
                       "isRemoveActiveServices": true,
                       "promotionID": "Ramadan_JOR",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "Credit Card",
                         "makeAutoPayment": "true",
@@ -5759,6 +5769,7 @@
                       "promotionID": "TVOF_SONY_AN",
                       "deviceSerialNo": "LE55K7500UG123",
                       "deviceModelNo": "BRAVIA 8K UR2",
+                      "partnerSource": "XXXXXXX",
                       "paymentmethodInfo": {
                         "label": "TV Offer",
                         "transactionReferenceMsg": null,
@@ -5779,6 +5790,7 @@
                       "spAccountID": "05102021000002",
                       "isRemoveActiveServices": true,
                       "promotionID": "Ramadan_JOR",
+                      "partnerSource": "XXXXXXX",
                       "params": [
                         {
                           "paramName": "appsflyerId",
@@ -6091,7 +6103,8 @@
                             "type": "Prepaid",
                             "basicService": false,
                             "isPackage": false,
-                            "planPrice": 6.49
+                            "planPrice": 6.49,
+                            "partnerSource": "XXXXXXX"
                           }
                         ]
                       }
@@ -6148,7 +6161,8 @@
                             "type": "Prepaid",
                             "basicService": false,
                             "isPackage": false,
-                            "planPrice": 7.99
+                            "planPrice": 7.99,
+                            "partnerSource": "XXXXXXX"
                           }
                         ]
                       }
@@ -6205,6 +6219,7 @@
                             "isPackage": false,
                             "planPrice": 2.99,
                             "subscriptionStatus": "Active",
+                            "partnerSource": "XXXXXXX",
                             "couponCodeDetails": [
                               {
                                 "couponCode": "JOSHDCAP11AZqcf",
