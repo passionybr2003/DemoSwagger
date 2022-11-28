@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 15thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 28thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.29",
+    "title": "EV Shahid API - V14.30",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -10579,6 +10579,315 @@
         }
       }
     },
+    "/authorizePayMob": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "PayMob"
+        ],
+        "operationId": "AuthorizePayMobRequestMessage",
+        "description": "authorizePayMob() REST API is used to authorize and initiate  purchase transaction to customer using the paymob wallet.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "UpdatePayMobTransactionResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "transactionId": {
+                          "type": "string",
+                          "description": "Unique Transaction ID"
+                        },
+                        "redirectURL": {
+                          "type": "string",
+                          "description": "Redirection URl"
+                        },
+                        "paymobOrderId": {
+                          "type": "string",
+                          "description": "Unique Paymob Order ID"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure."
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "Valid message retunred in the API"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "AuthorizePayMobResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful Response": {
+                    "value": {
+                      "AuthorizePayMobResponseMessage": {
+                        "transactionId": 69960418,
+                        "redirectURL": "https://accept.paymobsolutions.com/api/acceptance/post_pay?is_3d_secure=false&order=82389412&updated_at=2022-11-23T12%3A35%3A56.519412&currency=EGP&has_parent_transaction=false&error_occured=true&is_refund=false&refunded_amount_cents=0&captured_amount=0&source_data.type=wallet&amount_cents=1299&is_standalone_payment=true&profile_id=631188&is_auth=false&created_at=2022-11-23T12%3A35%3A54.937703&is_refunded=false&is_void=false&source_data.sub_type=wallet&is_voided=false&merchant_order_id=16691997515854642&merchant_commission=0&pending=false&is_capture=false&hmac=36e781af86f7cab119fbeea5d77e014cec8ba3f76a45a0303ea2dc1b1a5c73d519b6da538f50ee693ca6c7c9a1657120f13bf3c4cb78640f0b9bb8e721ae261c&source_data.pan=0585434006&id=69960418&success=false&discount_details=%5B%5D&owner=1064324&integration_id=3102989%22",
+                        "paymobOrderId": 82389412,
+                        "responseCode": "0",
+                        "message": "Success"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x-  111111111": {
+            "description": "Authentication failed"
+          },
+          "x- eV2123": {
+            "decription": "Either SP Account ID or CP Customer ID or Session Token is required"
+          },
+          "x- eV2124": {
+            "decription": "Invalid Session Token"
+          },
+          "x- eV1744": {
+            "decription": "Account does not exists with given details"
+          },
+          "x- eV2434": {
+            "decription": "Your Account is in Inactive state."
+          },
+          "x- eV2833": {
+            "decription": "Account has already existed with active subscription"
+          },
+          "x- eV1665": {
+            "decription": "No Service found with the given Service Id"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AuthorizePayMobRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/authorizePayMob"
+                  }
+                }
+              },
+              "examples": {
+                "Sample request": {
+                  "value": {
+                    "AuthorizePayMobRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "serviceId": "VIP3M",
+                      "country": "JO",
+                      "mobileNumber": 9087654321
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updatePayMobTransaction": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "PayMob"
+        ],
+        "operationId": "UpdatePayMobTransactionRequestMessage",
+        "description": "updatePayMobTransaction() REST API is used to complete the purchase flow using the paymob wallet.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "UpdatePayMobTransactionResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "orderID": {
+                          "type": "string",
+                          "description": "Unique order ID"
+                        },
+                        "subscriptionDetails": {
+                          "type": "object",
+                          "description": "Subscription payment details",
+                          "$ref": "#/components/schemas/paymentMethodDetails"
+                        },
+                        "sku": {
+                          "type": "string",
+                          "description": "Unique SKU ID"
+                        },
+                        "subscriptionStatus": {
+                          "type": "string",
+                          "description": "subscription status of the service"
+                        },
+                        "ovpSku": {
+                          "type": "string",
+                          "description": "OVP SKU"
+                        },
+                        "startDate": {
+                          "type": "string",
+                          "description": "start Date of the service"
+                        },
+                        "endDate": {
+                          "type": "string",
+                          "description": "End Dateof the service"
+                        },
+                        "buCountry": {
+                          "type": "string",
+                          "description": "Business Country"
+                        },
+                        "purchaseType": {
+                          "type": "string",
+                          "description": "purchase Type"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "description": "curreny"
+                        },
+                        "price": {
+                          "type": "string",
+                          "description": "Price of the service"
+                        },
+                        "isRenewable": {
+                          "type": "string",
+                          "description": "Renewable or not"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "UpdatePayMobTransactionResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful Response": {
+                    "value": {
+                      "UpdatePayMobTransactionResponseMessage": {
+                        "orderID": 489079145,
+                        "subscriptionDetails": [
+                          {
+                            "paymentMethod": {
+                              "label": "Credit Card",
+                              "country": "IQ",
+                              "referenceNumber": null,
+                              "paymentMethodID": "765752"
+                            },
+                            "sku": "VIP3M",
+                            "subscriptionStatus": "Active",
+                            "ovpSku": "SHAHIDVIP",
+                            "startDate": 1669363815000,
+                            "endDate": 1671955814000,
+                            "buCountry": "IQ",
+                            "purchaseType": "SVOD",
+                            "currency": "EGP",
+                            "price": 12.99,
+                            "isRenewable": true
+                          }
+                        ]
+                      },
+                      "validityTill": 1671955814000,
+                      "responseCode": "1",
+                      "message": "SUCCESS"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x-  111111111": {
+            "description": "Authentication failed"
+          },
+          "x- eV4812": {
+            "description": "Invalid Transaction"
+          },
+          "x- eV3262": {
+            "description": "Transaction Id is required"
+          },
+          "x- eV2123": {
+            "description": "Either SP Account ID or CP Customer ID or Session Token is required"
+          },
+          "x- eV2124": {
+            "description": "Invalid Session Token"
+          },
+          "x- eV1744": {
+            "description": "Account does not exists with given details"
+          },
+          "x- eV2434": {
+            "description": "Your Account is in Inactive state"
+          },
+          "x- eV1665": {
+            "description": "No Service found with the given Service Id"
+          },
+          "x- eV2888": {
+            "description": "No Pending Transaction found with transaction id"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "UpdatePayMobTransactionRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/updatePayMobTransaction"
+                  }
+                }
+              },
+              "examples": {
+                "Sample request": {
+                  "value": {
+                    "UpdatePayMobTransactionRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "transactionId": 70339466,
+                      "serviceId": "VIP3M",
+                      "country": "IQ",
+                      "isSubscriptionDetails": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/getRegisteredIDs": {
       "post": {
         "security": [
@@ -16484,6 +16793,102 @@
           "country": {
             "type": "string",
             "description": "Country."
+          }
+        }
+      },
+      "authorizePayMob": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "serviceId",
+          "country",
+          "mobileNumber"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique channel partneer ID."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key."
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "Unique SKU code."
+          },
+          "country": {
+            "type": "string",
+            "description": "country code"
+          },
+          "mobileNumber": {
+            "type": "string",
+            "description": "Mobile Number."
+          }
+        }
+      },
+      "updatePayMobTransaction": {
+        "type": "object",
+        "required": [
+          "channelPartnerID",
+          "apiKey",
+          "transactionId",
+          "serviceId",
+          "country",
+          "isSubscriptionDetails"
+        ],
+        "properties": {
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Unique channel partneer ID."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique transaction ID."
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "Unique SKU Code"
+          },
+          "country": {
+            "type": "string",
+            "description": "country code"
+          },
+          "isSubscriptionDetails": {
+            "type": "string",
+            "description": "Subscription details."
+          }
+        }
+      },
+      "paymentMethodDetails": {
+        "type": "object",
+        "required": [
+          "label",
+          "country",
+          "referenceNumber",
+          "paymentMethodID"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "label name."
+          },
+          "country": {
+            "type": "string",
+            "description": "Country code."
+          },
+          "referenceNumber": {
+            "type": "string",
+            "description": "Unique Reference number"
+          },
+          "paymentMethodID": {
+            "type": "string",
+            "description": "Unique payment method number"
           }
         }
       }
