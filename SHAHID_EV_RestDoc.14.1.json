@@ -10,7 +10,7 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 28thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 30thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
     "title": "EV Shahid API - V14.30",
     "contact": {
@@ -10818,11 +10818,11 @@
                             "price": 12.99,
                             "isRenewable": true
                           }
-                        ]
-                      },
-                      "validityTill": 1671955814000,
-                      "responseCode": "1",
-                      "message": "SUCCESS"
+                        ],
+                        "validityTill": 1671955814000,
+                        "responseCode": "1",
+                        "message": "SUCCESS"
+                      }
                     }
                   }
                 }
