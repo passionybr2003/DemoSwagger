@@ -10642,9 +10642,9 @@
                   "Sample successful Response": {
                     "value": {
                       "AuthorizePayMobResponseMessage": {
-                        "transactionId": 69960418,
+                        "transactionId": "69960418",
                         "redirectURL": "https://accept.paymobsolutions.com/api/acceptance/post_pay?is_3d_secure=false&order=82389412&updated_at=2022-11-23T12%3A35%3A56.519412&currency=EGP&has_parent_transaction=false&error_occured=true&is_refund=false&refunded_amount_cents=0&captured_amount=0&source_data.type=wallet&amount_cents=1299&is_standalone_payment=true&profile_id=631188&is_auth=false&created_at=2022-11-23T12%3A35%3A54.937703&is_refunded=false&is_void=false&source_data.sub_type=wallet&is_voided=false&merchant_order_id=16691997515854642&merchant_commission=0&pending=false&is_capture=false&hmac=36e781af86f7cab119fbeea5d77e014cec8ba3f76a45a0303ea2dc1b1a5c73d519b6da538f50ee693ca6c7c9a1657120f13bf3c4cb78640f0b9bb8e721ae261c&source_data.pan=0585434006&id=69960418&success=false&discount_details=%5B%5D&owner=1064324&integration_id=3102989%22",
-                        "paymobOrderId": 82389412,
+                        "paymobOrderId": "82389412",
                         "responseCode": "0",
                         "message": "Success"
                       }
@@ -10696,7 +10696,7 @@
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "serviceId": "VIP3M",
                       "country": "JO",
-                      "mobileNumber": 9087654321
+                      "mobileNumber": "9087654321"
                     }
                   }
                 }
@@ -10798,7 +10798,7 @@
                   "Sample successful Response": {
                     "value": {
                       "UpdatePayMobTransactionResponseMessage": {
-                        "orderID": 489079145,
+                        "orderID": "489079145",
                         "subscriptionDetails": [
                           {
                             "paymentMethod": {
