@@ -10598,7 +10598,7 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "UpdatePayMobTransactionResponseMessage": {
+                    "AuthorizePayMobResponseMessage": {
                       "type": "object",
                       "properties": {
                         "transactionId": {
@@ -10674,6 +10674,9 @@
           },
           "x- eV1665": {
             "description": "No Service found with the given Service Id"
+          },
+          "x- eV2463": {
+            "description": "ServiceID is mandatory"
           }
         },
         "requestBody": {
