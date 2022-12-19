@@ -10658,22 +10658,22 @@
             "description": "Authentication failed"
           },
           "x- eV2123": {
-            "decription": "Either SP Account ID or CP Customer ID or Session Token is required"
+            "description": "Either SP Account ID or CP Customer ID or Session Token is required"
           },
           "x- eV2124": {
-            "decription": "Invalid Session Token"
+            "description": "Invalid Session Token"
           },
           "x- eV1744": {
-            "decription": "Account does not exists with given details"
+            "description": "Account does not exists with given details"
           },
           "x- eV2434": {
-            "decription": "Your Account is in Inactive state."
+            "description": "Your Account is in Inactive state."
           },
           "x- eV2833": {
-            "decription": "Account has already existed with active subscription"
+            "description": "Account has already existed with active subscription"
           },
           "x- eV1665": {
-            "decription": "No Service found with the given Service Id"
+            "description": "No Service found with the given Service Id"
           }
         },
         "requestBody": {
