@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 30thNov,2022. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 18thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.30",
+    "title": "EV Shahid API - V14.31",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -3672,6 +3672,17 @@
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "dmaID": "IQ",
                       "reasonCodeCategory": "Product Removal"
+                    }
+                  }
+                },
+                "Sample Request with SPAccountID": {
+                  "value": {
+                    "GetReasonCodesRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "IQ",
+                      "reasonCodeCategory": "Product Removal",
+                      "spAccountID": "167341822612"
                     }
                   }
                 }
@@ -8450,6 +8461,107 @@
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "transactionId": "12333443",
                       "paymentChannel": "Fawry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/generateFawryReferrenceCode": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Fawry"
+        ],
+        "operationId": "GenerateReferrenceRequestMessage",
+        "description": "GenerateFawryReferrenceCode() This API used to generate fawry referrence code which used to pay at fawry centre and activate the subscription.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GenerateReferrenceResponseMessage": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Success/Fail"
+                        },
+                        "responseCode": {
+                          "type": "string",
+                          "description": "Indicates if the response was successfully processed. Accepted values are <br> “1” – Success. <br> “0” – Failure."
+                        },
+                        "referrenceCode": {
+                          "type": "string",
+                          "description": "Unique Reference code."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "111111111": {
+                    "value": {
+                      "GetTransactionInfoDetailsResponseMessage": {
+                        "failureMessage": [
+                          {
+                            "errorMessage": "Authentication Failed",
+                            "errorCode": "111111111"
+                          }
+                        ],
+                        "responseCode": "0"
+                      }
+                    }
+                  },
+                  "Sample successful Response": {
+                    "value": {
+                      "GenerateReferrenceResponseMessage": {
+                        "responseCode": "1",
+                        "message": "SUCCESS",
+                        "referrenceCode": "7111217194"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "x- 111111111": {
+            "description": "Authentication failed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "GenerateReferrenceRequestMessage": {
+                    "type": "Object",
+                    "$ref": "#/components/schemas/generateFawryReferrenceCode"
+                  }
+                }
+              },
+              "examples": {
+                "Sample Successful request": {
+                  "value": {
+                    "GenerateReferrenceRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "12333443",
+                      "mobileNumber": "Fawry",
+                      "email": "example@gmail.com",
+                      "spAccountId": "198765434567",
+                      "serviceId": "JOR_B2C_SHAHID_VIP_1M",
+                      "country": "JO"
                     }
                   }
                 }
@@ -16892,6 +17004,39 @@
           "paymentMethodID": {
             "type": "string",
             "description": "Unique payment method number"
+          }
+        }
+      },
+      "generateFawryReferrenceCode": {
+        "type": "object",
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key"
+          },
+          "channelPartnerID": {
+            "type": "string",
+            "description": "Channel Partner ID."
+          },
+          "mobileNumber": {
+            "type": "string",
+            "description": "Unique Reference number"
+          },
+          "email": {
+            "type": "string",
+            "description": "Unique Email"
+          },
+          "spAccountId": {
+            "type": "string",
+            "description": "Unique SP Account ID"
+          },
+          "serviceId": {
+            "type": "string",
+            "description": "Unique Service ID"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country Code"
           }
         }
       }
