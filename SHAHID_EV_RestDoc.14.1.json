@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 18thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 25thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.31",
+    "title": "EV Shahid API - V14.32",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -5224,6 +5224,24 @@
                       }
                     }
                   }
+                },
+                "Sample request with SPAccountID": {
+                  "value": {
+                    "AuthorizeCardRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "token": "tok_ctynkwcksdru3nzh7fzhszcxzu",
+                      "spAccountID": "167462814712",
+                      "transactionType": "AUTH",
+                      "country": "IQ",
+                      "billingAddress": {
+                        "address1": "321 Jenna Lane",
+                        "city": "Lebanon",
+                        "state": "Ohio",
+                        "country": "United States",
+                        "zipCode": "45036"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -5944,6 +5962,25 @@
                     "ChangeServiceRequestMessage": {
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "dmaID": "IQ",
+                      "newServiceID": "VIP3M",
+                      "oldServiceID": "VIPM01",
+                      "promotionID": "Ramadan_JOR",
+                      "paymentMethodInfo": {
+                        "label": "Credit Card",
+                        "makeAutoPayment": "true",
+                        "CardTokenInfoMessage": {
+                          "paymentMethodID": "4324733"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Sample request with spAccountID": {
+                  "value": {
+                    "ChangeServiceRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "IQ",
+                      "accountId": "167462814712",
                       "newServiceID": "VIP3M",
                       "oldServiceID": "VIPM01",
                       "promotionID": "Ramadan_JOR",
@@ -7554,6 +7591,21 @@
                     }
                   }
                 },
+                "Sample Successful Request with spAccountID": {
+                  "value": {
+                    "UpdatePaymentInfoRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "167462814712",
+                      "label": "Card",
+                      "status": "Active",
+                      "isAutoPayment": true,
+                      "CardTokenInfoMessage": {
+                        "paymentMethodID": "4324733"
+                      }
+                    }
+                  }
+                },
                 "Sample Successful Request using session id": {
                   "value": {
                     "UpdatePaymentInfoRequestMessage": {
@@ -7714,6 +7766,11 @@
                     "GetPaymentMethodsRequestMessage": {
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS"
+                    },
+                    "GetPaymentMethodsRequestMessage with spAccountID": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "accountID": "167462814712"
                     }
                   }
                 }
@@ -7854,6 +7911,15 @@
                     "GetPaymentsV2RequestMessage": {
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS"
+                    }
+                  }
+                },
+                "Sample Request with accountId": {
+                  "value": {
+                    "GetPaymentsV2RequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "accountId": "167462814712"
                     }
                   }
                 }
@@ -8556,8 +8622,8 @@
                   "value": {
                     "GenerateReferrenceRequestMessage": {
                       "apiKey": "8uMMWK58TY2fGjJS",
-                      "channelPartnerID": "12333443",
-                      "mobileNumber": "Fawry",
+                      "channelPartnerID": "SHAHID",
+                      "mobileNumber": "9876548989",
                       "email": "example@gmail.com",
                       "spAccountId": "198765434567",
                       "serviceId": "JOR_B2C_SHAHID_VIP_1M",
@@ -9759,6 +9825,19 @@
                       "appBundleId": "apple.vip2.test"
                     }
                   }
+                },
+                "Sample request With spAccountID": {
+                  "value": {
+                    "GenerateSignatureKeyRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountId": "167462814712",
+                      "externalOfferId": "Mobile Deals",
+                      "appServiceId": "apps.apple.shahid3m1",
+                      "dmaId": "JO",
+                      "appBundleId": "apple.vip2.test"
+                    }
+                  }
                 }
               }
             }
@@ -9953,7 +10032,22 @@
                     "AddDeviceForAccountRequestMessage": {
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "channelPartnerID": "SHAHID",
-                      "accountID": "testdemo20@yopmail.com",
+                      "deviceDetails": {
+                        "serialNo": "T8100178429459",
+                        "registrationToken": "966505719119",
+                        "status": "Active",
+                        "deviceName": "T8100178429459",
+                        "deviceType": "GO_BOX"
+                      }
+                    }
+                  }
+                },
+                "Sample request with spAccountID": {
+                  "value": {
+                    "AddDeviceForAccountRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "channelPartnerID": "SHAHID",
+                      "accountID": "167462814712",
                       "deviceDetails": {
                         "serialNo": "T8100178429459",
                         "registrationToken": "966505719119",
@@ -12886,7 +12980,8 @@
           "Authorization",
           "apiKey",
           "serviceID",
-          "couponCode"
+          "couponCode",
+          "spAccountID"
         ],
         "properties": {
           "apiKey": {
@@ -12907,6 +13002,10 @@
           "serviceID": {
             "type": "string",
             "description": "Unique id of the Service defined in EV system."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "unique SPAccountID"
           },
           "serviceType": {
             "type": "string",
@@ -12987,7 +13086,8 @@
           "token",
           "transactionType",
           "serviceType",
-          "serviceID"
+          "serviceID",
+          "spAccountID"
         ],
         "properties": {
           "channelPartnerID": {
@@ -13042,6 +13142,10 @@
           "couponCode": {
             "type": "string",
             "description": "Coupon codes generated aganist the products."
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "Unique spAccountID"
           }
         }
       },
@@ -13392,7 +13496,8 @@
           "apiKey",
           "newServiceID",
           "oldServiceID",
-          "paymentmethodInfo"
+          "paymentmethodInfo",
+          "accountId"
         ],
         "properties": {
           "channelPartnerID": {
@@ -13402,6 +13507,10 @@
           "apiKey": {
             "type": "string",
             "description": "Partner authentication Key."
+          },
+          "accountId": {
+            "type": "string",
+            "description": "Unique SPAccountID"
           },
           "Authorization": {
             "type": "string",
@@ -14936,7 +15045,8 @@
         "type": "object",
         "required": [
           "apiKey",
-          "authorization"
+          "authorization",
+          "accountID"
         ],
         "properties": {
           "channelPartnerID": {
@@ -14954,6 +15064,10 @@
           "status": {
             "type": "string",
             "description": "Status of the payment method."
+          },
+          "accountID": {
+            "type": "string",
+            "description": "unique SPAccountID"
           }
         }
       },
@@ -15069,7 +15183,8 @@
           "isAutoPayment",
           "CardTokenInfoMessage",
           "authorization",
-          "isDisable"
+          "isDisable",
+          "spAccountID"
         ],
         "properties": {
           "channelPartnerID": {
@@ -15099,6 +15214,10 @@
           "isDisable": {
             "type": "boolean",
             "description": "True, If anonymise the card details. Else, false"
+          },
+          "spAccountID": {
+            "type": "string",
+            "description": "unique spAccountID"
           },
           "CardTokenInfoMessage": {
             "type": "object",
@@ -15132,7 +15251,8 @@
         "type": "object",
         "required": [
           "apiKey",
-          "authorization"
+          "authorization",
+          "accountId"
         ],
         "properties": {
           "channelPartnerID": {
@@ -15742,7 +15862,8 @@
           "apiKey",
           "externalOfferId",
           "dmaId",
-          "appServiceId"
+          "appServiceId",
+          "spAccountId"
         ],
         "properties": {
           "apiKey": {
@@ -15751,7 +15872,11 @@
           },
           "channelPartnerID": {
             "type": "string",
-            "description": "Unique ID number of channel partner."
+            "description": "Unique ID number of channel partner"
+          },
+          "spAccountId": {
+            "type": "string",
+            "description": "Unique SPACcountID"
           },
           "externalOfferId": {
             "type": "number",
@@ -16036,7 +16161,8 @@
         "type": "object",
         "required": [
           "Authorization",
-          "apiKey"
+          "apiKey",
+          "accountID"
         ],
         "properties": {
           "apiKey": {
