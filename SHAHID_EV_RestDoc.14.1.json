@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 25thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 31thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.32",
+    "title": "EV Shahid API - V14.33",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -1396,6 +1396,22 @@
                       "channelPartnerID": "SHAHID",
                       "apiKey": "8uMMWK58TY2fGjJS",
                       "dmaID": "IQ",
+                      "selectedServices": [
+                        {
+                          "serviceId": "VIP6M",
+                          "serviceType": "PRODUCT"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Sample request with spAccountID": {
+                  "value": {
+                    "UpdateOrderQuoteV3RequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "IQ",
+                      "spAccountID": "167516216212",
                       "selectedServices": [
                         {
                           "serviceId": "VIP6M",
@@ -4730,6 +4746,20 @@
                       "couponCode": "1MFC"
                     }
                   }
+                },
+                "Successful request with spaccountID": {
+                  "value": {
+                    "RedeemCouponRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "167516216212",
+                      "serviceID": "VIP3M",
+                      "dmaID": "IQ",
+                      "serviceType": "PRODUCT",
+                      "quantity": "1",
+                      "couponCode": "1MFC"
+                    }
+                  }
                 }
               }
             }
@@ -5351,6 +5381,54 @@
                       }
                     }
                   },
+                  "Successful purchase with applePay payment": {
+                    "value": {
+                      "AddSubscriptionResponseMessage": {
+                        "orderID": "2413650",
+                        "orderedProductIds": "2698297",
+                        "subscriptionDetails": [
+                          {
+                            "paymentMethod": {
+                              "label": "ApplePay",
+                              "paymentMethodID": "1742502",
+                              "applePayID": "454347"
+                            },
+                            "sku": "JOR_B2C_SHAHID_VIP_1M",
+                            "subscriptionStatus": "Active",
+                            "ovpSku": "SHAHID_VIP",
+                            "startDate": 1621301522000,
+                            "endDate": 1637199122000,
+                            "buCountry": "6.49",
+                            "purchaseType": "VIP 3 Months",
+                            "orderID": "Active",
+                            "currency": "JOD",
+                            "price": "2.990000",
+                            "appChannels": [
+                              {
+                                "appID": "shahidplustest",
+                                "appName": "billing.demos.shahid.net.shahidbilling1"
+                              },
+                              {
+                                "appID": "mbc.shahid.iosplus1monthT",
+                                "appName": "net.mbc.shahid.developer",
+                                "appChannel": "App Store Billing"
+                              },
+                              {
+                                "appID": "19",
+                                "appName": "1MonthPlan",
+                                "appChannel": "TPay"
+                              }
+                            ],
+                            "isRenewable": true
+                          }
+                        ],
+                        "status": "SUCCESS",
+                        "responseCode": "1",
+                        "message": "SUCCESS",
+                        "validityTill": 1677587714000
+                      }
+                    }
+                  },
                   "eV1144": {
                     "value": {
                       "AddSubscriptionResponseMessage": {
@@ -5542,6 +5620,54 @@
           },
           "x- eV2374": {
             "description": "No Service exists with the given AppServiceID"
+          },
+          "x- eV1155": {
+            "description": "Fatal error occurred while processing the request"
+          },
+          "x- eV1385": {
+            "description": "Payment Declined by Payment Gateway due to following reason"
+          },
+          "x- eV1156": {
+            "description": "Gateway Response not found during the payment processing."
+          },
+          "x- 010": {
+            "description": "Not allowed"
+          },
+          "x- 100": {
+            "description": "Required object 'amount' is not provided"
+          },
+          "x- 121": {
+            "description": "Required field 'shopperReference' is not provided"
+          },
+          "x- 139": {
+            "description": "Recurring requires 'shopperEmail' and 'shopperReference'"
+          },
+          "x- 180": {
+            "description": "Invalid shopperReference"
+          },
+          "x- 181": {
+            "description": "Invalid shopperEmail"
+          },
+          "x- 701": {
+            "description": "Server could not process request"
+          },
+          "x- 805": {
+            "description": "RecurringDetailReference not available for provided recurring-contract"
+          },
+          "x- 901": {
+            "description": "Invalid Merchant Account"
+          },
+          "x- 902": {
+            "description": "Invalid or empty request data"
+          },
+          "x- 903": {
+            "description": "Internal error"
+          },
+          "x- 904": {
+            "description": "Unable To Process"
+          },
+          "x- 908": {
+            "description": "Invalid request"
           }
         },
         "requestBody": {
@@ -5836,6 +5962,47 @@
                           "amount": "12.99",
                           "txID": "<Valid Receipt>",
                           "txMsg": "Success"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Apple Pay purchase": {
+                  "value": {
+                    "AddSubscriptionRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "JO",
+                      "serviceID": "JOR_B2C_SHAHID_VIP_1M",
+                      "serviceType": "PRODUCT",
+                      "quantity": "1",
+                      "spAccountID": 1674997499,
+                      "paymentmethodInfo": {
+                        "label": "ApplePay",
+                        "applePayMessage": {
+                          "subscriptionId": "YOUR_UNIQUE_SHOPPER_ID_IOfW3k9G2PvXFu2j",
+                          "txRefNo": "7219687191761347",
+                          "transactionId": "DZ4DPSHB4WD2WN82",
+                          "txMsg": "Success"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Apple Pay purchase with paymentmethodID": {
+                  "value": {
+                    "AddSubscriptionRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "JO",
+                      "serviceID": "JOR_B2C_SHAHID_VIP_1M",
+                      "serviceType": "PRODUCT",
+                      "quantity": "1",
+                      "spAccountID": 1674997499,
+                      "paymentmethodInfo": {
+                        "label": "ApplePay",
+                        "applePayMessage": {
+                          "paymentMethodId": "3452167"
                         }
                       }
                     }
@@ -8156,6 +8323,23 @@
                     }
                   }
                 },
+                "Sample Successful request with spAccountID": {
+                  "value": {
+                    "RecordTransactionRequestMessage": {
+                      "channelPartnerID": "SHAHID",
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "spAccountID": "167516216212",
+                      "itemCode": "VIPM01",
+                      "expiryDate": "1619724667326",
+                      "paymentChannel": "Fawry",
+                      "transactionId": "45664344556553344",
+                      "transactionStatus": "PENDING",
+                      "priceCharged": "39",
+                      "email": "shahidtestfawry1@yopmail.com",
+                      "country": "EG"
+                    }
+                  }
+                },
                 "Sample failure request(TPay)": {
                   "value": {
                     "RecordTransactionRequestMessage": {
@@ -8164,7 +8348,7 @@
                       "expiryDate": "1619724667326",
                       "paymentChannel": "TPay",
                       "transactionId": "453451234254654",
-                      "transactionStatus": "FAILURE",
+                      "transactionStatus": "PENDING",
                       "priceCharged": "39",
                       "country": "EG"
                     }
@@ -8629,6 +8813,43 @@
                       "serviceId": "JOR_B2C_SHAHID_VIP_1M",
                       "country": "JO"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAdyenPaymentMethods": {
+      "post": {
+        "tags": [
+          "Adyen"
+        ],
+        "operationId": "getAdyenPaymentMethodsRequestMessage",
+        "description": "getAdyenPaymentMethods() REST API is used to get multiple payment methods defined in Adyen.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAdyenPaymentMethodsresponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getAdyenPaymentMethodsrequest"
+              },
+              "examples": {
+                "getAdyenPaymentMethods success request": {
+                  "value": {
+                    "apiKey": "XXXXXXXXX"
                   }
                 }
               }
@@ -14225,7 +14446,8 @@
           "channelPartnerID",
           "apiKey",
           "dmaID",
-          "selectedServices"
+          "selectedServices",
+          "spAccountID"
         ],
         "properties": {
           "channelPartnerID": {
@@ -14252,6 +14474,10 @@
           "currencyCode": {
             "type": "string",
             "description": "Currency code used for the transaction"
+          },
+          "spAccountId": {
+            "type": "string",
+            "description": "Unique SpAccountID"
           },
           "selectedServices": {
             "type": "array",
@@ -17163,6 +17389,64 @@
           "country": {
             "type": "string",
             "description": "Country Code"
+          }
+        }
+      },
+      "getAdyenPaymentMethodsrequest": {
+        "type": "object",
+        "properties": {
+          "apiKey": {
+            "type": "string",
+            "description": "Unique API Key"
+          }
+        }
+      },
+      "getAdyenPaymentMethodsresponse": {
+        "type": "object",
+        "properties": {
+          "paymentMethods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/paymentMethods_getAdyenPaymentMethods",
+              "description": "service id defined for the payment modes"
+            }
+          }
+        }
+      },
+      "paymentMethods_getAdyenPaymentMethods": {
+        "type": "object",
+        "properties": {
+          "brands": {
+            "type": "array",
+            "items": {
+              "description": "Brands of the cards"
+            }
+          },
+          "configuration": {
+            "type": "string",
+            "$ref": "#/components/schemas/configuration_getAdyenPaymentMethods",
+            "description": "Merchant details"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the payment method"
+          },
+          "type": {
+            "type": "string",
+            "description": "service id defined for the payment modes"
+          }
+        }
+      },
+      "configuration_getAdyenPaymentMethods": {
+        "type": "object",
+        "properties": {
+          "merchantId": {
+            "type": "string",
+            "description": "Merchant id"
+          },
+          "merchantName": {
+            "type": "string",
+            "description": "Merchant name"
           }
         }
       }
