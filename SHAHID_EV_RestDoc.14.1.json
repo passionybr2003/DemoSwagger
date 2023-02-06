@@ -5277,12 +5277,11 @@
                   "value": {
                     "AuthorizeCardRequestMessage": {
                       "apiKey": "8uMMWK58TY2fGjJS",
-                      "token": "tok_ctynkwcksdru3nzh7fzhszcxzu",
-                      "transactionType": "UPGRADE",
+                      "transactionType": "AUTH",
                       "country": "IQ",
-                      "serviceID": "VIP3M",
-                      "oldServiceId": "VIPM01",
-                      "paymentMethodID": "12334",
+                      "serviceType": "PRODUCT",
+                      "paymentMethodID": "387051416",
+                      "isReauthorize": "true",
                       "cvv": "956",
                       "billingAddress": {
                         "address1": "321 Jenna Lane",
@@ -6123,6 +6122,32 @@
                         ]
                       }
                     }
+                  },
+                  "Successful purchase With ApplePay": {
+                    "value": {
+                      "ChangeServiceResponseMessage": {
+                        "message": "Service changed successfully",
+                        "responseCode": "1",
+                        "status": "SUCCESS",
+                        "subscriptionDetails": [
+                          {
+                            "paymentMethod": {
+                              "label": "ApplePay",
+                              "paymentMethodID": "76035298",
+                              "applePayID": "9087678767"
+                            },
+                            "sku": "VIP3M",
+                            "ovpSku": "SHAHIDVIP",
+                            "subscriptionStatus": "Active",
+                            "startDate": 1622528865000,
+                            "endDate": 1625120865000,
+                            "buCountry": "IQ",
+                            "purchaseType": "SVOD",
+                            "isRenewable": true
+                          }
+                        ]
+                      }
+                    }
                   }
                 }
               }
@@ -6217,6 +6242,41 @@
                         },
                         "transactionReferenceMsg": {
                           "txMsg": "Success"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Sample request for ApplePay": {
+                  "value": {
+                    "ChangeServiceRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "IQ",
+                      "newServiceID": "VIP3M",
+                      "oldServiceID": "VIPM01",
+                      "paymentMethodInfo": {
+                        "label": "ApplePay",
+                        "applePayMessage": {
+                          "subscriptionId": "2021120000",
+                          "txRefNo": "2021120000",
+                          "transactionId": "971542289891",
+                          "txMsg": "SUCCESS"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Sample request With Existing ApplePay": {
+                  "value": {
+                    "ChangeServiceRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "dmaID": "IQ",
+                      "newServiceID": "VIP3M",
+                      "oldServiceID": "VIPM01",
+                      "paymentMethodInfo": {
+                        "label": "ApplePay",
+                        "applePayMessage": {
+                          "paymentMethodID": "2021120000"
                         }
                       }
                     }
@@ -13782,6 +13842,37 @@
             "type": "object",
             "$ref": "#/components/schemas/paymentmethodInfo",
             "description": "Payment method related details."
+          }
+        }
+      },
+      "payementMethodInfoApplePay": {
+        "type": "object",
+        "$ref": "#/components/schemas/ApplePayMessage"
+      },
+      "ApplePayMessage": {
+        "type": "object",
+        "required": [
+          "subscriptionId",
+          "txRefNo",
+          "transactionId",
+          "txMsg"
+        ],
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "description": "Shopper Reference Number"
+          },
+          "txRefNo": {
+            "type": "string",
+            "description": "Recurring Detail Reference Number."
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique Transaction ID"
+          },
+          "txMsg": {
+            "type": "string",
+            "description": "Transaction Message"
           }
         }
       },
