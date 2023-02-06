@@ -10,9 +10,9 @@
     }
   ],
   "info": {
-    "description": "<b>Last Updated Date 31thJan,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
+    "description": "<b>Last Updated Date 2ndthFeb,2023. </b><br> <br><h1><b>Evergent-Shahid consolidated API document</h1> </b>\n\n <br><br>\n <b>Note:</b> \"<b>x-</b>\" symbol should be ignored infront of Error Codes.  ",
     "version": "",
-    "title": "EV Shahid API - V14.33",
+    "title": "EV Shahid API - V14.34",
     "contact": {
       "email": "pavankumar.a@evergent.com"
     },
@@ -5263,6 +5263,27 @@
                       "spAccountID": "167462814712",
                       "transactionType": "AUTH",
                       "country": "IQ",
+                      "billingAddress": {
+                        "address1": "321 Jenna Lane",
+                        "city": "Lebanon",
+                        "state": "Ohio",
+                        "country": "United States",
+                        "zipCode": "45036"
+                      }
+                    }
+                  }
+                },
+                "Sample request for Reauthorize": {
+                  "value": {
+                    "AuthorizeCardRequestMessage": {
+                      "apiKey": "8uMMWK58TY2fGjJS",
+                      "token": "tok_ctynkwcksdru3nzh7fzhszcxzu",
+                      "transactionType": "UPGRADE",
+                      "country": "IQ",
+                      "serviceID": "VIP3M",
+                      "oldServiceId": "VIPM01",
+                      "paymentMethodID": "12334",
+                      "cvv": "956",
                       "billingAddress": {
                         "address1": "321 Jenna Lane",
                         "city": "Lebanon",
